@@ -6,6 +6,7 @@
 
 }
 
+/* header */
 .title{
     font-family: 'Alegreya', serif;
     text-align: center;
@@ -37,3 +38,20 @@ ul {
 a {
     text-decoration: none;
 }
+
+/* about */
+.about {
+    display: flex;
+    flex-direction: column;
+}
+
+.introduction {
+    display: flex;
+
+}
+
+.headshot {
+    width: 200px;
+    height: auto;
+}
+
