@@ -18,26 +18,19 @@ body {
     background-color: rgb(252, 252, 252);
     color: #32302f;
 
+    margin: 0;
+
 }
 
 
 /* header */
-.title{
-    font-family: 'Libre Caslon Text', serif;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    font-size: clamp(6rem,calc((96/16 * 1rem) + (1vw - .7625rem) * (100 * ((126/16) - (96/16))/(120 - 76.25))),7.875rem);
-    font-size: clamp(3.2rem, .5692rem + 8.238vw, 13.75rem);
-    font-weight: 700;
-}
-
 .header{
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.bar{
+.bar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +43,11 @@ body {
     /* center the viewport */
     position: fixed;
     transform: translate(-50%);
+}
+
+.bar.scrolled {
+    backdrop-filter: blur(5px);
+    background-color: white;
 }
 
 .bar li {
@@ -70,30 +68,73 @@ a {
 }
 
 /* about */
+.title{
+    font-family: 'Libre Caslon Text', serif;
+    font-family: 'Poppins', sans-serif;
+
+    /* font-size: clamp(6rem,calc((96/16 * 1rem) + (1vw - .7625rem) * (100 * ((126/16) - (96/16))/(120 - 76.25))),7.875rem); */
+    font-size: clamp(3.2rem, .5692rem + 8.238vw, 13.75rem);
+    font-size: 120px;
+    font-weight: 700;
+
+    padding: 140px 0 100px 0;
+    margin: 0;
+}
+
 .about {
     display: flex;
     flex-direction: column;
+    padding-bottom: 200px;
 }
 
 .introduction {
     display: flex;
-
+    flex-wrap: wrap;
+    gap: 120px;
+    padding: 0 160px;
 }
 
 .headshot {
-    width: 200px;
-    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+    background-color: black;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
 }
 
+.headshot-img {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+}
+
+.about .text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    flex: 2;
+}
 .description {
-    font-family: 'Inter', sans-serif;
+    font-size: 60px;
     font-weight: 600;
+
+    margin: 30px 0;
+}
+
+.spiel {
+    margin: 0 0 30px 0;
+    font-size: 22px;
 }
 
 /* projects */
 .projects {
     display: flex;
     flex-direction: column;
+    background-color: #e1dcd0;
 }
 
 .first, .second {
