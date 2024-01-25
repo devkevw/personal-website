@@ -68,7 +68,7 @@ a {
 }
 
 /* about */
-.title{
+.title {
     font-family: 'Libre Caslon Text', serif;
     font-family: 'Poppins', sans-serif;
 
@@ -91,6 +91,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 120px;
+    /* justify-content: space-between; */
     padding: 0 160px;
 }
 
@@ -132,20 +133,84 @@ a {
 
 /* projects */
 .projects {
+    padding: 200px 160px 0;
     display: flex;
-    flex-direction: column;
     background-color: #e1dcd0;
+
+    justify-content: center;
+    align-items: center;
+    gap: 160px;
+    /* flex-wrap: wrap; */
+
+    /* position: relative; */
 }
 
-.first, .second {
+.content {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+
+    /* position: relative; */
+}
+
+.section-title {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 100px;
+    margin: 0;
+}
+
+.subtext {
+    font-size: 20px;
 }
 
 .box {
+    background-color: rgb(252, 252, 252);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 500px;
+    height: 200px;
+
+    border-top-right-radius: 64px;
+    border-top-left-radius: 64px;
     border: 2px solid black;
 
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a card-like effect */
+
+    /* position: relative; */
 }
+
+#ralph {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+    }
+
+#rock {
+    position: absolute;
+    top: 100px;
+    z-index: 2;
+  }
+
+#tip {
+    position: absolute;
+    top: 200px;
+    z-index: 3;
+  }
+
+#etch {
+    position: absolute;
+    top: 300px;
+    z-index: 4;
+}
+
 
 /* hobbies */
 .container {
