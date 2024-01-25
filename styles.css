@@ -1,17 +1,33 @@
-.body{
+html {
+    font-size: 16px;
+}
+
+body {
     font-family: 'Alegreya', serif;
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    /* font-family: 'Playfair Display', serif; */
     display: flex;
     flex-direction: column;
-
-
+    /* justify-content: center; */
+    text-align: center;
+    /* background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+    background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 33%, #d0d0d0 66%, #ffffff 100%);
+    background: linear-gradient(to bottom, #f0f0f0 0%, #f0f0f0 25%, #fff 25%, white 100%); */
+    background-color: rgba(0, 0, 0, 0.102);
+    /* background-color: white; */
+    /* background-color:#ffff; */
+    
+    background-color: rgba(22,51,0,.078);
 }
+
 
 /* header */
 .title{
-    font-family: 'Alegreya', serif;
     text-align: center;
-    font-size: 60px;
-    font-weight: bold;
+    font-size: clamp(6rem,calc((96/16 * 1rem) + (1vw - .7625rem) * (100 * ((126/16) - (96/16))/(120 - 76.25))),7.875rem);
+    font-size: clamp(3.2rem, .5692rem + 8.238vw, 13.75rem);
+    font-weight: 700;
 }
 
 .header{
@@ -54,4 +70,39 @@ a {
     width: 200px;
     height: auto;
 }
+
+.description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+/* projects */
+.projects {
+    display: flex;
+    flex-direction: column;
+}
+
+.first, .second {
+    display: flex;
+    gap: 10px;
+}
+
+.box {
+    border: 2px solid black;
+
+}
+
+/* hobbies */
+.container {
+    display: flex; 
+    flex-wrap: wrap;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+.section {
+    min-width: 600px;
+}
+
+
 
