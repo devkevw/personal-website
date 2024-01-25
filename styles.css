@@ -1,5 +1,9 @@
 .body{
     font-family: 'Alegreya', serif;
+    display: flex;
+    flex-direction: column;
+
+
 }
 
 .title{
@@ -7,4 +11,29 @@
     text-align: center;
     font-size: 60px;
     font-weight: bold;
+}
+
+.header{
+    display: flex;
+    justify-content: center
+}
+.bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: beige;
+    width: max-content;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
 }
