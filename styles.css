@@ -42,6 +42,7 @@ body {
 
     /* center the viewport */
     position: fixed;
+    z-index: 5; 
     transform: translate(-50%);
 }
 
@@ -140,22 +141,24 @@ a {
     justify-content: center;
     align-items: center;
     gap: 160px;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
 
-    /* position: relative; */
+
 }
 
 .content {
     display: flex;
     flex-direction: column;
 
-    /* position: relative; */
+    flex: 1;
 }
 
 .section-title {
     display: flex;
     flex-direction: column;
     text-align: left;
+    margin-left: auto;
+    flex: 1;
 }
 
 .subtitle {
@@ -172,45 +175,52 @@ a {
     background-color: rgb(252, 252, 252);
     display: flex;
     flex-direction: column;
+    margin: 0;
     text-align: center;
+
     width: 500px;
     height: 200px;
 
     border-top-right-radius: 64px;
     border-top-left-radius: 64px;
-    border: 2px solid black;
 
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a card-like effect */
-
-    /* position: relative; */
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    
 }
 
 #ralph {
     position: relative;
-    top: 0;
-    left: 0;
-    z-index: 1; 
+    height: 600px;
     }
 
 #rock {
     position: absolute;
     top: 100px;
-    z-index: 2;
+    right: 0;
+    left: 0;
   }
 
 #tip {
     position: absolute;
     top: 200px;
-    z-index: 3;
+    right: 0;
+    left: 0;
   }
 
 #etch {
     position: absolute;
     top: 300px;
-    z-index: 4;
+    right: 0;
+    left: 0;
 }
 
+.box .text {
+    margin-top: 0;
+
+}
 
 /* hobbies */
 .container {
