@@ -231,14 +231,13 @@ a {
 
 .hobbies .section-title {
     text-align: center;
-    /* margin-bottom: 0px; */
 }
 
 .container {
     display: flex; 
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    /* align-items: center; */
 
     background-color: rgb(198, 212, 221);
     /* background-color: rgb(173, 216, 230); */
@@ -248,10 +247,14 @@ a {
     border-radius: 64px;
 
     /* height: 500px; */
+    padding: 50px;
+    gap: 50px;
 }
 
 .section {
-    min-width: 400px;
+    max-width: 500px; /* will prob need a variable for this */
+    text-align: left;
+    padding: 0px;
 }
 
 .icon {
@@ -259,6 +262,44 @@ a {
     height: auto;
 }
 
+#sports .icon {
+    margin-top: 20.266px;
+}
+
+/* travel section */
+
+.travel {
+    display: flex;
+    flex-direction: column;
+}
+.travel-plan {
+    font-size: 20px;
+    margin: 0 400px 60px;
+    text-align: left;
+}
+
+.images {
+    margin: 0 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    color: rgb(242, 242, 242);
+}
+
+.large, .small {
+    background-color: #32302f;
+    height: 400px;
+    border-radius: 16px;
+}
+
+.large {
+    flex: 5;
+}
+
+.small {
+    flex: 2;
+}
 /* footer */
 .footer{
     background-color: #32302f;
