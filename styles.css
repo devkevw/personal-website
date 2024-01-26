@@ -258,10 +258,47 @@ a {
     width: 80px;
     height: auto;
 }
+
 /* footer */
 .footer{
     background-color: #32302f;
     color: rgb(242, 242, 242);
+    padding: 100px 120px 60px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    display: flex;
+    justify-content: space-around;
+}
+
+.copyright {
+    font-size: 20px;
+}
+.links {
+    display: flex;
+    gap: 60px;
+    text-align: left;
+}
+
+.elsewhere .subtext, 
+.contact .subtext {
+    /* margin-bottom: 10px; */
+    font-weight: 700;
+    font-size: 22px;
+
+}
+
+.links li {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+.bottom p {
+    margin: 100px 0 0 0;
+    font-style: italic;
+    color: #696664;
 }
 
 
