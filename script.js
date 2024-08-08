@@ -1,3 +1,4 @@
+// navbar scrolling 
 const navbar = document.querySelector('.bar');
 
 window.addEventListener('scroll', function () {
