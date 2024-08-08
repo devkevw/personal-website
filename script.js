@@ -34,3 +34,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // - Maybe some animation for the title "Hi, I'm Kevin", and possibly other sections
 // - Add image scroll for travel images
 // - Possibly maybe more things to do ... 
+//test
