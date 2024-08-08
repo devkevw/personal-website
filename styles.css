@@ -35,7 +35,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 12px;
-    background-color: rgb(252, 252, 252);
+    background-color: rgb(252, 252, 252); 
     width: max-content;
     border-radius: 50px;
     padding: 10px;
@@ -44,11 +44,14 @@ body {
     position: fixed;
     z-index: 5; 
     transform: translate(-50%);
+
+    /* smoother transition */
+    transition: background-color 0.3s ease;
 }
 
 .bar.scrolled {
-    backdrop-filter: blur(5px);
-    background-color: white;
+    backdrop-filter: blur(15px) saturate(1.7);
+    background-color: rgba(247, 247, 247, 0.8);
 }
 
 .bar li {
@@ -343,6 +346,15 @@ a {
 .links li {
     margin-bottom: 20px;
     font-size: 18px;
+}
+
+/* hover over elsewhere links */
+.footer .links a {
+    transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+.footer .links a:hover {
+    color: rgb(200, 200, 200); /* Color when hovered, you can change to your desired color */
 }
 
 .bottom p {
