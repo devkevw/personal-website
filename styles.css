@@ -7,6 +7,7 @@
 
 html {
     font-size: 16px; /* could possibly make bigger, since I use bigger fonts throughout my page */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -55,9 +56,15 @@ body {
 }
 
 .bar li {
+    padding: 10px 22px;
+    margin: 0px 5px;
+    /* transition: background-color 0.3s ease; */
+}
+
+/* .bar li a{
     padding: 6px 20px;
     margin: 0px 5px;
-}
+} */
 
 ul {
     list-style: none;
@@ -69,6 +76,14 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+/* scrolling */
+.bar li.active {
+    background-color: rgb(255, 255, 255); 
+    border-radius: 50px; 
+    font-weight: bold;
+}
+
 
 
 /* ***** */
