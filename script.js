@@ -54,11 +54,83 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// projects slider
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+document.getElementById('next').addEventListener('click', function() {
+    goToSlide(currentIndex + 1);
+});
+
+document.getElementById('prev').addEventListener('click', function() {
+    goToSlide(currentIndex - 1);
+});
+
+function goToSlide(index) {
+    if (index < 0) {
+        currentIndex = totalSlides - 1;
+    } else if (index >= totalSlides) {
+        currentIndex = 0;
+    } else {
+        currentIndex = index;
+    }
+    updateSlides();
+}
+
+function updateSlides() {
+    slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        if (index === currentIndex) {
+            slide.classList.add('active');
+        }
+    });
+    const offset = -currentIndex * 100;
+    document.querySelector('.slider').style.transform = `translateX(${offset}%)`;
+}
+
+// Initialize the first slide as active
+updateSlides();
+
+// let items = document.querySelectorAll('.slider .item');
+//     let next = document.getElementById('next');
+//     let prev = document.getElementById('prev');
+    
+//     let active = 3;
+//     function loadShow(){
+//         let stt = 0;
+//         items[active].style.transform = `none`;
+//         items[active].style.zIndex = 1;
+//         items[active].style.filter = 'none';
+//         items[active].style.opacity = 1;
+//         for(var i = active + 1; i < items.length; i++){
+//             stt++;
+//             items[i].style.transform = `translateX(${120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(-1deg)`;
+//             items[i].style.zIndex = -stt;
+//             items[i].style.filter = 'blur(5px)';
+//             items[i].style.opacity = stt > 2 ? 0 : 0.6;
+//         }
+//         stt = 0;
+//         for(var i = active - 1; i >= 0; i--){
+//             stt++;
+//             items[i].style.transform = `translateX(${-120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(1deg)`;
+//             items[i].style.zIndex = -stt;
+//             items[i].style.filter = 'blur(5px)';
+//             items[i].style.opacity = stt > 2 ? 0 : 0.6;
+//         }
+//     }
+//     loadShow();
+//     next.onclick = function(){
+//         active = active + 1 < items.length ? active + 1 : active;
+//         loadShow();
+//     }
+//     prev.onclick = function(){
+//         active = active - 1 >= 0 ? active - 1 : active;
+//         loadShow();
+//     }
+
 
 // TODO
-// - Make navbar clicks work (scroll to correct section)
-// - Make a hover over item navbar for which section currently is in view
 // - Maybe some animation for the title "Hi, I'm Kevin", and possibly other sections
 // - Add image scroll for travel images
 // - Possibly maybe more things to do ... 
-//test
