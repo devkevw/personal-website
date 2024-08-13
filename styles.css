@@ -120,23 +120,31 @@ a {
     gap: 120px;
 
     padding: 0 160px;
+    /* align-items: flex-start; */
 }
 
 .headshot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* not entirely sure how these heights and widths are playing out */
+    min-width: 330px; 
+    min-height: 550px; 
+    width: 330px; 
+    height: 550px; 
 
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* maybe consider 'start' if need to crop */
+    justify-content: center;
     flex: 1;
-    background-color: black;
-    border-top-left-radius: 40%;
-    border-top-right-radius: 40%;
+
+    /* aspect-ratio: 3 / 5 ; */
 }
 
 .headshot-img {
-    width: 200px;
-    height: 200px;
-    flex-shrink: 0;
+    height: 100%;
+    width: auto;
+    border-radius: 330px 330px 0px 0px;
+    /* flex-shrink: 0; */
+    object-fit: cover;
 }
 
 .about .text {
@@ -251,7 +259,7 @@ input {
 }
 
 .cards .proj-img {
-    border-radius: var(--cards-border-rad); /* change later according to apple icon*/
+    border-radius: var(--cards-border-rad); /* according to apple icon */
     
     width: 100%;
     height: auto;
