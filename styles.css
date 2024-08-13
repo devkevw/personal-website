@@ -125,10 +125,10 @@ a {
 
 .headshot {
     /* not entirely sure how these heights and widths are playing out */
-    min-width: 330px; 
-    min-height: 550px; 
-    width: 330px; 
-    height: 550px; 
+    min-width: 360px; 
+    min-height: 600px; 
+    width: 360px; 
+    height: 600px; 
 
     overflow: hidden;
     display: flex;
@@ -142,7 +142,7 @@ a {
 .headshot-img {
     height: 100%;
     width: auto;
-    border-radius: 330px 330px 0px 0px;
+    border-radius: 360px 360px 0px 0px;
     /* flex-shrink: 0; */
     object-fit: cover;
 }
