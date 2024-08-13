@@ -166,7 +166,7 @@ a {
 /* projects */
 /* ******** */
 .projects {
-    padding: 200px 160px 180px;
+    padding: 200px 160px 190px;
     display: flex;
     background-color: #e1dcd0;
     justify-content: center; /* or space-around */
@@ -218,6 +218,7 @@ input {
     transform-style: preserve-3d;
     flex-direction: column;
     flex: 1;
+    position: relative;
 }
 
 .cards {
@@ -373,6 +374,46 @@ input {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s ease;
+}
+
+/* buttons */
+.carousel-controls {
+    position: absolute;
+    top: 351px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    pointer-events: none; /* Ensure the buttons don't interfere with mouse events */
+}
+
+.carousel-control {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: hsl(30, 3%, 25%);
+    cursor: pointer;
+    font-size: 28px;
+    pointer-events: auto; /* Ensure the buttons can be clicked */
+
+}
+
+.carousel-control.prev {
+    position: absolute;
+    left: 0;
+    transition: all .3s;
+    padding: 10px 10px 10px 0px;
+}
+
+.carousel-control.next {
+    position: absolute;
+    right: 0;
+    transition: all .3s;
+    padding: 10px 0 10px 10px;
+}
+
+.carousel-control:hover {
+    transform: scale(1.6);
+    color: hsl(30, 3%, 19%);
 }
 
 
