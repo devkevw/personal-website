@@ -178,7 +178,7 @@ a {
 /* projects */
 /* ******** */
 .projects {
-    padding: 200px 160px 190px;
+    padding: 200px 160px 180px;
     display: flex;
     background-color: #e1dcd0;
     justify-content: center; /* or space-around */
@@ -435,7 +435,7 @@ input {
 /* hobbies */
 /* ******* */
 .hobbies {
-    padding: 180px 0;
+    padding: 170px 0 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
