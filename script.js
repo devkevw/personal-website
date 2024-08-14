@@ -107,18 +107,12 @@ buttons.forEach(button => {
 
 // figcaption of images = alt text
 document.querySelectorAll('.slide').forEach(slide => {
-  // Find the image within the current slide
-  const img = slide.querySelector('img');
+  const img = slide.querySelector('img'); // find the image within the current slide
 
-  // Check if the image exists and has an alt attribute
-  if (img && img.alt) {
-      // Create a figcaption element
+  if (img && img.alt) { // check if the image exists and has an alt attribute
+      // create a figcaption element
       const figcaption = document.createElement('figcaption');
-      
-      // Set the text for the figcaption from the image's alt attribute
       figcaption.textContent = img.alt;
-      
-      // Append the figcaption to the slide
       slide.appendChild(figcaption);
   }
 });
