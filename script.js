@@ -105,10 +105,26 @@ buttons.forEach(button => {
   })
 })
 
+// figcaption of images = alt text
+document.querySelectorAll('.slide').forEach(slide => {
+  // Find the image within the current slide
+  const img = slide.querySelector('img');
+
+  // Check if the image exists and has an alt attribute
+  if (img && img.alt) {
+      // Create a figcaption element
+      const figcaption = document.createElement('figcaption');
+      
+      // Set the text for the figcaption from the image's alt attribute
+      figcaption.textContent = img.alt;
+      
+      // Append the figcaption to the slide
+      slide.appendChild(figcaption);
+  }
+});
 
 
 // TODO
 // - Maybe some animation for the title "Hi, I'm Kevin", and possibly other sections
-// - Add image scroll for travel images
 // - Change website title tab
 // - hover over title characters, they jump
