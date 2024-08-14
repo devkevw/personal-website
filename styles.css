@@ -532,7 +532,6 @@ input {
 .small {
     flex: 9;
     aspect-ratio: 3 / 4;
-    border: 3px black solid;
 }
 
 
