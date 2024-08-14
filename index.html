@@ -232,10 +232,29 @@
             </p>
             
             <div class="images">
-                <div class="slider-container large">
-                    <div class="slides">
-                        <!-- <img src="https://i.imgur.com/Le8XKAJ.jpg" alt="test" class= "active">
-                        <img src="https://i.imgur.com/zqNb37n.jpg" alt="test2"> -->
+                <div class="slider-container large" data-slider>
+                    <!-- buttons -->
+                    <button class="slider-button prev" data-slider-button="prev">‹</button>
+                    <button class="slider-button next" data-slider-button="next">›</button>
+                    
+                    <!-- images -->
+                     <ul data-slides>
+                        <li class="slide" data-active>
+                            <img src="https://i.imgur.com/Le8XKAJ.jpg" alt="test" loading="lazy">
+                        </li>
+
+                        <li class="slide">
+                            <img src="https://i.imgur.com/zqNb37n.jpg" alt="test2" loading="lazy">
+                        </li>
+
+                        <li class="slide">
+                            <img src="https://i.imgur.com/DaTLXuE.jpg" alt="test3" loading="lazy">
+                        </li>
+                     </ul>
+
+                    <!-- <div class="slides">
+                        <img src="https://i.imgur.com/Le8XKAJ.jpg" alt="test" class= "active">
+                        <img src="https://i.imgur.com/zqNb37n.jpg" alt="test2">
                         <img src="" alt="">
                 
                         
@@ -243,13 +262,10 @@
 
                     </div>
                     
-                    <!-- <div class="travel-controls">
+                    <div class="travel-controls">
                         <button class="next">›</button>
                         <button class="prev">‹</button>
                     </div> -->
-
-                    
-
                 </div>
 
                 <div class="slider-container small">

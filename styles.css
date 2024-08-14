@@ -455,7 +455,7 @@ input {
     /* background-color: rgb(173, 216, 230); */
     /* background-color:#e8dfdc; */
 
-    margin: 60px 120px;
+    margin: 60px 100px;
     border-radius: 64px;
 
     /* height: 500px; */
@@ -509,12 +509,21 @@ input {
     /* color: rgb(242, 242, 242); */
 }
 
-.large, .small {
+
+/* slider */
+.slider-container { /* previously .large, .small */
     background-color: transparent;
     /* height: 400px; */
     border-radius: 16px;
     border: 3px black solid;
+    position: relative;
 }
+
+.slider-container > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
 .large {
     flex: 16;
@@ -526,66 +535,64 @@ input {
     aspect-ratio: 3 / 4;
 }
 
-/* slider */
-/* .slider-container {
-    position: relative;
-}
 
-.slider-container .slides {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: 16px;
-
-    overflow: hidden; */
-}
-.slider-container .slides img{
-    /* height: 100%;
-    width: auto;
-    position: absolute; */
-    /* top: 0; 
-    bottom: 0;
-    left: 0;
-    right: 0;  */
-    /* object-fit: cover; */
-
-    /* for centering, though the image shouldn't really need */
-    /* left: 50%;
-    transform: translateX(-50%); */
-    
-}
-
-.slider-container .slides img:not(.active){
-    /* top: 0; */
-    /* left: -100%;  */
-    /* might be -100% later */
-}
-
-/* .travel-controls {
+.slider-container .slide {
     position: absolute;
-    width: 100%;
+    inset: 0;
+    opacity: 0;
+    
+    border-radius: 16px;
+    overflow: hidden;
+
+    transition: 300ms opacity ease-in-out;
+    transition-delay: 300ms;
+
+}
+
+.slider-container .slide[data-active]{
+    opacity: 1;
+    z-index: 1;
+    transition-delay: 0ms;
+}
+
+.slide > img {
+    display: block;
     height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.slider-container .slider-button {
+    position: absolute;
+    z-index: 2;
+    font-size: 80px; /* 5 rem */
+
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: auto; 
-}
 
-.travel-controls .next, .travel-controls .prev {
-    position: absolute;
-    font-size: 64px;
-    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    color: black;
-    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    height: 100%;
+    padding: 0px 16px; /* 1 rem */
 }
 
-.travel-controls .next {
-    right: 20px;
+.slider-container .slider-button:hover {
+    opacity: 1;
 }
 
-.travel-controls .prev  {
-    left: 20px;
-} */
+.slider-button.prev{
+    left: 0px; 
+}
+
+.slider-button.next{
+    right: 0px; 
+}
+
 
 
 
