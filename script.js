@@ -117,6 +117,52 @@ document.querySelectorAll('.slide').forEach(slide => {
   }
 });
 
+// slides change automatically if not hovered over
+// slide intervals
+const LARGE_SLIDER_INTERVAL_TIME = 12000; // 12 seconds
+const SMALL_SLIDER_INTERVAL_TIME = 10000; // 10 seconds
+
+document.addEventListener('DOMContentLoaded', () => {
+    const largeSlider = document.querySelector('.slider-container.large');
+    const smallSlider = document.querySelector('.slider-container.small');
+    
+    let largeSliderInterval;
+    let smallSliderInterval;
+    
+    function startAutoSlide(slider, intervalTime) {
+        return setInterval(() => {
+            const activeSlide = slider.querySelector('[data-active]');
+            const nextSlide = activeSlide.nextElementSibling || slider.querySelector('.slide:first-child');
+            activeSlide.removeAttribute('data-active');
+            nextSlide.setAttribute('data-active', true);
+        }, intervalTime);
+    }
+    
+    function stopAutoSlide(interval) {
+        clearInterval(interval);
+    }
+    
+    // initialize auto slides
+    largeSliderInterval = startAutoSlide(largeSlider, LARGE_SLIDER_INTERVAL_TIME);
+    smallSliderInterval = startAutoSlide(smallSlider, SMALL_SLIDER_INTERVAL_TIME);
+    
+    // add event listeners to stop auto-slide on hover
+    largeSlider.addEventListener('mouseover', () => {
+        stopAutoSlide(largeSliderInterval);
+    });
+    largeSlider.addEventListener('mouseout', () => {
+        largeSliderInterval = startAutoSlide(largeSlider, LARGE_SLIDER_INTERVAL_TIME);
+    });
+    
+    smallSlider.addEventListener('mouseover', () => {
+        stopAutoSlide(smallSliderInterval);
+    });
+    smallSlider.addEventListener('mouseout', () => {
+        smallSliderInterval = startAutoSlide(smallSlider, SMALL_SLIDER_INTERVAL_TIME);
+    });
+});
+
+
 
 // TODO
 // - Maybe some animation for the title "Hi, I'm Kevin", and possibly other sections
