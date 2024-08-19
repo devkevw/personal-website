@@ -510,12 +510,13 @@ input {
 }
 
 .travel-plan .imgur{
-    transition: all .3s ease;
     text-decoration: underline;
 }
 
 .travel-plan .imgur:hover{
     font-weight: bold;
+    font-family: "Outfit", sans-serif;
+    text-transform: lowercase;
 }
 
 
