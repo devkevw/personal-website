@@ -163,8 +163,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// loading page
+document.addEventListener('DOMContentLoaded', () => {
+  // get elements
+  const hiKevin = document.querySelector('#about .title');
+  const introduction = document.querySelector('#about .introduction');
+  const restOfContent = document.querySelectorAll('.page-section:not(#about)');
 
-// TODO
-// - Maybe some animation for the title "Hi, I'm Kevin", and possibly other sections
-// - Change website title tab
-// - hover over title characters, they jump
+  // function to reveal elements
+  const revealElements = () => {
+      hiKevin.classList.add('visible'); // add 'visible' class to first section
+      setTimeout(() => {
+          introduction.classList.add('visible'); // add 'visible' class to introduction
+          setTimeout(() => {
+              restOfContent.forEach(section => section.classList.add('visible')); // add 'visible' class to rest of sections
+          }, 50); // 50ms between last two parts
+      }, 200); 
+  };
+
+  // trigger the reveal function
+  revealElements();
+});
+
+

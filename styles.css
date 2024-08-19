@@ -169,7 +169,7 @@ a {
 .spiel {
     margin: 0 0 30px 0;
     font-size: 22px;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 
@@ -485,6 +485,9 @@ input {
 }
 
 
+#writing .medium{
+    text-decoration: underline;
+}
 
 #writing .medium:hover{
     font-weight: bold;
@@ -506,6 +509,14 @@ input {
     line-height: 1.5;
 }
 
+.travel-plan .imgur{
+    transition: all .3s ease;
+    text-decoration: underline;
+}
+
+.travel-plan .imgur:hover{
+    font-weight: bold;
+}
 
 
 .images {
@@ -684,10 +695,23 @@ input {
 }
 
 
-/* **** */
-/* TODO */
-/* **** */
-/* - maybe learn grid
-   - probably use variables for sizing, padding, margins, that auto calculate when screen size changes
-   - make it mobile friendly 
-*/
+/* loading page */
+.hidden {
+    opacity: 0;
+    /* transition: opacity 0.8s ease; */
+}
+
+.visible {
+    opacity: 1;
+}
+
+.slide-effect {
+    opacity: 0;
+    transform: translateY(20px); /* Slide from below */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-effect.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
