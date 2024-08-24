@@ -221,67 +221,7 @@ a {
     }
 }
 
-/* tablet size */
-@media (max-width: 768px){
-    /* about */
-    .about{
-        padding-bottom: 180px;
-    }
-    .title {
-        font-size: clamp(40px, 40px + (120 - 40) * ((100vw - 320px) / (768 - 320)), 120px);
-        padding-top: calc(120px + (140 - 120) * ((100vw - 320px) / (768 - 320)));
-        padding-bottom: 40px;
-    }
-    
-    .introduction {
-        padding: 0;
-        flex-direction: column;
-        gap: clamp(20px, 8vw, 60px)
-    }
 
-    .headshot{
-        width: 85%;
-        margin: 0 auto;
-        flex: 1;
-        border-top-left-radius: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (768 - 320)), 100px);
-        border-top-right-radius: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (768 - 320)), 100px);
-    }
-
-    .headshot-img{
-        width: 100%;
-        height: auto;
-    }
-
-    .about .text{
-        width: 85%;
-        margin: 0 auto;
-    }
-
-    .description{
-        margin: 0 0 26px 0;
-        font-size: clamp(40px, 40px + (40 - 30) * ((100vw - 480px) / (768 - 480)), 50px);
-    }
-
-    .spiel{
-        margin: 0 0 26px 0;
-        font-size: 22px;
-    }
-}
-
-/* phone */
-@media (max-width: 480px){
-    /* about */
-    .about{
-        padding-bottom: 160px;
-    }
-    .description{
-        font-size: clamp(30px, 8.3vw, 40px);
-    }
-
-    .spiel{
-        font-size: 20px;
-    }
-}
 
 /* ******** */
 /* projects */
@@ -823,4 +763,73 @@ input {
 .slide-effect.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+
+/* ****************************** */
+/* media queries for screen sizes */
+/* ****************************** */
+/* tablet size */
+@media (max-width: 768px){
+    /* about */
+    .about{
+        padding-bottom: 180px;
+    }
+
+    .title {
+        font-size: clamp(40px, 40px + (120 - 40) * ((100vw - 320px) / (768 - 320)), 120px);
+        padding-top: calc(120px + (140 - 120) * ((100vw - 320px) / (768 - 320)));
+        padding-bottom: 40px;
+    }
+    
+    .introduction {
+        padding: 0;
+        flex-direction: column;
+        gap: clamp(20px, 8vw, 60px)
+    }
+
+    .headshot{
+        width: 80%;
+        margin: 0 auto;
+        flex: 1;
+        border-top-left-radius: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (768 - 320)), 100px);
+        border-top-right-radius: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (768 - 320)), 100px);
+    }
+
+    .headshot-img{
+        width: 100%;
+        height: auto;
+    }
+
+    .about .text{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .description{
+        margin: 0 0 26px 0;
+        font-size: clamp(40px, 40px + (40 - 30) * ((100vw - 480px) / (768 - 480)), 50px);
+    }
+
+    .spiel{
+        margin: 0 0 26px 0;
+        font-size: 22px;
+    }
+}
+
+/* phone */
+@media (max-width: 480px){
+    /* about */
+    .about{
+        padding-bottom: 160px;
+    }
+
+    .description{
+        font-size: clamp(30px, 8.3vw, 40px);
+    }
+
+    .spiel{
+        font-size: 20px;
+    }
 }
