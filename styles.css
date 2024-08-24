@@ -1,5 +1,6 @@
 :root{
     --cards-border-rad: 47px;
+    --bar-rad: 3.1rem; 
 }
 
 
@@ -32,50 +33,6 @@ button {
     border: none;
 }
 
-/* ****** */
-/* header */
-/* ****** */
-.header{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    background-color: rgb(252, 252, 252); 
-    width: max-content;
-    border-radius: 50px;
-    padding: 10px;
-
-    /* center the viewport */
-    position: fixed;
-    z-index: 5; 
-    transform: translate(-50%);
-
-    /* smoother transition */
-    transition: background-color 0.3s ease;
-}
-
-.bar.scrolled {
-    backdrop-filter: blur(15px) saturate(1.7);
-    background-color: rgba(247, 247, 247, 0.8);
-}
-
-.bar li {
-    padding: 10px 22px;
-    margin: 0px 5px;
-    /* transition: background-color 0.3s ease; */
-}
-
-/* .bar li a{
-    padding: 6px 20px;
-    margin: 0px 5px;
-} */
-
 ul {
     list-style: none;
     padding: 0;
@@ -87,20 +44,81 @@ a {
     text-decoration: none;
 }
 
+
+/* ************* */
+/* header/navbar */
+/* ************* */
+.header{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: rgb(252, 252, 252); 
+    width: max-content;
+    border-radius: var(--bar-rad);
+    padding: 0.625rem;
+
+    /* center the viewport */
+    position: fixed;
+    z-index: 5; 
+    transform: translate(-50%);
+    
+    transition: background-color 0.3s ease;
+}
+
+.bar.scrolled {
+    backdrop-filter: blur(15px) saturate(1.7);
+    background-color: rgba(247, 247, 247, 0.8);
+}
+
+.bar li {
+    padding: 0.625rem 1.375rem;
+    margin: 0px 0.3125rem;
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
 /* scrolling */
 .bar li.active {
     background-color: rgb(255, 255, 255); 
-    border-radius: 50px; 
+    border-radius: var(--bar-rad); 
     font-weight: bold;
 }
 
 
 
+@media (max-width: 540px){
+    .bar {
+        /* gap: 0.75rem; */
+        width: 95%;
+        justify-content: space-between;
+        /* padding: 0.625rem; */
+    }
+    
+    .bar li {
+        font-size: clamp(0.75rem, 0.75rem + 1.5vw, 1rem); /* Scale font size responsively */
+        padding: 0;
+        padding: 0;
+    }
+    
+
+}
+
+@media (max-width: 480px) {
+ 
+}
+
 /* ***** */
 /* about */
 /* ***** */
 .title {
-    font-family: 'Libre Caslon Text', serif;
+
     font-family: 'Poppins', sans-serif;
 
     /* font-size: clamp(6rem,calc((96/16 * 1rem) + (1vw - .7625rem) * (100 * ((126/16) - (96/16))/(120 - 76.25))),7.875rem); */
