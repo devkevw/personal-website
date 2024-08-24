@@ -100,7 +100,6 @@ a {
     font-weight: bold;
 }
 
-
 /* smaller screen */
 @media (max-width: 540px){
     .header{
