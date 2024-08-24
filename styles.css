@@ -1,6 +1,6 @@
 :root{
     /* navbar */
-    --bar-rad: 3.1rem; 
+    --bar-rad: 50px; 
     --bar-font-size-small: clamp(0.875rem, 3vw, 1rem);
     --bar-padding: calc(var(--bar-font-size-small) * 0.625);
     --bar-elmt-padding-width: calc(var(--bar-font-size-small) * 1.375);
@@ -139,16 +139,21 @@ a {
 /* about */
 /* ***** */
 .title {
-
     font-family: 'Poppins', sans-serif;
-
-    /* font-size: clamp(6rem,calc((96/16 * 1rem) + (1vw - .7625rem) * (100 * ((126/16) - (96/16))/(120 - 76.25))),7.875rem); */
-    font-size: clamp(3.2rem, .5692rem + 8.238vw, 13.75rem);
     font-size: 120px;
     font-weight: 700;
-
     padding: 140px 0 100px 0;
     margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+@media (max-width: 720px){
+    .title {
+        font-size: clamp(50px, calc(50px + 70 * ((100vw - 320px) / 400)), 120px);
+        padding: calc(120px + (140 - 120) * ((100vw - 320px) / (720 - 320))) 0 calc(60px + (100 - 60) * ((100vw - 320px) / (720 - 320))) 0;
+    }
 }
 
 .about {

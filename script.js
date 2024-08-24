@@ -83,8 +83,6 @@ document.querySelector('.carousel-control.next').addEventListener('click', funct
 });
 
 
-
-
 // travel images slider
 const buttons = document.querySelectorAll("[data-slider-button]")
 
@@ -116,6 +114,7 @@ document.querySelectorAll('.slide').forEach(slide => {
       slide.appendChild(figcaption);
   }
 });
+
 
 // slides change automatically if not hovered over
 // slide intervals
@@ -185,4 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements();
 });
 
+
+// change title according to screen size
+document.addEventListener('DOMContentLoaded', () => {
+  const titleElement = document.querySelector('.title');
+
+  function updateTitleText() {
+      if (window.innerWidth <= 900) {
+          titleElement.textContent = "I'm Kevin.";
+      } else {
+          titleElement.textContent = "Hi, I'm Kevin.";
+      }
+  }
+
+  window.addEventListener('resize', updateTitleText);
+  updateTitleText(); 
+});
 
