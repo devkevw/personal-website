@@ -1,7 +1,7 @@
 :root{
     /* navbar */
     --bar-rad: 3.1rem; 
-    --bar-font-size-small: clamp(0.75rem, 3vw, 1rem);
+    --bar-font-size-small: clamp(0.875rem, 3vw, 1rem);
     --bar-padding: calc(var(--bar-font-size-small) * 0.625);
     --bar-elmt-padding-width: calc(var(--bar-font-size-small) * 1.375);
     --bar-margin: calc(var(--bar-font-size-small) * 0.3125);
@@ -81,6 +81,7 @@ a {
 }
 
 .bar.scrolled {
+    -webkit-backdrop-filter: blur(15px); /* for safari hopefully */
     backdrop-filter: blur(15px) saturate(1.7);
     background-color: rgba(247, 247, 247, 0.8);
 }
@@ -119,7 +120,7 @@ a {
     }
 }
 
-@media (max-width: 400px){
+@media (max-width: 466px){
     .bar {
         justify-content: space-around;
         gap: 0;
@@ -127,8 +128,8 @@ a {
 
     .bar li {
         margin: 0;
-        padding-left: clamp(12px, 3.75vw, 16px);
-        padding-right: clamp(12px, 3.75vw, 16px);
+        padding-left: calc(8.75px + (19.2 - 8.75) * ((100vw - 320px) / (466 - 320)));
+        padding-right: calc(8.75px + (19.2 - 8.75) * ((100vw - 320px) / (466 - 320)));
     }
 }
 
