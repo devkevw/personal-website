@@ -52,7 +52,12 @@
         <h1 class="title hidden slide-effect">Hi, I'm Kevin.</h1>
         <div class="introduction hidden slide-effect">
             <div class="headshot">            
-                <img class='headshot-img' src="./images/headshots/me_3:5_2.jpg" alt="headshot of Kevin" loading="lazy">
+                <picture>
+                    <source srcset="./images/headshots/me_square_small.jpg" media="(max-width: 480px)">
+                    <source srcset="./images/headshots/me_square_med.jpg" media="(max-width: 768px)">
+                    <img class='headshot-img' src="./images/headshots/me_3:5_large.jpg" alt="headshot of Kevin" loading="lazy">
+                </picture>
+            
             </div>
 
             <div class="text">
