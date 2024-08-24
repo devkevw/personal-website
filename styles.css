@@ -138,6 +138,12 @@ a {
 /* ***** */
 /* about */
 /* ***** */
+.about {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 200px;
+}
+
 .title {
     font-family: 'Poppins', sans-serif;
     font-size: 120px;
@@ -149,49 +155,27 @@ a {
     align-items: center;
 }
 
-@media (max-width: 720px){
-    .title {
-        font-size: clamp(50px, calc(50px + 70 * ((100vw - 320px) / 400)), 120px);
-        padding: calc(120px + (140 - 120) * ((100vw - 320px) / (720 - 320))) 0 calc(60px + (100 - 60) * ((100vw - 320px) / (720 - 320))) 0;
-    }
-}
-
-.about {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 200px;
-}
-
 .introduction {
     display: flex;
     flex-wrap: wrap;
     gap: 120px;
-
-    padding: 0 160px;
-    /* align-items: flex-start; */
+    padding: 0 11%;
+    justify-content: center;
 }
 
 .headshot {
-    /* not entirely sure how these heights and widths are playing out */
-    min-width: 360px; 
-    min-height: 600px; 
     width: 360px; 
     height: 600px; 
-
     overflow: hidden;
     display: flex;
-    align-items: center; /* maybe consider 'start' if need to crop */
+    align-items: center; 
     justify-content: center;
-    flex: 1;
-
-    /* aspect-ratio: 3 / 5 ; */
+    border-radius: 360px 360px 0px 0px;
 }
 
 .headshot-img {
     height: 100%;
     width: auto;
-    border-radius: 360px 360px 0px 0px;
-    /* flex-shrink: 0; */
     object-fit: cover;
 }
 
@@ -201,6 +185,7 @@ a {
     text-align: left;
 
     flex: 2;
+    max-width: 800px;
 }
 
 .description {
@@ -216,8 +201,87 @@ a {
     line-height: 1.4;
 }
 
+@media (max-width: 1400px){
+    .introduction{
+        gap: clamp(40px, 40px + (120 - 40) * ((100vw - 768px) / (1400 - 768)), 120px);
+    }
 
+    .headshot{
+        width: clamp(140px, 140px + (360 - 140) * ((100vw - 768px) / (1400 - 768)), 360px);
+    }
 
+    .description{
+        font-size: clamp(40px, 40px + (60 - 40) * ((100vw - 768px) / (1400 - 768)), 60px);
+        margin: clamp(26px, 26px + (30 - 26) * ((100vw - 768px) / (1400 - 768)), 30px) 0;
+    }
+
+    .spiel{
+        font-size: clamp(20px, 20px + (22 - 20) * ((100vw - 768px) / (1400 - 768)), 22px);
+        margin-bottom: clamp(26px, 26px + (30 - 26) * ((100vw - 768px) / (1400 - 768)), 30px);
+    }
+}
+
+/* tablet size */
+@media (max-width: 768px){
+    /* about */
+    .about{
+        padding-bottom: 180px;
+    }
+    .title {
+        font-size: clamp(40px, 40px + (120 - 40) * ((100vw - 320px) / (768 - 320)), 120px);
+        padding-top: calc(120px + (140 - 120) * ((100vw - 320px) / (768 - 320)));
+        padding-bottom: 40px;
+    }
+    
+    .introduction {
+        padding: 0;
+        flex-direction: column;
+        gap: clamp(20px, 8vw, 60px)
+    }
+
+    .headshot{
+        width: 85%;
+        margin: 0 auto;
+        flex: 1;
+        border-top-left-radius: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (768 - 320)), 100px);
+        border-top-right-radius: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (768 - 320)), 100px);
+    }
+
+    .headshot-img{
+        width: 100%;
+        height: auto;
+    }
+
+    .about .text{
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .description{
+        margin: 0 0 26px 0;
+        font-size: clamp(40px, 40px + (40 - 30) * ((100vw - 480px) / (768 - 480)), 50px);
+    }
+
+    .spiel{
+        margin: 0 0 26px 0;
+        font-size: 22px;
+    }
+}
+
+/* phone */
+@media (max-width: 480px){
+    /* about */
+    .about{
+        padding-bottom: 160px;
+    }
+    .description{
+        font-size: clamp(30px, 8.3vw, 40px);
+    }
+
+    .spiel{
+        font-size: 20px;
+    }
+}
 
 /* ******** */
 /* projects */
@@ -739,8 +803,9 @@ input {
     color: #696664;
 }
 
-
+/* ************ */
 /* loading page */
+/* ************ */
 .hidden {
     opacity: 0;
 }
