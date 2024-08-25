@@ -226,10 +226,10 @@ a {
 /* projects */
 /* ******** */
 .projects {
-    padding: 200px 160px 180px;
+    padding: 200px 11% 180px;
     display: flex;
     background-color: #e1dcd0;
-    justify-content: center; /* or space-around */
+    justify-content: center; 
     align-items: flex-start;
     gap: 160px;
     flex-wrap: wrap;
@@ -239,11 +239,6 @@ a {
     display: flex;
     flex-direction: column;
     text-align: left;
-    /* flex: 1; */
-}
-
-.hobbies .section-title { /* move to hobbies section later */
-    flex: 1
 }
 
 .projects .section-title
@@ -252,7 +247,14 @@ a {
     /* 300 is height of cards, 150 is height of title without spiel */
 }
 
-.subtitle {
+@media (max-width: 1431px){ /* when items wrap to stack */
+    .projects .section-title {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.subtitle { /* also for hobbies section */
     font-family: 'Poppins', sans-serif;
     font-size: 100px;
     margin: 0;
@@ -260,7 +262,7 @@ a {
 
 .subtext { /* also for hobbies section */
     font-size: 20px;
-    /* margin top and bottom: 1em = 1 unit of font size = 20px (default behavior) */
+    margin: 1em 0 0 0;
 }
 
 input {
@@ -492,6 +494,7 @@ input {
 
 .hobbies .section-title {
     text-align: center;
+    flex: 1;
 }
 
 .container {
@@ -773,7 +776,8 @@ input {
 @media (max-width: 768px){
     /* about */
     .about{
-        padding-bottom: 180px;
+        /* padding-bottom: 180px; */
+        padding-bottom: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
     }
 
     .title {
@@ -815,13 +819,26 @@ input {
         margin: 0 0 26px 0;
         font-size: 22px;
     }
+
+
+    /* projects (and parts of hobbies)*/
+    .projects{
+        /* padding-top: 180px; */
+        padding-top: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
+        /* padding-bottom: 160px; */
+    }
+
+    .subtitle{
+        font-size: clamp(40px, 40px + (100 - 40) * ((100vw - 320px) / (768 - 320)), 100px);
+    }
+
 }
 
 /* phone */
 @media (max-width: 480px){
     /* about */
     .about{
-        padding-bottom: 160px;
+        /* padding-bottom: 160px; */
     }
 
     .description{
@@ -830,5 +847,16 @@ input {
 
     .spiel{
         font-size: 20px;
+    }
+
+
+    /* projects */
+    .projects{
+        /* padding-top: 160px; */
+        /* padding-bottom: 140px; */
+    }
+
+    .subtext{
+        font-size: 18px;
     }
 }
