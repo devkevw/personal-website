@@ -8,7 +8,7 @@
     --bar-gap: calc(var(--bar-font-size-small) * 0.75);
 
     /* project cards */
-    --cards-border-rad: 47px;
+    --cards-border-rad: 47px; /* according to apple icon */
 }
 
 * {
@@ -90,7 +90,6 @@ a {
     padding: 0.625rem 1.375rem;
     margin: 0px 0.3125rem;
     white-space: nowrap;
-    word-break: keep-all;
 }
 
 /* scrolling */
@@ -182,7 +181,6 @@ a {
     display: flex;
     flex-direction: column;
     text-align: left;
-
     flex: 2;
     max-width: 800px;
 }
@@ -190,7 +188,6 @@ a {
 .description {
     font-size: 60px;
     font-weight: 600;
-
     margin: 30px 0;
 }
 
@@ -271,9 +268,7 @@ input {
 
 .carousel {
     width: 100%;
-    /* height: 100%; */
     max-width: 500px;
-    /* max-height: 500px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,8 +288,8 @@ input {
 
 .cards label {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     left: 0;
     right: 0;
     bottom: 0;
@@ -305,16 +300,13 @@ input {
 }
 
 .cards .card {
-    /* position: relative; */
     height: 100%;
     width: 100%;
     border-radius: var(--cards-border-rad);
-
 }
 
 .cards .proj-img {
-    border-radius: var(--cards-border-rad); /* according to apple icon */
-    
+    border-radius: var(--cards-border-rad); 
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -334,6 +326,13 @@ input {
     transform: scale(1.05);
 }
 
+@media (max-width: 400px) {
+    .cards {
+        width: 75vw;
+        height: 75vw;
+    }   
+}
+
 /* information */
 .infos {
     position: relative;
@@ -344,20 +343,16 @@ input {
 
 .infos .info{
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-
+    inset: 0;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0s 0.5s;
-
     padding: 0 40px;
 }
 
 .infos h2 {
     margin: 0;
+    padding: 0 24px;
 } 
 
 .infos p {
@@ -369,6 +364,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
 
     gap: 16px;
     margin-top: 50px;
@@ -383,15 +379,97 @@ input {
     padding: 10px 20px;
     transition: all 0.3s ease;
     border: 1px solid #32302f;
-
     letter-spacing: 2px;
-
 }
 
 .infos .button:hover
 {
     background-color: #CDC5B1;
     font-weight: bold;
+}
+
+@media (max-width: 658px){
+    .infos {
+        width: 100%;
+    }
+
+    .infos .info {
+        padding: 0 8%;
+    }
+}
+
+/* line breaks in prof spiel */
+/* add 27px for each spiel line break, add 29.5px for each proj-name wrap line break */
+@media (max-width: 641px) { 
+    .infos{
+        height: 262px;
+    }
+
+    .infos .btn-details {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 195px;
+
+        margin: 0;
+        padding: 0 8%;
+    }
+}
+
+@media (max-width: 510px) { 
+    .infos{
+        height: 289px;
+    }
+
+    .infos .btn-details {
+        top: 222px;
+    }
+}
+
+@media (max-width: 480px) { 
+    .infos{
+        height: 262px;
+    }
+
+    .infos .info{
+        padding: 0;
+    }
+
+    .infos .btn-details {
+        top: 195px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 431px) { 
+    .infos{
+        height: 289px;
+    }
+
+    .infos .btn-details {
+        top: 222px;
+    }
+}
+
+@media (max-width: 383px) { /* RPS proj-name wraps */
+    .infos{
+        height: 318.5px;
+    }
+
+    .infos .btn-details {
+        top: 251.5px;
+    }
+}
+
+@media (max-width: 352px) { 
+    .infos{
+        height: 345.5px;
+    }
+
+    .infos .btn-details {
+        top: 278.5px;
+    }
 }
 
 /* card positioning one over */
@@ -429,6 +507,42 @@ input {
     display: none;
 }
 
+/* when screen size gets too small, start hiding every card but the main */
+@media (max-width: 620px){
+    /* one over */
+    #s1:checked~.cards #slide4-ralph,
+    #s2:checked~.cards #slide1-etch,
+    #s3:checked~.cards #slide2-rps,
+    #s4:checked~.cards #slide3-tipmate {
+        transform: translate3d(calc(-130 * ((100vw - 520px) / 100)), 0, -140px);
+        
+    }
+
+    #s1:checked~.cards #slide2-rps,
+    #s2:checked~.cards #slide3-tipmate,
+    #s3:checked~.cards #slide4-ralph,
+    #s4:checked~.cards #slide1-etch {
+        transform: translate3d(calc(130 * ((100vw - 520px) / 100)), 0, -140px); 
+    }
+}
+
+@media (max-width: 535px){
+    /* one over */
+    #s1:checked~.cards #slide4-ralph,
+    #s2:checked~.cards #slide1-etch,
+    #s3:checked~.cards #slide2-rps,
+    #s4:checked~.cards #slide3-tipmate {
+        display: none;
+    }
+
+    #s1:checked~.cards #slide2-rps,
+    #s2:checked~.cards #slide3-tipmate,
+    #s3:checked~.cards #slide4-ralph,
+    #s4:checked~.cards #slide1-etch {
+        display: none;
+    }
+}
+
 /* display infos */
 #s1:checked ~ .infos #info1-etch,
 #s2:checked ~ .infos #info2-rps,
@@ -442,11 +556,11 @@ input {
 /* buttons */
 .carousel-controls {
     position: absolute;
-    top: 351px;
+    top: -14px;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    pointer-events: none; /* Ensure the buttons don't interfere with mouse events */
+    pointer-events: none; 
 }
 
 .carousel-control {
@@ -456,8 +570,7 @@ input {
     color: hsl(30, 3%, 25%);
     cursor: pointer;
     font-size: 28px;
-    pointer-events: auto; /* Ensure the buttons can be clicked */
-
+    pointer-events: auto; 
 }
 
 .carousel-control.prev {
@@ -478,7 +591,6 @@ input {
     transform: scale(1.6);
     color: hsl(30, 3%, 19%);
 }
-
 
 
 
@@ -745,6 +857,8 @@ input {
     color: #696664;
 }
 
+
+
 /* ************ */
 /* loading page */
 /* ************ */
@@ -857,6 +971,27 @@ input {
     }
 
     .subtext{
-        font-size: 18px;
+        margin: 0.9em 0 0 0;
     }
+
+    .infos{ 
+        margin-top: 56px;
+    }
+
+    #s1:checked~.cards #slide1-etch,
+    #s2:checked~.cards #slide2-rps,
+    #s3:checked~.cards #slide3-tipmate,
+    #s4:checked~.cards #slide4-ralph {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 50%);
+    }
+
 }
+
+
+
+
+
+
+
+
+
