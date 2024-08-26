@@ -352,7 +352,7 @@ input {
 
 .infos h2 {
     margin: 0;
-    padding: 0 24px;
+    padding: 0 20px;
 } 
 
 .infos p {
@@ -404,26 +404,11 @@ input {
     .infos{
         height: 262px;
     }
-
-    .infos .btn-details {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 195px;
-
-        margin: 0;
-        padding: 0 8%;
-    }
 }
 
-@media (max-width: 510px) { 
+@media (max-width: 490px) { 
     .infos{
         height: 289px;
-    }
-
-    .infos .btn-details {
-        top: 222px;
     }
 }
 
@@ -431,44 +416,24 @@ input {
     .infos{
         height: 262px;
     }
-
-    .infos .info{
-        padding: 0;
-    }
-
-    .infos .btn-details {
-        top: 195px;
-        padding: 0;
-    }
 }
 
-@media (max-width: 431px) { 
+@media (max-width: 414px) { 
     .infos{
         height: 289px;
     }
-
-    .infos .btn-details {
-        top: 222px;
-    }
 }
 
-@media (max-width: 383px) { /* RPS proj-name wraps */
+/* RPS proj-name wraps */
+@media (max-width: 372px) { 
     .infos{
         height: 318.5px;
-    }
-
-    .infos .btn-details {
-        top: 251.5px;
     }
 }
 
 @media (max-width: 352px) { 
     .infos{
         height: 345.5px;
-    }
-
-    .infos .btn-details {
-        top: 278.5px;
     }
 }
 
@@ -946,6 +911,10 @@ input {
         font-size: clamp(40px, 40px + (100 - 40) * ((100vw - 320px) / (768 - 320)), 100px);
     }
 
+    .infos{
+        margin-top: 60px;
+    }
+
 }
 
 /* phone */
@@ -976,6 +945,14 @@ input {
 
     .infos{ 
         margin-top: 56px;
+    }
+
+    .infos .info {
+        padding: 0;
+    }
+
+    .infos .btn-details{
+        margin-top: 22px;
     }
 
     #s1:checked~.cards #slide1-etch,
