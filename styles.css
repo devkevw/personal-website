@@ -670,7 +670,8 @@ input {
 
 .travel-plan {
     font-size: 20px;
-    margin: 0 400px 30px;
+    margin: 0 auto 30px;
+    width: 50%;
     text-align: left;
     line-height: 1.5;
 }
@@ -935,7 +936,6 @@ input {
         font-size: 22px;
     }
 
-
     /* projects (and parts of hobbies)*/
     .projects{
         padding-top: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
@@ -956,10 +956,15 @@ input {
         margin-top: clamp(28px, 28px + (50 - 28) * ((100vw - 480px) / (768 - 480)), 50px);
     }
 
-
     /* hobbies */
     .hobbies {
         padding-top: calc(120px + (170 - 120) * ((100vw - 320px) / (768 - 320)));
+    }
+
+    /* travel */
+    .travel-plan{
+        width: clamp(372px, 372px + (377 - 372) * ((100vw - 480px) / (768 - 480)), 377px);
+        margin-bottom: 28px;
     }
 
 }
@@ -974,7 +979,6 @@ input {
     .spiel{
         font-size: 20px;
     }
-
 
     /* projects */
     .projects{
@@ -1009,7 +1013,6 @@ input {
         box-shadow: 0 15px 30px rgba(0, 0, 0, 50%);
     }
 
-
     /* hobbies */
     .container {
         background-color: #f7f7f7;
@@ -1032,6 +1035,12 @@ input {
 
     .section .index {
         margin: 0.75em 0;
+    }
+
+    /* travel */
+    .travel-plan{
+        width: 80%;
+        margin-bottom: 26px;
     }
 }
 
