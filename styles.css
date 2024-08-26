@@ -368,10 +368,11 @@ input {
 
     gap: 16px;
     margin-top: 50px;
+
+    
 }
 
-.infos .button
-{
+.infos .button {
     background-color: rgb(252, 252, 252);
     font-size: 16px;
     flex: 1;
@@ -380,10 +381,11 @@ input {
     transition: all 0.3s ease;
     border: 1px solid #32302f;
     letter-spacing: 2px;
+
+    min-width: 0;   
 }
 
-.infos .button:hover
-{
+.infos .button:hover {
     background-color: #CDC5B1;
     font-weight: bold;
 }
@@ -398,42 +400,56 @@ input {
     }
 }
 
+@media(max-width: 398px){
+    .infos .button{
+        padding: 8px 10px;
+        text-align: center;
+    }
+}
+
+@media(max-width: 350px){
+    #devpost-txt{
+        letter-spacing: 0;
+        font-size: 15px;
+    }
+}
+
 /* line breaks in prof spiel */
 /* add 27px for each spiel line break, add 29.5px for each proj-name wrap line break */
 @media (max-width: 641px) { 
     .infos{
-        height: 262px;
+        height: 252px;
     }
 }
 
 @media (max-width: 490px) { 
     .infos{
-        height: 289px;
+        height: 268px;
     }
 }
 
 @media (max-width: 480px) { 
     .infos{
-        height: 262px;
+        height: 240px;
     }
 }
 
 @media (max-width: 414px) { 
     .infos{
-        height: 289px;
+        height: 267px;
     }
 }
 
 /* RPS proj-name wraps */
 @media (max-width: 372px) { 
     .infos{
-        height: 318.5px;
+        height: 296.5px;
     }
 }
 
 @media (max-width: 352px) { 
     .infos{
-        height: 345.5px;
+        height: 323.5px;
     }
 }
 
@@ -915,15 +931,15 @@ input {
         margin-top: 60px;
     }
 
+    .infos .btn-details{
+        margin-top: clamp(28px, 28px + (50 - 28) * ((100vw - 480px) / (768 - 480)), 50px);
+    }
+
 }
 
 /* phone */
 @media (max-width: 480px){
     /* about */
-    .about{
-        /* padding-bottom: 160px; */
-    }
-
     .description{
         font-size: clamp(30px, 8.3vw, 40px);
     }
@@ -953,6 +969,11 @@ input {
 
     .infos .btn-details{
         margin-top: 28px;
+        gap: clamp(8px, 8px + 8 * ((100vw - 320px) / (480 - 320)), 16px);
+    }
+
+    .infos .button{
+        letter-spacing: clamp(0.5px, 0.5px + 1.5 * ((100vw - 320px) / (480 - 320)), 2px);
     }
 
     #s1:checked~.cards #slide1-etch,
