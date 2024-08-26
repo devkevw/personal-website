@@ -247,7 +247,7 @@ a {
     .projects {
         flex-direction: column;
         align-items: center;
-        gap: 130px;
+        gap: 120px;
         padding-top: 180px;
     }
 
@@ -591,34 +591,55 @@ input {
 .hobbies .section-title {
     text-align: center;
     flex: 1;
+    padding: 0 11% 0;
 }
 
 .container {
     display: flex; 
     flex-wrap: wrap;
     justify-content: space-around;
-
     background-color: rgb(198, 212, 221);
-    margin: 60px 100px 70px;
+    margin: 60px 8% 70px;
     border-radius: 64px;
-
-    /* height: 500px; */
     padding: 50px;
     gap: 50px;
 }
 
+.lvl {
+    display: flex;
+    gap: 50px;
+}
+
 .section {
-    max-width: 500px; /* will prob need a variable for this */
+    max-width: 730px;
     text-align: left;
     padding: 0px;
 }
 
+@media (min-width: 1924px){
+    .container{
+        gap: 60px;
+        padding: 60px;
+    }
+    .lvl {
+        gap: 5vw;
+    }
+}
+
+@media (max-width: 1000px){
+    .container, .lvl {
+        gap: 45px;
+    }
+
+    .lvl {
+        flex-direction: column;
+    }
+}
 
 .icon {
     width: 80px;
     height: auto;
-
-    transition: all .3s
+    transition: all .3s;
 }
 
 .icon:hover {
@@ -640,7 +661,6 @@ input {
     font-family: "Times New Roman", Times, serif;
     letter-spacing: -0.5px;
 }
-
 
 /* travel subsection */
 .travel {
@@ -665,7 +685,6 @@ input {
     text-transform: lowercase;
 }
 
-
 .images {
     margin: 40px 120px 0px;
     display: flex;
@@ -674,7 +693,6 @@ input {
     gap: 16px;
     /* color: rgb(242, 242, 242); */
 }
-
 
 /* slider */
 .slider-container { /* previously .large, .small */
@@ -921,8 +939,9 @@ input {
     /* projects (and parts of hobbies)*/
     .projects{
         padding-top: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
+        padding-bottom: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
         gap: clamp(80px, 80px + 20 * ((100vw - 480px) / (768 - 480)), 100px);
-        /* padding-bottom: 160px; */
+        
     }
 
     .subtitle{
@@ -935,6 +954,12 @@ input {
 
     .infos .btn-details{
         margin-top: clamp(28px, 28px + (50 - 28) * ((100vw - 480px) / (768 - 480)), 50px);
+    }
+
+
+    /* hobbies */
+    .hobbies {
+        padding-top: calc(120px + (170 - 120) * ((100vw - 320px) / (768 - 320)));
     }
 
 }
@@ -953,8 +978,6 @@ input {
 
     /* projects */
     .projects{
-        /* padding-top: 160px; */
-        /* padding-bottom: 140px; */
         gap: clamp(60px, 60px + 20 * ((100vw - 320px) / (400 - 320)), 80px);
     }
 
@@ -986,6 +1009,30 @@ input {
         box-shadow: 0 15px 30px rgba(0, 0, 0, 50%);
     }
 
+
+    /* hobbies */
+    .container {
+        background-color: #f7f7f7;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        border-radius: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10%;
+        padding-bottom: calc(10% + 5px);
+        gap: 9.5vw;
+        
+    }
+
+    .lvl {
+        width: 80%;
+        gap: 9.5vw;
+    }
+
+    .section .index {
+        margin: 0.75em 0;
+    }
 }
 
 
