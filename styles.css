@@ -955,7 +955,7 @@ input {
     .projects{
         /* padding-top: 160px; */
         /* padding-bottom: 140px; */
-        gap: clamp(60px, 60px + 20 * ((100vw - 320px) / (480 - 320)), 80px);
+        gap: clamp(60px, 60px + 20 * ((100vw - 320px) / (400 - 320)), 80px);
     }
 
     .subtext{
