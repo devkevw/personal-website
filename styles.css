@@ -52,7 +52,6 @@ a {
 }
 
 
-
 /* ************* */
 /* header/navbar */
 /* ************* */
@@ -81,7 +80,7 @@ a {
 }
 
 .bar.scrolled {
-    -webkit-backdrop-filter: blur(15px); /* for safari hopefully */
+    -webkit-backdrop-filter: blur(15px); /* for safari */
     backdrop-filter: blur(15px) saturate(1.7);
     background-color: rgba(247, 247, 247, 0.8);
 }
@@ -130,7 +129,6 @@ a {
         padding-right: calc(8.75px + (19.2 - 8.75) * ((100vw - 320px) / (466 - 320)));
     }
 }
-
 
 
 /* ***** */
@@ -216,7 +214,6 @@ a {
         margin-bottom: clamp(26px, 26px + (30 - 26) * ((100vw - 768px) / (1400 - 768)), 30px);
     }
 }
-
 
 
 /* ******** */
@@ -577,7 +574,6 @@ input {
 }
 
 
-
 /* ******* */
 /* hobbies */
 /* ******* */
@@ -646,17 +642,17 @@ input {
     transform: scale(1.2);
 }
 
-.section .text{
+.section .text {
     font-size: 18px;
     line-height: 1.5;
 }
 
 
-#writing .medium{
+#writing .medium {
     text-decoration: underline;
 }
 
-#writing .medium:hover{
+#writing .medium:hover {
     font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     letter-spacing: -0.5px;
@@ -815,9 +811,7 @@ input {
         left: clamp(12px, 12px + (18 - 12) * ((100vw - 769px) / (1200 - 769)), 18px);
         bottom: clamp(10px, 10px + (16 - 10) * ((100vw - 769px) / (1200 - 769)), 16px);
     }
-
 }
-
 
 
 /* ****** */
@@ -826,7 +820,7 @@ input {
 .footer{
     background-color: #32302f;
     color: rgb(242, 242, 242);
-    padding: 100px 120px 60px;
+    padding: 100px 0 60px;
 
     display: flex;
     flex-direction: column;
@@ -835,10 +829,16 @@ input {
 .top {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 120px;
+
+    width: 80%;
+    margin: 0 auto;
 }
 
 .copyright {
     font-size: 20px;
+    text-align: left;
 }
 
 .links {
@@ -849,9 +849,9 @@ input {
 
 .elsewhere .subtext, 
 .contact .subtext {
-    /* margin-bottom: 10px; */
     font-weight: 700;
     font-size: 22px;
+    margin-top: 0;
 }
 
 .links li {
@@ -868,12 +868,31 @@ input {
     color: rgb(200, 200, 200); 
 }
 
+.bottom {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .bottom p {
-    margin: 100px 0 0 0;
+    margin: 100px 0 0;
     font-style: italic;
     color: #696664;
 }
 
+@media (max-width: 724px){
+    .copyright{
+        display: none;
+    }
+
+    .top {
+        width: clamp(372px, 372px + (461 - 372) * ((100vw - 480px) / (724 - 480)), 461px);;
+        justify-content: flex-start;
+    }
+
+    .links {
+        gap: clamp(60px, 60px + 20 * ((100vw - 480px) / (724 - 480)), 80px);
+    }
+}
 
 
 /* ************ */
@@ -899,7 +918,6 @@ input {
 }
 
 
-
 /* ****************************** */
 /* media queries for screen sizes */
 /* ****************************** */
@@ -922,7 +940,7 @@ input {
         gap: clamp(20px, 8vw, 60px)
     }
 
-    .headshot{
+    .headshot {
         width: 80%;
         margin: 0 auto;
         flex: 1;
@@ -930,22 +948,22 @@ input {
         border-top-right-radius: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (768 - 320)), 100px);
     }
 
-    .headshot-img{
+    .headshot-img {
         width: 100%;
         height: auto;
     }
 
-    .about .text{
+    .about .text {
         width: 80%;
         margin: 0 auto;
     }
 
-    .description{
+    .description {
         margin: 0 0 26px 0;
         font-size: clamp(40px, 40px + (40 - 30) * ((100vw - 480px) / (768 - 480)), 50px);
     }
 
-    .spiel{
+    .spiel {
         margin: 0 0 26px 0;
         font-size: 22px;
     }
@@ -973,6 +991,7 @@ input {
     /* hobbies */
     .hobbies {
         padding-top: calc(120px + (170 - 120) * ((100vw - 320px) / (768 - 320)));
+        padding-bottom: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
     }
 
     /* travel */
@@ -982,6 +1001,7 @@ input {
     }
 
     .images {
+        margin-top: 42px;
         margin-left: 0;
         margin-right: 0;
         width: 100%;
@@ -994,6 +1014,27 @@ input {
     .slider-container .slide {
         border-radius: 0;
     }
+
+    .slider-container .slide figcaption{
+        bottom: clamp(12px, 12px + (16 - 12) * ((100vw - 320px) / (768 - 320)), 16px);
+        left: clamp(12px, 12px + (16 - 12) * ((100vw - 320px) / (768 - 320)), 16px);
+    }
+
+    /* footer */
+    .footer{
+        background-color: rgb(252, 252, 252);
+        color: #32302f;
+        padding-top: 30px;
+    }
+
+    .footer .links a:hover {
+        color: #696664; 
+    }
+
+    .bottom p {
+        color: rgb(200, 200, 200);
+    }
+
 }
 
 /* phone */
@@ -1052,7 +1093,6 @@ input {
         padding-top: 10%;
         padding-bottom: calc(10% + 5px);
         gap: 9.5vw;
-        
     }
 
     .lvl {
@@ -1070,14 +1110,32 @@ input {
         margin-bottom: 26px;
     }
 
- 
+    .images {
+        margin-top: 44px;
+    }
+    
+
+    /* footer */
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .top {
+        width: 80%;
+    }
+
+    .elsewhere .subtext, 
+    .contact .subtext {
+        font-size: 20px;
+    }
+    
+    .links li {
+        font-size: 16px;
+    }
+
+    .bottom p {
+        font-size: 14px;
+    } 
 }
-
-
-
-
-
-
-
-
 
