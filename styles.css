@@ -687,19 +687,16 @@ input {
 }
 
 .images {
-    margin: 40px 120px 0px;
+    margin: 40px 12% 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 16px;
-    /* color: rgb(242, 242, 242); */
 }
 
 /* slider */
-.slider-container { /* previously .large, .small */
+.slider-container { 
     background-color: transparent;
-    /* height: 400px; */
-    border-radius: 16px;
     position: relative;
 }
 
@@ -712,13 +709,20 @@ input {
 .large {
     flex: 16;
     aspect-ratio: 4 / 3;
+    max-width: 1024px;
 }
 
 .small {
     flex: 9;
     aspect-ratio: 3 / 4;
+    max-width: 576px;
 }
 
+@media (min-width: 1780px){
+    .images {
+        gap: 24px;
+    }
+}
 
 .slider-container .slide {
     position: absolute;
@@ -730,7 +734,6 @@ input {
 
     transition: 300ms opacity ease-in-out;
     transition-delay: 300ms;
-
 }
 
 .slider-container .slide[data-active]{
@@ -746,7 +749,6 @@ input {
     object-fit: cover;
     object-position: center;
 }
-
 
 .slider-container .slider-button {
     position: absolute;
@@ -789,7 +791,6 @@ input {
     border-radius: 10px;
     padding: 14px 16px;
     font-size: 14px;
-    /* font-weight: 500; */
     letter-spacing: 0.5px;
     opacity: 0;
 
@@ -803,6 +804,19 @@ input {
     transform: translateY(0);
 }
 
+@media (max-width: 1200px){
+    .images {
+        margin-left: clamp(24px, 24px + (142 - 24) * ((100vw - 769px) / (1200 - 769)), 142px);
+        margin-right: clamp(24px, 24px + (142 - 24) * ((100vw - 769px) / (1200 - 769)), 142px);
+        gap: clamp(10px, 10px + (16 - 10) * ((100vw - 769px) / (1200 - 769)), 16px);
+    }
+
+    .slider-container .slide figcaption{
+        left: clamp(12px, 12px + (18 - 12) * ((100vw - 769px) / (1200 - 769)), 18px);
+        bottom: clamp(10px, 10px + (16 - 10) * ((100vw - 769px) / (1200 - 769)), 16px);
+    }
+
+}
 
 
 
@@ -847,11 +861,11 @@ input {
 
 /* hover over elsewhere links */
 .footer .links a {
-    transition: color 0.3s ease; /* Smooth transition effect */
+    transition: color 0.3s ease; 
 }
 
 .footer .links a:hover {
-    color: rgb(200, 200, 200); /* Color when hovered, you can change to your desired color */
+    color: rgb(200, 200, 200); 
 }
 
 .bottom p {
@@ -936,7 +950,7 @@ input {
         font-size: 22px;
     }
 
-    /* projects (and parts of hobbies)*/
+    /* projects (and parts of hobbies) */
     .projects{
         padding-top: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
         padding-bottom: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
@@ -967,6 +981,19 @@ input {
         margin-bottom: 28px;
     }
 
+    .images {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .small {
+        display: none;
+    }
+
+    .slider-container .slide {
+        border-radius: 0;
+    }
 }
 
 /* phone */
@@ -1042,6 +1069,8 @@ input {
         width: 80%;
         margin-bottom: 26px;
     }
+
+ 
 }
 
 
