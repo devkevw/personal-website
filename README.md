@@ -1,11 +1,11 @@
-# personal-website
-It seems like nowadays everyone has their own website. Here's mine ... sike IN PROGRESS.
+# My Personal Website
 
-### Some notes for things I could add
-What's left: 
-- Different screen size compatibility
-- Change image sizes for faster load times
-- Create an Imgur post with all the images
-- Add more travel images
+Welcome to my [website](devkevw.github.io/personal-website/)! This repository contains the code for my site, which showcases some of the things I've been up to over the years. The webpage is built entirely from scratch using HTML, CSS, and JavaScript. I hope you enjoy exploring it!
 
-  
+
+## Features
+- Sequential Content Reveal: On page load, the title appears first, followed by the rest of the content in a smooth sequence.
+- Dynamic Navbar: Changes background color and highlights active sections based on scroll position.
+- Responsive Design: Adapts to various screen sizes, with elements scaling accordingly.
+- Interactive Sliders: Includes project and photo carousels with custom controls.
+- Hover Effects: Reveals special effects when hovering over certain elements.
