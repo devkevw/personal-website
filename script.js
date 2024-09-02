@@ -95,7 +95,7 @@ function updateImageSources() {
     const baseName = baseSrc.replace(`.${extension}`, ''); // Get the base filename without extension
     let suffix = '';
 
-    if ((screenWidth <= 1006 && screenWidth >= 769) || (screenWidth <= 527 && screenWidth >= 336)){
+    if (screenWidth > 335){
       suffix = 'h'; // Imgur uses a suffix of h to indicate huge image (longest dimension of 1024px)
     } else if (screenWidth <= 335) {
       suffix = 'l'; // suffix l to indicate medium
@@ -110,7 +110,7 @@ function updateImageSources() {
       const baseName = baseSrc.replace(`.${extension}`, ''); // Get the base filename without extension
       let suffix = '';
 
-      if (screenWidth <= 1440 && screenWidth >= 769) {
+      if (screenWidth > 768) {
         suffix = 'h'; 
       } else if (screenWidth <= 768) {
         img.src = '';
