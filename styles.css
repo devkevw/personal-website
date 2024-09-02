@@ -611,6 +611,7 @@ input {
     max-width: 730px;
     text-align: left;
     padding: 0px;
+    flex: 1;
 }
 
 @media (min-width: 1924px){
@@ -673,6 +674,20 @@ input {
     line-height: 1.5;
 }
 
+@media (min-width: 2158px){
+    .hobbies {
+        align-items: center;
+    }
+
+    .container{
+        max-width: 1800px;
+    }
+
+    .travel-plan{
+        width: 40%;
+    }
+}
+
 .travel-plan .imgur{
     text-decoration: underline;
 }
@@ -706,13 +721,13 @@ input {
 .large {
     flex: 16;
     aspect-ratio: 4 / 3;
-    max-width: 1024px;
+    max-width: 848px;
 }
 
 .small {
     flex: 9;
     aspect-ratio: 3 / 4;
-    max-width: 576px;
+    max-width: 477px;
 }
 
 @media (min-width: 1780px){
