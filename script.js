@@ -83,6 +83,83 @@ document.querySelector('.carousel-control.next').addEventListener('click', funct
 });
 
 
+// pick travel image size from Imgur
+function updateImageSources() {
+  const imagesLarge = document.querySelectorAll('.large img');
+  const imagesSmall = document.querySelectorAll('.small-img');
+  const screenWidth = window.innerWidth;
+
+  imagesLarge.forEach(img => {
+    const baseSrc = img.getAttribute('base-src');
+    const extension = baseSrc.split('.').pop(); // Get the file extension
+    const baseName = baseSrc.replace(`.${extension}`, ''); // Get the base filename without extension
+    let suffix = '';
+
+    if ((screenWidth <= 1006 && screenWidth >= 769) || (screenWidth <= 527 && screenWidth >= 336)){
+      suffix = 'h'; // Imgur uses a suffix of h to indicate huge image (longest dimension of 1024px)
+    } else if (screenWidth <= 335) {
+      suffix = 'l'; // suffix l to indicate medium
+    }
+
+    img.src = `${baseName}${suffix}.${extension}`;
+  });
+
+  imagesSmall.forEach(img => {
+      const baseSrc = img.getAttribute('base-src');
+      const extension = baseSrc.split('.').pop(); // Get the file extension
+      const baseName = baseSrc.replace(`.${extension}`, ''); // Get the base filename without extension
+      let suffix = '';
+
+      if (screenWidth <= 1440 && screenWidth >= 769) {
+        suffix = 'h'; 
+      } else if (screenWidth <= 768) {
+        img.src = '';
+        return;
+      }
+
+      img.src = `${baseName}${suffix}.${extension}`;
+  });
+}
+
+// update img source
+window.addEventListener('load', updateImageSources);
+window.addEventListener('resize', updateImageSources);
+
+
+// shuffle travel imgs at load
+document.addEventListener("DOMContentLoaded", function() {
+  // function to shuffle an array
+  function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+  }
+
+  // get all slider containers
+  const sliders = document.querySelectorAll('[data-slider]');
+
+  sliders.forEach(slider => {
+      const slides = Array.from(slider.querySelectorAll('ul[data-slides] > li.slide'));
+
+      // shuffle slides
+      shuffle(slides);
+
+      // clear existing slides in the container
+      const slidesContainer = slider.querySelector('ul[data-slides]');
+      slidesContainer.innerHTML = '';
+
+      // append shuffled slides back to the container
+      slides.forEach((slide, index) => {
+          if (index === 0) {
+              slide.setAttribute('data-active', ''); // add data-active to the first slide
+          }
+          slidesContainer.appendChild(slide);
+      });
+  });
+});
+
+
 // travel images slider
 const buttons = document.querySelectorAll("[data-slider-button]")
 
@@ -103,6 +180,7 @@ buttons.forEach(button => {
   })
 })
 
+
 // figcaption of images = alt text
 document.querySelectorAll('.slide').forEach(slide => {
   const img = slide.querySelector('img'); // find the image within the current slide
@@ -122,43 +200,43 @@ const LARGE_SLIDER_INTERVAL_TIME = 12000; // 12 seconds
 const SMALL_SLIDER_INTERVAL_TIME = 10000; // 10 seconds
 
 document.addEventListener('DOMContentLoaded', () => {
-    const largeSlider = document.querySelector('.slider-container.large');
-    const smallSlider = document.querySelector('.slider-container.small');
-    
-    let largeSliderInterval;
-    let smallSliderInterval;
-    
-    function startAutoSlide(slider, intervalTime) {
-        return setInterval(() => {
-            const activeSlide = slider.querySelector('[data-active]');
-            const nextSlide = activeSlide.nextElementSibling || slider.querySelector('.slide:first-child');
-            activeSlide.removeAttribute('data-active');
-            nextSlide.setAttribute('data-active', true);
-        }, intervalTime);
-    }
-    
-    function stopAutoSlide(interval) {
-        clearInterval(interval);
-    }
-    
-    // initialize auto slides
-    largeSliderInterval = startAutoSlide(largeSlider, LARGE_SLIDER_INTERVAL_TIME);
-    smallSliderInterval = startAutoSlide(smallSlider, SMALL_SLIDER_INTERVAL_TIME);
-    
-    // add event listeners to stop auto-slide on hover
-    largeSlider.addEventListener('mouseover', () => {
-        stopAutoSlide(largeSliderInterval);
-    });
-    largeSlider.addEventListener('mouseout', () => {
-        largeSliderInterval = startAutoSlide(largeSlider, LARGE_SLIDER_INTERVAL_TIME);
-    });
-    
-    smallSlider.addEventListener('mouseover', () => {
-        stopAutoSlide(smallSliderInterval);
-    });
-    smallSlider.addEventListener('mouseout', () => {
-        smallSliderInterval = startAutoSlide(smallSlider, SMALL_SLIDER_INTERVAL_TIME);
-    });
+  const largeSlider = document.querySelector('.slider-container.large');
+  const smallSlider = document.querySelector('.slider-container.small');
+  
+  let largeSliderInterval;
+  let smallSliderInterval;
+  
+  function startAutoSlide(slider, intervalTime) {
+      return setInterval(() => {
+          const activeSlide = slider.querySelector('[data-active]');
+          const nextSlide = activeSlide.nextElementSibling || slider.querySelector('.slide:first-child');
+          activeSlide.removeAttribute('data-active');
+          nextSlide.setAttribute('data-active', true);
+      }, intervalTime);
+  }
+  
+  function stopAutoSlide(interval) {
+      clearInterval(interval);
+  }
+  
+  // initialize auto slides
+  largeSliderInterval = startAutoSlide(largeSlider, LARGE_SLIDER_INTERVAL_TIME);
+  smallSliderInterval = startAutoSlide(smallSlider, SMALL_SLIDER_INTERVAL_TIME);
+  
+  // add event listeners to stop auto-slide on hover
+  largeSlider.addEventListener('mouseover', () => {
+      stopAutoSlide(largeSliderInterval);
+  });
+  largeSlider.addEventListener('mouseout', () => {
+      largeSliderInterval = startAutoSlide(largeSlider, LARGE_SLIDER_INTERVAL_TIME);
+  });
+  
+  smallSlider.addEventListener('mouseover', () => {
+      stopAutoSlide(smallSliderInterval);
+  });
+  smallSlider.addEventListener('mouseout', () => {
+      smallSliderInterval = startAutoSlide(smallSlider, SMALL_SLIDER_INTERVAL_TIME);
+  });
 });
 
 
