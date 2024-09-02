@@ -649,7 +649,6 @@ input {
     line-height: 1.5;
 }
 
-
 #writing .medium {
     text-decoration: underline;
 }
@@ -992,7 +991,6 @@ input {
         padding-top: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
         padding-bottom: calc(120px + (180 - 120) * ((100vw - 320px) / (768 - 320)));
         gap: clamp(80px, 80px + 20 * ((100vw - 480px) / (768 - 480)), 100px);
-        
     }
 
     .subtitle{
@@ -1053,7 +1051,6 @@ input {
     .bottom p {
         color: rgb(200, 200, 200);
     }
-
 }
 
 /* phone */
