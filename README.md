@@ -1,6 +1,6 @@
 # My Personal Website
 
-Welcome to my [website](devkevw.github.io/personal-website/)! This repository contains the code for my site, which showcases some of the things I've been up to over the years. The webpage is built entirely from scratch using HTML, CSS, and JavaScript. I hope you enjoy exploring it!
+Welcome to my [website](https://devkevw.github.io/personal-website/)! This repository contains the code for my site, which showcases some of the things I've been up to over the years. The webpage is built entirely from scratch using HTML, CSS, and JavaScript. I hope you enjoy exploring it!
 
 
 ## Features
