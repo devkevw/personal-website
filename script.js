@@ -85,12 +85,12 @@ document.querySelector('.carousel-control.next').addEventListener('click', funct
 
 // pick travel image size from Imgur
 function updateImageSources() {
-  const imagesLarge = document.querySelectorAll('.large img');
+  const imagesLarge = document.querySelectorAll('.large-img');
   const imagesSmall = document.querySelectorAll('.small-img');
   const screenWidth = window.innerWidth;
 
   imagesLarge.forEach(img => {
-    const baseSrc = img.getAttribute('base-src');
+    const baseSrc = img.getAttribute('data-base-src');
     const extension = baseSrc.split('.').pop(); // Get the file extension
     const baseName = baseSrc.replace(`.${extension}`, ''); // Get the base filename without extension
     let suffix = '';
@@ -105,7 +105,7 @@ function updateImageSources() {
   });
 
   imagesSmall.forEach(img => {
-      const baseSrc = img.getAttribute('base-src');
+      const baseSrc = img.getAttribute('data-base-src');
       const extension = baseSrc.split('.').pop(); // Get the file extension
       const baseName = baseSrc.replace(`.${extension}`, ''); // Get the base filename without extension
       let suffix = '';
