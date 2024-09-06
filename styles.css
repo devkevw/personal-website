@@ -332,18 +332,18 @@ input {
 
 @media (min-width: 1600px) {
     .carousel {
-        max-width: clamp(500px, 500px + (60) * ((100vw - 1600px) / (1800 - 1600)), 560px);
+        max-width: clamp(500px, 500px + (20) * ((100vw - 1600px) / (1800 - 1600)), 520px);
     }
 
     .cards {
-        width: clamp(300px, 300px + (360 - 300) * ((100vw - 1600px) / (1800 - 1600)), 360px);
-        height: clamp(300px, 300px + (360 - 300) * ((100vw - 1600px) / (1800 - 1600)), 360px);
+        width: clamp(300px, 300px + (320 - 300) * ((100vw - 1600px) / (1800 - 1600)), 320px);
+        height: clamp(300px, 300px + (320 - 300) * ((100vw - 1600px) / (1800 - 1600)), 320px);
     }
 
     .projects .section-title {
-        margin-top: clamp(75px, 75px + (30) * ((100vw - 1600px) / (1800 - 1600)), 105px);
-        /* for centering title with cards, formula = (360 - 150px) / 2 = 105px */
-        /* 300 is height of cards, 150 is height of title without spiel */
+        margin-top: clamp(75px, 75px + (10) * ((100vw - 1600px) / (1800 - 1600)), 85px);
+        /* for centering title with cards, formula = (320 - 150px) / 2 = 85px */
+        /* 320 is height of cards, 150 is height of title without spiel */
     }
 }
 
@@ -411,7 +411,7 @@ input {
 
 @media (min-width: 1600px) {
     .infos {
-        width: clamp(500px, 500px + (60) * ((100vw - 1600px) / (1800 - 1600)), 560px);
+        width: clamp(500px, 500px + (20) * ((100vw - 1600px) / (1800 - 1600)), 520px);
     }
 }
 
