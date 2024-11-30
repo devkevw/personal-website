@@ -1130,7 +1130,8 @@ input {
     #s1:checked~.cards #slide1-etch,
     #s2:checked~.cards #slide2-rps,
     #s3:checked~.cards #slide3-tipmate,
-    #s4:checked~.cards #slide4-ralph {
+    #s4:checked~.cards #slide4-ralph,
+    #s5:checked~.cards #slide5-365days{
         box-shadow: 0 15px 30px rgba(0, 0, 0, 50%);
     }
 
