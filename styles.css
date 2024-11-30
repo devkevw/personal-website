@@ -482,7 +482,8 @@ input {
 #s1:checked~.cards #slide2-rps,
 #s2:checked~.cards #slide3-tipmate,
 #s3:checked~.cards #slide4-ralph,
-#s4:checked~.cards #slide1-etch {
+#s4:checked~.cards #slide5-365days, 
+#s5:checked~.cards #slide1-etch {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 45%);
     transform: translate3d(130px, 0, -140px); 
 }
@@ -491,59 +492,71 @@ input {
 #s1:checked~.cards #slide1-etch,
 #s2:checked~.cards #slide2-rps,
 #s3:checked~.cards #slide3-tipmate,
-#s4:checked~.cards #slide4-ralph {
+#s4:checked~.cards #slide4-ralph, 
+#s5:checked~.cards #slide5-365days {
     box-shadow: 0 25px 50px rgba(0, 0, 0, 50%);
     transform: translate3d(0, 0, 0);
 }
 
 /* one over other side */
-#s1:checked~.cards #slide4-ralph,
+#s1:checked~.cards #slide5-365days,
 #s2:checked~.cards #slide1-etch,
 #s3:checked~.cards #slide2-rps,
-#s4:checked~.cards #slide3-tipmate {
+#s4:checked~.cards #slide3-tipmate, 
+#s5:checked~.cards #slide4-ralph {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 45%);
     transform: translate3d(-130px, 0, -140px);
 }
 
 /* hidden card(s) */
 #s1:checked~.cards #slide3-tipmate,
+#s1:checked~.cards #slide4-ralph,
 #s2:checked~.cards #slide4-ralph,
+#s2:checked~.cards #slide5-365days,
+#s3:checked~.cards #slide5-365days,
 #s3:checked~.cards #slide1-etch,
-#s4:checked~.cards #slide2-rps {
+#s4:checked~.cards #slide1-etch,
+#s4:checked~.cards #slide2-rps,
+#s5:checked~.cards #slide2-rps,
+#s5:checked~.cards #slide3-tipmate{
     display: none;
 }
 
 /* when screen size gets too small, start hiding every card but the main */
 @media (max-width: 620px){
     /* one over */
-    #s1:checked~.cards #slide4-ralph,
+    #s1:checked~.cards #slide5-365days,
     #s2:checked~.cards #slide1-etch,
     #s3:checked~.cards #slide2-rps,
-    #s4:checked~.cards #slide3-tipmate {
+    #s4:checked~.cards #slide3-tipmate,
+    #s5:checked~.cards #slide4-ralph{
         transform: translate3d(calc(-130 * ((100vw - 520px) / 100)), 0, -140px);    
     }
 
     #s1:checked~.cards #slide2-rps,
     #s2:checked~.cards #slide3-tipmate,
     #s3:checked~.cards #slide4-ralph,
-    #s4:checked~.cards #slide1-etch {
+    #s4:checked~.cards #slide5-365days,
+    #s5:checked~.cards #slide1-etch{
         transform: translate3d(calc(130 * ((100vw - 520px) / 100)), 0, -140px); 
     }
 }
 
 @media (max-width: 535px){
     /* one over */
-    #s1:checked~.cards #slide4-ralph,
+    #s1:checked~.cards #slide5-365days,
     #s2:checked~.cards #slide1-etch,
     #s3:checked~.cards #slide2-rps,
-    #s4:checked~.cards #slide3-tipmate {
+    #s4:checked~.cards #slide3-tipmate 
+    #s5:checked~.cards #slide4-ralph{
         display: none;
     }
 
     #s1:checked~.cards #slide2-rps,
     #s2:checked~.cards #slide3-tipmate,
     #s3:checked~.cards #slide4-ralph,
-    #s4:checked~.cards #slide1-etch {
+    #s4:checked~.cards #slide5-365days,
+    #s5:checked~.cards #slide1-etch{
         display: none;
     }
 }
@@ -552,7 +565,8 @@ input {
 #s1:checked ~ .infos #info1-etch,
 #s2:checked ~ .infos #info2-rps,
 #s3:checked ~ .infos #info3-tipmate,
-#s4:checked ~ .infos #info4-ralph {
+#s4:checked ~ .infos #info4-ralph, 
+#s5:checked ~ .infos #info5-365days {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s ease;
