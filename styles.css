@@ -544,7 +544,7 @@ input {
 
 @media (max-width: 535px){
     /* one over */
-    #s1:checked~.cards #slide5-365days,
+    /* #s1:checked~.cards #slide5-365days,
     #s2:checked~.cards #slide1-etch,
     #s3:checked~.cards #slide2-rps,
     #s4:checked~.cards #slide3-tipmate 
@@ -557,6 +557,30 @@ input {
     #s3:checked~.cards #slide4-ralph,
     #s4:checked~.cards #slide5-365days,
     #s5:checked~.cards #slide1-etch{
+        display: none;
+    } */
+
+    /* hide all cards but the active one */
+    #s1:checked~.cards #slide2-rps,
+    #s1:checked~.cards #slide3-tipmate,
+    #s1:checked~.cards #slide4-ralph,
+    #s1:checked~.cards #slide5-365days,
+    #s2:checked~.cards #slide3-tipmate,
+    #s2:checked~.cards #slide4-ralph,
+    #s2:checked~.cards #slide5-365days,
+    #s2:checked~.cards #slide1-etch,
+    #s3:checked~.cards #slide4-ralph,
+    #s3:checked~.cards #slide5-365days,
+    #s3:checked~.cards #slide1-etch,
+    #s3:checked~.cards #slide2-rps,
+    #s4:checked~.cards #slide5-365days,
+    #s4:checked~.cards #slide1-etch,
+    #s4:checked~.cards #slide2-rps,
+    #s4:checked~.cards #slide3-tipmate,
+    #s5:checked~.cards #slide1-etch,
+    #s5:checked~.cards #slide2-rps,
+    #s5:checked~.cards #slide3-tipmate,
+    #s5:checked~.cards #slide4-ralph {
         display: none;
     }
 }
