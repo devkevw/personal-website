@@ -9,3 +9,5 @@ Welcome to my [website](https://devkevw.github.io/personal-website/)! This repos
 - Responsive Design: Adapts to various screen sizes, with elements scaling accordingly.
 - Interactive Sliders: Includes project and photo carousels with custom controls.
 - Hover Effects: Reveals special effects when hovering over certain elements.
+
+Design inspired by Seán Halpin.
