@@ -31,8 +31,8 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - `npm run build` builds static output. `npm test` checks content and generated links/assets.
 - `npm run dev` builds, serves on port 4173, and watches sources. Refresh the browser after editing. `npm run preview` serves an existing build.
 - Preview defaults to loopback. Set `HOST=0.0.0.0` and, if needed, `PORT` when a cloud preview requires a different binding. Use the environment's preview/port-forwarding feature to open it; do not assume its localhost address works on a phone.
-- Browser tests: `npm run test:browser`. macOS defaults to installed Google Chrome; other systems default to Playwright Chromium. Override with `PLAYWRIGHT_CHANNEL` if needed.
-- Linux/cloud preparation: `npx playwright install --with-deps chromium`. Browser tests stub remote photos and fonts; checking actual image availability is separate.
+- Browser tests: `npm run test:browser`. macOS defaults to installed Google Chrome; Linux uses `/usr/bin/chromium` when available, otherwise Playwright Chromium. Override with `PLAYWRIGHT_EXECUTABLE_PATH` or `PLAYWRIGHT_CHANNEL` if needed; an explicit executable takes precedence.
+- Linux/cloud preparation: use installed system Chromium when available; otherwise run `npx playwright install --with-deps chromium`. Browser tests stub remote photos and fonts; checking actual image availability is separate.
 - Run checks appropriate to the change. For content changes, build checks plus relevant navigation/gallery checks are sufficient. For shared styling, themes, or behavior changes, run the full browser suite.
 - The local résumé PDF and local temporary photo previews are not required to build the project. No production secrets or API keys are required.
 

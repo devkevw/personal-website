@@ -54,7 +54,9 @@ npm run test:browser
 
 Build tests check generated pages, local links, anchors, assets, metadata, project-subpath compatibility, and preservation of the old photographs. Browser tests cover desktop, tablet, two mobile sizes, navigation, photo viewer controls, image failures, and use without JavaScript. Tests stub remote images and fonts so external services do not affect results. Real image/font availability needs a separate visual check.
 
-Browser tests use installed Google Chrome on macOS and Playwright's Chromium on other systems. To install Chromium and its Linux system dependencies for a cloud environment:
+Browser tests use installed Google Chrome on macOS. On Linux they automatically use `/usr/bin/chromium` when available, including its installed system dependencies; otherwise they use Playwright's Chromium. Set `PLAYWRIGHT_EXECUTABLE_PATH` to select another browser executable, or `PLAYWRIGHT_CHANNEL` to select a Playwright browser channel instead of automatic system Chromium detection. An explicit executable path takes precedence over the channel.
+
+With system Chromium installed, run `npm run test:browser` directly; no separate configuration or browser download is needed. To install Playwright's Chromium and its Linux system dependencies when system Chromium is unavailable:
 
 ```sh
 npx playwright install --with-deps chromium
@@ -90,7 +92,9 @@ Version 1 is a Git snapshot, not a public `/v1` route. Save or commit current wo
 
 ## Codex Cloud
 
-Select `devkevw/personal-website` and start from `redesign/v2`. Ask the environment setup assistant to read `AGENTS.md`, use Node.js 22 or newer, run `npm ci`, install Playwright Chromium with `npx playwright install --with-deps chromium`, and verify `npm run build`, `npm test`, and `npm run test:browser`.
+Reusable cloud setup lives in [`scripts/setup-cloud.sh`](scripts/setup-cloud.sh); run it with `bash scripts/setup-cloud.sh`. It uses the image's installed Chromium and does not download a browser. See [`docs/cloud/START.md`](docs/cloud/START.md) for startup and readiness checks.
+
+Select `devkevw/personal-website` and start from `redesign/v2`. Ask the environment setup assistant to read `AGENTS.md`, use Node.js 22 or newer, run `npm ci`, and verify `npm run build`, `npm test`, and `npm run test:browser`. The cloud image's installed `/usr/bin/chromium` is selected automatically. If it is unavailable, install Playwright Chromium with `npx playwright install --with-deps chromium`.
 
 Start a preview with `HOST=0.0.0.0 npm run dev` if required by the cloud environment, then open it through that environment's preview or forwarded port. The default port is 4173; `PORT` can override it. A cloud localhost address does not point to the cloud workspace when opened directly on a phone.
 

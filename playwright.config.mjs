@@ -1,4 +1,11 @@
 import { defineConfig } from '@playwright/test';
+import { existsSync } from 'node:fs';
+
+const executablePath = process.env.PLAYWRIGHT_EXECUTABLE_PATH || (
+  !process.env.PLAYWRIGHT_CHANNEL && process.platform === 'linux' && existsSync('/usr/bin/chromium')
+    ? '/usr/bin/chromium'
+    : undefined
+);
 
 export default defineConfig({
   testDir: './tests/browser',
@@ -9,6 +16,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:4173',
     channel: process.env.PLAYWRIGHT_CHANNEL || (process.platform === 'darwin' ? 'chrome' : 'chromium'),
+    launchOptions: executablePath ? { executablePath } : {},
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure'
   },
