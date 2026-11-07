@@ -1,0 +1,70 @@
+[
+  {
+    "slug": "china",
+    "title": "China",
+    "region": "Asia",
+    "year": 2024,
+    "duration": "Five months",
+    "cover": "https://i.imgur.com/4Cltokn.jpg",
+    "coverAlt": "Xianggong Mountain, Yangshuo",
+    "description": "Four months on exchange in Beijing, and a little more time to explore.",
+    "note": "In 2024, I spent five months in China, including four months on exchange at Tsinghua University in Beijing. Here are some of the places and moments I brought back with me.",
+    "places": [
+      "Beijing",
+      "Tibet",
+      "Guangxi",
+      "Yunnan",
+      "Zhangjiajie",
+      "Inner Mongolia",
+      "Chongqing",
+      "Shanghai"
+    ],
+    "relatedWriting": "my-time-at-tsinghua-university"
+  },
+  {
+    "slug": "england",
+    "title": "England & Scotland",
+    "region": "Europe",
+    "year": 2024,
+    "duration": "One month",
+    "cover": "https://i.imgur.com/oWnINZt.jpg",
+    "coverAlt": "Palace of Westminster, London",
+    "description": "A month in the United Kingdom, from London to the Scottish Highlands.",
+    "note": "I spent a month in the United Kingdom in 2024. These photos take in London, university towns, the coast, and a visit to Scotland.",
+    "places": [
+      "London",
+      "Oxford",
+      "Cambridge",
+      "Bath",
+      "Brighton",
+      "York",
+      "Edinburgh",
+      "Scottish Highlands"
+    ]
+  },
+  {
+    "slug": "united-states",
+    "title": "United States",
+    "region": "North America",
+    "year": 2025,
+    "endYear": 2026,
+    "description": "A collection of trips around the United States in 2025 and 2026.",
+    "note": "Places and moments around the United States in 2025 and 2026: New York and New Haven; Chicago, Milwaukee, and Indiana; Las Vegas and the Grand Canyon; Seattle and Mount Rainier; San Francisco and the Maine coast.",
+    "places": [
+      "New York",
+      "New Haven",
+      "Chicago",
+      "Milwaukee",
+      "Indiana",
+      "Las Vegas",
+      "Grand Canyon",
+      "Seattle",
+      "Mount Rainier",
+      "San Francisco",
+      "Acadia National Park, Maine"
+    ],
+    "theme": "mountain",
+    "cover": "https://i.imgur.com/qrwJRwt.jpg",
+    "coverAlt": "Walking across the Brooklyn Bridge, New York"
+  }
+]

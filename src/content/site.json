@@ -1,0 +1,67 @@
+{
+  "name": "Kevin Wang",
+  "description": "A little about Kevin Wang: statistics, writing, and places along the way.",
+  "email": "kevinjrwang502@gmail.com",
+  "socials": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/kevinjwang/" },
+    { "label": "GitHub", "url": "https://github.com/devkevw" },
+    { "label": "Medium", "url": "https://medium.com/@kevw" }
+  ],
+  "timeline": [
+    {
+      "period": "2025 — 2027",
+      "category": "Education",
+      "title": "MS in Statistics",
+      "organization": "University of Chicago",
+      "location": "Chicago, IL",
+      "description": "Continuing my studies in statistics, with coursework in Bayesian inference, time series, and statistical computing. Expected graduation: May 2027."
+    },
+    {
+      "period": "Summer 2025",
+      "category": "Research",
+      "title": "Undergraduate Student Researcher",
+      "organization": "McGill University",
+      "location": "Montreal, QC",
+      "description": "Studied how sports injuries affect performance using Bayesian hierarchical models. Worked in R and Stan to improve model efficiency and test results across more than 1,000 simulation scenarios."
+    },
+    {
+      "period": "2024",
+      "category": "Exchange",
+      "title": "A semester in Beijing",
+      "organization": "Tsinghua University",
+      "location": "Beijing, China",
+      "description": "Spent four months on exchange at Tsinghua, as part of five months in China. Studying, playing sports, and finding time to explore.",
+      "link": "https://medium.com/@kevw/my-time-at-tsinghua-university-ddd3b6347646",
+      "linkLabel": "Read about my exchange"
+    },
+    {
+      "period": "Summer 2023",
+      "category": "Work",
+      "title": "Actuarial Automation Intern",
+      "organization": "Sun Life Financial",
+      "location": "Toronto, ON",
+      "description": "Built VBA tools to automate insurance policy illustrations and data entry, saving more than two hours of manual processing per run."
+    },
+    {
+      "period": "Summer 2022",
+      "category": "Work",
+      "title": "Actuarial Data Analytics Intern",
+      "organization": "Intact Financial Corporation",
+      "location": "Montreal, QC",
+      "description": "Worked on claims forecasting and reporting using regression, SQL, and Power BI. Improved a forecasting model and helped make monthly reporting more efficient."
+    },
+    {
+      "period": "2021 — 2025",
+      "category": "Education",
+      "title": "BS in Statistics & Computer Science",
+      "organization": "McGill University",
+      "location": "Montreal, QC",
+      "description": "Studied statistics and computer science, with a minor in management. Along the way: hackathons, course grading, and a growing interest in research."
+    }
+  ],
+  "interests": [
+    { "title": "Sports", "icon": "sport.png", "text": "Basketball, hockey, football, and swimming. I grew up playing sports; these days I enjoy watching them, too." },
+    { "title": "Around a table", "icon": "board-game.png", "text": "Catan with friends, a game of chess, or poker. My exchange in China also introduced me to mahjong." },
+    { "title": "Books & words", "icon": "book.png", "text": "Reading before bed and occasionally putting my own thoughts into words. A few of those thoughts have made it onto this site." }
+  ]
+}

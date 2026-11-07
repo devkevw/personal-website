@@ -1,13 +1,97 @@
-# My Personal Website
+# Kevin Wang · Personal website, version 2
 
-Welcome to my [website](https://devkevw.github.io/personal-website/)! This repository contains the code for my site, which showcases some of the things I've been up to over the years. The webpage is built entirely from scratch using HTML, CSS, and JavaScript. I hope you enjoy exploring it!
+A static website for my career, writing, and travels. Built with semantic HTML, CSS, and a little JavaScript. Shared templates generate complete HTML pages; the only development dependency is Playwright for browser tests.
 
+## Run locally
 
-## Features
-- Sequential Content Reveal: On page load, the title appears first, followed by the rest of the content in a smooth sequence.
-- Dynamic Navbar: Changes background color and highlights active sections based on scroll position.
-- Responsive Design: Adapts to various screen sizes, with elements scaling accordingly.
-- Interactive Sliders: Includes project and photo carousels with custom controls.
-- Hover Effects: Reveals special effects when hovering over certain elements.
+Requires Node.js 22 or newer.
 
-Design inspired by Seán Halpin.
+```sh
+npm ci
+npm run dev
+```
+
+Visit **http://127.0.0.1:4173**. Editing `src/` or `images/` rebuilds the site; refresh the browser to see changes. `npm run build` generates the site in `dist/`. `npm run preview` serves the existing build.
+
+Nothing is automatically published or pushed. The output supports static hosting, including a GitHub Pages project subpath. When version 2 is ready, hosting must be configured to publish `dist/` rather than the old root files. No deployment workflow is included yet.
+
+The header's moon/sun button switches between light and dark themes. Light is the default; a saved choice is applied before rendering and shared across pages. If browser storage is blocked, switching still works for the current page. Without JavaScript, the site keeps its light theme and hides the toggle.
+
+## Content
+
+- `src/content/site.json`: contact links, career and education timeline, and interests. The longer introduction is in `src/templates.mjs`.
+- `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
+- `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
+- `src/content/photos.json`: 187 photographs: 80 from China, 33 from England & Scotland, and 74 from the United States. Imgur hosts these photos.
+- `src/content/projects.json`: the early project archive, linked from About.
+
+Travel is grouped into three albums: China, England & Scotland, and United States. The US album collects photos from 2025–2026 across New York & New Haven; Chicago, Milwaukee & Indiana; Las Vegas & the Grand Canyon; Seattle & Mount Rainier; and San Francisco & Maine. One unavailable Imgur image (`H4D1YEF`, the first image in the Chicago/Milwaukee/Indiana album) was omitted. Missing dates and photos are left out. The résumé PDF is not copied into the public website, and phone/address details are not published.
+
+### Add an article hosted here
+
+Add an entry to `writing.json` with a unique `slug`, `title`, ISO `date` (`YYYY-MM-DD`), `kind`, `description`, and `bodyFile`, for example `a-small-observation.html`. Omit `url`. Create the matching file in `src/content/articles/` using an HTML fragment:
+
+```html
+<p>Your opening paragraph.</p>
+<h2>A section heading</h2>
+<p>More of your own writing.</p>
+```
+
+The build creates `/writing/<slug>/` with a reading layout and adds it to the writing list. Fragments are trusted, owner-authored HTML; do not insert unsanitized third-party content. Use HTTPS URLs for external images and links; local images need paths relative to the nested article URL, such as `../../images/example.jpg`. Start section headings at `h2`; the page supplies the main heading.
+
+### Add a trip or photographs
+
+Add a trip entry with a unique slug and a `places` array. Add photos under the same slug in `photos.json`; each needs a `src`, descriptive `alt`, and `orientation` (`portrait` or `landscape`). Photo sources and covers accept HTTPS URLs or repository image paths such as `images/travel/my-trip.jpg`. Local image paths are resolved from the site root, even on nested album pages.
+
+The album, listing, and adjacent-trip links update on build. Captions stay visible, and photo links open original images without JavaScript. JavaScript adds a keyboard-operated viewer with Escape to close and arrow keys to navigate.
+
+## Checks
+
+```sh
+npm test
+npm run test:browser
+```
+
+Build tests check generated pages, local links, anchors, assets, metadata, project-subpath compatibility, and preservation of the old photographs. Browser tests cover desktop, tablet, two mobile sizes, navigation, photo viewer controls, image failures, and use without JavaScript. Tests stub remote images and fonts so external services do not affect results. Real image/font availability needs a separate visual check.
+
+Browser tests use installed Google Chrome on macOS and Playwright's Chromium on other systems. To install Chromium and its Linux system dependencies for a cloud environment:
+
+```sh
+npx playwright install --with-deps chromium
+```
+
+To use Chromium on macOS instead of Chrome:
+
+```sh
+npx playwright install chromium
+PLAYWRIGHT_CHANNEL=chromium npm run test:browser
+```
+
+Set `SITE_URL` to the eventual public site root, including any project path, when building for publication:
+
+```sh
+SITE_URL=https://devkevw.github.io/personal-website/ npm run build
+```
+
+This adds canonical URLs and `sitemap.xml`. Local builds omit both rather than advertise an unconfirmed production URL.
+
+## Version history
+
+The annotated tag **`v1`** preserves the original site at commit `da79bc4`. Version 2 is developed on **`redesign/v2`**; `main` remains unchanged. Use the version 2 branch when creating a cloud environment; the original on `main` has a different file structure and no npm commands.
+
+Inspect original files without changing your current work:
+
+```sh
+git show v1:index.html
+git show v1:styles.css
+```
+
+Version 1 is a Git snapshot, not a public `/v1` route. Save or commit current work before switching branches. The original design was inspired by Seán Halpin.
+
+## Codex Cloud
+
+Select `devkevw/personal-website` and start from `redesign/v2`. Ask the environment setup assistant to read `AGENTS.md`, use Node.js 22 or newer, run `npm ci`, install Playwright Chromium with `npx playwright install --with-deps chromium`, and verify `npm run build`, `npm test`, and `npm run test:browser`.
+
+Start a preview with `HOST=0.0.0.0 npm run dev` if required by the cloud environment, then open it through that environment's preview or forwarded port. The default port is 4173; `PORT` can override it. A cloud localhost address does not point to the cloud workspace when opened directly on a phone.
+
+Review and publish the development environment in Codex, then select it in the ChatGPT mobile app. This is separate from deploying the website. Read `AGENTS.md` before starting work; it carries the project decisions into a new task.
