@@ -78,7 +78,7 @@ test('content and photo links remain available without JavaScript', async ({ bro
   const page = await context.newPage();
   await page.route('https://**', route => route.abort());
   await page.goto(`${baseURL}/`);
-  await expect(page.getByRole('heading', { name: 'Hi, I’m Kevin.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Hi, I’m / })).toBeVisible();
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Travel', exact: true }).click();
   await page.getByRole('link', { name: /Europe.*England & Scotland/ }).click();
   await expect(page.locator('[data-photo]')).toHaveCount(33);

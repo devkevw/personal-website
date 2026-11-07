@@ -1,6 +1,6 @@
 export const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const arrow = '<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const external = '<span aria-hidden="true">↗</span>';
+const external = '<svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
 export const dateLabel = date => new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 const tripYearLabel = trip => trip.year ? `${trip.year}${trip.endYear && trip.endYear !== trip.year ? `–${trip.endYear}` : ''}` : '';
 
@@ -66,7 +66,7 @@ function sectionHeading(number, title, url, label) {
 }
 
 function postRows(ctx, posts) {
-  return `<ol class="post-list">${posts.map(post => `<li><a class="post-row" href="${escape(post.url || ctx.href(`writing/${post.slug}/`))}"><div class="post-meta"><time datetime="${escape(post.date)}">${dateLabel(post.date)}</time><span>${escape(post.kind)}</span></div><div class="post-main"><h${ctx.route ? '2' : '3'}>${escape(post.title)}</h${ctx.route ? '2' : '3'}><p>${escape(post.description)}</p><span class="post-source">${post.url ? 'Read on Medium ↗' : 'Read article →'}</span></div><span class="post-arrow" aria-hidden="true">${post.url ? '↗' : '→'}</span></a></li>`).join('')}</ol>`;
+  return `<ol class="post-list">${posts.map(post => `<li><a class="post-row" href="${escape(post.url || ctx.href(`writing/${post.slug}/`))}"><div class="post-meta"><time datetime="${escape(post.date)}">${dateLabel(post.date)}</time><span>${escape(post.kind)}</span></div><div class="post-main"><h${ctx.route ? '2' : '3'}>${escape(post.title)}</h${ctx.route ? '2' : '3'}><p>${escape(post.description)}</p><span class="post-source">${post.url ? `Read on Medium ${external}` : 'Read article →'}</span></div><span class="post-arrow" aria-hidden="true">${post.url ? external : '→'}</span></a></li>`).join('')}</ol>`;
 }
 
 function imageSource(src, size, href = value => value) {
@@ -86,7 +86,7 @@ function tripArt(trip) {
 }
 
 function tripCard(ctx, trip) {
-  return `<article class="trip-card"><a href="${ctx.href(`travel/${trip.slug}/`)}"><div class="trip-cover">${trip.cover ? `<img src="${escape(imageSource(trip.cover, 'h', ctx.href))}" alt="${escape(trip.coverAlt)}" width="1024" height="768" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : tripArt(trip)}<span class="trip-open" aria-hidden="true">↗</span></div><div class="trip-card-meta"><span>${escape(trip.region)}</span>${trip.year ? `<span>${tripYearLabel(trip)}</span>` : ''}</div><h${ctx.route ? '2' : '3'}>${escape(trip.title)}</h${ctx.route ? '2' : '3'}>${trip.description ? `<p>${escape(trip.description)}</p>` : ''}</a></article>`;
+  return `<article class="trip-card"><a href="${ctx.href(`travel/${trip.slug}/`)}"><div class="trip-cover">${trip.cover ? `<img src="${escape(imageSource(trip.cover, 'h', ctx.href))}" alt="${escape(trip.coverAlt)}" width="1024" height="768" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : tripArt(trip)}<span class="trip-open" aria-hidden="true">${external}</span></div><div class="trip-card-meta"><span>${escape(trip.region)}</span>${trip.year ? `<span>${tripYearLabel(trip)}</span>` : ''}</div><h${ctx.route ? '2' : '3'}>${escape(trip.title)}</h${ctx.route ? '2' : '3'}>${trip.description ? `<p>${escape(trip.description)}</p>` : ''}</a></article>`;
 }
 
 export function home(ctx) {
