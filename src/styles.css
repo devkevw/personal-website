@@ -100,13 +100,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .title-dot { color: var(--green); }
 .hero-description { font: 500 clamp(1.45rem, 2.7vw, 2.25rem)/1.5 var(--body); letter-spacing: -.045em; margin-top: 30px; }
 .hero-typewriter { position: relative; padding-right: 44px; }
-.typewriter-visual, .typewriter-lead { display: block; }
-.typewriter-slot { display: grid; min-width: 0; }
+.typewriter-visual { display: flex; align-items: baseline; gap: .28em; min-width: 0; }
+.typewriter-lead { flex-shrink: 0; }
+.typewriter-slot { display: grid; min-width: 0; white-space: nowrap; }
 .typewriter-reserve, .typewriter-line { grid-area: 1 / 1; min-width: 0; }
 .typewriter-reserve { visibility: hidden; user-select: none; pointer-events: none; }
 .typewriter-reserve::after { content: ''; display: inline-block; width: 6px; }
 .typewriter-cursor { display: inline-block; width: 2px; height: .9em; background: var(--green); margin-left: 4px; vertical-align: -.05em; animation: cursor-blink 1s steps(1) infinite; }
-.typewriter-toggle { position: absolute; top: 0; right: 0; width: 44px; height: 44px; padding: 12px; display: grid; place-items: center; color: var(--muted); background: transparent; border: 0; border-radius: 50%; }
+.typewriter-toggle { position: absolute; top: 50%; right: 0; transform: translateY(-50%); width: 44px; height: 44px; padding: 12px; display: grid; place-items: center; color: var(--muted); background: transparent; border: 0; border-radius: 50%; }
 .typewriter-toggle:hover { background: var(--nav); color: var(--ink); }
 .typewriter-toggle svg { width: 18px; height: 18px; }
 .typewriter-play, [data-paused="true"] .typewriter-pause { display: none; }
@@ -316,6 +317,7 @@ main.wrap { min-height: 65vh; }
   .home-hero { grid-template-columns: 1fr; gap: 40px; padding-block: 55px 65px; }
   .home-hero h1 { font-size: clamp(3.5rem, 11vw, 5.5rem); }
   .hero-description { font-size: 1.65rem; margin-top: 24px; }
+  .hero-typewriter { font-size: clamp(1rem, 4.8vw, 1.65rem); }
   .hero-note { max-width: 100%; font-size: .9rem; }
   .hero-photo { width: min(100%, 460px); justify-self: center; padding-top: 0; }
   .hero-photo picture { aspect-ratio: 1.15; border-radius: 150px 150px 16px 16px; }

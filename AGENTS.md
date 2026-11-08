@@ -8,7 +8,7 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - Preserve the warm neutral palette, muted blue sections, rounded shapes, Poppins headings, and Inter body text. Use matching dark-theme tokens for any new UI.
 - Main pages: Home, About (career and education timeline), Writing, and Travel. Early coding projects live in an archive linked from About.
 - The homepage has no introductory eyebrow above "Hi, I’m Kevin." and no numbered section labels. Kevin removed the `kw.` wordmark.
-- Beneath the greeting, the typewriter line cycles through `heroPhrases` in `src/content/site.json`. Preserve its static fallback, stable spacing, pause control, and reduced-motion handling. The full description is provided to screen readers without per-character announcements.
+- Beneath the greeting, the typewriter line cycles through `heroPhrases` in `src/content/site.json`. Keep “I’m” and the changing phrase together on one line, including on mobile. Preserve its static fallback, stable spacing, pause control, and reduced-motion handling. The full description is provided to screen readers without per-character announcements.
 - The top-left moon/sun button toggles themes. Light is the default; the selection persists through localStorage and applies before rendering.
 - Career and education details have already been transcribed from Kevin's résumé. Do not invent new roles, dates, achievements, or personal details.
 - Writing currently links to four Medium articles. Local articles are supported through authored HTML fragments and the writing metadata file.

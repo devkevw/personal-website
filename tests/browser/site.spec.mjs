@@ -178,13 +178,16 @@ test('intro types and erases phrases without shifting content, and can be paused
   await page.goto('/');
   const word = page.locator('[data-typewriter]');
   await expect(word).toHaveText('a statistics student.');
+  expect(JSON.parse(await word.getAttribute('data-phrases'))).toEqual(['a statistics student', 'a retired hooper', 'an occasional writer', 'a traveler', 'a curious individual']);
+  const lineHeight = await page.locator('.typewriter-visual').evaluate(el => parseFloat(getComputedStyle(el).lineHeight));
+  expect((await page.locator('.typewriter-visual').boundingBox()).height).toBeLessThanOrEqual(lineHeight + 1);
   const position = (await page.locator('.hero-note').boundingBox()).y;
   await page.clock.runFor(2000);
   const partial = await word.textContent();
   expect(partial.length).toBeLessThan('a statistics student.'.length);
   expect('a statistics student.'.startsWith(partial)).toBe(true);
   await page.clock.runFor(3000);
-  await expect(word).toHaveText('an occasional writer.');
+  await expect(word).toHaveText('a retired hooper.');
   expect((await page.locator('.hero-note').boundingBox()).y).toBeCloseTo(position, 0);
   await page.getByRole('button', { name: 'Pause typing animation' }).click();
   await expect(page.getByRole('button', { name: 'Resume typing animation' })).toBeVisible();
@@ -210,7 +213,7 @@ test('intro stays static for reduced motion and responds when the preference cha
   await expect(word).toHaveText('a statistics student.');
   await expect(page.locator('[data-typewriter-toggle]')).toBeHidden();
   await expect(page.locator('[data-typewriter-cursor]')).toBeHidden();
-  await expect(page.locator('.hero-typewriter .sr-only')).toHaveText('I’m a statistics student, an occasional writer, a traveler, and a curious person.');
+  await expect(page.locator('.hero-typewriter .sr-only')).toHaveText('I’m a statistics student, a retired hooper, an occasional writer, a traveler, and a curious individual.');
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await expect(page.getByRole('button', { name: 'Pause typing animation' })).toBeVisible();
   await page.clock.runFor(2000);
