@@ -82,6 +82,8 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await expect(page.locator('.wave-letter')).toHaveCount(0);
   await expect(page.locator('[data-typewriter]')).toHaveText('a statistics student.');
   await expect(page.getByRole('button', { name: 'Pause typing animation', includeHidden: true })).toBeHidden();
+  await expect(page.locator('.carousel-landscape [data-slide]:visible a')).toHaveAttribute('href', 'travel/china/');
+  await expect(page.locator('[data-carousel-controls]').first()).toBeHidden();
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Travel', exact: true }).click();
   await page.getByRole('link', { name: /Europe.*England & Scotland/ }).click();
   await expect(page.locator('[data-photo]')).toHaveCount(33);
@@ -268,4 +270,52 @@ test('greeting stays still for touch input and reduced motion', async ({ page })
   await expect.poll(() => first.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42)).toBe(0);
   await heading.dispatchEvent('pointermove', { ...event, pointerType: 'mouse' });
   expect(await first.evaluate(el => getComputedStyle(el).transform)).toBe('matrix(1, 0, 0, 1, 0, 0)');
+});
+
+test('homepage carousels wrap, link to albums, and respect reduced motion', async ({ page }, testInfo) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const landscape = page.getByRole('region', { name: 'Landscape travel photos' });
+  await landscape.scrollIntoViewIfNeeded();
+  await expect(landscape.locator('[data-slide]:visible')).toHaveCount(1);
+  await expect(landscape.locator('[data-slide]:visible a')).toHaveAttribute('href', 'travel/china/');
+  await expect(landscape.getByRole('button', { name: 'Pause slideshow' })).toBeHidden();
+  await landscape.getByRole('button', { name: 'Previous photo' }).click();
+  await expect(landscape.locator('[data-carousel-count]')).toHaveText('6 / 6');
+  await expect(landscape.locator('[data-slide]:visible a')).toHaveAttribute('href', 'travel/united-states/');
+  await landscape.getByRole('button', { name: 'Next photo' }).click();
+  await expect(landscape.locator('[data-carousel-count]')).toHaveText('1 / 6');
+  await page.locator('.home-travel').screenshot({ path: testInfo.outputPath('travel-carousel.png') });
+  const portrait = page.locator('.carousel-portrait');
+  if (page.viewportSize().width <= 768) await expect(portrait).toBeHidden();
+  else await expect(portrait).toBeVisible();
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await landscape.getByRole('button', { name: 'Pause slideshow' }).click();
+  await expect(landscape.getByRole('button', { name: 'Play slideshow' })).toBeVisible();
+  await landscape.locator('[data-slide]:visible a').click();
+  await expect(page).toHaveURL(/\/travel\/china\/$/);
+});
+
+test('homepage slideshow pauses for hover, focus, and explicit pause', async ({ page }) => {
+  await page.clock.install();
+  await page.goto('/');
+  const carousel = page.locator('.carousel-landscape');
+  await carousel.scrollIntoViewIfNeeded();
+  await expect(carousel).toBeInViewport();
+  await page.mouse.move(0, 0);
+  await page.clock.runFor(12500);
+  await expect(carousel.locator('[data-carousel-count]')).toHaveText('2 / 6');
+  if (page.viewportSize().width > 768) {
+    await carousel.hover();
+    await page.clock.runFor(13000);
+    await expect(carousel.locator('[data-carousel-count]')).toHaveText('2 / 6');
+    await page.mouse.move(0, 0);
+  }
+  await carousel.locator('[data-slide]:visible a').focus();
+  await page.clock.runFor(13000);
+  await expect(carousel.locator('[data-carousel-count]')).toHaveText('2 / 6');
+  await carousel.getByRole('button', { name: 'Pause slideshow' }).click();
+  await page.locator('h1').click();
+  await page.clock.runFor(13000);
+  await expect(carousel.locator('[data-carousel-count]')).toHaveText('2 / 6');
 });

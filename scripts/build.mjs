@@ -9,7 +9,7 @@ const requireValue = (condition, message) => { if (!condition) throw new Error(m
 
 export async function loadContent() {
   const data = {};
-  for (const key of ['site', 'writing', 'trips', 'photos', 'projects']) {
+  for (const key of ['site', 'writing', 'trips', 'photos', 'projects', 'showcase']) {
     data[key === 'writing' ? 'posts' : key] = JSON.parse(await readFile(path.join(root, 'src/content', `${key}.json`), 'utf8'));
   }
   const { posts, trips, photos } = data;
@@ -46,6 +46,17 @@ export async function loadContent() {
     for (const photo of album) {
       requireValue(photo.alt?.trim(), `Missing photo caption in ${slug}`);
       await validateImage(photo.src);
+    }
+  }
+  for (const orientation of ['landscape', 'portrait']) {
+    const slides = data.showcase[orientation];
+    requireValue(Array.isArray(slides) && slides.length > 1, `Missing ${orientation} showcase photos`);
+    const seen = new Set();
+    for (const slide of slides) {
+      const photo = photos[slide.album]?.find(photo => photo.src === slide.src);
+      requireValue(photo?.orientation === orientation, `Invalid ${orientation} showcase photo: ${slide.src}`);
+      requireValue(!seen.has(slide.src), `Duplicate showcase photo: ${slide.src}`);
+      seen.add(slide.src);
     }
   }
   posts.sort((a, b) => b.date.localeCompare(a.date));

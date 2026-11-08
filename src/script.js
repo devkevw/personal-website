@@ -126,6 +126,52 @@ function enhanceTypewriter() {
 }
 enhanceTypewriter();
 
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const slides = [...carousel.querySelectorAll('[data-slide]')];
+  const controls = carousel.querySelector('[data-carousel-controls]');
+  const toggle = carousel.querySelector('[data-carousel-toggle]');
+  const count = carousel.querySelector('[data-carousel-count]');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const mobile = matchMedia('(max-width: 768px)');
+  let index = 0;
+  let paused = false;
+  let hovered = false;
+  let visible = false;
+  let timer;
+  const schedule = () => {
+    clearTimeout(timer);
+    if (paused || hovered || !visible || document.hidden || reducedMotion.matches || carousel.contains(document.activeElement) || (mobile.matches && carousel.classList.contains('carousel-portrait'))) return;
+    timer = setTimeout(() => show(index + 1), carousel.classList.contains('carousel-portrait') ? 10000 : 12000);
+  };
+  const show = next => {
+    slides[index].hidden = true;
+    index = (next + slides.length) % slides.length;
+    slides[index].hidden = false;
+    count.textContent = `${index + 1} / ${slides.length}`;
+    schedule();
+  };
+  carousel.querySelector('[data-carousel-prev]').addEventListener('click', () => show(index - 1));
+  carousel.querySelector('[data-carousel-next]').addEventListener('click', () => show(index + 1));
+  toggle.addEventListener('click', () => {
+    paused = !paused;
+    toggle.textContent = paused ? 'Play' : 'Pause';
+    toggle.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+    schedule();
+  });
+  carousel.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovered = true; schedule(); } });
+  carousel.addEventListener('pointerleave', () => { hovered = false; schedule(); });
+  carousel.addEventListener('focusin', schedule);
+  carousel.addEventListener('focusout', () => setTimeout(schedule, 0));
+  document.addEventListener('visibilitychange', schedule);
+  mobile.addEventListener('change', schedule);
+  const motionChanged = () => { toggle.hidden = reducedMotion.matches; schedule(); };
+  reducedMotion.addEventListener('change', motionChanged);
+  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; schedule(); }).observe(carousel);
+  toggle.setAttribute('aria-label', 'Pause slideshow');
+  controls.hidden = false;
+  motionChanged();
+});
+
 function handleImageError(image) {
   if (image.dataset.fallbackShown) return;
   image.dataset.fallbackShown = 'true';

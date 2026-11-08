@@ -22,6 +22,7 @@ The header's moon/sun button switches between light and dark themes. Light is th
 - `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
 - `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
 - `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
+- `src/content/showcase.json`: curated homepage carousel photos, grouped by landscape and portrait. Each entry references an existing album slug and photo source.
 - `src/content/photos.json`: 187 photographs: 80 from China, 33 from England & Scotland, and 74 from the United States. Imgur hosts these photos.
 - `src/content/projects.json`: the early project archive, linked from About.
 

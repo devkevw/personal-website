@@ -113,8 +113,21 @@ function typewriter(site) {
   </p>`;
 }
 
+function travelCarousel(ctx, orientation) {
+  const label = `${orientation === 'landscape' ? 'Landscape' : 'Portrait'} travel photos`;
+  const slides = ctx.showcase[orientation];
+  return `<section class="travel-carousel carousel-${orientation}" data-carousel role="region" aria-roledescription="carousel" aria-label="${label}">
+    <div class="carousel-slides">${slides.map((slide, index) => {
+      const photo = ctx.photos[slide.album].find(photo => photo.src === slide.src);
+      const trip = ctx.trips.find(trip => trip.slug === slide.album);
+      return `<figure class="carousel-slide" data-slide role="group" aria-roledescription="slide" aria-label="${index + 1} of ${slides.length}"${index ? ' hidden' : ''}><a class="carousel-photo" href="${ctx.href(`travel/${trip.slug}/`)}" aria-label="${escape(photo.alt)} — view ${escape(trip.title)} album"><img src="${escape(imageSource(photo.src, orientation === 'landscape' ? 'h' : 'l', ctx.href))}" alt="${escape(photo.alt)}" width="${orientation === 'landscape' ? 800 : 600}" height="${orientation === 'landscape' ? 600 : 800}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><figcaption>${escape(photo.alt)}</figcaption></figure>`;
+    }).join('')}</div>
+    <div class="carousel-controls" data-carousel-controls hidden><button type="button" data-carousel-prev aria-label="Previous photo">${directionArrow('left')}</button><span data-carousel-count>1 / ${slides.length}</span><button type="button" data-carousel-next aria-label="Next photo">${directionArrow('right')}</button><button class="carousel-toggle" type="button" data-carousel-toggle>Pause</button></div>
+  </section>`;
+}
+
 export function home(ctx) {
-  const { href, site, posts, trips } = ctx;
+  const { href, site, posts } = ctx;
   return layout(ctx, { section: 'home', description: site.description, wide: true, body: `
     <section class="home-hero wrap">
       <div class="hero-copy"><h1 data-wave-title>Hi, I’m Kevin<span class="title-dot">.</span></h1>${typewriter(site)}<p class="hero-note">Originally from Montreal. Studying statistics at UChicago and interning in data science at Intact. This is where I share what I’m up to, what I’m thinking, and where I’ve been.</p><a class="pill-link" href="${href('about/')}">A little more about me ${arrow}</a></div>
@@ -122,7 +135,7 @@ export function home(ctx) {
     </section>
     <section class="home-career section-band"><div class="wrap split-section"><div><p class="eyebrow">ALONG THE WAY</p><h2>A little<br> background.</h2><p class="section-description">From actuarial internships to statistical research, and now data science. A few changes of scenery along the way, too.</p><a class="text-link" href="${href('about/#timeline')}">The full timeline ${arrow}</a></div><ol class="career-preview">${site.timeline.slice(0, 3).map(item => `<li><span class="timeline-marker" aria-hidden="true"></span><p class="eyebrow">${escape(item.period)} · ${escape(item.category)}</p><h3>${escape(item.organization)}</h3><p>${escape(item.title)}</p></li>`).join('')}</ol></div></section>
     <section class="home-writing wrap section-space">${sectionHeading('ON MY MIND', 'Words, occasionally.', href('writing/'), 'All writing')}<p class="section-description">Thoughts on school, places, and whatever else stays with me.</p>${postRows(ctx, posts.slice(0, 2))}</section>
-    <section class="home-travel section-band"><div class="wrap">${sectionHeading('OUT & ABOUT', 'A change of scenery.', href('travel/'), 'All trips')}<p class="section-description">A few places I’ve been lucky enough to visit.</p><div class="trip-grid home-trip-grid">${trips.slice(0, 2).map(trip => tripCard(ctx, trip)).join('')}</div></div></section>
+    <section class="home-travel section-band"><div class="wrap">${sectionHeading('OUT & ABOUT', 'A change of scenery.', href('travel/'), 'All trips')}<p class="section-description">A few places I’ve been lucky enough to visit.</p><div class="travel-showcase">${travelCarousel(ctx, 'landscape')}${travelCarousel(ctx, 'portrait')}</div></div></section>
     <section class="home-signoff wrap"><p class="eyebrow">THAT’S ME, FOR NOW.</p><h2>Thanks for stopping by.</h2><p>Have something in common? I’d love to hear from you.</p><a class="pill-link" href="mailto:${escape(site.email)}">Let’s talk ${arrow}</a></section>` });
 }
 
