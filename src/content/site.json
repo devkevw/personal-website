@@ -2,13 +2,35 @@
   "name": "Kevin Wang",
   "description": "A little about Kevin Wang: statistics, writing, and places along the way.",
   "email": "kevinjrwang502@gmail.com",
-  "heroPhrases": ["a statistics student", "a retired hooper", "an occasional writer", "an adventurer", "a curious individual"],
+  "heroPhrases": [
+    "a statistics student",
+    "a retired hooper",
+    "an occasional writer",
+    "an adventurer",
+    "a curious individual"
+  ],
   "socials": [
-    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/kevinjwang/" },
-    { "label": "GitHub", "url": "https://github.com/devkevw" },
-    { "label": "Medium", "url": "https://medium.com/@kevw" }
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/kevinjwang/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/devkevw"
+    },
+    {
+      "label": "Medium",
+      "url": "https://medium.com/@kevw"
+    }
   ],
   "timeline": [
+    {
+      "period": "September 2026 — present",
+      "category": "Work",
+      "title": "Data Science Intern",
+      "organization": "Intact",
+      "description": "Working on usage-based insurance and telematics, looking at how people drive."
+    },
     {
       "period": "2025 — 2027",
       "category": "Education",
@@ -26,12 +48,12 @@
       "description": "Studied how sports injuries affect performance using Bayesian hierarchical models. Worked in R and Stan to improve model efficiency and test results across more than 1,000 simulation scenarios."
     },
     {
-      "period": "2024",
+      "period": "February — July 2024",
       "category": "Exchange",
       "title": "A semester in Beijing",
       "organization": "Tsinghua University",
       "location": "Beijing, China",
-      "description": "Spent four months on exchange at Tsinghua, as part of five months in China. Studying, playing sports, and finding time to explore.",
+      "description": "Spent a semester on exchange at Tsinghua, as part of five months in China. Studying, playing sports, and finding time to explore.",
       "link": "https://medium.com/@kevw/my-time-at-tsinghua-university-ddd3b6347646",
       "linkLabel": "Read about my exchange"
     },
@@ -52,17 +74,44 @@
       "description": "Worked on claims forecasting and reporting using regression, SQL, and Power BI. Improved a forecasting model and helped make monthly reporting more efficient."
     },
     {
+      "period": "January 2022 — December 2024",
+      "category": "Teaching",
+      "title": "Course Assistant",
+      "organization": "McGill University",
+      "location": "Montreal, QC",
+      "description": "Worked as a course assistant for MATH 208: Introduction to Statistical Computing and MGCR 331: Information Systems."
+    },
+    {
       "period": "2021 — 2025",
       "category": "Education",
       "title": "BS in Statistics & Computer Science",
       "organization": "McGill University",
       "location": "Montreal, QC",
       "description": "Studied statistics and computer science, with a minor in management. Along the way: hackathons, course grading, and a growing interest in research."
+    },
+    {
+      "period": "September 2020 — May 2021",
+      "category": "Research",
+      "title": "Artificial Intelligence Research Intern",
+      "organization": "JACOBB",
+      "description": "Worked on educational AI and predictive analytics."
     }
   ],
   "interests": [
-    { "title": "Sports", "icon": "sport.png", "text": "Basketball, hockey, football, and swimming. I grew up playing sports; these days I enjoy watching them, too." },
-    { "title": "Around a table", "icon": "board-game.png", "text": "Catan with friends, a game of chess, or poker. My exchange in China also introduced me to mahjong." },
-    { "title": "Books & words", "icon": "book.png", "text": "Reading before bed and occasionally putting my own thoughts into words. A few of those thoughts have made it onto this site." }
+    {
+      "title": "Sports",
+      "icon": "sport.png",
+      "text": "Basketball, hockey, football, and swimming. I grew up playing sports; these days I enjoy watching them, too."
+    },
+    {
+      "title": "Around a table",
+      "icon": "board-game.png",
+      "text": "Catan with friends, a game of chess, or poker. My exchange in China also introduced me to mahjong."
+    },
+    {
+      "title": "Books & words",
+      "icon": "book.png",
+      "text": "Reading before bed and occasionally putting my own thoughts into words. A few of those thoughts have made it onto this site."
+    }
   ]
 }
