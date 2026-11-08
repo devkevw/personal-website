@@ -155,18 +155,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes carousel-reveal { from { opacity: 0; } to { opacity: 1; } }
 .carousel-photo img { width: 100%; height: 100%; object-fit: cover; }
 .carousel-slide figcaption { position: absolute; z-index: 2; left: 18px; bottom: 16px; max-width: calc(100% - 36px); padding: 14px 16px; border-radius: 10px; background: var(--paper); color: var(--ink); font-size: .875rem; line-height: 1.5; letter-spacing: .03em; opacity: 0; transform: translateY(24px); transition: transform .2s ease-out, opacity .2s ease-out; pointer-events: none; }
-.travel-carousel:hover .is-active figcaption, .travel-carousel:focus-within .is-active figcaption { opacity: 1; transform: translateY(0); }
+.travel-carousel:hover .is-active figcaption, .travel-carousel:has(:focus-visible) .is-active figcaption { opacity: 1; transform: translateY(0); }
 .carousel-controls button { position: absolute; z-index: 3; border: 0; cursor: pointer; opacity: 0; transition: opacity .2s; }
-.carousel-controls button[data-carousel-prev], .carousel-controls button[data-carousel-next] { top: 50%; transform: translateY(-50%); width: 60px; height: 90px; padding: 14px; background: transparent; color: white; filter: drop-shadow(0 1px 3px #0009); }
+.carousel-controls button[data-carousel-prev], .carousel-controls button[data-carousel-next] { top: 0; bottom: 0; width: 33.333%; display: flex; align-items: center; padding: 16px; background: transparent; color: white; filter: drop-shadow(0 1px 3px #0009); }
 .carousel-controls button[data-carousel-prev] { left: 0; }
-.carousel-controls button[data-carousel-next] { right: 0; }
-.carousel-controls svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.travel-carousel:hover .carousel-controls button, .travel-carousel:focus-within .carousel-controls button { opacity: .8; }
+.carousel-controls button[data-carousel-next] { right: 0; justify-content: flex-end; }
+.carousel-controls svg { width: 28px; height: 56px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.travel-carousel:hover .carousel-controls button, .travel-carousel:has(:focus-visible) .carousel-controls button { opacity: .8; }
 .carousel-controls button:hover, .carousel-controls button:focus-visible { opacity: 1; }
-.carousel-controls .carousel-toggle { top: 12px; right: 12px; min-width: 44px; min-height: 44px; padding: 8px 12px; border-radius: 24px; font: inherit; font-size: .75rem; background: var(--paper); color: var(--ink); }
 @media (hover: none), (pointer: coarse) {
   .carousel-controls button { opacity: .85; }
-  .carousel-controls button[data-carousel-prev], .carousel-controls button[data-carousel-next] { width: 48px; height: 72px; padding: 12px; }
+  .carousel-controls button[data-carousel-prev], .carousel-controls button[data-carousel-next] { padding: 12px; }
+  .carousel-controls svg { width: 22px; height: 44px; }
 }
 @media (max-width: 768px) {
   .travel-showcase { grid-template-columns: minmax(0, 1fr); }

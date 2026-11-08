@@ -288,7 +288,7 @@ test('homepage carousels wrap, link to albums, and respect reduced motion', asyn
   await expect(landscape.locator('.is-active figcaption')).toHaveCSS('opacity', '0');
   await expect(landscape.locator('.is-active')).toHaveCSS('animation-duration', '0s');
   expect(await landscape.locator('img[src]').count()).toBeLessThanOrEqual(2);
-  await expect(landscape.getByRole('button', { name: 'Pause slideshow' })).toBeHidden();
+  await expect(landscape.locator('[data-carousel-toggle]')).toHaveCount(0);
   await landscape.getByRole('button', { name: 'Previous photo' }).click();
   await expect(landscape.locator('[data-carousel-count]')).toHaveText(`${total} / ${total}`);
   await expect(landscape.locator('.is-active a')).toHaveAttribute('href', /^travel\/(china|england|united-states)\/$/);
@@ -299,13 +299,11 @@ test('homepage carousels wrap, link to albums, and respect reduced motion', asyn
   if (page.viewportSize().width <= 768) await expect(portrait).toBeHidden();
   else await expect(portrait).toBeVisible();
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await landscape.getByRole('button', { name: 'Pause slideshow' }).click();
-  await expect(landscape.getByRole('button', { name: 'Play slideshow' })).toBeVisible();
   await landscape.locator('[data-slide].is-active a').click();
   await expect(page).toHaveURL(new RegExp(`/${firstHref}$`));
 });
 
-test('homepage slideshow pauses for hover, focus, and explicit pause', async ({ page }) => {
+test('homepage slideshow pauses for hover and keyboard focus, then resumes', async ({ page }) => {
   await page.clock.install();
   await page.goto('/');
   const carousel = page.locator('.carousel-landscape');
@@ -323,11 +321,35 @@ test('homepage slideshow pauses for hover, focus, and explicit pause', async ({ 
     await expect(carousel.locator('[data-carousel-count]')).toHaveText(`2 / ${await carousel.locator('[data-slide]').count()}`);
     await page.mouse.move(0, 0);
   }
-  await carousel.locator('[data-slide].is-active a').focus();
+  await page.keyboard.press('Tab');
+  await carousel.getByRole('button', { name: 'Next photo' }).focus();
   await page.clock.runFor(13000);
   await expect(carousel.locator('[data-carousel-count]')).toHaveText(`2 / ${await carousel.locator('[data-slide]').count()}`);
-  await carousel.getByRole('button', { name: 'Pause slideshow' }).click();
-  await page.locator('h1').click();
+  await page.mouse.click(2, page.viewportSize().height / 2);
   await page.clock.runFor(13000);
-  await expect(carousel.locator('[data-carousel-count]')).toHaveText(`2 / ${await carousel.locator('[data-slide]').count()}`);
+  await expect(carousel.locator('[data-carousel-count]')).toHaveText(`3 / ${await carousel.locator('[data-slide]').count()}`);
+});
+
+
+test('photo sides navigate and mouse-click focus does not keep overlays visible', async ({ page }, testInfo) => {
+  await page.clock.install();
+  await page.goto('/');
+  const carousel = page.locator('.carousel-landscape');
+  await carousel.scrollIntoViewIfNeeded();
+  const total = await carousel.locator('[data-slide]').count();
+  const box = await carousel.boundingBox();
+  // Click away from the arrow glyph, near the top of each side of the image.
+  await page.mouse.click(box.x + box.width * .8, box.y + box.height * .15);
+  await expect(carousel.locator('[data-carousel-count]')).toHaveText(`2 / ${total}`);
+  await page.mouse.click(box.x + box.width * .2, box.y + box.height * .15);
+  await expect(carousel.locator('[data-carousel-count]')).toHaveText(`1 / ${total}`);
+  await expect(page).toHaveURL(/:\d+\/$/);
+  await page.mouse.move(0, 0);
+  await page.clock.runFor(400);
+  if (!testInfo.project.name.includes('mobile')) {
+    await expect(carousel.getByRole('button', { name: 'Next photo' })).toHaveCSS('opacity', '0');
+    await expect(carousel.locator('.is-active figcaption')).toHaveCSS('opacity', '0');
+  }
+  await page.clock.runFor(12000);
+  await expect(carousel.locator('[data-carousel-count]')).toHaveText(`2 / ${total}`);
 });
