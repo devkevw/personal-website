@@ -128,6 +128,7 @@ enhanceTypewriter();
 
 document.querySelectorAll('[data-carousel]').forEach(carousel => {
   const slides = [...carousel.querySelectorAll('[data-slide]')];
+  if (slides.length < 2) return;
   const controls = carousel.querySelector('[data-carousel-controls]');
   const toggle = carousel.querySelector('[data-carousel-toggle]');
   const count = carousel.querySelector('[data-carousel-count]');
@@ -138,15 +139,53 @@ document.querySelectorAll('[data-carousel]').forEach(carousel => {
   let hovered = false;
   let visible = false;
   let timer;
+  const leaving = new Map();
+  // Shuffle metadata and DOM nodes without fetching the hidden photographs.
+  for (let i = slides.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [slides[i], slides[j]] = [slides[j], slides[i]];
+  }
+  const load = slide => {
+    const image = slide.querySelector('img');
+    if (image.dataset.src) {
+      image.src = image.dataset.src;
+      delete image.dataset.src;
+    }
+  };
+  slides.forEach((slide, i) => {
+    slide.hidden = i !== 0;
+    slide.classList.toggle('is-active', i === 0);
+    slide.setAttribute('aria-label', `${i + 1} of ${slides.length}`);
+    carousel.querySelector('.carousel-slides').append(slide);
+  });
+  load(slides[0]);
   const schedule = () => {
     clearTimeout(timer);
     if (paused || hovered || !visible || document.hidden || reducedMotion.matches || carousel.contains(document.activeElement) || (mobile.matches && carousel.classList.contains('carousel-portrait'))) return;
     timer = setTimeout(() => show(index + 1), carousel.classList.contains('carousel-portrait') ? 10000 : 12000);
   };
   const show = next => {
-    slides[index].hidden = true;
+    const previous = slides[index];
+    previous.classList.remove('is-active');
+    previous.setAttribute('aria-hidden', 'true');
+    previous.inert = true;
+    previous.classList.add('is-leaving');
+    clearTimeout(leaving.get(previous));
+    leaving.set(previous, setTimeout(() => {
+      previous.hidden = true;
+      previous.classList.remove('is-leaving');
+      leaving.delete(previous);
+    }, reducedMotion.matches ? 0 : 300));
     index = (next + slides.length) % slides.length;
-    slides[index].hidden = false;
+    const active = slides[index];
+    clearTimeout(leaving.get(active));
+    leaving.delete(active);
+    active.hidden = false;
+    active.inert = false;
+    active.removeAttribute('aria-hidden');
+    active.classList.remove('is-leaving');
+    active.classList.add('is-active');
+    load(active);
     count.textContent = `${index + 1} / ${slides.length}`;
     schedule();
   };

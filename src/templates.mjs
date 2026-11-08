@@ -115,14 +115,13 @@ function typewriter(site) {
 
 function travelCarousel(ctx, orientation) {
   const label = `${orientation === 'landscape' ? 'Landscape' : 'Portrait'} travel photos`;
-  const slides = ctx.showcase[orientation];
+  const slides = ctx.trips.flatMap(trip => (ctx.photos[trip.slug] || []).filter(photo => photo.orientation === orientation).map(photo => ({ trip, photo })));
+  if (!slides.length) return '';
   return `<section class="travel-carousel carousel-${orientation}" data-carousel role="region" aria-roledescription="carousel" aria-label="${label}">
-    <div class="carousel-slides">${slides.map((slide, index) => {
-      const photo = ctx.photos[slide.album].find(photo => photo.src === slide.src);
-      const trip = ctx.trips.find(trip => trip.slug === slide.album);
-      return `<figure class="carousel-slide" data-slide role="group" aria-roledescription="slide" aria-label="${index + 1} of ${slides.length}"${index ? ' hidden' : ''}><a class="carousel-photo" href="${ctx.href(`travel/${trip.slug}/`)}" aria-label="${escape(photo.alt)} — view ${escape(trip.title)} album"><img src="${escape(imageSource(photo.src, orientation === 'landscape' ? 'h' : 'l', ctx.href))}" alt="${escape(photo.alt)}" width="${orientation === 'landscape' ? 800 : 600}" height="${orientation === 'landscape' ? 600 : 800}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><figcaption>${escape(photo.alt)}</figcaption></figure>`;
+    <div class="carousel-slides">${slides.map(({ trip, photo }, index) => {
+      return `<figure class="carousel-slide${index ? '' : ' is-active'}" data-slide role="group" aria-roledescription="slide" aria-label="${index + 1} of ${slides.length}"${index ? ' hidden' : ''}><a class="carousel-photo" href="${ctx.href(`travel/${trip.slug}/`)}" aria-label="${escape(photo.alt)} — view ${escape(trip.title)} album"><img ${index ? 'data-src' : 'src'}="${escape(imageSource(photo.src, orientation === 'landscape' ? 'h' : 'l', ctx.href))}" alt="${escape(photo.alt)}" width="${orientation === 'landscape' ? 800 : 600}" height="${orientation === 'landscape' ? 600 : 800}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><figcaption>${escape(photo.alt)}</figcaption></figure>`;
     }).join('')}</div>
-    <div class="carousel-controls" data-carousel-controls hidden><button type="button" data-carousel-prev aria-label="Previous photo">${directionArrow('left')}</button><span data-carousel-count>1 / ${slides.length}</span><button type="button" data-carousel-next aria-label="Next photo">${directionArrow('right')}</button><button class="carousel-toggle" type="button" data-carousel-toggle>Pause</button></div>
+    <div class="carousel-controls" data-carousel-controls hidden><button type="button" data-carousel-prev aria-label="Previous photo"><svg viewBox="0 0 24 40" aria-hidden="true"><path d="m18 4-14 16 14 16"/></svg></button><span class="sr-only" data-carousel-count>1 / ${slides.length}</span><button type="button" data-carousel-next aria-label="Next photo"><svg viewBox="0 0 24 40" aria-hidden="true"><path d="m6 4 14 16-14 16"/></svg></button><button class="carousel-toggle" type="button" data-carousel-toggle>Pause</button></div>
   </section>`;
 }
 
