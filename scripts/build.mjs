@@ -13,6 +13,7 @@ export async function loadContent() {
     data[key === 'writing' ? 'posts' : key] = JSON.parse(await readFile(path.join(root, 'src/content', `${key}.json`), 'utf8'));
   }
   const { posts, trips, photos } = data;
+  requireValue(Array.isArray(data.site.heroPhrases) && data.site.heroPhrases.length > 1 && data.site.heroPhrases.every(phrase => typeof phrase === 'string' && phrase.trim()), 'The homepage needs at least two nonempty heroPhrases');
   async function validateImage(src) {
     if (src.startsWith('https://')) { new URL(src); return; }
     requireValue(/^images\/[^?#\\]+$/.test(src) && !src.split('/').some(part => part === '..' || part === '.'), `Image needs an HTTPS URL or images/ path: ${src}`);

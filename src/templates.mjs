@@ -89,11 +89,26 @@ function tripCard(ctx, trip) {
   return `<article class="trip-card"><a href="${ctx.href(`travel/${trip.slug}/`)}"><div class="trip-cover">${trip.cover ? `<img src="${escape(imageSource(trip.cover, 'h', ctx.href))}" alt="${escape(trip.coverAlt)}" width="1024" height="768" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : tripArt(trip)}<span class="trip-open" aria-hidden="true">${external}</span></div><div class="trip-card-meta"><span>${escape(trip.region)}</span>${trip.year ? `<span>${tripYearLabel(trip)}</span>` : ''}</div><h${ctx.route ? '2' : '3'}>${escape(trip.title)}</h${ctx.route ? '2' : '3'}>${trip.description ? `<p>${escape(trip.description)}</p>` : ''}</a></article>`;
 }
 
+function typewriter(site) {
+  const description = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' }).format(site.heroPhrases);
+  return `<p class="hero-description hero-typewriter">
+    <span class="sr-only">I’m ${escape(description)}.</span>
+    <span class="typewriter-visual" aria-hidden="true"><span class="typewriter-lead">I’m </span><span class="typewriter-slot">
+      ${site.heroPhrases.map(phrase => `<span class="typewriter-reserve">${escape(phrase)}.</span>`).join('')}
+      <span class="typewriter-line"><span data-typewriter data-phrases="${escape(JSON.stringify(site.heroPhrases))}">${escape(site.heroPhrases[0])}.</span><span class="typewriter-cursor" data-typewriter-cursor hidden></span></span>
+    </span></span>
+    <button class="typewriter-toggle" type="button" data-typewriter-toggle data-paused="false" aria-label="Pause typing animation" title="Pause typing animation" hidden>
+      <svg class="typewriter-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+      <svg class="typewriter-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 10 7-10 7Z"/></svg>
+    </button>
+  </p>`;
+}
+
 export function home(ctx) {
   const { href, site, posts, trips } = ctx;
   return layout(ctx, { section: 'home', description: site.description, wide: true, body: `
     <section class="home-hero wrap">
-      <div class="hero-copy"><h1>Hi, I’m Kevin<span class="title-dot">.</span></h1><p class="hero-description">A statistics student.<br>A curious person.<br>Still figuring the rest out.</p><p class="hero-note">Originally from Montreal. Now studying at the University of Chicago. This is where I share what I’m up to, what I’m thinking, and where I’ve been.</p><a class="pill-link" href="${href('about/')}">A little more about me ${arrow}</a></div>
+      <div class="hero-copy"><h1>Hi, I’m Kevin<span class="title-dot">.</span></h1>${typewriter(site)}<p class="hero-note">Originally from Montreal. Now studying at the University of Chicago. This is where I share what I’m up to, what I’m thinking, and where I’ve been.</p><a class="pill-link" href="${href('about/')}">A little more about me ${arrow}</a></div>
       <figure class="hero-photo"><picture><source media="(max-width: 700px)" srcset="${href('images/headshots/square/me_square_med.jpg')}"><img src="${href('images/headshots/3:5/me_3:5_large.jpg')}" width="720" height="1200" alt="Kevin holding two baby goats in Tibet" fetchpriority="high"></picture><figcaption>Yes, those are real baby goats. <span aria-hidden="true">↖</span></figcaption></figure>
     </section>
     <section class="home-career section-band"><div class="wrap split-section"><div><p class="eyebrow">ALONG THE WAY</p><h2>A little<br> background.</h2><p class="section-description">From actuarial internships to statistical research, and a few changes of scenery along the way.</p><a class="text-link" href="${href('about/#timeline')}">The full timeline ${arrow}</a></div><ol class="career-preview">${site.timeline.slice(0, 3).map(item => `<li><span class="timeline-marker" aria-hidden="true"></span><p class="eyebrow">${escape(item.period)} · ${escape(item.category)}</p><h3>${escape(item.organization)}</h3><p>${escape(item.title)}</p></li>`).join('')}</ol></div></section>

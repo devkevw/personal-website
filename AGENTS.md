@@ -8,13 +8,14 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - Preserve the warm neutral palette, muted blue sections, rounded shapes, Poppins headings, and Inter body text. Use matching dark-theme tokens for any new UI.
 - Main pages: Home, About (career and education timeline), Writing, and Travel. Early coding projects live in an archive linked from About.
 - The homepage has no introductory eyebrow above "Hi, I’m Kevin." and no numbered section labels. Kevin removed the `kw.` wordmark.
+- Beneath the greeting, the typewriter line cycles through `heroPhrases` in `src/content/site.json`. Preserve its static fallback, stable spacing, pause control, and reduced-motion handling. The full description is provided to screen readers without per-character announcements.
 - The top-left moon/sun button toggles themes. Light is the default; the selection persists through localStorage and applies before rendering.
 - Career and education details have already been transcribed from Kevin's résumé. Do not invent new roles, dates, achievements, or personal details.
 - Writing currently links to four Medium articles. Local articles are supported through authored HTML fragments and the writing metadata file.
 - Travel is grouped into three albums: China (2024), England & Scotland (2024), and United States (2025–2026). Keep the US visits together for now.
 - Kevin explicitly chose to continue hosting travel photos on Imgur. Keep originals outside the repository unless he requests otherwise. Captions were written from visual review and can be refined with his feedback.
 - Existing image counts: China 80, UK 33, US 74. The unavailable Imgur image `H4D1YEF` was omitted; `fygUI7Z` is the Bean photo already included, not a replacement.
-- Work remains unpublished. Do not change hosting, merge to `main`, or publish the website unless Kevin requests it.
+- Version 2 has a separate Vercel review deployment that updates from pushes to `redesign/v2`. Keep `main` and the original live-site hosting unchanged unless Kevin requests a release.
 
 ## Implementation
 

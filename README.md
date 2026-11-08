@@ -13,13 +13,13 @@ npm run dev
 
 Visit **http://127.0.0.1:4173**. Editing `src/` or `images/` rebuilds the site; refresh the browser to see changes. `npm run build` generates the site in `dist/`. `npm run preview` serves the existing build.
 
-Nothing is automatically published or pushed. The output supports static hosting, including a GitHub Pages project subpath. When version 2 is ready, hosting must be configured to publish `dist/` rather than the old root files. No deployment workflow is included yet.
+Local build commands do not publish or push. A separate Vercel review project automatically builds changes pushed to `redesign/v2`, using `npm run build` and the `dist/` output directory. The original site on `main` remains unchanged. The output also supports other static hosting, including a GitHub Pages project subpath; those hosts must publish `dist/` rather than the old root files.
 
 The header's moon/sun button switches between light and dark themes. Light is the default; a saved choice is applied before rendering and shared across pages. If browser storage is blocked, switching still works for the current page. Without JavaScript, the site keeps its light theme and hides the toggle.
 
 ## Content
 
-- `src/content/site.json`: contact links, career and education timeline, and interests. The longer introduction is in `src/templates.mjs`.
+- `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
 - `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
 - `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
 - `src/content/photos.json`: 187 photographs: 80 from China, 33 from England & Scotland, and 74 from the United States. Imgur hosts these photos.

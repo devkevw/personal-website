@@ -1,5 +1,64 @@
 // The page, navigation, and original-image links work without JavaScript.
-// JavaScript only enhances image failures and the optional photo viewer.
+// JavaScript enhances the optional typing line, image failures, and photo viewer.
+function enhanceTypewriter() {
+  const word = document.querySelector('[data-typewriter]');
+  const button = document.querySelector('[data-typewriter-toggle]');
+  const cursor = document.querySelector('[data-typewriter-cursor]');
+  if (!word || !button || !cursor) return;
+  const phrases = JSON.parse(word.dataset.phrases).map(phrase => `${phrase}.`);
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let index = 0;
+  let length = phrases[0].length;
+  let deleting = true;
+  let paused = false;
+  let timer;
+
+  function schedule(delay) {
+    clearTimeout(timer);
+    if (!paused && !reducedMotion.matches && !document.hidden) timer = setTimeout(tick, delay);
+  }
+
+  function tick() {
+    if (paused || reducedMotion.matches || document.hidden) return;
+    length += deleting ? -1 : 1;
+    word.textContent = phrases[index].slice(0, length);
+    if (deleting && length === 0) {
+      index = (index + 1) % phrases.length;
+      deleting = false;
+      schedule(300);
+    } else if (!deleting && length === phrases[index].length) {
+      deleting = true;
+      schedule(1800);
+    } else {
+      schedule(deleting ? 35 : 75);
+    }
+  }
+
+  function resetLine() {
+    clearTimeout(timer);
+    if (reducedMotion.matches) index = 0;
+    length = phrases[index].length;
+    deleting = true;
+    word.textContent = phrases[index];
+    button.hidden = reducedMotion.matches;
+    button.dataset.paused = String(paused);
+    const label = paused ? 'Resume typing animation' : 'Pause typing animation';
+    button.setAttribute('aria-label', label);
+    button.title = label;
+    cursor.hidden = reducedMotion.matches || paused;
+    schedule(1800);
+  }
+
+  button.addEventListener('click', () => { paused = !paused; resetLine(); });
+  reducedMotion.addEventListener('change', resetLine);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) clearTimeout(timer);
+    else resetLine();
+  });
+  resetLine();
+}
+enhanceTypewriter();
+
 function handleImageError(image) {
   if (image.dataset.fallbackShown) return;
   image.dataset.fallbackShown = 'true';

@@ -79,6 +79,8 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await page.route('https://**', route => route.abort());
   await page.goto(`${baseURL}/`);
   await expect(page.getByRole('heading', { name: /^Hi, I’m / })).toBeVisible();
+  await expect(page.locator('[data-typewriter]')).toHaveText('a statistics student.');
+  await expect(page.getByRole('button', { name: 'Pause typing animation', includeHidden: true })).toBeHidden();
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Travel', exact: true }).click();
   await page.getByRole('link', { name: /Europe.*England & Scotland/ }).click();
   await expect(page.locator('[data-photo]')).toHaveCount(33);
@@ -167,4 +169,53 @@ test('theme remains usable when browser storage is blocked', async ({ page }) =>
   await page.getByRole('button', { name: 'Switch to light mode' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   expect(errors).toEqual([]);
+});
+
+test('intro types and erases phrases without shifting content, and can be paused', async ({ page }, testInfo) => {
+  const start = new Date('2026-11-08T12:00:00Z');
+  await page.clock.install({ time: start });
+  await page.clock.pauseAt(new Date(start.getTime() + 1000));
+  await page.goto('/');
+  const word = page.locator('[data-typewriter]');
+  await expect(word).toHaveText('a statistics student.');
+  const position = (await page.locator('.hero-note').boundingBox()).y;
+  await page.clock.runFor(2000);
+  const partial = await word.textContent();
+  expect(partial.length).toBeLessThan('a statistics student.'.length);
+  expect('a statistics student.'.startsWith(partial)).toBe(true);
+  await page.clock.runFor(3000);
+  await expect(word).toHaveText('an occasional writer.');
+  expect((await page.locator('.hero-note').boundingBox()).y).toBeCloseTo(position, 0);
+  await page.getByRole('button', { name: 'Pause typing animation' }).click();
+  await expect(page.getByRole('button', { name: 'Resume typing animation' })).toBeVisible();
+  const pausedText = await word.textContent();
+  await page.clock.runFor(10000);
+  await expect(word).toHaveText(pausedText);
+  await page.getByRole('button', { name: 'Resume typing animation' }).click();
+  await page.clock.runFor(2000);
+  expect(await word.textContent()).not.toBe(pausedText);
+  if (['desktop', 'small-mobile'].includes(testInfo.project.name)) {
+    await page.screenshot({ path: testInfo.outputPath('typing-intro.png'), fullPage: true });
+  }
+});
+
+test('intro stays static for reduced motion and responds when the preference changes', async ({ page }) => {
+  const start = new Date('2026-11-08T12:00:00Z');
+  await page.clock.install({ time: start });
+  await page.clock.pauseAt(new Date(start.getTime() + 1000));
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const word = page.locator('[data-typewriter]');
+  await page.clock.runFor(10000);
+  await expect(word).toHaveText('a statistics student.');
+  await expect(page.locator('[data-typewriter-toggle]')).toBeHidden();
+  await expect(page.locator('[data-typewriter-cursor]')).toBeHidden();
+  await expect(page.locator('.hero-typewriter .sr-only')).toHaveText('I’m a statistics student, an occasional writer, a traveler, and a curious person.');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await expect(page.getByRole('button', { name: 'Pause typing animation' })).toBeVisible();
+  await page.clock.runFor(2000);
+  expect(await word.textContent()).not.toBe('a statistics student.');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(word).toHaveText('a statistics student.');
+  await expect(page.locator('[data-typewriter-toggle]')).toBeHidden();
 });
