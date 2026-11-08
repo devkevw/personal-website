@@ -1,5 +1,72 @@
 // The page, navigation, and original-image links work without JavaScript.
-// JavaScript enhances the optional typing line, image failures, and photo viewer.
+// JavaScript enhances the optional heading wave, typing line, and photo viewer.
+function enhanceHeadingWave() {
+  const heading = document.querySelector('[data-wave-title]');
+  if (!heading) return;
+  const label = heading.textContent;
+  const visual = document.createElement('span');
+  visual.className = 'wave-letters';
+  visual.setAttribute('aria-hidden', 'true');
+  // Keep the heading's readable name intact while animating decorative letters.
+  for (const node of heading.childNodes) {
+    for (const character of node.textContent) {
+      const letter = document.createElement('span');
+      letter.className = 'wave-letter';
+      if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains('title-dot')) letter.classList.add('title-dot');
+      letter.textContent = character;
+      visual.append(letter);
+    }
+  }
+  heading.setAttribute('aria-label', label);
+  heading.replaceChildren(visual);
+  const letters = [...visual.children];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  let centers = [];
+  let left = 0;
+  let radius = 100;
+  let lift = 18;
+  let pointerX = 0;
+  let frame = null;
+
+  function measure() {
+    const size = parseFloat(getComputedStyle(heading).fontSize);
+    left = heading.getBoundingClientRect().left;
+    centers = letters.map(letter => letter.offsetLeft + letter.offsetWidth / 2);
+    radius = size * 1.25;
+    lift = Math.min(20, size * .2);
+  }
+
+  function reset() {
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    letters.forEach(letter => letter.style.removeProperty('--wave-lift'));
+  }
+
+  function draw() {
+    frame = null;
+    letters.forEach((letter, index) => {
+      const proximity = Math.max(0, 1 - Math.abs(pointerX - centers[index]) / radius);
+      letter.style.setProperty('--wave-lift', `${(-lift * proximity * proximity).toFixed(2)}px`);
+    });
+  }
+
+  heading.addEventListener('pointerenter', measure);
+  heading.addEventListener('pointermove', event => {
+    if (event.pointerType !== 'mouse' || event.buttons || reducedMotion.matches || !finePointer.matches) return;
+    pointerX = event.clientX - left;
+    if (frame === null) frame = requestAnimationFrame(draw);
+  });
+  for (const event of ['pointerleave', 'pointercancel', 'pointerdown']) heading.addEventListener(event, reset);
+  for (const preference of [reducedMotion, finePointer]) preference.addEventListener('change', reset);
+  window.addEventListener('blur', reset);
+  window.addEventListener('resize', () => { reset(); measure(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) reset(); });
+  document.fonts?.ready.then(measure);
+  measure();
+}
+enhanceHeadingWave();
+
 function enhanceTypewriter() {
   const word = document.querySelector('[data-typewriter]');
   const button = document.querySelector('[data-typewriter-toggle]');

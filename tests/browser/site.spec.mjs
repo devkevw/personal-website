@@ -79,6 +79,7 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await page.route('https://**', route => route.abort());
   await page.goto(`${baseURL}/`);
   await expect(page.getByRole('heading', { name: /^Hi, I’m / })).toBeVisible();
+  await expect(page.locator('.wave-letter')).toHaveCount(0);
   await expect(page.locator('[data-typewriter]')).toHaveText('a statistics student.');
   await expect(page.getByRole('button', { name: 'Pause typing animation', includeHidden: true })).toBeHidden();
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Travel', exact: true }).click();
@@ -221,4 +222,50 @@ test('intro stays static for reduced motion and responds when the preference cha
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(word).toHaveText('a statistics student.');
   await expect(page.locator('[data-typewriter-toggle]')).toBeHidden();
+});
+
+test('greeting wave follows the mouse and settles without shifting the layout', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name.includes('mobile'), 'Mouse hover is intentionally disabled on touch devices');
+  await page.goto('/');
+  const heading = page.getByRole('heading', { level: 1 });
+  await expect(heading).toHaveAccessibleName('Hi, I’m Kevin.');
+  const letters = heading.locator('.wave-letter');
+  const first = letters.first();
+  const last = letters.last();
+  const left = await first.boundingBox();
+  const right = await last.boundingBox();
+  const noteY = (await page.locator('.hero-note').boundingBox()).y;
+  const lift = locator => locator.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42);
+  await page.mouse.move(left.x + left.width / 2, left.y + left.height / 2);
+  await expect.poll(() => lift(first)).toBeLessThan(-8);
+  await expect.poll(() => lift(last)).toBeGreaterThan(-.1);
+  await page.mouse.move(right.x + right.width / 2, right.y + right.height / 2);
+  await expect.poll(() => lift(last)).toBeLessThan(-8);
+  await expect.poll(() => lift(first)).toBeGreaterThan(-.1);
+  expect((await page.locator('.hero-note').boundingBox()).y).toBeCloseTo(noteY, 0);
+  const periodColor = await last.evaluate(el => getComputedStyle(el).color);
+  expect(periodColor).toBe(await page.locator('[data-typewriter-cursor]').evaluate(el => getComputedStyle(el).backgroundColor));
+  if (testInfo.project.name === 'desktop') await page.locator('.home-hero').screenshot({ path: testInfo.outputPath('heading-wave.png') });
+  await page.mouse.move(0, 0);
+  await expect.poll(() => letters.evaluateAll(nodes => Math.max(...nodes.map(el => Math.abs(new DOMMatrixReadOnly(getComputedStyle(el).transform).m42))))).toBeLessThan(.1);
+});
+
+test('greeting stays still for touch input and reduced motion', async ({ page }) => {
+  await page.goto('/');
+  const heading = page.locator('[data-wave-title]');
+  const first = heading.locator('.wave-letter').first();
+  const bounds = await first.boundingBox();
+  const event = { pointerType: 'touch', clientX: bounds.x + bounds.width / 2, clientY: bounds.y + bounds.height / 2 };
+  await heading.dispatchEvent('pointerenter', event);
+  await heading.dispatchEvent('pointermove', event);
+  expect(await first.evaluate(el => getComputedStyle(el).transform)).toBe('matrix(1, 0, 0, 1, 0, 0)');
+  const finePointer = await page.evaluate(() => matchMedia('(hover: hover) and (pointer: fine)').matches);
+  if (finePointer) {
+    await page.mouse.move(event.clientX, event.clientY);
+    await expect.poll(() => first.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42)).toBeLessThan(-8);
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect.poll(() => first.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42)).toBe(0);
+  await heading.dispatchEvent('pointermove', { ...event, pointerType: 'mouse' });
+  expect(await first.evaluate(el => getComputedStyle(el).transform)).toBe('matrix(1, 0, 0, 1, 0, 0)');
 });
