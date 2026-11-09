@@ -22,7 +22,7 @@ The header's moon/sun button switches between light and dark themes. Light is th
 - `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
 - `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
 - `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
-- `src/content/food.json`: food recommendations in `places`; `previewPlaces` contains fictional, opt-in examples only. Each real place needs `id`, `name`, `city`, `country`, `latitude`, `longitude`, `order`, and `note`, with an optional `photo` (HTTPS URL or `images/` path). Use restaurant coordinates for real entries. The Food page links each spot to Google Maps and filters by city.
+- `src/content/food.json`: food recommendations in `places`; `previewPlaces` contains fictional, opt-in examples only. Each real place needs `id`, `name`, `city`, `country`, `latitude`, `longitude`, with optional `address`, `order`, `note`, and `photo` (HTTPS URL or `images/` path). Use restaurant coordinates for real entries. The Food page links each spot to Google Maps and filters by city.
 - `src/content/photos.json`: shared source for albums and the shuffled homepage carousels. Photos load as visitors browse. 187 photographs: 80 from China, 33 from England & Scotland, and 74 from the United States. Imgur hosts these photos.
 - `src/content/projects.json`: the early project archive, linked from About.
 

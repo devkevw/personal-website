@@ -1,8 +1,87 @@
 {
-  "places": [],
+  "places": [
+    {
+      "id": "ma-poule-mouillee",
+      "name": "Ma Poule Mouillée",
+      "city": "Montreal",
+      "country": "Canada",
+      "address": "969 Rue Rachel Est",
+      "latitude": 45.52518,
+      "longitude": -73.57527,
+      "source": "https://mapoulemouillee.ca/",
+      "coordinateSource": "https://www.openstreetmap.org/node/4211486089"
+    },
+    {
+      "id": "la-banquise",
+      "name": "La Banquise",
+      "city": "Montreal",
+      "country": "Canada",
+      "address": "994 Rue Rachel Est",
+      "latitude": 45.5253714,
+      "longitude": -73.5747853,
+      "source": "https://labanquise.com/contact.php"
+    },
+    {
+      "id": "pai",
+      "name": "PAI",
+      "city": "Toronto",
+      "country": "Canada",
+      "address": "18 Duncan Street",
+      "latitude": 43.64786,
+      "longitude": -79.38871,
+      "source": "https://www.paitoronto.com/menus"
+    },
+    {
+      "id": "koh-lipe",
+      "name": "Koh Lipe Thai Kitchen",
+      "city": "Toronto",
+      "country": "Canada",
+      "address": "35 Baldwin Street",
+      "latitude": 43.6558307,
+      "longitude": -79.3934303,
+      "source": "https://kohlipe.ca/contact-us/"
+    },
+    {
+      "id": "girl-and-the-goat",
+      "name": "Girl & the Goat",
+      "city": "Chicago",
+      "country": "United States",
+      "address": "809 W Randolph Street",
+      "latitude": 41.8841279,
+      "longitude": -87.6479354,
+      "source": "https://www.girlandthegoat.com/chicago"
+    }
+  ],
   "previewPlaces": [
-    { "id": "sample-montreal", "name": "Your neighborhood café", "city": "Montreal", "country": "Canada", "latitude": 45.5019, "longitude": -73.5674, "order": "The thing you always come back for", "note": "A short note about what makes this place worth a stop. Sample only; this is not a real recommendation." },
-    { "id": "sample-london", "name": "Your late-night favorite", "city": "London", "country": "United Kingdom", "latitude": 51.5074, "longitude": -0.1278, "order": "Your go-to order", "note": "An after-dinner discovery, or somewhere a friend brought you. Sample only; this is not a real recommendation." },
-    { "id": "sample-beijing", "name": "Your dumpling spot", "city": "Beijing", "country": "China", "latitude": 39.9042, "longitude": 116.4074, "order": "The dish you still think about", "note": "A little context, a good memory, and what you would order again. Sample only; this is not a real recommendation." }
+    {
+      "id": "sample-montreal",
+      "name": "Your neighborhood café",
+      "city": "Montreal",
+      "country": "Canada",
+      "latitude": 45.5019,
+      "longitude": -73.5674,
+      "order": "The thing you always come back for",
+      "note": "A short note about what makes this place worth a stop. Sample only; this is not a real recommendation."
+    },
+    {
+      "id": "sample-london",
+      "name": "Your late-night favorite",
+      "city": "London",
+      "country": "United Kingdom",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "order": "Your go-to order",
+      "note": "An after-dinner discovery, or somewhere a friend brought you. Sample only; this is not a real recommendation."
+    },
+    {
+      "id": "sample-beijing",
+      "name": "Your dumpling spot",
+      "city": "Beijing",
+      "country": "China",
+      "latitude": 39.9042,
+      "longitude": 116.4074,
+      "order": "The dish you still think about",
+      "note": "A little context, a good memory, and what you would order again. Sample only; this is not a real recommendation."
+    }
   ]
 }

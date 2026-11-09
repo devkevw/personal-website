@@ -189,8 +189,8 @@ export function notFound(ctx) {
 }
 
 function foodCard(ctx, place, index) {
-  const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place.name}, ${place.city}, ${place.country}`)}`;
-  return `<article class="food-card" id="food-${escape(place.id)}" tabindex="-1" data-food-card="${escape(place.id)}">${place.photo ? `<img class="food-photo" src="${escape(imageSource(place.photo, 'l', ctx.href))}" alt="${escape(place.name)}" width="800" height="600" loading="lazy">` : ''}<div class="food-card-body"><p class="eyebrow">${String(index + 1).padStart(2, '0')} / ${escape(place.city)} · ${escape(place.country)}</p><h3>${escape(place.name)}</h3><p class="food-order"><span>What to order</span>${escape(place.order)}</p><p class="food-note">${escape(place.note)}</p><a class="text-link" href="${escape(maps)}">Find it on Google Maps ${external}</a></div></article>`;
+  const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place.name, place.address, place.city, place.country].filter(Boolean).join(', '))}`;
+  return `<article class="food-card" id="food-${escape(place.id)}" tabindex="-1" data-food-card="${escape(place.id)}">${place.photo ? `<img class="food-photo" src="${escape(imageSource(place.photo, 'l', ctx.href))}" alt="${escape(place.name)}" width="800" height="600" loading="lazy">` : ''}<div class="food-card-body"><p class="eyebrow">${String(index + 1).padStart(2, '0')} / ${escape(place.city)} · ${escape(place.country)}</p><h3>${escape(place.name)}</h3>${place.address ? `<p class="food-note">${escape(place.address)}</p>` : ''}${place.order ? `<p class="food-order"><span>What to order</span>${escape(place.order)}</p>` : ''}${place.note ? `<p class="food-note">${escape(place.note)}</p>` : ''}<a class="text-link" href="${escape(maps)}">Find it on Google Maps ${external}</a></div></article>`;
 }
 
 export function food(ctx) {

@@ -54,8 +54,9 @@ export async function loadContent() {
     for (const place of entries) {
       requireValue(slugPattern.test(place.id) && !ids.has(place.id), `Invalid or duplicate food id: ${place.id}`);
       ids.add(place.id);
-      for (const field of ['name', 'city', 'country', 'order', 'note']) requireValue(typeof place[field] === 'string' && place[field].trim(), `Missing food ${field}: ${place.id}`);
+      for (const field of ['name', 'city', 'country']) requireValue(typeof place[field] === 'string' && place[field].trim(), `Missing food ${field}: ${place.id}`);
       requireValue(Number.isFinite(place.latitude) && Math.abs(place.latitude) <= 85 && Number.isFinite(place.longitude) && Math.abs(place.longitude) <= 180, `Invalid food coordinates: ${place.id}`);
+      for (const field of ['order', 'note', 'address']) if (place[field] !== undefined) requireValue(typeof place[field] === 'string', `Invalid food ${field}: ${place.id}`);
       if (place.photo) await validateImage(place.photo);
     }
   }

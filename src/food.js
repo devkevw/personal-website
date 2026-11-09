@@ -51,9 +51,13 @@
     const body = node('div', 'food-card-body');
     body.append(node('p', 'eyebrow', `${String(index + 1).padStart(2, '0')} / ${place.city} · ${place.country}`));
     body.append(node('h3', '', place.name));
-    const order = node('p', 'food-order');
-    order.append(node('span', '', 'What to order'), document.createTextNode(place.order));
-    body.append(order, node('p', 'food-note', place.note));
+    if (place.address) body.append(node('p', 'food-note', place.address));
+    if (place.order) {
+      const order = node('p', 'food-order');
+      order.append(node('span', '', 'What to order'), document.createTextNode(place.order));
+      body.append(order);
+    }
+    if (place.note) body.append(node('p', 'food-note', place.note));
     const actions = node('div', 'food-card-actions');
     if (map) {
       const button = node('button', 'text-link', 'Show on map');
@@ -63,7 +67,7 @@
     }
     if (!sample) {
       const link = node('a', 'text-link', 'Find it on Google Maps');
-      link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place.name}, ${place.city}, ${place.country}`)}`;
+      link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place.name, place.address, place.city, place.country].filter(Boolean).join(', '))}`;
       actions.append(link);
     } else actions.append(node('span', 'food-sample-label', 'Sample entry'));
     body.append(actions);
@@ -105,8 +109,10 @@
         title: `${sample ? 'Sample: ' : ''}${place.name}, ${place.city}`, alt: `${place.name}, ${place.city}`
       }).addTo(markers);
       const popup = node('div', 'food-popup');
-      popup.append(node('strong', '', place.name), node('p', '', `${place.city} · ${place.country}`), node('p', '', place.order));
-      const button = node('button', 'text-link', 'Read the note');
+      popup.append(node('strong', '', place.name), node('p', '', `${place.city} · ${place.country}`));
+      if (place.address) popup.append(node('p', '', place.address));
+      if (place.order) popup.append(node('p', '', place.order));
+      const button = node('button', 'text-link', place.note ? 'Read the note' : 'View spot');
       button.type = 'button';
       button.addEventListener('click', () => {
         const card = document.getElementById(`food-${place.id}`);
@@ -117,7 +123,7 @@
       marker.bindPopup(popup).on('click', () => selectPlace(place.id));
       markerById.set(place.id, marker);
     });
-    if (filter.value && visible.length) map.fitBounds(visible.map(place => [place.latitude, place.longitude]), { padding: [50, 50], maxZoom: sample ? 10 : 14, animate: false });
+    if (visible.length) map.fitBounds(visible.map(place => [place.latitude, place.longitude]), { padding: [50, 50], maxZoom: filter.value ? (sample ? 10 : visible.length === 1 ? 15 : 18) : (sample ? 2 : 5), animate: false });
     else worldView();
   };
   const updateCities = () => {
