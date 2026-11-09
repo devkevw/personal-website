@@ -59,7 +59,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
   </header>
   <main id="main" tabindex="-1"${wide ? '' : ' class="wrap"'}>${body}</main>
   <footer class="site-footer wrap">
-    <div class="footer-top"><p>A little corner of the internet.</p><a class="text-link" href="mailto:${escape(site.email)}">Say hello ${arrow}</a></div>
+    <div class="footer-top"><div class="footer-intro"><p>A little corner of the internet.</p><p class="footer-weather">Chicago, IL<span data-weather hidden> · <a href="https://open-meteo.com/" data-weather-temperature title="Chicago weather data by Open-Meteo"></a></span></p></div><a class="text-link" href="mailto:${escape(site.email)}">Say hello ${arrow}</a></div>
     <div class="footer-bottom"><small>© ${new Date().getFullYear()} ${escape(site.name)}</small><ul aria-label="Elsewhere">${site.socials.map(s => `<li><a href="${escape(s.url)}">${escape(s.label)} ${external}</a></li>`).join('')}</ul><a class="back-to-top" href="#main">Back to top ${directionArrow('up')}</a></div>
   </footer>
 </body>
@@ -129,7 +129,7 @@ export function home(ctx) {
   const { href, site, posts } = ctx;
   return layout(ctx, { section: 'home', description: site.description, wide: true, body: `
     <section class="home-hero wrap">
-      <div class="hero-copy"><h1 data-wave-title>Hi, I’m Kevin<span class="title-dot">.</span></h1>${typewriter(site)}<p class="hero-weather">Chicago, IL<span data-weather hidden> · <a href="https://open-meteo.com/" data-weather-temperature title="Chicago weather data by Open-Meteo"></a></span></p><p class="hero-note">Originally from Montreal. Studying statistics at UChicago and interning in data science at Intact. This is where I share what I’m up to, what I’m thinking, and where I’ve been.</p><a class="pill-link" href="${href('about/')}">A little more about me ${arrow}</a></div>
+      <div class="hero-copy"><h1 data-wave-title>Hi, I’m Kevin<span class="title-dot">.</span></h1>${typewriter(site)}<p class="hero-note">Originally from Montreal. Studying statistics at UChicago and interning in data science at Intact. This is where I share what I’m up to, what I’m thinking, and where I’ve been.</p><a class="pill-link" href="${href('about/')}">A little more about me ${arrow}</a></div>
       <figure class="hero-photo"><picture><source media="(max-width: 700px)" srcset="${href('images/headshots/square/me_square_med.jpg')}"><img src="${href('images/headshots/3:5/me_3:5_large.jpg')}" width="720" height="1200" alt="Kevin holding two baby goats in Tibet" fetchpriority="high"></picture><figcaption>Yes, those are real baby goats. ${directionArrow('northwest')}</figcaption></figure>
     </section>
     <section class="home-career section-band"><div class="wrap split-section"><div><p class="eyebrow">ALONG THE WAY</p><h2>A little<br> background.</h2><p class="section-description">From actuarial internships to statistical research, and now data science. A few changes of scenery along the way, too.</p><a class="text-link" href="${href('about/#timeline')}">The full timeline ${arrow}</a></div><ol class="career-preview">${site.timeline.slice(0, 3).map(item => `<li><span class="timeline-marker" aria-hidden="true"></span><p class="eyebrow">${escape(item.period)} · ${escape(item.category)}</p><h3>${escape(item.organization)}</h3><p>${escape(item.title)}</p></li>`).join('')}</ol></div></section>

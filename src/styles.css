@@ -116,9 +116,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .typewriter-play, [data-paused="true"] .typewriter-pause { display: none; }
 [data-paused="true"] .typewriter-play { display: block; }
 @keyframes cursor-blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-.hero-weather { color: var(--muted); font-size: .8rem; line-height: 1.6; margin-top: 18px; }
-.hero-weather a { text-underline-offset: 3px; text-decoration-color: var(--line); }
-.hero-weather a:hover { text-decoration: underline; text-decoration-color: currentColor; }
 .hero-note { color: var(--muted); font-size: .95rem; max-width: 420px; margin-top: 24px; line-height: 1.85; }
 .hero-copy .pill-link { margin-top: 30px; }
 .hero-photo { position: relative; align-self: center; padding-top: 15px; }
@@ -317,6 +314,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 42px 28px; }
 .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
 .footer-top p { color: var(--muted); font-size: .78rem; }
+.footer-weather { margin-top: 8px; line-height: 1.6; }
+.footer-weather a { text-underline-offset: 3px; text-decoration-color: var(--line); }
+.footer-weather a:hover { text-decoration: underline; text-decoration-color: currentColor; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin-top: 45px; color: var(--muted); font-size: .7rem; }
 .footer-bottom small { font-size: inherit; }
 .footer-bottom ul { display: flex; gap: 25px; list-style: none; padding: 0; margin: 0; }
