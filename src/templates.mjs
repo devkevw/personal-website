@@ -22,7 +22,7 @@ export function context(route, data) {
 
 export function layout(ctx, { title, description, section, body, wide = false }) {
   const { site, href, route } = ctx;
-  const nav = [['', 'Home'], ['about/', 'About'], ['writing/', 'Writing'], ['travel/', 'Travel'], ['food/', 'Food']];
+  const nav = [['', 'Home'], ['about/', 'About'], ['writing/', 'Writing'], ['travel/', 'Travel']];
   const canonical = ctx.siteUrl ? new URL(route, `${ctx.siteUrl.replace(/\/$/, '')}/`).href : null;
   return `<!doctype html>
 <html lang="en">
@@ -44,10 +44,8 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  ${section === 'food' ? `<link rel="stylesheet" href="${href('assets/leaflet/leaflet.css')}">` : ''}
   <link rel="stylesheet" href="${href('assets/styles.css')}">
   <script defer src="${href('assets/script.js')}"></script>
-  ${section === 'food' ? `<script defer src="${href('assets/leaflet/leaflet.js')}"></script><script defer src="${href('assets/food.js')}"></script>` : ''}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -186,27 +184,4 @@ export function archive(ctx) {
 
 export function notFound(ctx) {
   return layout(ctx, { title: 'Page not found', description: 'This page could not be found. Head back to Kevin Wang’s homepage.', body: `${intro('404 / A WRONG TURN', 'Not quite here.', 'This page might have moved, or the address might be a little off.')}<a class="pill-link" href="${ctx.href('')}">Back to home ${arrow}</a>` });
-}
-
-function foodCard(ctx, place, index) {
-  const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place.name, place.address, place.city, place.country].filter(Boolean).join(', '))}`;
-  return `<article class="food-card" id="food-${escape(place.id)}" tabindex="-1" data-food-card="${escape(place.id)}">${place.photo ? `<img class="food-photo" src="${escape(imageSource(place.photo, 'l', ctx.href))}" alt="${escape(place.name)}" width="800" height="600" loading="lazy">` : ''}<div class="food-card-body"><p class="eyebrow">${String(index + 1).padStart(2, '0')} / ${escape(place.city)} · ${escape(place.country)}</p><h3>${escape(place.name)}</h3>${place.address ? `<p class="food-note">${escape(place.address)}</p>` : ''}${place.order ? `<p class="food-order"><span>What to order</span>${escape(place.order)}</p>` : ''}${place.note ? `<p class="food-note">${escape(place.note)}</p>` : ''}<a class="text-link" href="${escape(maps)}">Find it on Google Maps ${external}</a></div></article>`;
-}
-
-export function food(ctx) {
-  const places = ctx.food.places;
-  const payload = JSON.stringify({ ...ctx.food, imageRoot: ctx.href('') }).replaceAll('<', '\\u003c');
-  return layout(ctx, { title: 'Food', section: 'food', description: 'Good meals, little discoveries, and places worth going back to. A food map by Kevin Wang.', body: `
-    <div class="page-intro"><h1>Worth a stop.</h1><p class="page-lede">Good food has a way of staying with you. A few places, what to order, and why I’d go back.</p></div>
-    <script type="application/json" id="food-data">${payload}</script>
-    <section class="food-atlas" aria-labelledby="food-map-title"><div class="food-atlas-heading"><div><p class="eyebrow">A FEW GOOD MEALS, AROUND THE WORLD</p><h2 id="food-map-title">Follow your appetite.</h2></div><a class="text-link" href="#food-places">Browse the list ${directionArrow('right')}</a></div>
-      <div class="food-map" id="food-map" data-food-map role="region" aria-label="World map of food spots"><p class="food-map-fallback">The interactive map needs JavaScript. You can browse all the places below.</p></div>
-      <div class="food-map-caption"><p data-map-hint>Select a pin to see a spot. Use + and − to zoom.</p><button class="text-link" type="button" data-map-reset hidden>World view ${directionArrow('right')}</button></div>
-    </section>
-    <section class="food-collection" id="food-places" aria-labelledby="food-list-title"><div class="food-list-heading"><div><h2 id="food-list-title">Places to keep.</h2><p class="section-description" data-food-count>${places.length ? `${places.length} places, and counting.` : 'A collection in the making.'}</p></div><div class="food-filter" data-food-filter hidden><label for="food-city">Browse by city</label><select id="food-city" data-food-city><option value="">All cities</option></select></div></div>
-      <div class="food-preview-banner" data-food-preview-banner hidden><strong>Sample view</strong><p>Fictional entries to try the layout. Pins mark city centers, not restaurants.</p></div>
-      <div class="food-grid" data-food-list>${places.map((place, index) => foodCard(ctx, place, index)).join('')}</div>
-      <div class="food-empty" data-food-empty${places.length ? ' hidden' : ''}><span class="food-empty-symbol" aria-hidden="true">＋</span><h3>The first few spots are on their way.</h3><p>I’m gathering the places I’d recommend to a friend. A dish, a memory, a reason to go back.</p><button class="pill-link" data-food-preview type="button" hidden>Try a sample view ${arrow}</button></div>
-      <button class="text-link food-preview-exit" type="button" data-food-preview-exit hidden>Leave sample view ${directionArrow('right')}</button>
-    </section>` });
 }

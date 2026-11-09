@@ -1,7 +1,7 @@
 import { cp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
-import { context, home, about, writing, travel, food, tripPage, articlePage, archive, notFound } from '../src/templates.mjs';
+import { context, home, about, writing, travel, tripPage, articlePage, archive, notFound } from '../src/templates.mjs';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -9,7 +9,7 @@ const requireValue = (condition, message) => { if (!condition) throw new Error(m
 
 export async function loadContent() {
   const data = {};
-  for (const key of ['site', 'writing', 'trips', 'photos', 'projects', 'food']) {
+  for (const key of ['site', 'writing', 'trips', 'photos', 'projects']) {
     data[key === 'writing' ? 'posts' : key] = JSON.parse(await readFile(path.join(root, 'src/content', `${key}.json`), 'utf8'));
   }
   const { posts, trips, photos } = data;
@@ -48,18 +48,6 @@ export async function loadContent() {
       await validateImage(photo.src);
     }
   }
-  for (const entries of [data.food.places, data.food.previewPlaces]) {
-    requireValue(Array.isArray(entries), 'Food places must be arrays');
-    const ids = new Set();
-    for (const place of entries) {
-      requireValue(slugPattern.test(place.id) && !ids.has(place.id), `Invalid or duplicate food id: ${place.id}`);
-      ids.add(place.id);
-      for (const field of ['name', 'city', 'country']) requireValue(typeof place[field] === 'string' && place[field].trim(), `Missing food ${field}: ${place.id}`);
-      requireValue(Number.isFinite(place.latitude) && Math.abs(place.latitude) <= 85 && Number.isFinite(place.longitude) && Math.abs(place.longitude) <= 180, `Invalid food coordinates: ${place.id}`);
-      for (const field of ['order', 'note', 'address']) if (place[field] !== undefined) requireValue(typeof place[field] === 'string', `Invalid food ${field}: ${place.id}`);
-      if (place.photo) await validateImage(place.photo);
-    }
-  }
   posts.sort((a, b) => b.date.localeCompare(a.date));
   return data;
 }
@@ -74,9 +62,7 @@ export async function build({ outDir = path.join(root, 'dist'), siteUrl = proces
   await cp(path.join(root, 'src/styles.css'), path.join(outDir, 'assets/styles.css'));
   await cp(path.join(root, 'src/script.js'), path.join(outDir, 'assets/script.js'));
   await cp(path.join(root, 'src/theme.js'), path.join(outDir, 'assets/theme.js'));
-  await cp(path.join(root, 'src/vendor/leaflet'), path.join(outDir, 'assets/leaflet'), { recursive: true });
-  await cp(path.join(root, 'src/food.js'), path.join(outDir, 'assets/food.js'));
-  const routes = new Map([['', home], ['about/', about], ['writing/', writing], ['travel/', travel], ['food/', food], ['archive/', archive]]);
+  const routes = new Map([['', home], ['about/', about], ['writing/', writing], ['travel/', travel], ['archive/', archive]]);
   for (const trip of data.trips) routes.set(`travel/${trip.slug}/`, ctx => tripPage(ctx, trip));
   for (const post of data.posts.filter(post => post.bodyFile)) {
     const body = await readFile(path.join(root, 'src/content/articles', post.bodyFile), 'utf8');
