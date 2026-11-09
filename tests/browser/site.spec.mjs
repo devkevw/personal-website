@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
 
-const routes = ['/', '/about/', '/writing/', '/travel/', '/archive/', '/travel/china/', '/travel/england/', '/travel/united-states/'];
+const routes = ['/', '/about/', '/writing/', '/travel/', '/food/', '/archive/', '/travel/china/', '/travel/england/', '/travel/united-states/'];
 
 // External hosts are not a prerequisite for navigation or gallery tests.
 test.beforeEach(async ({ page }) => {
+  await page.route('https://tile.openstreetmap.org/**', route => route.fulfill({ contentType: 'image/svg+xml', body: '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="#e1e5df"/></svg>' }));
   await page.route('https://api.open-meteo.com/**', route => route.fulfill({ json: { current: { temperature_2m: 12.6 } } }));
   await page.route('https://fonts.googleapis.com/**', route => route.fulfill({ contentType: 'text/css', body: '' }));
   await page.route('https://i.imgur.com/**', route => route.fulfill({
@@ -384,4 +385,51 @@ test('weather failure and invalid readings leave a clean city-only fallback', as
   await failed;
   await expect(page.locator('.footer-weather')).toHaveText('Chicago, IL', { useInnerText: true });
   await expect(page.locator('[data-weather]')).toBeHidden();
+});
+
+test('food map sample view filters cities and connects pins to notes', async ({ page }, testInfo) => {
+  await page.goto('/food/');
+  await expect(page.getByRole('heading', { name: 'Worth a stop.' })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Food', exact: true })).toHaveAttribute('aria-current', 'page');
+  await expect(page.locator('.food-card')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Try a sample view' }).click();
+  await expect(page.locator('[data-food-preview-banner]')).toContainText('Fictional entries');
+  await expect(page.locator('.food-card')).toHaveCount(3);
+  await expect(page.locator('.food-pin')).toHaveCount(3);
+  await expect(page.locator('[data-food-list] a')).toHaveCount(0);
+  await page.getByLabel('Browse by city').selectOption('Beijing, China');
+  await expect(page.locator('.food-card')).toHaveCount(1);
+  await expect(page.locator('.food-pin')).toHaveCount(1);
+  await page.locator('.food-pin').click();
+  await expect(page.locator('.leaflet-popup')).toContainText('Your dumpling spot');
+  await page.getByRole('button', { name: 'Read the note' }).click();
+  await expect(page.locator('.food-card')).toBeFocused();
+  await page.getByRole('button', { name: 'Show on map' }).click();
+  await expect(page.locator('.leaflet-popup')).toBeVisible();
+  await page.getByLabel('Browse by city').selectOption('');
+  await expect(page.locator('.food-card')).toHaveCount(3);
+  await page.locator('.food-atlas').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: testInfo.outputPath('food-sample.png'), fullPage: true });
+  await page.getByRole('button', { name: 'Leave sample view' }).click();
+  await expect(page.locator('.food-card')).toHaveCount(0);
+  await expect(page.locator('.food-pin')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Try a sample view' })).toBeFocused();
+});
+
+test('food list remains usable when map code or imagery cannot load', async ({ page }) => {
+  await page.route('**/assets/leaflet/leaflet.js', route => route.abort());
+  await page.goto('/food/');
+  await page.getByRole('button', { name: 'Try a sample view' }).click();
+  await expect(page.locator('.food-card')).toHaveCount(3);
+  await expect(page.locator('[data-map-hint]')).toContainText('All the places are available');
+  await page.getByLabel('Browse by city').selectOption('Montreal, Canada');
+  await expect(page.locator('.food-card')).toHaveCount(1);
+  await expect(page.locator('.food-card')).toContainText('Your neighborhood café');
+  await page.unroute('**/assets/leaflet/leaflet.js');
+  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.goto('/food/');
+  await page.getByRole('button', { name: 'Try a sample view' }).click();
+  await expect(page.locator('[data-map-hint]')).toContainText('Map imagery is unavailable');
+  await expect(page.locator('.food-card')).toHaveCount(3);
+  await expect(page.locator('.food-pin')).toHaveCount(3);
 });

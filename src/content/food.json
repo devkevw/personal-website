@@ -1,0 +1,8 @@
+{
+  "places": [],
+  "previewPlaces": [
+    { "id": "sample-montreal", "name": "Your neighborhood café", "city": "Montreal", "country": "Canada", "latitude": 45.5019, "longitude": -73.5674, "order": "The thing you always come back for", "note": "A short note about what makes this place worth a stop. Sample only; this is not a real recommendation." },
+    { "id": "sample-london", "name": "Your late-night favorite", "city": "London", "country": "United Kingdom", "latitude": 51.5074, "longitude": -0.1278, "order": "Your go-to order", "note": "An after-dinner discovery, or somewhere a friend brought you. Sample only; this is not a real recommendation." },
+    { "id": "sample-beijing", "name": "Your dumpling spot", "city": "Beijing", "country": "China", "latitude": 39.9042, "longitude": 116.4074, "order": "The dish you still think about", "note": "A little context, a good memory, and what you would order again. Sample only; this is not a real recommendation." }
+  ]
+}

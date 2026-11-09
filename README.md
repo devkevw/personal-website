@@ -22,6 +22,7 @@ The header's moon/sun button switches between light and dark themes. Light is th
 - `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
 - `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
 - `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
+- `src/content/food.json`: food recommendations in `places`; `previewPlaces` contains fictional, opt-in examples only. Each real place needs `id`, `name`, `city`, `country`, `latitude`, `longitude`, `order`, and `note`, with an optional `photo` (HTTPS URL or `images/` path). Use restaurant coordinates for real entries. The Food page links each spot to Google Maps and filters by city.
 - `src/content/photos.json`: shared source for albums and the shuffled homepage carousels. Photos load as visitors browse. 187 photographs: 80 from China, 33 from England & Scotland, and 74 from the United States. Imgur hosts these photos.
 - `src/content/projects.json`: the early project archive, linked from About.
 
@@ -99,3 +100,5 @@ Select `devkevw/personal-website` and start from `redesign/v2`. Ask the environm
 Start a preview with `HOST=0.0.0.0 npm run dev` if required by the cloud environment, then open it through that environment's preview or forwarded port. The default port is 4173; `PORT` can override it. A cloud localhost address does not point to the cloud workspace when opened directly on a phone.
 
 Review and publish the development environment in Codex, then select it in the ChatGPT mobile app. This is separate from deploying the website. Read `AGENTS.md` before starting work; it carries the project decisions into a new task.
+
+The Food map uses vendored Leaflet 1.9.4 (license in `src/vendor/leaflet/LICENSE`) and OpenStreetMap tiles with visible attribution. It needs no API key. The notes remain available without the map or JavaScript; the optional sample view never mixes with real recommendations.

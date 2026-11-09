@@ -4,13 +4,13 @@ import { readFile, stat, mkdtemp, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { build, loadContent } from '../scripts/build.mjs';
-import { articlePage, tripPage, context, escape } from '../src/templates.mjs';
+import { articlePage, tripPage, food, context, escape } from '../src/templates.mjs';
 
 test('static output works at a project subpath, with complete local links and assets', async () => {
   const outDir = await mkdtemp(path.join(os.tmpdir(), 'kevin-website-test-'));
   try {
     const { routes } = await build({ outDir, siteUrl: 'https://example.com/personal-website/' });
-    assert.equal(routes.length, 8);
+    assert.equal(routes.length, 9);
     const pages = new Map();
     for (const route of routes) {
       const filename = path.join(outDir, route, 'index.html');
@@ -78,4 +78,17 @@ test('local album images and covers resolve correctly from nested trip pages', a
   const html = tripPage(context('travel/china/', data), trip);
   assert.match(html, /href="\.\.\/\.\.\/images\/hobbies\/book.png" data-photo/);
   assert.match(html, /src="\.\.\/\.\.\/images\/hobbies\/book.png"/);
+});
+
+
+test('food notes render without JavaScript and embedded content cannot close its script', async () => {
+  const data = await loadContent();
+  data.food.places = [{ id: 'test-cafe', name: 'A <café>', city: 'Montreal', country: 'Canada', latitude: 45.5, longitude: -73.5, order: 'Coffee & cake', note: '</script><script>alert(1)</script>', photo: 'images/hobbies/book.png' }];
+  const html = food(context('food/', data));
+  assert.match(html, /A &lt;café&gt;/);
+  assert.match(html, /Coffee &amp; cake/);
+  assert.match(html, /src="\.\.\/images\/hobbies\/book.png"/);
+  assert.match(html, /https:\/\/www.google.com\/maps\/search/);
+  assert.ok(!html.includes('</script><script>alert(1)</script>'));
+  assert.ok(html.includes('\\u003c/script>'));
 });
