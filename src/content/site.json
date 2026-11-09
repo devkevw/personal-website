@@ -26,11 +26,13 @@
   ],
   "timeline": [
     {
-      "period": "September–December 2026",
+      "period": "September — December 2026",
+      "homePeriod": "Fall 2026",
       "category": "Work",
       "title": "Data Science Intern",
-      "organization": "Intact",
-      "description": "Working on usage-based insurance and telematics, looking at how people drive."
+      "organization": "Intact Financial Corporation",
+      "location": "Montreal, QC",
+      "description": "Working on usage-based insurance and telematics, looking at how people drive. Most people with our app drive like my mom: very cautious."
     },
     {
       "period": "2025 — 2027",
@@ -38,15 +40,16 @@
       "title": "MS in Statistics",
       "organization": "University of Chicago",
       "location": "Chicago, IL",
-      "description": "Continuing my studies in statistics, with coursework in Bayesian inference, time series, and statistical computing. Expected graduation: May 2027."
+      "description": "Continuing my studies in statistics, with coursework in statistical theory, time series, and machine learning. So far, ate a lot of free food. Expected graduation: June 2027."
     },
     {
-      "period": "Summer 2025",
+      "period": "May — August 2025",
+      "homePeriod": "Summer 2025",
       "category": "Research",
       "title": "Undergraduate Student Researcher",
       "organization": "McGill University",
       "location": "Montreal, QC",
-      "description": "Studied how sports injuries affect performance using Bayesian hierarchical models. Worked in R and Stan to improve model efficiency and test results across more than 1,000 simulation scenarios."
+      "description": "Studied how sports injuries affect performance using Bayesian models in R and Stan. Still couldn't tell me when I could play basketball again after my back injury."
     },
     {
       "period": "February — July 2024",
@@ -54,33 +57,25 @@
       "title": "A semester in Beijing",
       "organization": "Tsinghua University",
       "location": "Beijing, China",
-      "description": "Spent a semester on exchange at Tsinghua, as part of five months in China. Studying, playing sports, and finding time to explore.",
+      "description": "Spent a semester on exchange at Tsinghua, where I reconnected with culture. Made new friends, played some sports, ripped Mahjong, explored lots, and occasionally studied.",
       "link": "https://medium.com/@kevw/my-time-at-tsinghua-university-ddd3b6347646",
       "linkLabel": "Read about my exchange"
     },
     {
-      "period": "Summer 2023",
+      "period": "May — August 2023",
       "category": "Work",
       "title": "Actuarial Automation Intern",
       "organization": "Sun Life Financial",
       "location": "Toronto, ON",
-      "description": "Built VBA tools to automate insurance policy illustrations and data entry, saving more than two hours of manual processing per run."
+      "description": "Built VBA tools to automate insurance policy illustrations and data entry. Made my actuarial teammates happy."
     },
     {
-      "period": "Summer 2022",
+      "period": "May — August 2022",
       "category": "Work",
       "title": "Actuarial Data Analytics Intern",
-      "organization": "Intact",
+      "organization": "Intact Financial Corporation",
       "location": "Montreal, QC",
-      "description": "Worked on claims forecasting and reporting using regression, SQL, and Power BI. Improved a forecasting model and helped make monthly reporting more efficient."
-    },
-    {
-      "period": "January 2022 — December 2024",
-      "category": "Teaching",
-      "title": "Course Assistant",
-      "organization": "McGill University",
-      "location": "Montreal, QC",
-      "description": "Worked as a course assistant for MATH 208: Introduction to Statistical Computing and MGCR 331: Information Systems."
+      "description": "Worked on claims forecasting and reporting using regression, SQL, and Power BI. Improved a forecasting model and helped make monthly reporting more efficient. Drank Bubly constantly."
     },
     {
       "period": "2021 — 2025",
@@ -88,14 +83,15 @@
       "title": "BS in Statistics & Computer Science",
       "organization": "McGill University",
       "location": "Montreal, QC",
-      "description": "Studied statistics and computer science, with a minor in management. Along the way: hackathons, course grading, and a growing interest in research."
+      "description": "Studied statistics and computer science, with a minor in management. Along the way: hackathons, course grading, a touch of research, and consistently losing in the playoffs in intramural basketball."
     },
     {
       "period": "September 2020 — May 2021",
       "category": "Research",
       "title": "Artificial Intelligence Research Intern",
       "organization": "JACOBB",
-      "description": "Worked on educational AI and predictive analytics."
+      "location": "Montreal, QC",
+      "description": "Worked on educational AI and predictive analytics with two profs. Helped them gather some data. They seemed pleased."
     }
   ],
   "interests": [
