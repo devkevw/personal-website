@@ -490,3 +490,28 @@ test('wrapped heading waves stay local and keep whole words together', async ({ 
   expect(Math.abs(await upper.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42))).toBeLessThan(.2);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
 });
+
+test('external destinations open new tabs while the website stays open', async ({ page, context }) => {
+  for (const route of routes) {
+    await page.goto(route);
+    const links = await page.locator('a[href^="https://"]').evaluateAll(elements => elements.map(link => ({ href: link.href, target: link.target, rel: [...link.relList] })));
+    expect(links.length).toBeGreaterThan(0);
+    for (const link of links) {
+      expect(link.target, link.href).toBe('_blank');
+      expect(link.rel, link.href).toEqual(expect.arrayContaining(['noopener', 'noreferrer']));
+    }
+  }
+  await context.route('https://medium.com/**', route => route.fulfill({ contentType: 'text/html', body: '<title>Article destination</title><p>An article.</p>' }));
+  await page.goto('/writing/');
+  const article = page.locator('.post-row').first();
+  const destination = await article.getAttribute('href');
+  const [tab] = await Promise.all([context.waitForEvent('page'), article.click()]);
+  await tab.waitForLoadState('domcontentloaded');
+  await expect(tab).toHaveURL(destination);
+  await expect(page).toHaveURL(/\/writing\/$/);
+  expect(await tab.evaluate(() => window.opener === null)).toBe(true);
+  await tab.close();
+  const travel = page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Travel', exact: true });
+  await travel.click();
+  await expect(page).toHaveURL(/\/travel\/$/);
+});
