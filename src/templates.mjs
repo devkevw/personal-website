@@ -59,7 +59,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
   </header>
   <main id="main" tabindex="-1"${wide ? '' : ' class="wrap"'}>${body}</main>
   <footer class="site-footer wrap">
-    <div class="footer-top"><div class="footer-intro"><p class="footer-weather">Chicago, IL<span data-weather hidden> · <a href="https://open-meteo.com/" data-weather-temperature title="Chicago weather data by Open-Meteo"></a></span></p></div><a class="text-link" href="mailto:${escape(site.email)}?subject=${escape(encodeURIComponent("🎉 Hi Kevin, I'd Like To Hire You!"))}">Hire me? ${arrow}</a></div>
+    <div class="footer-top"><div class="footer-intro"><p class="footer-weather">Chicago, IL<span data-weather hidden> · <a href="https://open-meteo.com/" data-weather-temperature title="Chicago weather data by Open-Meteo"></a></span></p></div><a class="text-link" href="mailto:${escape(site.email)}?subject=${escape(encodeURIComponent("🎉 Hi Kevin, I'd Like To Hire You!"))}">Hire me ${arrow}</a></div>
     <div class="footer-bottom"><small>© ${new Date().getFullYear()} ${escape(site.name)}</small><ul aria-label="Elsewhere">${site.socials.map(s => `<li><a href="${escape(s.url)}">${escape(s.label)} ${external}</a></li>`).join('')}</ul><a class="back-to-top" href="#main">Back to top ${directionArrow('up')}</a></div>
   </footer>
 </body>
