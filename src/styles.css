@@ -440,7 +440,7 @@ main.wrap { min-height: 65vh; }
   .footer-bottom { grid-template-columns: minmax(0, 1fr) auto; gap: 18px 12px; margin-top: 30px; }
   .footer-meta { display: contents; }
   .footer-meta > small:first-child { grid-column: 1; grid-row: 2; }
-  .footer-meta > small + small { grid-column: 1 / -1; grid-row: 3; justify-self: center; font-size: .65rem; }
+  .footer-meta > small + small { display: none; }
   .footer-bottom ul { grid-column: 1 / -1; grid-row: 1; gap: 24px; }
   .footer-bottom > .back-to-top { grid-column: 2; grid-row: 2; width: auto; }
 }
