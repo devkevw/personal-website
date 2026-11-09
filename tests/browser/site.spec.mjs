@@ -40,7 +40,7 @@ test('navigation, career anchor, and trip links reach their content', async ({ p
   await expect(page.locator('.trip-card').filter({ hasText: 'United States' })).toContainText('2025–2026');
   await page.getByRole('link', { name: /North America.*United States/ }).click();
   await expect(page.locator('.trip-intro')).toContainText('2025–2026');
-  await expect(page.getByRole('list', { name: 'Places visited' }).getByRole('listitem')).toHaveCount(11);
+  await expect(page.locator('[data-place-filter]')).toHaveCount(7);
   await expect(page.locator('[data-photo]')).toHaveCount(74);
   await expect(page.locator('[data-photo]').first()).toHaveAttribute('href', 'https://i.imgur.com/4S53Ssj.jpg');
   await expect(page.getByRole('heading', { name: 'From the camera roll.' })).toBeVisible();
@@ -137,6 +137,7 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Travel', exact: true }).click();
   await page.getByRole('link', { name: /Europe.*England & Scotland/ }).click();
   await expect(page.locator('[data-photo]')).toHaveCount(33);
+  await expect(page.locator('[data-place-filter]:visible')).toHaveCount(0);
   await expect(page.locator('[data-photo]').first()).toHaveAttribute('href', 'https://i.imgur.com/AIe7kty.jpg');
   await page.goto(`${baseURL}/about/`);
   const earlier = page.locator('.timeline-more .timeline > li');
@@ -540,4 +541,57 @@ test('back to top focuses content without outlining the page', async ({ page }, 
   await theme.focus();
   await expect(theme).toHaveCSS('outline-style', 'solid');
   await expect(theme).toHaveCSS('outline-width', '3px');
+});
+
+
+test('China place filters include smaller stops and scope the photo viewer', async ({ page }, testInfo) => {
+  await page.goto('/travel/china/');
+  const all = page.getByRole('button', { name: 'All photos', exact: true });
+  const tibet = page.getByRole('button', { name: 'Tibet', exact: true });
+  await expect(page.locator('.photo-item:visible')).toHaveCount(80);
+  await expect(all).toHaveAttribute('aria-pressed', 'true');
+  await tibet.focus();
+  await tibet.press('Space');
+  await expect(tibet).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.photo-item:visible')).toHaveCount(14);
+  await expect(page.locator('[data-album-count]')).toHaveText('14 of 80 photographs');
+  await expect(page.locator('[data-place-status]')).toContainText('Shigatse');
+  const first = page.locator('.photo-item:visible [data-photo]').first();
+  const last = page.locator('.photo-item:visible [data-photo]').last();
+  const lastImage = await last.getAttribute('data-full');
+  await first.click();
+  await expect(page.locator('[data-photo-count]')).toHaveText('1 / 14');
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.locator('[data-photo-count]')).toHaveText('14 / 14');
+  await expect(page.locator('[data-lightbox-image]')).toHaveAttribute('src', lastImage);
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('[data-photo-count]')).toHaveText('1 / 14');
+  await page.keyboard.press('Escape');
+  await expect(first).toBeFocused();
+  await page.getByRole('button', { name: 'Shanghai & nearby', exact: true }).click();
+  await expect(page.locator('.photo-item:visible')).toHaveCount(7);
+  await expect(page.locator('[data-place-status]')).toContainText('Hangzhou, Suzhou');
+  await page.getByRole('button', { name: 'Beijing & Hebei', exact: true }).click();
+  await expect(page.locator('[data-place-status]')).toContainText('Shijiazhuang, Zhangjiakou');
+  await page.getByRole('button', { name: 'Chengdu & Leshan', exact: true }).click();
+  await expect(page.locator('.photo-item:visible')).toHaveCount(4);
+  await page.locator('.trip-intro').screenshot({ path: testInfo.outputPath('china-place-filters.png') });
+  await all.click();
+  await expect(page.locator('.photo-item:visible')).toHaveCount(80);
+  await expect(page.locator('[data-album-count]')).toHaveText('80 photographs');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+});
+
+test('UK and US place filters use their regional groups', async ({ page }) => {
+  for (const [route, label, count, total] of [
+    ['/travel/england/', 'Edinburgh & Glasgow', 2, 33],
+    ['/travel/united-states/', 'Chicago, Milwaukee & Indiana', 14, 74]
+  ]) {
+    await page.goto(route);
+    await page.getByRole('button', { name: label, exact: true }).click();
+    await expect(page.locator('.photo-item:visible')).toHaveCount(count);
+    await expect(page.locator('[data-album-count]')).toHaveText(`${count} of ${total} photographs`);
+    await page.getByRole('button', { name: 'All photos', exact: true }).click();
+    await expect(page.locator('.photo-item:visible')).toHaveCount(total);
+  }
 });

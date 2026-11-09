@@ -38,6 +38,7 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - External website links and original-photo fallback links open in a new tab with `rel="noopener noreferrer"`. Keep internal navigation, in-page anchors, email actions, and the JavaScript photo viewer working in place. Use the shared `externalTarget` helper when adding external destinations.
 - Keep `#main` programmatically focusable for Skip to content and Back to top, but suppress its container outline. Retain visible keyboard focus rings on links, buttons, and disclosure controls.
 - Preserve semantic headings, keyboard access, image descriptions, reduced-motion behavior, and operation without JavaScript. Do not hide page content pending JavaScript.
+- Album place chips are filters with All photos reset, counts, and selected-group member places. Groups are explicit `photoGroups` in trips.json and `group` on photos, not inferred from captions at runtime. Group small nearby stops rather than creating single-photo filters. Keep all photos available without JavaScript, preserve photo order, and scope lightbox arrows/counts to the visible group.
 - New trip metadata uses `year` and optional `endYear`. Preserve photo order, avoid duplicate source URLs, and update existing count assertions when content changes.
 
 ## Development and checks

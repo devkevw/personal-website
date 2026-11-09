@@ -101,3 +101,5 @@ Start a preview with `HOST=0.0.0.0 npm run dev` if required by the cloud environ
 Review and publish the development environment in Codex, then select it in the ChatGPT mobile app. This is separate from deploying the website. Read `AGENTS.md` before starting work; it carries the project decisions into a new task.
 
 The Food page prototype and first five recommendations are saved on `future/v3-food` (`17ed5d6`) for a later iteration. They are intentionally excluded from version 2.
+
+Album filters use `photoGroups` in `src/content/trips.json` (stable `id`, visible `label`, and included `places`). Every photo in a grouped album needs a matching `group` in `photos.json`; the build rejects unassigned photos and empty groups. Keep small stops grouped with nearby destinations, retain original photo order, and show the member places in the selected-filter status. The photo viewer cycles only through the active filter. Without JavaScript, all photos remain visible.

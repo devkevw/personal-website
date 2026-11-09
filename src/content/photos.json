@@ -3,941 +3,1128 @@
     {
       "src": "https://i.imgur.com/pQYh5v6.jpg",
       "alt": "Mahjong, Beijing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/4xIUK68.jpg",
       "alt": "Monks Debating, Lhasa",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/XlU1I3F.jpg",
       "alt": "Jokhang Temple, Lhasa",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/55HujTj.jpg",
       "alt": "Potala Palace, Lhasa",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/a99KhFf.jpg",
       "alt": "Yaks, Tibet",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/4zadgRk.jpg",
       "alt": "Sun and Moon Pagodas, Guilin",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "guilin-yangshuo"
     },
     {
       "src": "https://i.imgur.com/4Cltokn.jpg",
       "alt": "Xianggong Mountain, Yangshuo",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "guilin-yangshuo"
     },
     {
       "src": "https://i.imgur.com/RZyCo9X.jpg",
       "alt": "Lijiang Old Town, Lijiang",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "yunnan"
     },
     {
       "src": "https://i.imgur.com/D8srgom.jpg",
       "alt": "Avatar Mountains, Zhangjiajie",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/Z6AlsZS.jpg",
       "alt": "Glass Bridge, Zhangjiajie",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/PY0Bbcv.jpg",
       "alt": "Yurt, Inner Mongolia",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "inner-mongolia"
     },
     {
       "src": "https://i.imgur.com/N05dAvd.jpg",
       "alt": "Inner Mongolia, China",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "inner-mongolia"
     },
     {
       "src": "https://i.imgur.com/UdDuasZ.jpg",
       "alt": "Tsinghua Flag Football, Beijing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/jbOlkCv.jpg",
       "alt": "Grasslands, Inner Mongolia",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "inner-mongolia"
     },
     {
       "src": "https://i.imgur.com/OULpvdr.jpg",
       "alt": "Hongya Dong, Chongqing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/2gQZ75B.jpg",
       "alt": "Yangtze River Cableway, Chongqing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/gxV8wdp.jpg",
       "alt": "The Bund, Shanghai",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "shanghai-nearby"
     },
     {
       "src": "https://i.imgur.com/tDF8xHe.jpg",
       "alt": "Great Wall of China, Beijing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/YB5d9m9.jpg",
       "alt": "West Lake, Hangzhou",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "shanghai-nearby"
     },
     {
       "src": "https://i.imgur.com/O4ybXgT.jpg",
       "alt": "Terracotta Army, Xi'an",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "xian"
     },
     {
       "src": "https://i.imgur.com/OwsAHf0.jpg",
       "alt": "火锅, Chongqing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/lfam28e.jpg",
       "alt": "Great Hall of the People, Chongqing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/7ZCALIh.jpg",
       "alt": "Horse Show, Inner Mongolia",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "inner-mongolia"
     },
     {
       "src": "https://i.imgur.com/gizr3cE.jpg",
       "alt": "Beijing Ducks Game, Beijing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/tuSiR7h.jpg",
       "alt": "Qingdao, China",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "qingdao"
     },
     {
       "src": "https://i.imgur.com/cbNrctB.jpg",
       "alt": "清华工字厅, Beijing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/RukBb8Y.jpg",
       "alt": "火车头步行街, Shijiazhuang",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/bBFiiQO.jpg",
       "alt": "Lhasa, Tibet",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/ab0dw5K.jpg",
       "alt": "Jokhang Temple, Lhasa",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/rRzIwxf.jpg",
       "alt": "Yamdrok Lake, Tibet",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/wHXTDD6.jpg",
       "alt": "Yangshuo, Guilin",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "guilin-yangshuo"
     },
     {
       "src": "https://i.imgur.com/5ZSMESH.jpg",
       "alt": "798 Art Zone, Beijing",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/krWpDhq.jpg",
       "alt": "小西, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/9PjIzhZ.jpg",
       "alt": "Barkhor Street, Lhasa",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/vsAiMhw.jpg",
       "alt": "Tashilhunpo Monastery, Shigatse",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/sK40Yer.jpg",
       "alt": "Everest Base Camp, Tibet",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/A6bzrr2.jpg",
       "alt": "Tibetan Mastiffs, Tibet",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/5ufRfPN.jpg",
       "alt": "Longji Rice Terraces, Longsheng",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "guilin-yangshuo"
     },
     {
       "src": "https://i.imgur.com/yZVjOvk.jpg",
       "alt": "Yangshuo, Guilin",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "guilin-yangshuo"
     },
     {
       "src": "https://i.imgur.com/ALnudnq.jpg",
       "alt": "Yulong River, Yangshuo",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "guilin-yangshuo"
     },
     {
       "src": "https://i.imgur.com/6vr65lz.jpg",
       "alt": "Stairway to Heaven, Zhangjiajie",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/68SL3C7.jpg",
       "alt": "Tianmen Mountain, Zhangjiajie",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/SoUIig8.jpg",
       "alt": "Zhangjiajie National Forest Park, Zhangjiajie",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/g19dcLD.jpg",
       "alt": "A Little Friend, Zhangjiajie",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/25fbs16.jpg",
       "alt": "KTV, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/WNJqRmU.jpg",
       "alt": "Yunnan Ethnic Village, Kunming",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "yunnan"
     },
     {
       "src": "https://i.imgur.com/qH5j8Q4.jpg",
       "alt": "Largest Prayer Wheel, Shangri-La",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "yunnan"
     },
     {
       "src": "https://i.imgur.com/NhaNFX7.jpg",
       "alt": "Barkhor Steet, Lhasa",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/EIlyGuS.jpg",
       "alt": "Riding, Inner Mongolia",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "inner-mongolia"
     },
     {
       "src": "https://i.imgur.com/DfbvMk0.jpg",
       "alt": "清华大礼堂, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/ipdc3SE.jpg",
       "alt": "Yuangmingyuan, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/bcg9JlU.jpg",
       "alt": "Leshan Giant Buddha, Leshan",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chengdu-leshan"
     },
     {
       "src": "https://i.imgur.com/Wl1AmV9.jpg",
       "alt": "Liziba Station, Chongqing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/yAvGL6t.jpg",
       "alt": "Jiefangbei, Chongqing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/0mY6I3b.jpg",
       "alt": "Hotpot Base, Chongqing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/RJklBne.jpg",
       "alt": "Chongqing, China",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/x7KMAzb.jpg",
       "alt": "Chongqing, China",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/XayDrAe.jpg",
       "alt": "Chongqing, China",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chongqing"
     },
     {
       "src": "https://i.imgur.com/Zuv2kgG.jpg",
       "alt": "Bamboo Forest, Chengdu",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chengdu-leshan"
     },
     {
       "src": "https://i.imgur.com/2n6IEl7.jpg",
       "alt": "Chengdu Research Base of Giant Panda Breeding, Chengdu",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chengdu-leshan"
     },
     {
       "src": "https://i.imgur.com/dHABzIc.jpg",
       "alt": "Red Panda, Chengdu",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "chengdu-leshan"
     },
     {
       "src": "https://i.imgur.com/d4Pn3LT.jpg",
       "alt": "Pudong, Shanghai",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "shanghai-nearby"
     },
     {
       "src": "https://i.imgur.com/CXKxtta.jpg",
       "alt": "Tsinghua Badminton, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/AhTko82.jpg",
       "alt": "Tianzifang, Shanghai",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "shanghai-nearby"
     },
     {
       "src": "https://i.imgur.com/uCZyYuw.jpg",
       "alt": "Pingjiang Road, Suzhou",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "shanghai-nearby"
     },
     {
       "src": "https://i.imgur.com/s1Mro2p.jpg",
       "alt": "Wukang Mansion, Shanghai",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "shanghai-nearby"
     },
     {
       "src": "https://i.imgur.com/R4mcuHZ.jpg",
       "alt": "Disneyland, Shanghai",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "shanghai-nearby"
     },
     {
       "src": "https://i.imgur.com/wXpy2HJ.jpg",
       "alt": "Tsingtao Beer Museum, Qingdao",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "qingdao"
     },
     {
       "src": "https://i.imgur.com/OrgFSsn.jpg",
       "alt": "Zhanqiao Pier, Qingdao",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "qingdao"
     },
     {
       "src": "https://i.imgur.com/UcegMnt.jpg",
       "alt": "Hooping, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/WXETMtL.jpg",
       "alt": "Temple of Heaven, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/rUw2Kyy.jpg",
       "alt": "Summer Palace, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/E9qKM8x.jpg",
       "alt": "Making Friends, Zhangjiakou",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/YwJeZbK.jpg",
       "alt": "清华二校门, Beijing",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "beijing-hebei"
     },
     {
       "src": "https://i.imgur.com/BsemJ7D.jpg",
       "alt": "Terracotta Army, Xi'an",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "xian"
     },
     {
       "src": "https://i.imgur.com/NSWDQrS.jpg",
       "alt": "Avatar Mountains, Zhangjiajie",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/7128kN6.jpg",
       "alt": "Zhangjiajie National Forest Park, Zhangjiajie",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/KJqe1ZL.jpg",
       "alt": "Tianmen Mountain, Zhangjiajie",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "zhangjiajie"
     },
     {
       "src": "https://i.imgur.com/gZizXdt.jpg",
       "alt": "Potala Palace, Lhasa",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "tibet"
     },
     {
       "src": "https://i.imgur.com/m5vDidS.jpg",
       "alt": "Jokhang Temple, Lhasa",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "tibet"
     }
   ],
   "england": [
     {
       "src": "https://i.imgur.com/AIe7kty.jpg",
       "alt": "London Stadium, London",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/TYH6HVK.jpg",
       "alt": "London Eye, London",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/3WUFiPK.jpg",
       "alt": "Stonehenge, Salisbury Plain",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "bath-stonehenge"
     },
     {
       "src": "https://i.imgur.com/0hUxxeT.jpg",
       "alt": "Brighton, UK",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "brighton"
     },
     {
       "src": "https://i.imgur.com/yS9fOEe.jpg",
       "alt": "Loch Ness, Scottish Highlands",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "highlands"
     },
     {
       "src": "https://i.imgur.com/EmZ8yRm.jpg",
       "alt": "York Minster, York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "york"
     },
     {
       "src": "https://i.imgur.com/oWnINZt.jpg",
       "alt": "Palace of Westminster, London",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/848glge.jpg",
       "alt": "Camden Market, London",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/VZWMxwO.jpg",
       "alt": "Piccadilly Circus, London",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/sXubOoj.jpg",
       "alt": "Clifford's Tower, York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "york"
     },
     {
       "src": "https://i.imgur.com/Z9BPBIq.jpg",
       "alt": "Emmanuel College, Cambridge",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "oxford-cambridge"
     },
     {
       "src": "https://i.imgur.com/pTVJ9b6.jpg",
       "alt": "Royal Pavilion, Brighton",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "brighton"
     },
     {
       "src": "https://i.imgur.com/jBD5J2C.jpg",
       "alt": "The Roman Baths, Bath",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "bath-stonehenge"
     },
     {
       "src": "https://i.imgur.com/kohSqyf.jpg",
       "alt": "Duke of Wellington, Glasgow",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "edinburgh-glasgow"
     },
     {
       "src": "https://i.imgur.com/qYDsR59.jpg",
       "alt": "Big Ben, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/RJcHR1v.jpg",
       "alt": "Tower Bridge, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/CLmdDRk.jpg",
       "alt": "King's Cross, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/gBBYP0B.jpg",
       "alt": "Arthur's Seat, Edinburgh",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "edinburgh-glasgow"
     },
     {
       "src": "https://i.imgur.com/1haQXyO.jpg",
       "alt": "Radcliffe Camera, Oxford",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "oxford-cambridge"
     },
     {
       "src": "https://i.imgur.com/4XZPhIE.jpg",
       "alt": "Mathematical Bridge, Cambridge",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "oxford-cambridge"
     },
     {
       "src": "https://i.imgur.com/4kJ1jN9.jpg",
       "alt": "Camden Market, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/8uqEadU.jpg",
       "alt": "Highland Cow, Scottish Highlands",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "highlands"
     },
     {
       "src": "https://i.imgur.com/Orx8l9d.jpg",
       "alt": "Portobello Road, Notting Hill",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/IbW2Jvq.jpg",
       "alt": "Paddington Bear, Paddington Station",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/oFCqJKR.jpg",
       "alt": "Stamford Bridge, Fulham",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/2QHcvi2.jpg",
       "alt": "Westminster Abbey, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/qwNQFDn.jpg",
       "alt": "Scottish Highlands, Scotland",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "highlands"
     },
     {
       "src": "https://i.imgur.com/vd0cjt5.jpg",
       "alt": "St.Paul's Cathedral, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/Vksdxu9.jpg",
       "alt": "Brighton Palace Pier, Brighton",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "brighton"
     },
     {
       "src": "https://i.imgur.com/MnjubcA.jpg",
       "alt": "The Den, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/CeSKUPS.jpg",
       "alt": "Royal Albert Hall, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     },
     {
       "src": "https://i.imgur.com/vZgujW3.jpg",
       "alt": "Bridge of Sighs, Oxford",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "oxford-cambridge"
     },
     {
       "src": "https://i.imgur.com/lN3PraW.jpg",
       "alt": "Buckingham Palace, London",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "london"
     }
   ],
   "united-states": [
     {
       "src": "https://i.imgur.com/4S53Ssj.jpg",
       "alt": "The Vessel at Hudson Yards, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/0sWB6Lq.jpg",
       "alt": "New York Public Library, New York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/PoOaoCs.jpg",
       "alt": "Friends at Hershey’s Chocolate World, New York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/SZk0j0z.jpg",
       "alt": "Theatre stage before a performance, New York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/B69Ylco.jpg",
       "alt": "Lower Manhattan skyline from the water, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/06O3KTQ.jpg",
       "alt": "Manhattan Bridge from DUMBO, Brooklyn",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/SysWyHY.jpg",
       "alt": "Street stalls in Little Italy, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/JSO0zbA.jpg",
       "alt": "One World Trade Center, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/k2jSHdD.jpg",
       "alt": "Inside the Oculus, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/NBbuBrb.jpg",
       "alt": "A rose at the 9/11 Memorial, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/wjs8ceM.jpg",
       "alt": "New York Stock Exchange, New York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/juEZasK.jpg",
       "alt": "Fearless Girl statue, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/zWTVM6j.jpg",
       "alt": "Charging Bull sculpture, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/xk25R2r.jpg",
       "alt": "Statue of Liberty from the water, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/qrwJRwt.jpg",
       "alt": "Walking across the Brooklyn Bridge, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/doTJiOd.jpg",
       "alt": "Vincent van Gogh’s The Starry Night, New York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/93sEzTr.jpg",
       "alt": "Salvador Dalí’s The Persistence of Memory, New York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/m9TwaOt.jpg",
       "alt": "Andy Warhol’s Campbell’s Soup Cans, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/b6YOORh.jpg",
       "alt": "Rockefeller Center, New York",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/6wpOAhW.jpg",
       "alt": "Louis Vuitton’s trunk-shaped façade, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/MoVEdiR.jpg",
       "alt": "Geometric stone façade and plaza, New Haven",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/bF6PsxI.jpg",
       "alt": "A pizza stop on the trip",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/SoELpia.jpg",
       "alt": "Crowds and billboards in Times Square, New York",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/fygUI7Z.jpg",
       "alt": "Cloud Gate in Millennium Park, Chicago",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/VmN35lc.jpg",
       "alt": "Vincent van Gogh self-portrait on display, Chicago",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/PT2CZou.jpg",
       "alt": "Basketball at the United Center, Chicago",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/OAhFETi.jpg",
       "alt": "The Chicago River dyed green, Chicago",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/XjCEff7.jpg",
       "alt": "Race day at Indianapolis Motor Speedway, Indiana",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/FYV0LkE.jpg",
       "alt": "Boat and Navy Pier on Lake Michigan, Chicago",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/S9xpJBE.jpg",
       "alt": "Chicago skyline from the lakefront",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/RkD7PqM.jpg",
       "alt": "Outside Wrigley Field, Chicago",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/cWwshwz.jpg",
       "alt": "Hiking through a rocky gorge, Indiana",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/oo8LgIj.jpg",
       "alt": "Outdoor sculptures beside a brewery, Milwaukee",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/zoDnHQL.jpg",
       "alt": "Looking up at Marina City, Chicago",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/PlDNNKZ.jpg",
       "alt": "Riverfront buildings and boats, Chicago",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/DyJSu5h.jpg",
       "alt": "Sand dunes and Lake Michigan, Indiana",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/dHWM3d8.jpg",
       "alt": "Basketball memorabilia at the United Center, Chicago",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/nUE6zNf.jpg",
       "alt": "Clouds over the Grand Canyon, Arizona",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/E5PsHX6.jpg",
       "alt": "Standing on a rocky overlook at the Grand Canyon",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/FcIeun8.jpg",
       "alt": "Wildlife beside a trail at the Grand Canyon",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/n0vohra.jpg",
       "alt": "Grand Canyon views from Ooh Aah Point",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/m0yPyKR.jpg",
       "alt": "A Route 66 roadside stop, Arizona",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/ritQb5P.jpg",
       "alt": "Hoover Dam and the bridge over the Colorado River",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/cEFXrl3.jpg",
       "alt": "The Eiffel Tower replica on the Las Vegas Strip",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/tMBOhQn.jpg",
       "alt": "Live music in Las Vegas",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/xtyl0K7.jpg",
       "alt": "Penn & Teller on stage, Las Vegas",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/KSLDiEP.jpg",
       "alt": "The Sphere lit up at night, Las Vegas",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/8G0m4IB.jpg",
       "alt": "Seattle skyline above a green park",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/Bw7caj8.jpg",
       "alt": "Pike Place Market, Seattle",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/cFfeR52.jpg",
       "alt": "The Gum Wall, Seattle",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/cVHeIKy.jpg",
       "alt": "Seattle skyline from across the water",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/sN5sa5M.jpg",
       "alt": "Looking up at the Space Needle, Seattle",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/m85Ob2G.jpg",
       "alt": "Steps leading toward Mount Rainier, Washington",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/CIfh1No.jpg",
       "alt": "A small animal beside the trail at Mount Rainier",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/VmmmZX2.jpg",
       "alt": "Wildlife on a rock above the trail at Mount Rainier",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/utnvOhk.jpg",
       "alt": "Waterfall with Mount Rainier in the background, Washington",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/jnUewRX.jpg",
       "alt": "Pop culture exhibit, Seattle",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/it0HUyu.jpg",
       "alt": "The Fremont Troll under the bridge, Seattle",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/xO0WTSu.jpg",
       "alt": "Waterside view and bridge, Seattle",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/ScTI0NC.jpg",
       "alt": "Alcatraz Island across San Francisco Bay",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/U14SD3i.jpg",
       "alt": "Sea lions at Pier 39, San Francisco",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/uuvcHXw.jpg",
       "alt": "Rainbow crosswalk, San Francisco",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/zTHd8hd.jpg",
       "alt": "Golden Gate Bridge, San Francisco",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/qb0VEa6.jpg",
       "alt": "Sunset over the ocean, San Francisco",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/G0ctGtj.jpg",
       "alt": "Waves on a sandy beach, Acadia",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/D1XaS07.jpg",
       "alt": "Taking a break on a rocky summit, Acadia",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/UH59cth.jpg",
       "alt": "Autumn hills and coastal islands, Acadia",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/SYD1Mhh.jpg",
       "alt": "Hiking a cliffside trail, Acadia",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/TGxMWPJ.jpg",
       "alt": "Fall foliage and ocean views, Acadia",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/hsTwsQL.jpg",
       "alt": "Lighthouse above the rocky Maine coast",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/j0r7XcZ.jpg",
       "alt": "Lobster dinner in Maine",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/tInNlxE.jpg",
       "alt": "A tide pool on the Maine coast",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/q0PeDiD.jpg",
       "alt": "Rocky shoreline, Acadia",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/E1kOXeK.jpg",
       "alt": "Walking along the shore at low tide, Maine",
-      "orientation": "landscape"
+      "orientation": "landscape",
+      "group": "acadia-maine"
     }
   ]
 }

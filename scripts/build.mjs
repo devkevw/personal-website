@@ -36,6 +36,17 @@ export async function loadContent() {
   }
   for (const trip of trips) {
     requireValue(Array.isArray(trip.places) && trip.places.length > 0, `Missing places for ${trip.slug}`);
+    if (trip.photoGroups) {
+      requireValue(Array.isArray(trip.photoGroups) && trip.photoGroups.length > 0, `Missing photo groups: ${trip.slug}`);
+      const ids = new Set();
+      for (const group of trip.photoGroups) {
+        requireValue(slugPattern.test(group.id) && !ids.has(group.id), `Invalid or duplicate photo group: ${trip.slug}/${group.id}`);
+        ids.add(group.id);
+        requireValue(group.label?.trim() && Array.isArray(group.places) && group.places.length > 0 && group.places.every(place => typeof place === 'string' && place.trim()), `Missing group label or places: ${group.id}`);
+        requireValue(photos[trip.slug]?.some(photo => photo.group === group.id), `Empty photo group: ${trip.slug}/${group.id}`);
+      }
+      requireValue(photos[trip.slug].every(photo => ids.has(photo.group)), `Unassigned photo in ${trip.slug}`);
+    }
     if (trip.relatedWriting) requireValue(posts.some(post => post.slug === trip.relatedWriting), `Unknown related article: ${trip.relatedWriting}`);
     if (trip.year) requireValue(Number.isInteger(trip.year), `Invalid trip year: ${trip.slug}`);
     if (trip.endYear !== undefined) requireValue(Number.isInteger(trip.year) && Number.isInteger(trip.endYear) && trip.endYear >= trip.year, `Invalid trip year range: ${trip.slug}`);

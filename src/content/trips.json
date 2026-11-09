@@ -11,15 +11,119 @@
     "note": "In 2024, I spent five months in China, including a semester on exchange at Tsinghua University in Beijing. Here are some of the places and moments I brought back with me.",
     "places": [
       "Beijing",
-      "Tibet",
-      "Guangxi",
-      "Yunnan",
+      "Shijiazhuang",
+      "Zhangjiakou",
+      "Lhasa",
+      "Shigatse",
+      "Guilin",
+      "Yangshuo",
+      "Longsheng",
+      "Lijiang",
+      "Kunming",
+      "Shangri-La",
       "Zhangjiajie",
       "Inner Mongolia",
+      "Chengdu",
+      "Leshan",
       "Chongqing",
-      "Shanghai"
+      "Shanghai",
+      "Hangzhou",
+      "Suzhou",
+      "Xi'an",
+      "Qingdao"
     ],
-    "relatedWriting": "my-time-at-tsinghua-university"
+    "relatedWriting": "my-time-at-tsinghua-university",
+    "photoGroups": [
+      {
+        "id": "beijing-hebei",
+        "label": "Beijing & Hebei",
+        "places": [
+          "Beijing",
+          "Shijiazhuang",
+          "Zhangjiakou"
+        ]
+      },
+      {
+        "id": "tibet",
+        "label": "Tibet",
+        "places": [
+          "Lhasa",
+          "Shigatse",
+          "Yamdrok Lake",
+          "Everest Base Camp"
+        ]
+      },
+      {
+        "id": "guilin-yangshuo",
+        "label": "Guilin & Yangshuo",
+        "places": [
+          "Guilin",
+          "Yangshuo",
+          "Longsheng"
+        ]
+      },
+      {
+        "id": "yunnan",
+        "label": "Yunnan",
+        "places": [
+          "Lijiang",
+          "Kunming",
+          "Shangri-La"
+        ]
+      },
+      {
+        "id": "zhangjiajie",
+        "label": "Zhangjiajie",
+        "places": [
+          "Zhangjiajie"
+        ]
+      },
+      {
+        "id": "inner-mongolia",
+        "label": "Inner Mongolia",
+        "places": [
+          "Inner Mongolia"
+        ]
+      },
+      {
+        "id": "chongqing",
+        "label": "Chongqing",
+        "places": [
+          "Chongqing"
+        ]
+      },
+      {
+        "id": "chengdu-leshan",
+        "label": "Chengdu & Leshan",
+        "places": [
+          "Chengdu",
+          "Leshan"
+        ]
+      },
+      {
+        "id": "shanghai-nearby",
+        "label": "Shanghai & nearby",
+        "places": [
+          "Shanghai",
+          "Hangzhou",
+          "Suzhou"
+        ]
+      },
+      {
+        "id": "xian",
+        "label": "Xi’an",
+        "places": [
+          "Xi'an"
+        ]
+      },
+      {
+        "id": "qingdao",
+        "label": "Qingdao",
+        "places": [
+          "Qingdao"
+        ]
+      }
+    ]
   },
   {
     "slug": "england",
@@ -36,10 +140,66 @@
       "Oxford",
       "Cambridge",
       "Bath",
+      "Stonehenge",
       "Brighton",
       "York",
       "Edinburgh",
+      "Glasgow",
       "Scottish Highlands"
+    ],
+    "photoGroups": [
+      {
+        "id": "london",
+        "label": "London",
+        "places": [
+          "London"
+        ]
+      },
+      {
+        "id": "oxford-cambridge",
+        "label": "Oxford & Cambridge",
+        "places": [
+          "Oxford",
+          "Cambridge"
+        ]
+      },
+      {
+        "id": "bath-stonehenge",
+        "label": "Bath & Stonehenge",
+        "places": [
+          "Bath",
+          "Stonehenge"
+        ]
+      },
+      {
+        "id": "brighton",
+        "label": "Brighton",
+        "places": [
+          "Brighton"
+        ]
+      },
+      {
+        "id": "york",
+        "label": "York",
+        "places": [
+          "York"
+        ]
+      },
+      {
+        "id": "edinburgh-glasgow",
+        "label": "Edinburgh & Glasgow",
+        "places": [
+          "Edinburgh",
+          "Glasgow"
+        ]
+      },
+      {
+        "id": "highlands",
+        "label": "Scottish Highlands",
+        "places": [
+          "Scottish Highlands"
+        ]
+      }
     ]
   },
   {
@@ -65,6 +225,58 @@
     ],
     "theme": "mountain",
     "cover": "https://i.imgur.com/qrwJRwt.jpg",
-    "coverAlt": "Walking across the Brooklyn Bridge, New York"
+    "coverAlt": "Walking across the Brooklyn Bridge, New York",
+    "photoGroups": [
+      {
+        "id": "new-york-new-haven",
+        "label": "New York & New Haven",
+        "places": [
+          "New York",
+          "New Haven"
+        ]
+      },
+      {
+        "id": "great-lakes",
+        "label": "Chicago, Milwaukee & Indiana",
+        "places": [
+          "Chicago",
+          "Milwaukee",
+          "Indiana"
+        ]
+      },
+      {
+        "id": "vegas-grand-canyon",
+        "label": "Las Vegas & Grand Canyon",
+        "places": [
+          "Las Vegas",
+          "Grand Canyon",
+          "Route 66",
+          "Hoover Dam"
+        ]
+      },
+      {
+        "id": "seattle-rainier",
+        "label": "Seattle & Mount Rainier",
+        "places": [
+          "Seattle",
+          "Mount Rainier"
+        ]
+      },
+      {
+        "id": "san-francisco",
+        "label": "San Francisco",
+        "places": [
+          "San Francisco"
+        ]
+      },
+      {
+        "id": "acadia-maine",
+        "label": "Acadia & Maine",
+        "places": [
+          "Acadia National Park",
+          "Maine coast"
+        ]
+      }
+    ]
   }
 ]

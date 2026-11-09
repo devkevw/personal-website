@@ -241,6 +241,36 @@ document.querySelectorAll('img').forEach(image => {
 
 const dialog = document.querySelector('.lightbox');
 const photoLinks = [...document.querySelectorAll('[data-photo]')];
+let visiblePhotoLinks = [...photoLinks];
+const placeFilters = document.querySelector('[data-place-filters]');
+if (placeFilters && photoLinks.length) {
+  const buttons = [...placeFilters.querySelectorAll('[data-place-filter]')];
+  const status = document.querySelector('[data-place-status]');
+  const albumCount = document.querySelector('[data-album-count]');
+  placeFilters.classList.add('is-filterable');
+  placeFilters.querySelector('[data-place-all]').hidden = false;
+  placeFilters.querySelectorAll('[data-place-label]').forEach(label => { label.hidden = true; });
+  buttons.forEach(button => {
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const group = button.dataset.placeFilter;
+      visiblePhotoLinks = photoLinks.filter(link => {
+        const figure = link.closest('[data-photo-group]');
+        const included = group === 'all' || figure.dataset.photoGroup === group;
+        figure.hidden = !included;
+        return included;
+      });
+      buttons.forEach(control => control.setAttribute('aria-pressed', String(control === button)));
+      albumCount.textContent = group === 'all' ? `${photoLinks.length} photographs` : `${visiblePhotoLinks.length} of ${photoLinks.length} photographs`;
+      status.textContent = group === 'all'
+        ? `All ${photoLinks.length} photographs. Choose a place to filter.`
+        : `${visiblePhotoLinks.length} photographs · ${button.dataset.groupPlaces}`;
+    });
+  });
+  status.hidden = false;
+  status.textContent = `All ${photoLinks.length} photographs. Choose a place to filter.`;
+}
+
 if (dialog && typeof dialog.showModal === 'function' && photoLinks.length) {
   const image = dialog.querySelector('[data-lightbox-image]');
   const caption = dialog.querySelector('[data-lightbox-caption]');
@@ -249,20 +279,23 @@ if (dialog && typeof dialog.showModal === 'function' && photoLinks.length) {
   let opener;
 
   function showPhoto(index) {
-    activeIndex = (index + photoLinks.length) % photoLinks.length;
-    const link = photoLinks[activeIndex];
+    if (!visiblePhotoLinks.length) return;
+    activeIndex = (index + visiblePhotoLinks.length) % visiblePhotoLinks.length;
+    const link = visiblePhotoLinks[activeIndex];
     image.parentElement.querySelector('.image-fallback')?.remove();
     image.hidden = false;
     delete image.dataset.fallbackShown;
     image.alt = link.dataset.caption;
     image.src = link.dataset.full;
     caption.textContent = link.dataset.caption;
-    count.textContent = `${activeIndex + 1} / ${photoLinks.length}`;
+    count.textContent = `${activeIndex + 1} / ${visiblePhotoLinks.length}`;
   }
 
-  photoLinks.forEach((link, index) => link.addEventListener('click', event => {
+  photoLinks.forEach(link => link.addEventListener('click', event => {
     // Preserve modifier clicks and the ordinary link fallback.
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    const index = visiblePhotoLinks.indexOf(link);
+    if (index === -1) return;
     event.preventDefault();
     opener = link;
     showPhoto(index);
