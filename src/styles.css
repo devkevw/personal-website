@@ -317,11 +317,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .footer-weather { line-height: 1.6; }
 .footer-weather a { text-underline-offset: 3px; text-decoration-color: var(--line); }
 .footer-weather a:hover { text-decoration: underline; text-decoration-color: currentColor; }
-.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin-top: 45px; color: var(--muted); font-size: .7rem; }
-.footer-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; min-width: 0; }
+.footer-bottom { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 25px; margin-top: 45px; color: var(--muted); font-size: .7rem; }
+.footer-meta { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .footer-meta small { white-space: nowrap; }
 .footer-bottom small { font-size: inherit; }
-.footer-bottom ul { display: flex; gap: 25px; list-style: none; padding: 0; margin: 0; }
+.footer-bottom > .back-to-top { justify-self: end; }
+.footer-bottom ul { justify-self: center; display: flex; gap: 25px; list-style: none; padding: 0; margin: 0; }
 .footer-bottom a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 main.wrap { min-height: 65vh; }
 
@@ -434,7 +435,7 @@ main.wrap { min-height: 65vh; }
   .project-list + a { margin-bottom: 55px; }
   .article { margin-top: 35px; }
   .prose { font-size: 1rem; }
-  .footer-bottom { flex-wrap: wrap; gap: 18px; margin-top: 30px; }
+  .footer-bottom { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px; }
   .footer-bottom ul { gap: 18px; }
   .back-to-top { width: 100%; }
 }
