@@ -152,7 +152,7 @@ export function writing(ctx) {
   return layout(ctx, { title: 'Writing', section: 'writing', description: 'Essays, reflections, and occasional poetry by Kevin Wang. On university, travel, and life along the way.', body: `
     ${intro('', 'Writing.', 'Sometimes I get the urge to type words at a screen. This is a result of those times.')}
     <section class="writing-index" aria-label="Published writing">${postRows(ctx, ctx.posts)}</section>
-    <aside class="writing-note"><span class="note-symbol" aria-hidden="true">✳</span><p>Some of these pieces live on Medium. New writing will find a home here, too.</p><a class="text-link" href="https://medium.com/@kevw">Find me on Medium ${external}</a></aside>` });
+    <aside class="writing-note"><span class="note-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" focusable="false"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"/></svg></span><p>Some of these pieces live on Medium. New writing will find a home here, too.</p><a class="text-link" href="https://medium.com/@kevw">Find me on Medium ${external}</a></aside>` });
 }
 
 export function travel(ctx) {
