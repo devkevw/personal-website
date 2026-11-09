@@ -116,6 +116,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .typewriter-play, [data-paused="true"] .typewriter-pause { display: none; }
 [data-paused="true"] .typewriter-play { display: block; }
 @keyframes cursor-blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+.hero-weather { color: var(--muted); font-size: .8rem; line-height: 1.6; margin-top: 18px; }
+.hero-weather a { text-underline-offset: 3px; text-decoration-color: var(--line); }
+.hero-weather a:hover { text-decoration: underline; text-decoration-color: currentColor; }
 .hero-note { color: var(--muted); font-size: .95rem; max-width: 420px; margin-top: 24px; line-height: 1.85; }
 .hero-copy .pill-link { margin-top: 30px; }
 .hero-photo { position: relative; align-self: center; padding-top: 15px; }

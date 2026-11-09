@@ -269,3 +269,24 @@ if (dialog && typeof dialog.showModal === 'function' && photoLinks.length) {
   const hint = document.querySelector('[data-gallery-hint]');
   if (hint) hint.hidden = false;
 }
+
+
+async function enhanceWeather() {
+  const temperature = document.querySelector('[data-weather-temperature]');
+  if (!temperature) return;
+  try {
+    const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.8781&longitude=-87.6298&current=temperature_2m&temperature_unit=celsius&forecast_days=1', {
+      signal: AbortSignal.timeout(6000), credentials: 'omit', referrerPolicy: 'no-referrer'
+    });
+    if (!response.ok) return;
+    const data = await response.json();
+    const value = data.current?.temperature_2m;
+    if (typeof value !== 'number' || !Number.isFinite(value)) return;
+    temperature.textContent = `${Math.round(value) || 0}°C`;
+    temperature.setAttribute('aria-label', `${temperature.textContent} in Chicago. Weather data by Open-Meteo.`);
+    temperature.closest('[data-weather]').hidden = false;
+  } catch {
+    // Keep the city visible if weather is unavailable; never show a made-up reading.
+  }
+}
+enhanceWeather();

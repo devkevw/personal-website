@@ -4,6 +4,7 @@ const routes = ['/', '/about/', '/writing/', '/travel/', '/archive/', '/travel/c
 
 // External hosts are not a prerequisite for navigation or gallery tests.
 test.beforeEach(async ({ page }) => {
+  await page.route('https://api.open-meteo.com/**', route => route.fulfill({ json: { current: { temperature_2m: 12.6 } } }));
   await page.route('https://fonts.googleapis.com/**', route => route.fulfill({ contentType: 'text/css', body: '' }));
   await page.route('https://i.imgur.com/**', route => route.fulfill({
     contentType: 'image/svg+xml',
@@ -81,6 +82,7 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await expect(page.getByRole('heading', { name: /^Hi, I’m / })).toBeVisible();
   await expect(page.locator('.wave-letter')).toHaveCount(0);
   await expect(page.locator('[data-typewriter]')).toHaveText('a statistics student.');
+  await expect(page.locator('.hero-weather')).toHaveText('Chicago, IL', { useInnerText: true });
   await expect(page.getByRole('button', { name: 'Pause typing animation', includeHidden: true })).toBeHidden();
   await expect(page.locator('.carousel-landscape [data-slide].is-active a')).toHaveAttribute('href', 'travel/china/');
   await expect(page.locator('[data-carousel-controls]').first()).toBeHidden();
@@ -352,4 +354,30 @@ test('photo sides navigate and mouse-click focus does not keep overlays visible'
   }
   await page.clock.runFor(12000);
   await expect(carousel.locator('[data-carousel-count]')).toHaveText(`2 / ${total}`);
+});
+
+
+test('homepage shows Chicago temperature with source attribution', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.hero-weather')).toHaveText('Chicago, IL · 13°C');
+  await expect(page.locator('[data-weather-temperature]')).toHaveAttribute('href', 'https://open-meteo.com/');
+  await expect(page.locator('[data-weather-temperature]')).toHaveAccessibleName('13°C in Chicago. Weather data by Open-Meteo.');
+  await expect(page.locator('.hero-weather')).toBeInViewport();
+});
+
+test('weather failure and invalid readings leave a clean city-only fallback', async ({ page }) => {
+  for (const json of [{ current: { temperature_2m: null } }, { current: { temperature_2m: '12' } }]) {
+    await page.route('https://api.open-meteo.com/**', route => route.fulfill({ json }));
+    const response = page.waitForResponse(response => response.url().includes('api.open-meteo.com'));
+    await page.goto('/');
+    await response;
+    await expect(page.locator('.hero-weather')).toHaveText('Chicago, IL', { useInnerText: true });
+    await expect(page.locator('[data-weather]')).toBeHidden();
+  }
+  await page.route('https://api.open-meteo.com/**', route => route.abort());
+  const failed = page.waitForEvent('requestfailed', request => request.url().includes('api.open-meteo.com'));
+  await page.goto('/');
+  await failed;
+  await expect(page.locator('.hero-weather')).toHaveText('Chicago, IL', { useInnerText: true });
+  await expect(page.locator('[data-weather]')).toBeHidden();
 });
