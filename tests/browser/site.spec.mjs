@@ -520,3 +520,24 @@ test('external destinations open new tabs while the website stays open', async (
   await travel.click();
   await expect(page).toHaveURL(/\/travel\/$/);
 });
+
+
+test('back to top focuses content without outlining the page', async ({ page }, testInfo) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const route of ['/', '/about/']) {
+    await page.goto(route);
+    const back = page.getByRole('link', { name: 'Back to top' });
+    await back.scrollIntoViewIfNeeded();
+    if (testInfo.project.use.hasTouch) await back.tap();
+    else await back.click();
+    await expect(page).toHaveURL(/#main$/);
+    await expect(page.locator('#main')).toBeFocused();
+    await expect(page.locator('#main')).toHaveCSS('outline-style', 'none');
+    await expect(page.getByRole('heading', { level: 1 })).toBeInViewport();
+  }
+  await page.keyboard.press('Tab');
+  const theme = page.getByRole('button', { name: 'Switch to dark mode' });
+  await theme.focus();
+  await expect(theme).toHaveCSS('outline-style', 'solid');
+  await expect(theme).toHaveCSS('outline-width', '3px');
+});

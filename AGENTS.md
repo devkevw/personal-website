@@ -36,6 +36,7 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - `scripts/build.mjs` validates content and generates `dist/`. Do not hand-edit generated files or commit `dist/`, `node_modules/`, or browser-test artifacts.
 - Keep internal asset/navigation links compatible with nested pages and GitHub Pages project paths. Context helpers resolve local image paths from the site root.
 - External website links and original-photo fallback links open in a new tab with `rel="noopener noreferrer"`. Keep internal navigation, in-page anchors, email actions, and the JavaScript photo viewer working in place. Use the shared `externalTarget` helper when adding external destinations.
+- Keep `#main` programmatically focusable for Skip to content and Back to top, but suppress its container outline. Retain visible keyboard focus rings on links, buttons, and disclosure controls.
 - Preserve semantic headings, keyboard access, image descriptions, reduced-motion behavior, and operation without JavaScript. Do not hide page content pending JavaScript.
 - New trip metadata uses `year` and optional `endYear`. Preserve photo order, avoid duplicate source URLs, and update existing count assertions when content changes.
 
