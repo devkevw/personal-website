@@ -14,7 +14,6 @@ export async function loadContent() {
   }
   const { posts, trips, photos } = data;
   requireValue(Array.isArray(data.site.heroPhrases) && data.site.heroPhrases.length > 1 && data.site.heroPhrases.every(phrase => typeof phrase === 'string' && phrase.trim()), 'The homepage needs at least two nonempty heroPhrases');
-  if (data.site.lastUpdated !== undefined) requireValue(/^\d{4}-(0[1-9]|1[0-2])$/.test(data.site.lastUpdated), 'lastUpdated must use YYYY-MM');
   async function validateImage(src) {
     if (src.startsWith('https://')) { new URL(src); return; }
     requireValue(/^images\/[^?#\\]+$/.test(src) && !src.split('/').some(part => part === '..' || part === '.'), `Image needs an HTTPS URL or images/ path: ${src}`);

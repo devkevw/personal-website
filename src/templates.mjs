@@ -23,7 +23,6 @@ export function context(route, data) {
 export function layout(ctx, { title, description, section, body, wide = false }) {
   const { site, href, route } = ctx;
   const nav = [['', 'Home'], ['about/', 'About'], ['writing/', 'Writing'], ['travel/', 'Travel']];
-  const updatedLabel = site.lastUpdated ? new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${site.lastUpdated}-01T00:00:00Z`)) : '';
   const canonical = ctx.siteUrl ? new URL(route, `${ctx.siteUrl.replace(/\/$/, '')}/`).href : null;
   return `<!doctype html>
 <html lang="en">
@@ -61,7 +60,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <main id="main" tabindex="-1"${wide ? '' : ' class="wrap"'}>${body}</main>
   <footer class="site-footer wrap">
     <div class="footer-top"><div class="footer-intro"><p class="footer-weather">Chicago, IL<span data-weather hidden> · <a href="https://open-meteo.com/" data-weather-temperature title="Chicago weather data by Open-Meteo"></a></span></p></div><a class="text-link" href="mailto:${escape(site.email)}?subject=${escape(encodeURIComponent("🎉 Hi Kevin, I'd Like To Hire You!"))}">Hire me? ${arrow}</a></div>
-    <div class="footer-bottom"><div class="footer-meta"><small>© ${new Date().getFullYear()} ${escape(site.name)}</small>${updatedLabel ? `<small>Last updated · <time datetime="${escape(site.lastUpdated)}">${updatedLabel}</time></small>` : ''}</div><ul aria-label="Elsewhere">${site.socials.map(s => `<li><a href="${escape(s.url)}">${escape(s.label)} ${external}</a></li>`).join('')}</ul><a class="back-to-top" href="#main">Back to top ${directionArrow('up')}</a></div>
+    <div class="footer-bottom"><small>© ${new Date().getFullYear()} ${escape(site.name)}</small><ul aria-label="Elsewhere">${site.socials.map(s => `<li><a href="${escape(s.url)}">${escape(s.label)} ${external}</a></li>`).join('')}</ul><a class="back-to-top" href="#main">Back to top ${directionArrow('up')}</a></div>
   </footer>
 </body>
 </html>\n`;
