@@ -67,7 +67,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
 }
 
 function intro(eyebrow, title, text, extra = '') {
-  return `<div class="page-intro">${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h1>${title}</h1><p class="page-lede">${text}</p>${extra}</div>`;
+  return `<div class="page-intro">${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h1 data-wave-title>${title}</h1><p class="page-lede">${text}</p>${extra}</div>`;
 }
 
 function sectionHeading(number, title, url, label) {
@@ -167,7 +167,7 @@ export function tripPage(ctx, trip) {
   const related = ctx.posts.find(post => post.slug === trip.relatedWriting);
   return layout(ctx, { title: trip.title, section: 'travel', description: trip.description || `A trip to ${trip.title}. A photo album by Kevin Wang.`, body: `
     <div class="detail-back"><a class="text-link" href="${ctx.href('travel/')}">${directionArrow('left')} All trips</a></div>
-    <header class="trip-intro"><p class="eyebrow">${escape(trip.region)}${trip.year ? ` · ${tripYearLabel(trip)}` : ''}${trip.duration ? ` · ${escape(trip.duration)}` : ''}</p><h1>${escape(trip.title)}<span class="title-dot">.</span></h1>${trip.note ? `<p class="page-lede">${escape(trip.note)}</p>` : ''}<ul class="place-list" aria-label="Places visited">${trip.places.map(place => `<li>${escape(place)}</li>`).join('')}</ul></header>
+    <header class="trip-intro"><p class="eyebrow">${escape(trip.region)}${trip.year ? ` · ${tripYearLabel(trip)}` : ''}${trip.duration ? ` · ${escape(trip.duration)}` : ''}</p><h1 data-wave-title>${escape(trip.title)}<span class="title-dot">.</span></h1>${trip.note ? `<p class="page-lede">${escape(trip.note)}</p>` : ''}<ul class="place-list" aria-label="Places visited">${trip.places.map(place => `<li>${escape(place)}</li>`).join('')}</ul></header>
     ${related ? `<aside class="related-writing"><div><p class="eyebrow">A STORY FROM THIS TRIP</p><h2>${escape(related.title)}</h2></div><a class="text-link" href="${escape(related.url || ctx.href(`writing/${related.slug}/`))}">Read the story ${external}</a></aside>` : ''}
     ${photos.length ? `<section class="album-section" aria-labelledby="album-title"><div class="album-heading"><h2 id="album-title">From the camera roll.</h2><span>${photos.length} photographs</span></div><p class="album-hint" data-gallery-hint hidden>Select a photo for a closer look.</p><div class="photo-grid">${photos.map((photo, index) => `<figure class="photo-item ${photo.orientation === 'portrait' ? 'photo-portrait' : ''}"><a class="photo-link" href="${escape(imageSource(photo.src, '', ctx.href))}" data-photo data-index="${index}" data-caption="${escape(photo.alt)}" data-full="${escape(imageSource(photo.src, 'h', ctx.href))}" aria-label="Enlarge photo: ${escape(photo.alt)}"><img src="${escape(imageSource(photo.src, 'l', ctx.href))}" alt="${escape(photo.alt)}" width="${photo.orientation === 'portrait' ? '600' : '800'}" height="${photo.orientation === 'portrait' ? '800' : '600'}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><figcaption>${escape(photo.alt)}</figcaption></figure>`).join('')}</div></section>
     <dialog class="lightbox" aria-label="Photo viewer"><div class="lightbox-toolbar"><p data-photo-count aria-live="polite"></p><button type="button" data-close aria-label="Close photo viewer">Close <span aria-hidden="true">×</span></button></div><div class="lightbox-stage"><button type="button" data-prev aria-label="Previous photo">${directionArrow('left')}</button><figure><img data-lightbox-image alt="" referrerpolicy="no-referrer"><figcaption data-lightbox-caption aria-live="polite"></figcaption></figure><button type="button" data-next aria-label="Next photo">${directionArrow('right')}</button></div></dialog>` : `<section class="album-pending">${tripArt(trip)}<h2>A place in the album.</h2><p>I’ve been here. Photos and notes from this trip will be added soon.</p><a class="text-link" href="${ctx.href('travel/')}">Explore the other trips ${arrow}</a></section>`}
@@ -175,7 +175,7 @@ export function tripPage(ctx, trip) {
 }
 
 export function articlePage(ctx, post, body) {
-  return layout(ctx, { title: post.title, section: 'writing', description: post.description, body: `<div class="detail-back"><a class="text-link" href="${ctx.href('writing/')}">${directionArrow('left')} All writing</a></div><article class="article"><header><p class="eyebrow"><time datetime="${escape(post.date)}">${dateLabel(post.date)}</time> · ${escape(post.kind)}</p><h1>${escape(post.title)}</h1><p class="page-lede">${escape(post.description)}</p></header><div class="prose">${body}</div></article>` });
+  return layout(ctx, { title: post.title, section: 'writing', description: post.description, body: `<div class="detail-back"><a class="text-link" href="${ctx.href('writing/')}">${directionArrow('left')} All writing</a></div><article class="article"><header><p class="eyebrow"><time datetime="${escape(post.date)}">${dateLabel(post.date)}</time> · ${escape(post.kind)}</p><h1 data-wave-title>${escape(post.title)}</h1><p class="page-lede">${escape(post.description)}</p></header><div class="prose">${body}</div></article>` });
 }
 
 export function archive(ctx) {

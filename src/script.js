@@ -1,38 +1,54 @@
 // The page, navigation, and original-image links work without JavaScript.
 // JavaScript enhances the optional heading wave, typing line, and photo viewer.
-function enhanceHeadingWave() {
-  const heading = document.querySelector('[data-wave-title]');
-  if (!heading) return;
+function enhanceHeadingWave(heading) {
   const label = heading.textContent;
   const visual = document.createElement('span');
   visual.className = 'wave-letters';
   visual.setAttribute('aria-hidden', 'true');
-  // Keep the heading's readable name intact while animating decorative letters.
+  // Keep words intact when headings wrap, and expose one readable name.
+  let word;
   for (const node of heading.childNodes) {
     for (const character of node.textContent) {
+      if (/\s/.test(character)) {
+        visual.append(document.createTextNode(character));
+        word = null;
+        continue;
+      }
+      if (!word) {
+        word = document.createElement('span');
+        word.className = 'wave-word';
+        visual.append(word);
+      }
       const letter = document.createElement('span');
       letter.className = 'wave-letter';
       if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains('title-dot')) letter.classList.add('title-dot');
       letter.textContent = character;
-      visual.append(letter);
+      word.append(letter);
     }
   }
   heading.setAttribute('aria-label', label);
   heading.replaceChildren(visual);
-  const letters = [...visual.children];
+  const letters = [...visual.querySelectorAll('.wave-letter')];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   let centers = [];
   let left = 0;
+  let top = 0;
   let radius = 100;
   let lift = 18;
   let pointerX = 0;
+  let pointerY = 0;
   let frame = null;
 
   function measure() {
     const size = parseFloat(getComputedStyle(heading).fontSize);
-    left = heading.getBoundingClientRect().left;
-    centers = letters.map(letter => letter.offsetLeft + letter.offsetWidth / 2);
+    const bounds = heading.getBoundingClientRect();
+    left = bounds.left;
+    top = bounds.top;
+    centers = letters.map(letter => {
+      const glyph = letter.getBoundingClientRect();
+      return { x: glyph.left - left + glyph.width / 2, y: glyph.top - top + glyph.height / 2 };
+    });
     radius = size * 1.25;
     lift = Math.min(20, size * .2);
   }
@@ -46,7 +62,7 @@ function enhanceHeadingWave() {
   function draw() {
     frame = null;
     letters.forEach((letter, index) => {
-      const proximity = Math.max(0, 1 - Math.abs(pointerX - centers[index]) / radius);
+      const proximity = Math.max(0, 1 - Math.hypot(pointerX - centers[index].x, pointerY - centers[index].y) / radius);
       letter.style.setProperty('--wave-lift', `${(-lift * proximity * proximity).toFixed(2)}px`);
     });
   }
@@ -55,6 +71,7 @@ function enhanceHeadingWave() {
   heading.addEventListener('pointermove', event => {
     if (event.pointerType !== 'mouse' || event.buttons || reducedMotion.matches || !finePointer.matches) return;
     pointerX = event.clientX - left;
+    pointerY = event.clientY - top;
     if (frame === null) frame = requestAnimationFrame(draw);
   });
   for (const event of ['pointerleave', 'pointercancel', 'pointerdown']) heading.addEventListener(event, reset);
@@ -65,7 +82,7 @@ function enhanceHeadingWave() {
   document.fonts?.ready.then(measure);
   measure();
 }
-enhanceHeadingWave();
+document.querySelectorAll('[data-wave-title]').forEach(enhanceHeadingWave);
 
 function enhanceTypewriter() {
   const word = document.querySelector('[data-typewriter]');

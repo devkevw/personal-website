@@ -386,3 +386,53 @@ test('weather failure and invalid readings leave a clean city-only fallback', as
   await expect(page.locator('.footer-weather')).toHaveText('Chicago, IL', { useInnerText: true });
   await expect(page.locator('[data-weather]')).toBeHidden();
 });
+
+test('primary headings share the wave with readable names and static reduced motion', async ({ page }) => {
+  for (const route of routes) {
+    await page.goto(route);
+    const heading = page.getByRole('heading', { level: 1 });
+    await expect(heading).toHaveAttribute('data-wave-title', '');
+    const text = await heading.textContent();
+    await expect(heading).toHaveAccessibleName(text);
+    const first = heading.locator('.wave-letter').first();
+    await expect(first).toBeVisible();
+    const fine = await page.evaluate(() => matchMedia('(hover: hover) and (pointer: fine)').matches);
+    const box = await first.boundingBox();
+    if (fine) {
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await expect.poll(() => first.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42)).toBeLessThan(-5);
+      await page.mouse.move(0, 0);
+      await expect.poll(() => first.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42)).toBeGreaterThan(-.1);
+    } else {
+      await heading.dispatchEvent('pointermove', { pointerType: 'touch', clientX: box.x, clientY: box.y });
+      await expect(first).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+    }
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/archive/');
+  const heading = page.getByRole('heading', { level: 1, name: 'Little experiments.' });
+  await heading.hover();
+  await expect(heading.locator('.wave-letter').first()).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+});
+
+test('wrapped heading waves stay local and keep whole words together', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name.includes('mobile'), 'Mouse wave is disabled on touch screens');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/archive/');
+  const heading = page.getByRole('heading', { level: 1, name: 'Little experiments.' });
+  const words = heading.locator('.wave-word');
+  await expect(words).toHaveCount(2);
+  const upper = words.first().locator('.wave-letter').first();
+  const lower = words.last().locator('.wave-letter').first();
+  const upperBox = await upper.boundingBox();
+  const lowerBox = await lower.boundingBox();
+  expect(lowerBox.y).toBeGreaterThan(upperBox.y + 20);
+  for (const word of await words.all()) {
+    const tops = await word.locator('.wave-letter').evaluateAll(letters => letters.map(letter => letter.getBoundingClientRect().top));
+    expect(Math.max(...tops) - Math.min(...tops)).toBeLessThan(1);
+  }
+  await page.mouse.move(lowerBox.x + lowerBox.width / 2, lowerBox.y + lowerBox.height / 2);
+  await expect.poll(() => lower.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42)).toBeLessThan(-5);
+  expect(Math.abs(await upper.evaluate(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42))).toBeLessThan(.2);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+});
