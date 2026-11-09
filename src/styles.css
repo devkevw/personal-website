@@ -393,7 +393,7 @@ main.wrap { min-height: 65vh; }
   .timeline-body::before { top: 7px; }
   .timeline-body h3 { font-size: 1.22rem; }
   .timeline-organization { font-size: .75rem; }
-  .timeline-organization span { display: block; margin-top: 3px; }
+  .timeline-organization span { white-space: nowrap; }
   .interests-section { border-radius: 22px; padding: 30px; }
   .interests-section .section-heading h2 { font-size: 2rem; }
   .interest-grid { grid-template-columns: 1fr; gap: 30px; margin-top: 35px; }
