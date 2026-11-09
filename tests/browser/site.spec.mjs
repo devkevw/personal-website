@@ -357,7 +357,7 @@ test('photo sides navigate and mouse-click focus does not keep overlays visible'
 });
 
 
-test('footer shows Chicago temperature with source attribution', async ({ page }) => {
+test('footer shows Chicago temperature with source attribution', async ({ page }, testInfo) => {
   await page.goto('/');
   await expect(page.locator('.footer-weather')).toHaveText('Chicago, IL · 13°C');
   await expect(page.locator('[data-weather-temperature]')).toHaveAttribute('href', 'https://open-meteo.com/');
@@ -365,6 +365,7 @@ test('footer shows Chicago temperature with source attribution', async ({ page }
   await expect(page.locator('.hero-copy [data-weather]')).toHaveCount(0);
   await page.locator('.site-footer').scrollIntoViewIfNeeded();
   await expect(page.locator('.footer-weather')).toBeInViewport();
+  await page.locator('.site-footer').screenshot({ path: testInfo.outputPath('footer-updated.png') });
   await page.goto('/about/');
   await expect(page.locator('.site-footer .footer-weather')).toHaveText('Chicago, IL · 13°C');
 });
