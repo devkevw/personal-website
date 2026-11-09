@@ -253,6 +253,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .post-main p { font-size: .87rem; margin-top: 8px; color: var(--muted); }
 .post-source { display: inline-block; font-size: .7rem; margin-top: 15px; color: var(--muted); }
 .post-arrow { font-size: 1.5rem; line-height: 1.2; text-align: right; }
+.post-arrow .external-icon { transition: transform .2s ease; }
+.post-row:hover .post-arrow .external-icon, .post-row:focus-visible .post-arrow .external-icon { transform: rotate(45deg); }
 .writing-note { display: flex; align-items: center; gap: 25px; padding: 28px 32px; background: var(--blue); border-radius: 18px; margin-block: 50px 100px; }
 .writing-note p { font-size: .87rem; flex: 1; }
 .writing-note .text-link { flex-shrink: 0; font-size: .79rem; }

@@ -77,7 +77,7 @@ function sectionHeading(number, title, url, label) {
 }
 
 function postRows(ctx, posts) {
-  return `<ol class="post-list">${posts.map(post => `<li><a class="post-row" href="${escape(post.url || ctx.href(`writing/${post.slug}/`))}"${externalTarget(post.url)}><div class="post-meta"><time datetime="${escape(post.date)}">${dateLabel(post.date)}</time><span>${escape(post.kind)}</span></div><div class="post-main"><h${ctx.route ? '2' : '3'}>${escape(post.title)}</h${ctx.route ? '2' : '3'}><p>${escape(post.description)}</p><span class="post-source">${post.url ? `Read on Medium ${external}` : `Read article ${directionArrow('right')}`}</span></div><span class="post-arrow" aria-hidden="true">${post.url ? external : directionArrow('right')}</span></a></li>`).join('')}</ol>`;
+  return `<ol class="post-list">${posts.map(post => `<li><a class="post-row" href="${escape(post.url || ctx.href(`writing/${post.slug}/`))}"${externalTarget(post.url)}><div class="post-meta"><time datetime="${escape(post.date)}">${dateLabel(post.date)}</time><span>${escape(post.kind)}</span></div><div class="post-main"><h${ctx.route ? '2' : '3'}>${escape(post.title)}</h${ctx.route ? '2' : '3'}><p>${escape(post.description)}</p>${post.url ? '' : `<span class="post-source">Read article ${directionArrow('right')}</span>`}</div><span class="post-arrow" aria-hidden="true">${post.url ? external : directionArrow('right')}</span></a></li>`).join('')}</ol>`;
 }
 
 function imageSource(src, size, href = value => value) {
