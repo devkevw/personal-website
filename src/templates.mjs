@@ -150,7 +150,7 @@ export function about(ctx) {
 
 export function writing(ctx) {
   return layout(ctx, { title: 'Writing', section: 'writing', description: 'Essays, reflections, and occasional poetry by Kevin Wang. On university, travel, and life along the way.', body: `
-    ${intro('', 'Writing.', 'Essays, little observations, and the occasional poem. Still finding my voice, one piece at a time.')}
+    ${intro('', 'Writing.', 'Sometimes I get the urge to type words at a screen. This is a result of those times.')}
     <section class="writing-index" aria-label="Published writing">${postRows(ctx, ctx.posts)}</section>
     <aside class="writing-note"><span class="note-symbol" aria-hidden="true">✳</span><p>Some of these pieces live on Medium. New writing will find a home here, too.</p><a class="text-link" href="https://medium.com/@kevw">Find me on Medium ${external}</a></aside>` });
 }
