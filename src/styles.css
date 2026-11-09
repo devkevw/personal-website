@@ -229,6 +229,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .interests-section .section-heading h2 { font-size: 2.5rem; }
 .interest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px; margin-top: 45px; }
 .interest-grid img { width: 48px; height: 48px; object-fit: contain; }
+[data-theme="dark"] .interest-grid img { filter: invert(.92); }
 .interest-grid h3 { font-size: 1.15rem; margin-top: 22px; }
 .interest-grid p { font-size: .86rem; line-height: 1.9; margin-top: 14px; }
 .archive-note { display: flex; justify-content: space-between; align-items: center; gap: 100px; margin-block: 65px 85px; padding: 35px 0; border-block: 1px solid var(--line); }

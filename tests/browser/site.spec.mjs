@@ -210,6 +210,11 @@ test('dark mode covers every page without overflow or bright background panels',
       });
       expect(brightness).toBeLessThan(100);
     }
+    if (route === '/about/' && testInfo.project.name === 'desktop') {
+      await page.locator('.interests-section').scrollIntoViewIfNeeded();
+      await page.locator('.interest-grid img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
+      await page.locator('.interests-section').screenshot({ path: testInfo.outputPath('dark-hobbies.png') });
+    }
     if (route === '/' && testInfo.project.name === 'desktop') {
       await page.screenshot({ path: testInfo.outputPath('dark-home.png'), fullPage: true });
     }
