@@ -46,6 +46,54 @@ test('navigation, career anchor, and trip links reach their content', async ({ p
   await expect(page.getByRole('heading', { name: 'From the camera roll.' })).toBeVisible();
 });
 
+test('About timeline expands and collapses earlier entries with the keyboard', async ({ page }) => {
+  await page.goto('/about/');
+  const recent = page.locator('#timeline > .timeline > li');
+  const earlier = page.locator('.timeline-more .timeline > li');
+  const toggle = page.locator('.timeline-more summary');
+  await expect(recent).toHaveCount(4);
+  await expect(recent.last()).toContainText('A semester in Beijing');
+  await expect(recent.last()).toBeVisible();
+  await expect(earlier.first()).toBeHidden();
+  await expect(toggle).toHaveAccessibleName('View more');
+  await toggle.focus();
+  await toggle.press('Enter');
+  await expect(earlier.first()).toBeVisible();
+  await expect(earlier.last()).toBeVisible();
+  await expect(toggle).toHaveAccessibleName('View less');
+  const connector = await page.locator('#timeline').evaluate(section => {
+    const summary = section.querySelector('summary');
+    const bridge = getComputedStyle(summary, '::after');
+    const summaryStyle = getComputedStyle(summary);
+    const summaryRect = summary.getBoundingClientRect();
+    const lastRecent = section.querySelector(':scope > .timeline > li:last-child');
+    const firstEarlier = section.querySelector('.timeline-more .timeline > li');
+    const mobile = getComputedStyle(firstEarlier).borderLeftWidth === '1px';
+    const nextAxis = mobile ? firstEarlier : firstEarlier.querySelector('.timeline-body');
+    const previousAxis = mobile ? lastRecent : lastRecent.querySelector('.timeline-body');
+    return {
+      color: bridge.borderLeftColor,
+      previousColor: getComputedStyle(previousAxis).borderLeftColor,
+      lineColor: getComputedStyle(nextAxis).borderLeftColor,
+      x: summaryRect.left + parseFloat(summaryStyle.borderLeftWidth) + parseFloat(bridge.left),
+      nextX: nextAxis.getBoundingClientRect().left,
+      top: summaryRect.top + parseFloat(summaryStyle.borderTopWidth) + parseFloat(bridge.top),
+      previousBottom: lastRecent.getBoundingClientRect().bottom,
+      bottom: summaryRect.bottom - parseFloat(summaryStyle.borderBottomWidth) - parseFloat(bridge.bottom),
+      nextTop: firstEarlier.getBoundingClientRect().top
+    };
+  });
+  expect(connector.color).toBe(connector.lineColor);
+  expect(connector.previousColor).toBe(connector.lineColor);
+  expect(Math.abs(connector.x - connector.nextX)).toBeLessThanOrEqual(1);
+  expect(Math.abs(connector.top - connector.previousBottom)).toBeLessThanOrEqual(1);
+  expect(Math.abs(connector.bottom - connector.nextTop)).toBeLessThanOrEqual(1);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+  await toggle.press('Space');
+  await expect(earlier.first()).toBeHidden();
+  await expect(toggle).toBeFocused();
+});
+
 test('photo viewer supports arrows, wrapping, escape, and focus restoration', async ({ page }) => {
   await page.goto('/travel/england/');
   const first = page.locator('[data-photo]').first();
@@ -90,6 +138,12 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await page.getByRole('link', { name: /Europe.*England & Scotland/ }).click();
   await expect(page.locator('[data-photo]')).toHaveCount(33);
   await expect(page.locator('[data-photo]').first()).toHaveAttribute('href', 'https://i.imgur.com/AIe7kty.jpg');
+  await page.goto(`${baseURL}/about/`);
+  const earlier = page.locator('.timeline-more .timeline > li');
+  await expect(earlier.first()).toBeHidden();
+  await page.locator('.timeline-more summary').click();
+  await expect(earlier.first()).toBeVisible();
+  await expect(earlier.last()).toBeVisible();
   await context.close();
 });
 

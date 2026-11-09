@@ -90,24 +90,24 @@
       "title": "Artificial Intelligence Research Intern",
       "organization": "JACOBB",
       "location": "Montreal, QC",
-      "description": "Worked on educational AI and predictive analytics with two profs. Helped them gather some data. They seemed pleased."
+      "description": "Worked on educational AI and predictive analytics with two profs. Helped them gather some data; they seemed pleased."
     }
   ],
   "interests": [
     {
       "title": "Sports",
       "icon": "sport.png",
-      "text": "Basketball, hockey, football, and swimming. I grew up playing sports; these days I enjoy watching them, too."
+      "text": "Basketball, hockey, football, and swimming. I used to play more, but these days I mostly watch from the couch."
     },
     {
       "title": "Around a table",
       "icon": "board-game.png",
-      "text": "Catan with friends, a game of chess, or poker. My exchange in China also introduced me to mahjong."
+      "text": "Catan, chess, poker, and mahjong. Some friends think they’re better than me at Catan; they’re delusional."
     },
     {
       "title": "Books & words",
       "icon": "book.png",
-      "text": "Reading before bed and occasionally putting my own thoughts into words. A few of those thoughts have made it onto this site."
+      "text": "I like to read before bed and write occasionally. Some thoughts make it online; the rest stay in my head."
     }
   ]
 }

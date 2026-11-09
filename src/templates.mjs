@@ -138,21 +138,28 @@ export function home(ctx) {
     <section class="home-signoff wrap"><p class="eyebrow">THAT’S ME, FOR NOW.</p><h2>Thanks for stopping by.</h2><p>Saw something cool? I’d love to connect.</p><a class="pill-link" href="mailto:${escape(site.email)}">Let’s talk ${arrow}</a></section>` });
 }
 
+function timelineRows(items, start = 1) {
+  return `<ol class="timeline" start="${start}">${items.map(item => `<li><div class="timeline-period"><span>${escape(item.period)}</span><span class="timeline-category">${escape(item.category)}</span></div><div class="timeline-body"><p class="timeline-organization">${escape(item.organization)} ${item.location ? `<span>· ${escape(item.location)}</span>` : ''}</p><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p>${item.link ? `<a class="text-link" href="${escape(item.link)}">${escape(item.linkLabel)} ${external}</a>` : ''}</div></li>`).join('')}</ol>`;
+}
+
 export function about(ctx) {
   const { href, site } = ctx;
+  const beijingIndex = site.timeline.findIndex(item => item.organization === 'Tsinghua University');
+  const visibleCount = beijingIndex < 0 ? site.timeline.length : beijingIndex + 1;
+  const earlierEntries = site.timeline.slice(visibleCount);
   return layout(ctx, { title: 'About', section: 'about', description: 'From Montreal to Chicago. My career, education, and a few things I enjoy outside of statistics.', body: `
     ${intro('', 'Hi again.', 'I’m Kevin, originally from Montreal and currently studying statistics at the University of Chicago.')}
     <section class="about-intro"><img src="${href('images/headshots/square/me_square_med.jpg')}" alt="Kevin with baby goats in Tibet" width="600" height="600"><div><h2>Curiosity has taken me a few places.</h2><p>I studied statistics and computer science at McGill, with a minor in management. I’m now working toward my master’s in statistics at the University of Chicago.</p><p>Along the way, I’ve worked in actuarial and data science roles, researched how sports injuries affect performance, and spent a semester on exchange in Beijing.</p><p>Outside of school and work, I enjoy sports, board games, reading, and writing. I’m always up for trying a new food spot. And whenever I get the chance, a trip somewhere new.</p></div></section>
-    <section id="timeline" class="timeline-section section-space">${sectionHeading('CAREER & EDUCATION', 'The path so far.')}<ol class="timeline">${site.timeline.map(item => `<li><div class="timeline-period"><span>${escape(item.period)}</span><span class="timeline-category">${escape(item.category)}</span></div><div class="timeline-body"><p class="timeline-organization">${escape(item.organization)} ${item.location ? `<span>· ${escape(item.location)}</span>` : ''}</p><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p>${item.link ? `<a class="text-link" href="${escape(item.link)}">${escape(item.linkLabel)} ${external}</a>` : ''}</div></li>`).join('')}</ol></section>
-    <section class="interests-section">${sectionHeading('OUTSIDE THE CLASSROOM', 'The other stuff.')}<div class="interest-grid">${site.interests.map(item => `<article><img src="${href(`images/hobbies/${item.icon}`)}" alt="" width="64" height="64" loading="lazy"><h3>${escape(item.title)}</h3><p>${escape(item.text)}</p></article>`).join('')}</div></section>
-    <aside class="archive-note"><div><h2>A few early experiments.</h2><p>The little projects I built while learning to code still have a home here.</p></div><a class="text-link" href="${href('archive/')}">Project archive ${arrow}</a></aside>` });
+    <section id="timeline" class="timeline-section section-space">${sectionHeading('CAREER & EDUCATION', 'The path so far.')}${timelineRows(site.timeline.slice(0, visibleCount))}${earlierEntries.length ? `<details class="timeline-more"><summary><span class="timeline-more-label">View more</span><span class="timeline-less-label">View less</span></summary>${timelineRows(earlierEntries, visibleCount + 1)}</details>` : ''}</section>
+    <section class="interests-section">${sectionHeading('OUTSIDE THE CLASSROOM', 'The other stuff I enjoy.')}<div class="interest-grid">${site.interests.map(item => `<article><img src="${href(`images/hobbies/${item.icon}`)}" alt="" width="64" height="64" loading="lazy"><h3>${escape(item.title)}</h3><p>${escape(item.text)}</p></article>`).join('')}</div></section>
+    <aside class="archive-note"><div><h2>A few early experiments.</h2><p>The little projects I built while learning to code live here. I originally built this site pre-AI to learn web development and display my creativity. It’s since been revamped with a little help from coding agents.</p></div><a class="text-link" href="${href('archive/')}">Project archive ${arrow}</a></aside>` });
 }
 
 export function writing(ctx) {
   return layout(ctx, { title: 'Writing', section: 'writing', description: 'Essays, reflections, and occasional poetry by Kevin Wang. On university, travel, and life along the way.', body: `
-    ${intro('', 'Writing.', 'Sometimes I get the urge to type words at a screen. This is a result of those times.')}
+    ${intro('', 'On my mind.', 'Sometimes I get the urge to type words at a screen. Some of those words end up here.')}
     <section class="writing-index" aria-label="Published writing">${postRows(ctx, ctx.posts)}</section>
-    <aside class="writing-note"><span class="note-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" focusable="false"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"/></svg></span><p>Some of these pieces live on Medium. New writing will find a home here, too.</p><a class="text-link" href="https://medium.com/@kevw">Find me on Medium ${external}</a></aside>` });
+    <aside class="writing-note"><span class="note-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" focusable="false"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"/></svg></span><p>These pieces live on Medium. New writing will find a home here, too.</p><a class="text-link" href="https://medium.com/@kevw">Find me on Medium ${external}</a></aside>` });
 }
 
 export function travel(ctx) {
@@ -179,7 +186,7 @@ export function articlePage(ctx, post, body) {
 }
 
 export function archive(ctx) {
-  return layout(ctx, { title: 'Project archive', section: 'about', description: 'Early coding projects, hackathon experiments, and little things Kevin Wang built while learning.', body: `${intro('FROM THE EARLY DAYS', 'Little experiments.', 'A few things I built while learning to code. Kept here as a small record of where I started.')}<section class="project-list" aria-label="Archived projects">${ctx.projects.map(project => `<article><img src="${ctx.href(`images/projects/${project.image}`)}" alt="" width="88" height="88" loading="lazy"><div><h2>${escape(project.title)}</h2><p>${escape(project.description)}</p><div class="project-links"><a class="text-link" href="${escape(project.url)}">Take a look ${external}</a><a class="text-link" href="${escape(project.code)}">View code ${external}</a></div></div></article>`).join('')}</section><a class="text-link" href="${ctx.href('about/')}">${directionArrow('left')} Back to About</a>` });
+  return layout(ctx, { title: 'Project archive', section: 'about', description: 'Early coding projects, hackathon experiments, and little things Kevin Wang built while learning.', body: `${intro('', 'Little experiments.', 'A few things I built while learning to code pre-AI. Kept here as a reminder of humble beginnings.')}<section class="project-list" aria-label="Archived projects">${ctx.projects.map(project => `<article><img src="${ctx.href(`images/projects/${project.image}`)}" alt="" width="88" height="88" loading="lazy"><div><h2>${escape(project.title)}</h2><p>${escape(project.description)}</p><div class="project-links"><a class="text-link" href="${escape(project.url)}">Take a look ${external}</a><a class="text-link" href="${escape(project.code)}">View code ${external}</a></div></div></article>`).join('')}</section><a class="text-link" href="${ctx.href('about/')}">${directionArrow('left')} Back to About</a>` });
 }
 
 export function notFound(ctx) {
