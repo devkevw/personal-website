@@ -25,7 +25,7 @@
   ],
   "timeline": [
     {
-      "period": "September 2026 — December 2026",
+      "period": "September–December 2026",
       "category": "Work",
       "title": "Data Science Intern",
       "organization": "Intact",
@@ -69,7 +69,7 @@
       "period": "Summer 2022",
       "category": "Work",
       "title": "Actuarial Data Analytics Intern",
-      "organization": "Intact Financial Corporation",
+      "organization": "Intact",
       "location": "Montreal, QC",
       "description": "Worked on claims forecasting and reporting using regression, SQL, and Power BI. Improved a forecasting model and helped make monthly reporting more efficient."
     },
