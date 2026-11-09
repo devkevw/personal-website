@@ -314,7 +314,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 42px 28px; }
 .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
 .footer-top p { color: var(--muted); font-size: .78rem; }
-.footer-weather { margin-top: 8px; line-height: 1.6; }
+.footer-weather { line-height: 1.6; }
 .footer-weather a { text-underline-offset: 3px; text-decoration-color: var(--line); }
 .footer-weather a:hover { text-decoration: underline; text-decoration-color: currentColor; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin-top: 45px; color: var(--muted); font-size: .7rem; }
