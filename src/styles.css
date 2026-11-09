@@ -437,9 +437,12 @@ main.wrap { min-height: 65vh; }
   .project-list + a { margin-bottom: 55px; }
   .article { margin-top: 35px; }
   .prose { font-size: 1rem; }
-  .footer-bottom { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px; }
-  .footer-bottom ul { gap: 18px; }
-  .back-to-top { width: 100%; }
+  .footer-bottom { grid-template-columns: minmax(0, 1fr) auto; gap: 18px 12px; margin-top: 30px; }
+  .footer-meta { display: contents; }
+  .footer-meta > small:first-child { grid-column: 1; grid-row: 2; }
+  .footer-meta > small + small { grid-column: 1 / -1; grid-row: 3; justify-self: center; font-size: .65rem; }
+  .footer-bottom ul { grid-column: 1 / -1; grid-row: 1; gap: 24px; }
+  .footer-bottom > .back-to-top { grid-column: 2; grid-row: 2; width: auto; }
 }
 @media (max-width: 360px) {
   .navigation a { padding-inline: 8px; }
