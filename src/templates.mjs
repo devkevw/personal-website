@@ -176,7 +176,7 @@ function albumPlaces(trip) {
   return `<ul class="place-list" data-place-filters aria-label="Places visited"><li data-place-all hidden><button type="button" class="place-filter" data-place-filter="all" data-group-label="All photos" aria-pressed="true">All photos</button></li>${trip.photoGroups.map(group => {
     const places = group.places.join(', ');
     return `<li><span data-place-label title="${escape(places)}">${escape(group.label)}</span><button type="button" class="place-filter" data-place-filter="${escape(group.id)}" data-group-label="${escape(group.label)}" data-group-places="${escape(places)}" title="${escape(places)}" aria-pressed="false" hidden>${escape(group.label)}</button></li>`;
-  }).join('')}</ul><p class="place-filter-status" data-place-status aria-live="polite" aria-atomic="true" hidden></p>`;
+  }).join('')}</ul><p class="sr-only" data-place-status aria-live="polite" aria-atomic="true" hidden></p>`;
 }
 
 export function tripPage(ctx, trip) {
