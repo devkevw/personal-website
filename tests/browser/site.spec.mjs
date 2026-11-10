@@ -587,7 +587,7 @@ test('China place filters include smaller stops and scope the photo viewer', asy
 test('UK and US place filters use their regional groups', async ({ page }) => {
   for (const [route, label, count, total] of [
     ['/travel/england/', 'Edinburgh & Glasgow', 2, 33],
-    ['/travel/united-states/', 'Chicago, Milwaukee & Indiana', 14, 73]
+    ['/travel/united-states/', 'Midwest', 14, 73]
   ]) {
     await page.goto(route);
     await page.getByRole('button', { name: label, exact: true }).click();
