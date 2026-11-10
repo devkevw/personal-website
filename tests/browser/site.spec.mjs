@@ -100,11 +100,11 @@ test('photo viewer supports arrows, wrapping, escape, and focus restoration', as
   await first.click();
   const viewer = page.getByRole('dialog', { name: 'Photo viewer' });
   await expect(viewer).toBeVisible();
-  await expect(page.locator('[data-photo-count]')).toHaveText('1 / 38');
+  await expect(page.locator('[data-photo-count]')).toHaveText('1 / 39');
   await page.keyboard.press('ArrowLeft');
-  await expect(page.locator('[data-photo-count]')).toHaveText('38 / 38');
+  await expect(page.locator('[data-photo-count]')).toHaveText('39 / 39');
   await page.getByRole('button', { name: 'Next photo' }).click();
-  await expect(page.locator('[data-photo-count]')).toHaveText('1 / 38');
+  await expect(page.locator('[data-photo-count]')).toHaveText('1 / 39');
   await expect(page.locator('[data-lightbox-caption]')).toHaveText('London Stadium, London');
   await page.keyboard.press('Escape');
   await expect(viewer).not.toBeVisible();
@@ -119,7 +119,7 @@ test('image failures keep captions and gallery controls usable', async ({ page }
   await first.click();
   await expect(page.getByRole('dialog').getByText('Photo temporarily unavailable')).toBeVisible();
   await page.getByRole('button', { name: 'Next photo' }).click();
-  await expect(page.locator('[data-photo-count]')).toHaveText('2 / 38');
+  await expect(page.locator('[data-photo-count]')).toHaveText('2 / 39');
 });
 
 test('content and photo links remain available without JavaScript', async ({ browser, baseURL }) => {
@@ -136,7 +136,7 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await expect(page.locator('[data-carousel-controls]').first()).toBeHidden();
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Travel', exact: true }).click();
   await page.getByRole('link', { name: /Europe.*England & Scotland/ }).click();
-  await expect(page.locator('[data-photo]')).toHaveCount(38);
+  await expect(page.locator('[data-photo]')).toHaveCount(39);
   await expect(page.locator('[data-place-filter]:visible')).toHaveCount(0);
   await expect(page.locator('[data-photo]').first()).toHaveAttribute('href', 'https://i.imgur.com/AIe7kty.jpg');
   await page.goto(`${baseURL}/about/`);
@@ -343,9 +343,9 @@ test('homepage carousels wrap, link to albums, and respect reduced motion', asyn
   const firstHref = await landscape.locator('.is-active a').getAttribute('href');
   const total = await landscape.locator('[data-slide]').count();
   expect(total).toBeGreaterThan(50);
-  await expect(page.locator('[data-carousel] [data-slide]')).toHaveCount(200);
+  await expect(page.locator('[data-carousel] [data-slide]')).toHaveCount(201);
   const photos = await page.locator('[data-carousel] img').evaluateAll(images => images.map(img => img.getAttribute('src') || img.dataset.src));
-  expect(new Set(photos).size).toBe(200);
+  expect(new Set(photos).size).toBe(201);
   await page.mouse.move(0, 0);
   await expect(landscape.locator('.is-active figcaption')).toHaveCSS('opacity', '0');
   await expect(landscape.locator('.is-active')).toHaveCSS('animation-duration', '0s');
@@ -586,7 +586,7 @@ test('China place filters include smaller stops and scope the photo viewer', asy
 
 test('UK and US place filters use their regional groups', async ({ page }) => {
   for (const [route, label, count, total] of [
-    ['/travel/england/', 'Edinburgh & Glasgow', 2, 38],
+    ['/travel/england/', 'Edinburgh & Glasgow', 2, 39],
     ['/travel/united-states/', 'Midwest', 13, 71]
   ]) {
     await page.goto(route);
