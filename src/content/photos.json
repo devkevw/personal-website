@@ -284,7 +284,7 @@
     },
     {
       "src": "https://i.imgur.com/NhaNFX7.jpg",
-      "alt": "Barkhor Steet, Lhasa",
+      "alt": "Barkhor Street, Lhasa",
       "orientation": "portrait",
       "group": "tibet"
     },
@@ -302,7 +302,7 @@
     },
     {
       "src": "https://i.imgur.com/ipdc3SE.jpg",
-      "alt": "Yuangmingyuan, Beijing",
+      "alt": "Yuanmingyuan, Beijing",
       "orientation": "portrait",
       "group": "beijing-hebei"
     },
@@ -646,7 +646,7 @@
     },
     {
       "src": "https://i.imgur.com/vd0cjt5.jpg",
-      "alt": "St.Paul's Cathedral, London",
+      "alt": "St. Paul's Cathedral, London",
       "orientation": "portrait",
       "group": "london"
     },
@@ -684,445 +684,439 @@
   "united-states": [
     {
       "src": "https://i.imgur.com/4S53Ssj.jpg",
-      "alt": "The Vessel",
+      "alt": "Vessel, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/0sWB6Lq.jpg",
-      "alt": "New York Public Library",
+      "alt": "New York Public Library, New York",
       "orientation": "landscape",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/PoOaoCs.jpg",
-      "alt": "Natural Habitat",
+      "alt": "Natural Habitat, New York",
       "orientation": "landscape",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/SZk0j0z.jpg",
-      "alt": "Before the Show",
+      "alt": "The Play That Goes Wrong, New York",
       "orientation": "landscape",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/B69Ylco.jpg",
-      "alt": "Lower Manhattan",
+      "alt": "New York Skyline, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/06O3KTQ.jpg",
-      "alt": "Manhattan Bridge",
+      "alt": "Manhattan Bridge, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/SysWyHY.jpg",
-      "alt": "Little Italy",
+      "alt": "Little Italy, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/JSO0zbA.jpg",
-      "alt": "One World Trade Center",
+      "alt": "One World Trade Center, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/k2jSHdD.jpg",
-      "alt": "The Oculus",
+      "alt": "Oculus, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/NBbuBrb.jpg",
-      "alt": "9/11 Memorial",
+      "alt": "9/11 Memorial, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/wjs8ceM.jpg",
-      "alt": "New York Stock Exchange",
+      "alt": "New York Stock Exchange, New York",
       "orientation": "landscape",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/juEZasK.jpg",
-      "alt": "Fearless Girl",
+      "alt": "Fearless Girl, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/zWTVM6j.jpg",
-      "alt": "Charging Bull",
+      "alt": "Charging Bull, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/xk25R2r.jpg",
-      "alt": "Statue of Liberty",
+      "alt": "Statue of Liberty, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/qrwJRwt.jpg",
-      "alt": "Brooklyn Bridge",
+      "alt": "Brooklyn Bridge, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/doTJiOd.jpg",
-      "alt": "The Starry Night",
+      "alt": "The Starry Night, New York",
       "orientation": "landscape",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/93sEzTr.jpg",
-      "alt": "The Persistence of Memory",
+      "alt": "The Persistence of Memory, New York",
       "orientation": "landscape",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/m9TwaOt.jpg",
-      "alt": "Campbell’s Soup Cans",
+      "alt": "Campbell’s Soup Cans, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/b6YOORh.jpg",
-      "alt": "Rockefeller Center",
+      "alt": "Rockefeller Center, New York",
       "orientation": "landscape",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/6wpOAhW.jpg",
-      "alt": "Louis Vuitton",
+      "alt": "Louis Vuitton, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/MoVEdiR.jpg",
-      "alt": "New Haven",
+      "alt": "Yale Beinecke Library, New Haven",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/bF6PsxI.jpg",
-      "alt": "Pizza Stop",
+      "alt": "Sally's Apizza, New Haven",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/SoELpia.jpg",
-      "alt": "Times Square",
+      "alt": "Times Square, New York",
       "orientation": "portrait",
       "group": "new-york-new-haven"
     },
     {
       "src": "https://i.imgur.com/fygUI7Z.jpg",
-      "alt": "Cloud Gate",
+      "alt": "The Bean, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/VmN35lc.jpg",
-      "alt": "Van Gogh Self-Portrait",
+      "alt": "Van Gogh Self-Portrait, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/PT2CZou.jpg",
-      "alt": "United Center",
+      "alt": "King James, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/OAhFETi.jpg",
-      "alt": "Chicago River in Green",
+      "alt": "St. Patrick's Day, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/XjCEff7.jpg",
-      "alt": "Indianapolis Motor Speedway",
+      "alt": "Chicagoland Speedway, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/FYV0LkE.jpg",
-      "alt": "Navy Pier",
+      "alt": "Navy Pier, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/S9xpJBE.jpg",
-      "alt": "Chicago Skyline",
+      "alt": "Concrete Beach, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/RkD7PqM.jpg",
-      "alt": "Wrigley Field",
+      "alt": "Wrigley Field, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/cWwshwz.jpg",
-      "alt": "Rocky Gorge, Indiana",
+      "alt": "Starved Rock State Park, Illinois",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/oo8LgIj.jpg",
-      "alt": "Brewery Sculptures, Milwaukee",
+      "alt": "Lakefront Brewery, Milwaukee",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/zoDnHQL.jpg",
-      "alt": "Marina City",
+      "alt": "Marina City, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/PlDNNKZ.jpg",
-      "alt": "Chicago River",
+      "alt": "Chicago River, Chicago",
       "orientation": "landscape",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/DyJSu5h.jpg",
-      "alt": "Indiana Dunes",
+      "alt": "Indiana Dunes, Indiana",
       "orientation": "portrait",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/dHWM3d8.jpg",
-      "alt": "Basketball Memorabilia",
+      "alt": "My Trophy Cabinet, Chicago",
       "orientation": "landscape",
       "group": "great-lakes"
     },
     {
       "src": "https://i.imgur.com/nUE6zNf.jpg",
-      "alt": "Grand Canyon",
+      "alt": "Grand Canyon, Arizona",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/E5PsHX6.jpg",
-      "alt": "Grand Canyon Overlook",
+      "alt": "Edge of the World, Grand Canyon",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/FcIeun8.jpg",
-      "alt": "Grand Canyon Wildlife",
+      "alt": "Bighorn Sheep, Grand Canyon",
       "orientation": "landscape",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/n0vohra.jpg",
-      "alt": "Ooh Aah Point",
+      "alt": "Ooh Aah Point, Grand Canyon",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/m0yPyKR.jpg",
-      "alt": "Route 66",
+      "alt": "Route 66, Arizona",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/ritQb5P.jpg",
-      "alt": "Hoover Dam",
+      "alt": "Hoover Dam, Nevada & Arizona",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/cEFXrl3.jpg",
-      "alt": "Eiffel Tower, Las Vegas",
+      "alt": "Paris, Las Vegas",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/tMBOhQn.jpg",
-      "alt": "Live Music, Las Vegas",
+      "alt": "DJ Diesel, Las Vegas",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/xtyl0K7.jpg",
-      "alt": "Penn & Teller",
+      "alt": "Penn & Teller, Las Vegas",
       "orientation": "landscape",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/KSLDiEP.jpg",
-      "alt": "The Sphere",
+      "alt": "Sphere, Las Vegas",
       "orientation": "portrait",
       "group": "vegas-grand-canyon"
     },
     {
       "src": "https://i.imgur.com/8G0m4IB.jpg",
-      "alt": "Seattle Skyline",
+      "alt": "Kerry Park, Seattle",
       "orientation": "landscape",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/Bw7caj8.jpg",
-      "alt": "Pike Place Market",
+      "alt": "Pike Place Market, Seattle",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/cFfeR52.jpg",
-      "alt": "The Gum Wall",
+      "alt": "Gum Wall, Seattle",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/cVHeIKy.jpg",
-      "alt": "Seattle from the Water",
+      "alt": "Seattle Skyline, Seattle",
       "orientation": "landscape",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/sN5sa5M.jpg",
-      "alt": "Space Needle",
+      "alt": "Space Needle, Seattle",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/m85Ob2G.jpg",
-      "alt": "Mount Rainier",
+      "alt": "Mount Rainier, Washington",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/CIfh1No.jpg",
-      "alt": "Trailside Wildlife",
+      "alt": "Golden-Mantled Ground Squirrel, Mount Rainier",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/VmmmZX2.jpg",
-      "alt": "Wildlife at Mount Rainier",
+      "alt": "Hoary Marmot, Mount Rainier",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/utnvOhk.jpg",
-      "alt": "Waterfall at Mount Rainier",
+      "alt": "Myrtle Falls, Mount Rainier",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/jnUewRX.jpg",
-      "alt": "Pop Culture Exhibit",
+      "alt": "MOPOP, Seattle",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/it0HUyu.jpg",
-      "alt": "Fremont Troll",
+      "alt": "Fremont Troll, Seattle",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/xO0WTSu.jpg",
-      "alt": "Seattle Waterfront",
+      "alt": "Ballard Locks, Seattle",
       "orientation": "portrait",
       "group": "seattle-rainier"
     },
     {
       "src": "https://i.imgur.com/ScTI0NC.jpg",
-      "alt": "Alcatraz Island",
+      "alt": "Alcatraz Island, San Francisco",
       "orientation": "portrait",
       "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/U14SD3i.jpg",
-      "alt": "Sea Lions at Pier 39",
+      "alt": "Pier 39 Sea Lions, San Francisco",
       "orientation": "landscape",
       "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/uuvcHXw.jpg",
-      "alt": "Rainbow Crosswalk",
+      "alt": "Waymo, San Francisco",
       "orientation": "portrait",
       "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/zTHd8hd.jpg",
-      "alt": "Golden Gate Bridge",
+      "alt": "Golden Gate Bridge, San Francisco",
       "orientation": "landscape",
       "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/qb0VEa6.jpg",
-      "alt": "San Francisco Sunset",
+      "alt": "Pacific Ocean, San Francisco",
       "orientation": "portrait",
       "group": "san-francisco"
     },
     {
       "src": "https://i.imgur.com/G0ctGtj.jpg",
-      "alt": "Acadia Beach",
+      "alt": "Sand Beach, Acadia",
       "orientation": "landscape",
       "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/D1XaS07.jpg",
-      "alt": "Summit Break",
+      "alt": "Sunrise Pose, Acadia",
       "orientation": "portrait",
       "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/UH59cth.jpg",
-      "alt": "Autumn in Acadia",
+      "alt": "Acadia, Maine",
       "orientation": "landscape",
       "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/SYD1Mhh.jpg",
-      "alt": "Cliffside Trail",
+      "alt": "Beehive Trail, Acadia",
       "orientation": "portrait",
       "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/TGxMWPJ.jpg",
-      "alt": "Fall Foliage",
+      "alt": "Fall Foliage, Acadia",
       "orientation": "landscape",
       "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/hsTwsQL.jpg",
-      "alt": "Maine Lighthouse",
+      "alt": "Bass Harbor Head Light Station, Maine",
       "orientation": "portrait",
       "group": "acadia-maine"
     },
     {
-      "src": "https://i.imgur.com/j0r7XcZ.jpg",
-      "alt": "Lobster Dinner",
-      "orientation": "landscape",
-      "group": "acadia-maine"
-    },
-    {
       "src": "https://i.imgur.com/tInNlxE.jpg",
-      "alt": "Tide Pool",
+      "alt": "Tide Pool, Acadia",
       "orientation": "portrait",
       "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/q0PeDiD.jpg",
-      "alt": "Acadia Shoreline",
+      "alt": "Schoodic Point, Acadia",
       "orientation": "portrait",
       "group": "acadia-maine"
     },
     {
       "src": "https://i.imgur.com/E1kOXeK.jpg",
-      "alt": "Low Tide, Maine",
+      "alt": "Bar Island Land Bridge, Acadia",
       "orientation": "landscape",
       "group": "acadia-maine"
     }

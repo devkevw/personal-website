@@ -41,7 +41,7 @@ test('navigation, career anchor, and trip links reach their content', async ({ p
   await page.getByRole('link', { name: /North America.*United States/ }).click();
   await expect(page.locator('.trip-intro')).toContainText('2025–2026');
   await expect(page.locator('[data-place-filter]')).toHaveCount(7);
-  await expect(page.locator('[data-photo]')).toHaveCount(74);
+  await expect(page.locator('[data-photo]')).toHaveCount(73);
   await expect(page.locator('[data-photo]').first()).toHaveAttribute('href', 'https://i.imgur.com/4S53Ssj.jpg');
   await expect(page.getByRole('heading', { name: 'From the camera roll.' })).toBeVisible();
 });
@@ -343,9 +343,9 @@ test('homepage carousels wrap, link to albums, and respect reduced motion', asyn
   const firstHref = await landscape.locator('.is-active a').getAttribute('href');
   const total = await landscape.locator('[data-slide]').count();
   expect(total).toBeGreaterThan(50);
-  await expect(page.locator('[data-carousel] [data-slide]')).toHaveCount(187);
+  await expect(page.locator('[data-carousel] [data-slide]')).toHaveCount(186);
   const photos = await page.locator('[data-carousel] img').evaluateAll(images => images.map(img => img.getAttribute('src') || img.dataset.src));
-  expect(new Set(photos).size).toBe(187);
+  expect(new Set(photos).size).toBe(186);
   await page.mouse.move(0, 0);
   await expect(landscape.locator('.is-active figcaption')).toHaveCSS('opacity', '0');
   await expect(landscape.locator('.is-active')).toHaveCSS('animation-duration', '0s');
@@ -585,7 +585,7 @@ test('China place filters include smaller stops and scope the photo viewer', asy
 test('UK and US place filters use their regional groups', async ({ page }) => {
   for (const [route, label, count, total] of [
     ['/travel/england/', 'Edinburgh & Glasgow', 2, 33],
-    ['/travel/united-states/', 'Chicago, Milwaukee & Indiana', 14, 74]
+    ['/travel/united-states/', 'Chicago, Milwaukee & Indiana', 14, 73]
   ]) {
     await page.goto(route);
     await page.getByRole('button', { name: label, exact: true }).click();
