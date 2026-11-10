@@ -28,7 +28,7 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 ## Release workflow and README date
 
 - Do all development on branches. Keep `main` unchanged until Kevin explicitly requests a merge/release; do not commit directly to `main`.
-- The README starts with `Page last updated November 2026`. This line records the month and year of changes merged into `main`, not branch activity or preview deployments.
+- The README starts with a `Page last updated Month Year` line, using the full month name and four-digit year. It records changes merged into `main`, not branch activity or preview deployments.
 - For every approved merge into `main`, compare that line with the actual merge month/year. Update it to `Page last updated Month Year` only if the month or year differs. Include any required edit in the release branch/PR so it arrives in `main` with the merge. Recheck the date if the merge is delayed across a month boundary.
 - Do not bump the date for ordinary development commits, pushes, builds, or Vercel previews. If the month/year already matches, leave it unchanged.
 - Keep this date in the README only; do not restore a last-updated line to the website footer.
