@@ -54,8 +54,8 @@
         ]
       },
       {
-        "id": "guilin-yangshuo",
-        "label": "Guilin & Yangshuo",
+        "id": "guangxi",
+        "label": "Guangxi",
         "places": [
           "Guilin",
           "Yangshuo",
@@ -86,18 +86,12 @@
         ]
       },
       {
-        "id": "chongqing",
-        "label": "Chongqing",
-        "places": [
-          "Chongqing"
-        ]
-      },
-      {
-        "id": "chengdu-leshan",
-        "label": "Chengdu & Leshan",
+        "id": "sichuan-chongqing",
+        "label": "Sichuan & Chongqing",
         "places": [
           "Chengdu",
-          "Leshan"
+          "Leshan",
+          "Chongqing"
         ]
       },
       {

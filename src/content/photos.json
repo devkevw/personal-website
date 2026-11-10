@@ -34,13 +34,13 @@
       "src": "https://i.imgur.com/4zadgRk.jpg",
       "alt": "Sun and Moon Pagodas, Guilin",
       "orientation": "landscape",
-      "group": "guilin-yangshuo"
+      "group": "guangxi"
     },
     {
       "src": "https://i.imgur.com/4Cltokn.jpg",
       "alt": "Xianggong Mountain, Yangshuo",
       "orientation": "landscape",
-      "group": "guilin-yangshuo"
+      "group": "guangxi"
     },
     {
       "src": "https://i.imgur.com/RZyCo9X.jpg",
@@ -88,13 +88,13 @@
       "src": "https://i.imgur.com/OULpvdr.jpg",
       "alt": "Hongya Dong, Chongqing",
       "orientation": "landscape",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/2gQZ75B.jpg",
       "alt": "Yangtze River Cableway, Chongqing",
       "orientation": "landscape",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/gxV8wdp.jpg",
@@ -124,13 +124,13 @@
       "src": "https://i.imgur.com/OwsAHf0.jpg",
       "alt": "火锅, Chongqing",
       "orientation": "landscape",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/lfam28e.jpg",
       "alt": "Great Hall of the People, Chongqing",
       "orientation": "landscape",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/7ZCALIh.jpg",
@@ -184,7 +184,7 @@
       "src": "https://i.imgur.com/wHXTDD6.jpg",
       "alt": "Yangshuo, Guilin",
       "orientation": "landscape",
-      "group": "guilin-yangshuo"
+      "group": "guangxi"
     },
     {
       "src": "https://i.imgur.com/5ZSMESH.jpg",
@@ -226,19 +226,19 @@
       "src": "https://i.imgur.com/5ufRfPN.jpg",
       "alt": "Longji Rice Terraces, Longsheng",
       "orientation": "portrait",
-      "group": "guilin-yangshuo"
+      "group": "guangxi"
     },
     {
       "src": "https://i.imgur.com/yZVjOvk.jpg",
       "alt": "Yangshuo, Guilin",
       "orientation": "portrait",
-      "group": "guilin-yangshuo"
+      "group": "guangxi"
     },
     {
       "src": "https://i.imgur.com/ALnudnq.jpg",
       "alt": "Yulong River, Yangshuo",
       "orientation": "portrait",
-      "group": "guilin-yangshuo"
+      "group": "guangxi"
     },
     {
       "src": "https://i.imgur.com/6vr65lz.jpg",
@@ -310,61 +310,61 @@
       "src": "https://i.imgur.com/bcg9JlU.jpg",
       "alt": "Leshan Giant Buddha, Leshan",
       "orientation": "portrait",
-      "group": "chengdu-leshan"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/Wl1AmV9.jpg",
       "alt": "Liziba Station, Chongqing",
       "orientation": "portrait",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/yAvGL6t.jpg",
       "alt": "Jiefangbei, Chongqing",
       "orientation": "portrait",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/0mY6I3b.jpg",
       "alt": "Hotpot Base, Chongqing",
       "orientation": "portrait",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/RJklBne.jpg",
       "alt": "Chongqing, China",
       "orientation": "portrait",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/x7KMAzb.jpg",
       "alt": "Chongqing, China",
       "orientation": "portrait",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/XayDrAe.jpg",
       "alt": "Chongqing, China",
       "orientation": "portrait",
-      "group": "chongqing"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/Zuv2kgG.jpg",
       "alt": "Bamboo Forest, Chengdu",
       "orientation": "portrait",
-      "group": "chengdu-leshan"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/2n6IEl7.jpg",
       "alt": "Chengdu Research Base of Giant Panda Breeding, Chengdu",
       "orientation": "portrait",
-      "group": "chengdu-leshan"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/dHABzIc.jpg",
       "alt": "Red Panda, Chengdu",
       "orientation": "portrait",
-      "group": "chengdu-leshan"
+      "group": "sichuan-chongqing"
     },
     {
       "src": "https://i.imgur.com/d4Pn3LT.jpg",

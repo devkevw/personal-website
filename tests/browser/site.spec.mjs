@@ -573,8 +573,10 @@ test('China place filters include smaller stops and scope the photo viewer', asy
   await expect(page.locator('[data-place-status]')).toContainText('Hangzhou, Suzhou');
   await page.getByRole('button', { name: 'Beijing & Hebei', exact: true }).click();
   await expect(page.locator('[data-place-status]')).toContainText('Shijiazhuang, Zhangjiakou');
-  await page.getByRole('button', { name: 'Chengdu & Leshan', exact: true }).click();
-  await expect(page.locator('.photo-item:visible')).toHaveCount(4);
+  await page.getByRole('button', { name: 'Guangxi', exact: true }).click();
+  await expect(page.locator('.photo-item:visible')).toHaveCount(6);
+  await page.getByRole('button', { name: 'Sichuan & Chongqing', exact: true }).click();
+  await expect(page.locator('.photo-item:visible')).toHaveCount(14);
   await page.locator('.trip-intro').screenshot({ path: testInfo.outputPath('china-place-filters.png') });
   await all.click();
   await expect(page.locator('.photo-item:visible')).toHaveCount(80);
