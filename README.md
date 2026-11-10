@@ -24,7 +24,7 @@ The header's moon/sun button switches between light and dark themes. Light is th
 - `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
 - `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
 - `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
-- `src/content/photos.json`: shared source for albums and the shuffled homepage carousels. Photos load as visitors browse. 184 photographs: 80 from China, 33 from England & Scotland, and 71 from the United States. Imgur hosts these photos.
+- `src/content/photos.json`: shared source for albums and the shuffled homepage carousels. Photos load as visitors browse. 200 photographs: 91 from China, 38 from England & Scotland, and 71 from the United States. Imgur hosts these photos.
 - `src/content/projects.json`: the early project archive, linked from About.
 
 Travel is grouped into three albums: China, England & Scotland, and United States. The US album collects photos from 2025–2026 across New York & New Haven; Chicago, Milwaukee & Indiana; Las Vegas & the Grand Canyon; Seattle & Mount Rainier; and San Francisco & Maine. One unavailable Imgur image (`H4D1YEF`, the first image in the Chicago/Milwaukee/Indiana album) was omitted. Missing dates and photos are left out. The résumé PDF is not copied into the public website, and phone/address details are not published.
@@ -111,5 +111,10 @@ Start a preview with `HOST=0.0.0.0 npm run dev` if required by the cloud environ
 Review and publish the development environment in Codex, then select it in the ChatGPT mobile app. This is separate from deploying the website. Read `AGENTS.md` before starting work; it carries the project decisions into a new task.
 
 The Food page prototype and first five recommendations are saved on `future/v3-food` (`17ed5d6`) for a later iteration. They are intentionally excluded from version 2.
+
+Other hobbies that could be included in a future iteration:
+
+- Food recommendations.
+- Selling on Facebook Marketplace, with stories or finds from past sales.
 
 Album filters use `photoGroups` in `src/content/trips.json` (stable `id`, visible `label`, and included `places`). Every photo in a grouped album needs a matching `group` in `photos.json`; the build rejects unassigned photos and empty groups. Keep small stops grouped with nearby destinations, retain original photo order, and announce the member places in the screen-reader-only selected-filter status. The photo viewer cycles only through the active filter. Without JavaScript, all photos remain visible.

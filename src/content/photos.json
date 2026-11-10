@@ -85,6 +85,12 @@
       "group": "inner-mongolia"
     },
     {
+      "src": "https://i.imgur.com/KfT7plK.jpg",
+      "alt": "The Locals, Inner Mongolia",
+      "orientation": "portrait",
+      "group": "inner-mongolia"
+    },
+    {
       "src": "https://i.imgur.com/OULpvdr.jpg",
       "alt": "Hongya Dong, Chongqing",
       "orientation": "landscape",
@@ -217,6 +223,12 @@
       "group": "tibet"
     },
     {
+      "src": "https://i.imgur.com/yzUjSx3.jpg",
+      "alt": "Mount Everest, Tibet",
+      "orientation": "portrait",
+      "group": "tibet"
+    },
+    {
       "src": "https://i.imgur.com/A6bzrr2.jpg",
       "alt": "Tibetan Mastiffs, Tibet",
       "orientation": "portrait",
@@ -237,6 +249,12 @@
     {
       "src": "https://i.imgur.com/ALnudnq.jpg",
       "alt": "Yulong River, Yangshuo",
+      "orientation": "portrait",
+      "group": "guangxi"
+    },
+    {
+      "src": "https://i.imgur.com/OeYI8Hl.jpg",
+      "alt": "Flying, Yangshuo",
       "orientation": "portrait",
       "group": "guangxi"
     },
@@ -403,6 +421,24 @@
       "group": "shanghai-nearby"
     },
     {
+      "src": "https://i.imgur.com/FpxI7Lk.jpg",
+      "alt": "Oriental Pearl Tower, Shanghai",
+      "orientation": "portrait",
+      "group": "shanghai-nearby"
+    },
+    {
+      "src": "https://i.imgur.com/OPMLtXx.jpg",
+      "alt": "Propaganda Poster Art Centre, Shanghai",
+      "orientation": "landscape",
+      "group": "shanghai-nearby"
+    },
+    {
+      "src": "https://i.imgur.com/FUt6lYc.jpg",
+      "alt": "People Mountain People Sea, Shanghai",
+      "orientation": "portrait",
+      "group": "shanghai-nearby"
+    },
+    {
       "src": "https://i.imgur.com/wXpy2HJ.jpg",
       "alt": "Tsingtao Beer Museum, Qingdao",
       "orientation": "portrait",
@@ -415,13 +451,19 @@
       "group": "qingdao"
     },
     {
+      "src": "https://i.imgur.com/SCqBHBL.jpg",
+      "alt": "Beer in a Bag, Qingdao",
+      "orientation": "portrait",
+      "group": "qingdao"
+    },
+    {
       "src": "https://i.imgur.com/UcegMnt.jpg",
       "alt": "Hooping, Beijing",
       "orientation": "portrait",
       "group": "beijing-hebei"
     },
     {
-      "src": "https://i.imgur.com/WXETMtL.jpg",
+      "src": "https://i.imgur.com/AhRkCFu.jpg",
       "alt": "Temple of Heaven, Beijing",
       "orientation": "portrait",
       "group": "beijing-hebei"
@@ -447,6 +489,30 @@
     {
       "src": "https://i.imgur.com/BsemJ7D.jpg",
       "alt": "Terracotta Army, Xi'an",
+      "orientation": "portrait",
+      "group": "xian"
+    },
+    {
+      "src": "https://i.imgur.com/2QTYpBg.jpg",
+      "alt": "Bell Tower, Xi'an",
+      "orientation": "portrait",
+      "group": "xian"
+    },
+    {
+      "src": "https://i.imgur.com/KRcISjL.jpg",
+      "alt": "City Wall, Xi'an",
+      "orientation": "portrait",
+      "group": "xian"
+    },
+    {
+      "src": "https://i.imgur.com/wuO9zyR.jpg",
+      "alt": "Greetings, Xi'an",
+      "orientation": "landscape",
+      "group": "xian"
+    },
+    {
+      "src": "https://i.imgur.com/GHCZnKj.jpg",
+      "alt": "Munching, Xi'an",
       "orientation": "portrait",
       "group": "xian"
     },
@@ -621,6 +687,30 @@
       "group": "london"
     },
     {
+      "src": "https://i.imgur.com/qwjbJPs.jpg",
+      "alt": "Notting Hill Bookshop, London",
+      "orientation": "portrait",
+      "group": "london"
+    },
+    {
+      "src": "https://i.imgur.com/zWzVqCP.jpg",
+      "alt": "Red Phone Box, London",
+      "orientation": "portrait",
+      "group": "london"
+    },
+    {
+      "src": "https://i.imgur.com/069XNob.jpg",
+      "alt": "Chinatown, London",
+      "orientation": "portrait",
+      "group": "london"
+    },
+    {
+      "src": "https://i.imgur.com/Ml164O2.jpg",
+      "alt": "Fish & Chips, London",
+      "orientation": "portrait",
+      "group": "london"
+    },
+    {
       "src": "https://i.imgur.com/IbW2Jvq.jpg",
       "alt": "Paddington Bear, Paddington Station",
       "orientation": "portrait",
@@ -665,6 +755,12 @@
     {
       "src": "https://i.imgur.com/CeSKUPS.jpg",
       "alt": "Royal Albert Hall, London",
+      "orientation": "portrait",
+      "group": "london"
+    },
+    {
+      "src": "https://i.imgur.com/BeXrrzV.jpg",
+      "alt": "Sunflowers, London",
       "orientation": "portrait",
       "group": "london"
     },

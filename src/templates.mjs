@@ -166,7 +166,7 @@ export function writing(ctx) {
 
 export function travel(ctx) {
   return layout(ctx, { title: 'Travel', section: 'travel', description: 'Trips, photographs, and a few memories from China, the United Kingdom, and around the United States.', body: `
-    ${intro('', 'Out & about.', 'Some trips last a weekend, others a little longer. Here’s a collection of places I’ve been and moments I wanted to keep.')}
+    ${intro('', 'Out & about.', 'When I have the time and money, I like to venture somewhere new. Here are some places I’ve been in recent years.')}
     <div class="travel-index-heading"><p class="eyebrow">THE ALBUM COLLECTION</p><p>${ctx.trips.length} travel albums</p></div>
     <section class="trip-grid" aria-label="Trips">${ctx.trips.map(trip => tripCard(ctx, trip)).join('')}</section>` });
 }

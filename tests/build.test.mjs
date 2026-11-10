@@ -49,7 +49,7 @@ test('static output works at a project subpath, with complete local links and as
 
 test('existing photographs and honest album states are preserved', async () => {
   const data = await loadContent();
-  assert.equal(data.photos.china.length, 80);
+  assert.equal(data.photos.china.length, 91);
   const china = data.trips.find(trip => trip.slug === 'china');
   for (const city of ['Hangzhou', 'Suzhou', "Xi'an", 'Qingdao', 'Shijiazhuang', 'Zhangjiakou', 'Chengdu', 'Leshan']) assert.ok(china.places.includes(city), `Missing China destination: ${city}`);
   for (const trip of data.trips) {
@@ -57,7 +57,7 @@ test('existing photographs and honest album states are preserved', async () => {
     assert.ok(data.photos[trip.slug].every(photo => ids.has(photo.group)), `Unassigned photo in ${trip.slug}`);
     for (const group of trip.photoGroups) assert.ok(data.photos[trip.slug].filter(photo => photo.group === group.id).length >= 2, `Avoid single-photo group: ${group.id}`);
   }
-  assert.equal(data.photos.england.length, 33);
+  assert.equal(data.photos.england.length, 38);
   assert.equal(data.trips.length, 3);
   const us = data.trips.find(trip => trip.slug === 'united-states');
   assert.equal(us.year, 2025);
