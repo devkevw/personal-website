@@ -63,7 +63,7 @@ test('existing photographs and honest album states are preserved', async () => {
   assert.equal(us.year, 2025);
   assert.equal(us.endYear, 2026);
   assert.equal(us.places.length, 11);
-  assert.equal(data.photos['united-states'].length, 73);
+  assert.equal(data.photos['united-states'].length, 71);
   assert.ok(data.photos['united-states'].some(photo => photo.src === us.cover), 'The US cover must come from its album');
 });
 

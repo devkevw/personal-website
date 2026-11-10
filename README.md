@@ -24,7 +24,7 @@ The header's moon/sun button switches between light and dark themes. Light is th
 - `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
 - `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
 - `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
-- `src/content/photos.json`: shared source for albums and the shuffled homepage carousels. Photos load as visitors browse. 186 photographs: 80 from China, 33 from England & Scotland, and 73 from the United States. Imgur hosts these photos.
+- `src/content/photos.json`: shared source for albums and the shuffled homepage carousels. Photos load as visitors browse. 184 photographs: 80 from China, 33 from England & Scotland, and 71 from the United States. Imgur hosts these photos.
 - `src/content/projects.json`: the early project archive, linked from About.
 
 Travel is grouped into three albums: China, England & Scotland, and United States. The US album collects photos from 2025–2026 across New York & New Haven; Chicago, Milwaukee & Indiana; Las Vegas & the Grand Canyon; Seattle & Mount Rainier; and San Francisco & Maine. One unavailable Imgur image (`H4D1YEF`, the first image in the Chicago/Milwaukee/Indiana album) was omitted. Missing dates and photos are left out. The résumé PDF is not copied into the public website, and phone/address details are not published.

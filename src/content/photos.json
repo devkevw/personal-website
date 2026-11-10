@@ -785,12 +785,6 @@
       "group": "new-york-new-haven"
     },
     {
-      "src": "https://i.imgur.com/m9TwaOt.jpg",
-      "alt": "Campbell’s Soup Cans, New York",
-      "orientation": "portrait",
-      "group": "new-york-new-haven"
-    },
-    {
       "src": "https://i.imgur.com/b6YOORh.jpg",
       "alt": "Rockefeller Center, New York",
       "orientation": "landscape",
@@ -823,12 +817,6 @@
     {
       "src": "https://i.imgur.com/fygUI7Z.jpg",
       "alt": "The Bean, Chicago",
-      "orientation": "portrait",
-      "group": "great-lakes"
-    },
-    {
-      "src": "https://i.imgur.com/VmN35lc.jpg",
-      "alt": "Van Gogh Self-Portrait, Chicago",
       "orientation": "portrait",
       "group": "great-lakes"
     },
