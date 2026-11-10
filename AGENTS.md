@@ -25,6 +25,14 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - Existing image counts: China 80, UK 33, US 74. The unavailable Imgur image `H4D1YEF` was omitted; `fygUI7Z` is the Bean photo already included, not a replacement.
 - Version 2 has a separate Vercel review deployment that updates from pushes to `redesign/v2`. Keep `main` and the original live-site hosting unchanged unless Kevin requests a release.
 
+## Release workflow and README date
+
+- Do all development on branches. Keep `main` unchanged until Kevin explicitly requests a merge/release; do not commit directly to `main`.
+- The README starts with `Page last updated November 2026`. This line records the month and year of changes merged into `main`, not branch activity or preview deployments.
+- For every approved merge into `main`, compare that line with the actual merge month/year. Update it to `Page last updated Month Year` only if the month or year differs. Include any required edit in the release branch/PR so it arrives in `main` with the merge. Recheck the date if the merge is delayed across a month boundary.
+- Do not bump the date for ordinary development commits, pushes, builds, or Vercel previews. If the month/year already matches, leave it unchanged.
+- Keep this date in the README only; do not restore a last-updated line to the website footer.
+
 ## Deferred work
 
 - Kevin parked the Food page for a future third iteration. The complete map, city filters, and five restaurant entries are preserved on the GitHub branch `future/v3-food` at `17ed5d6`. Keep Food out of version 2 until Kevin asks to resume it.

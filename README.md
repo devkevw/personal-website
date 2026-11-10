@@ -1,5 +1,7 @@
 # Kevin Wang · Personal website, version 2
 
+Page last updated November 2026
+
 A static website for my career, writing, and travels. Built with semantic HTML, CSS, and a little JavaScript. Shared templates generate complete HTML pages; the only development dependency is Playwright for browser tests.
 
 ## Run locally
@@ -76,6 +78,14 @@ SITE_URL=https://devkevw.github.io/personal-website/ npm run build
 ```
 
 This adds canonical URLs and `sitemap.xml`. Local builds omit both rather than advertise an unconfirmed production URL.
+
+## Release workflow
+
+Make changes on development or feature branches, then merge into `main` when a release is approved. Do not commit changes directly to `main`.
+
+The “Page last updated Month Year” line at the top of this README tracks changes merged into `main`. For every merge into `main`, compare the recorded month and year with the actual merge month and year. Update the line only if they differ, including that edit in the release branch or pull request so it lands with the merge. If a release is delayed into another month, refresh the date before merging.
+
+Ordinary branch commits, preview deployments, and local builds do not change this date. Keep the date in the README only; it does not belong in the website footer.
 
 ## Version history
 
