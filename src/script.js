@@ -1,5 +1,13 @@
 // The page, navigation, and original-image links work without JavaScript.
 // JavaScript enhances the optional heading wave, typing line, and photo viewer.
+const header = document.querySelector('.site-header');
+if (header) {
+  const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('pageshow', updateHeader);
+  updateHeader();
+}
+
 function enhanceHeadingWave(heading) {
   const label = heading.textContent;
   const visual = document.createElement('span');

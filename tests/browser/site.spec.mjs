@@ -27,6 +27,29 @@ test('all pages are readable, error-free, and fit the viewport', async ({ page }
   expect(errors).toEqual([]);
 });
 
+test('floating navigation stays usable over page colors in both themes', async ({ page }, testInfo) => {
+  await page.goto('/');
+  const header = page.locator('.site-header');
+  const nav = page.getByRole('navigation', { name: 'Main navigation' });
+  await expect(header).not.toHaveClass(/is-scrolled/);
+  for (const theme of ['light', 'dark']) {
+    if (theme === 'dark') await page.getByRole('button', { name: 'Switch to dark mode' }).click();
+    await page.locator('.home-career').evaluate(section => window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 20, behavior: 'instant' }));
+    await expect(header).toHaveClass(/is-scrolled/);
+    const bounds = await nav.boundingBox();
+    expect(bounds.y).toBeGreaterThanOrEqual(0);
+    expect(bounds.y + bounds.height).toBeLessThan(120);
+    await expect(nav).toHaveCSS('backdrop-filter', 'blur(15px) saturate(1.7)');
+    await expect(nav).toHaveCSS('background-color', theme === 'light' ? 'rgba(247, 247, 247, 0.8)' : 'rgba(41, 44, 40, 0.82)');
+    // The surrounding header space must not block the content underneath.
+    expect(await header.evaluate(el => getComputedStyle(el).pointerEvents)).toBe('none');
+    await page.screenshot({ path: testInfo.outputPath(`floating-menu-${theme}.png`) });
+  }
+  await nav.getByRole('link', { name: 'Writing', exact: true }).click();
+  await expect(page).toHaveURL(/\/writing\/$/);
+  await expect(header).not.toHaveClass(/is-scrolled/);
+});
+
 test('navigation, career anchor, and trip links reach their content', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: 'The full timeline' }).click();
