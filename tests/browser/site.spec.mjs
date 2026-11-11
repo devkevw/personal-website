@@ -41,8 +41,13 @@ test('floating navigation stays usable over page colors in both themes', async (
     expect(bounds.y + bounds.height).toBeLessThan(120);
     await expect(nav).toHaveCSS('backdrop-filter', 'blur(15px) saturate(1.7)');
     await expect(nav).toHaveCSS('background-color', theme === 'light' ? 'rgba(247, 247, 247, 0.8)' : 'rgba(41, 44, 40, 0.82)');
-    // The surrounding header space must not block the content underneath.
-    expect(await header.evaluate(el => getComputedStyle(el).pointerEvents)).toBe('none');
+    // Only the menu follows the page; the other header controls scroll away.
+    const toggleBounds = await page.locator('[data-theme-toggle]').boundingBox();
+    expect(toggleBounds.y + toggleBounds.height).toBeLessThan(0);
+    if (testInfo.project.name === 'desktop') {
+      const contactBounds = await page.locator('.header-contact').boundingBox();
+      expect(contactBounds.y + contactBounds.height).toBeLessThan(0);
+    }
     await page.screenshot({ path: testInfo.outputPath(`floating-menu-${theme}.png`) });
   }
   await nav.getByRole('link', { name: 'Writing', exact: true }).click();
