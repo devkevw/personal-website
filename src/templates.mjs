@@ -150,7 +150,7 @@ export function home(ctx) {
     <section class="home-career section-band"><div class="wrap split-section"><div><h2>A little<br> background.</h2><p class="section-description">Select stops that I’ve made along the way.</p><a class="text-link" href="${href('about/#timeline')}">The full timeline ${arrow}</a></div><ol class="career-preview">${site.timeline.slice(0, 3).map(item => `<li><span class="timeline-marker" aria-hidden="true"></span><p class="eyebrow">${escape(item.homePeriod || item.period)} · ${escape(item.category)}</p><h3>${escape(item.organization)}</h3><p>${escape(item.title)}</p></li>`).join('')}</ol></div></section>
     <section class="home-writing wrap section-space">${sectionHeading('', 'Some words, occasionally.', href('writing/'), 'All writing')}<p class="section-description">Thoughts of mine that made it online.</p>${postRows(ctx, posts.slice(0, 2))}</section>
     <section class="home-travel section-band"><div class="wrap">${sectionHeading('', 'A change of scenery.', href('travel/'), 'All trips')}<p class="section-description">A few places I’ve been lucky enough to visit.</p><div class="travel-showcase">${travelCarousel(ctx, 'landscape')}${travelCarousel(ctx, 'portrait')}</div></div></section>
-    <section class="home-signoff wrap"><p class="eyebrow">THAT’S ME, FOR NOW.</p><h2>Thanks for stopping by.</h2><p>Saw something cool? I’d love to connect.</p><a class="pill-link" href="mailto:${escape(site.email)}">Let’s talk ${arrow}</a></section>` });
+    <section class="home-signoff wrap"><h2>Thanks for stopping by.</h2><p>Saw something cool? I’d love to connect.</p><a class="pill-link" href="mailto:${escape(site.email)}">Let’s talk ${arrow}</a></section>` });
 }
 
 function timelineRows(items, start = 1) {

@@ -197,8 +197,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .art-desert { background: var(--art-desert); color: var(--art-desert-ink); }
 .art-coast { background: var(--art-coast); color: var(--art-coast-ink); }
 .home-signoff { padding-block: 105px; text-align: center; }
-.home-signoff h2 { margin-top: 17px; font-size: clamp(2rem, 4vw, 3rem); }
-.home-signoff > p:not(.eyebrow) { color: var(--muted); margin-top: 18px; font-size: .9rem; }
+.home-signoff h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.home-signoff > p { color: var(--muted); margin-top: 18px; font-size: .9rem; }
 .home-signoff .pill-link { margin-top: 28px; }
 
 /* Inner pages share navigation, type, and spacing, with content-specific layouts. */
