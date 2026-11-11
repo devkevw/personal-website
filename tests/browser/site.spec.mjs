@@ -342,6 +342,29 @@ test('greeting wave follows the mouse and settles without shifting the layout', 
   await expect.poll(() => letters.evaluateAll(nodes => Math.max(...nodes.map(el => Math.abs(new DOMMatrixReadOnly(getComputedStyle(el).transform).m42))))).toBeLessThan(.1);
 });
 
+test('heading wave follows a stationary pointer during scrolling', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name.includes('mobile'), 'Mouse hover is disabled on touch devices');
+  await page.goto('/');
+  const heading = page.getByRole('heading', { level: 1 });
+  const first = heading.locator('.wave-letter').first();
+  const box = await first.boundingBox();
+  const pointer = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+  const lift = () => first.evaluate(el => parseFloat(el.style.getPropertyValue('--wave-lift')) || 0);
+  await page.mouse.move(pointer.x, pointer.y);
+  await expect.poll(lift).toBeLessThan(-8);
+  await page.evaluate(() => window.scrollTo({ top: 20, behavior: 'instant' }));
+  const expected = await heading.evaluate((el, { box, pointer }) => {
+    const size = parseFloat(getComputedStyle(el).fontSize);
+    const distance = Math.hypot(pointer.x - box.x - box.width / 2, pointer.y - (box.y - scrollY + box.height / 2));
+    return -Math.min(20, size * .2) * Math.max(0, 1 - distance / (size * 1.25)) ** 2;
+  }, { box, pointer });
+  await expect.poll(async () => Math.abs(await lift() - expected)).toBeLessThan(.1);
+  await page.mouse.move(pointer.x + 1, pointer.y);
+  await expect.poll(async () => Math.abs(await lift() - expected)).toBeLessThan(.2);
+  await page.evaluate(() => window.scrollTo({ top: 180, behavior: 'instant' }));
+  await expect.poll(lift).toBe(0);
+});
+
 test('greeting stays still for touch input and reduced motion', async ({ page }) => {
   await page.goto('/');
   const heading = page.locator('[data-wave-title]');

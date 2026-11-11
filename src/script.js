@@ -40,28 +40,26 @@ function enhanceHeadingWave(heading) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   let centers = [];
-  let left = 0;
-  let top = 0;
   let radius = 100;
   let lift = 18;
   let pointerX = 0;
   let pointerY = 0;
+  let trackingPointer = false;
   let frame = null;
 
   function measure() {
     const size = parseFloat(getComputedStyle(heading).fontSize);
     const bounds = heading.getBoundingClientRect();
-    left = bounds.left;
-    top = bounds.top;
     centers = letters.map(letter => {
       const glyph = letter.getBoundingClientRect();
-      return { x: glyph.left - left + glyph.width / 2, y: glyph.top - top + glyph.height / 2 };
+      return { x: glyph.left - bounds.left + glyph.width / 2, y: glyph.top - bounds.top + glyph.height / 2 };
     });
     radius = size * 1.25;
     lift = Math.min(20, size * .2);
   }
 
   function reset() {
+    trackingPointer = false;
     if (frame !== null) cancelAnimationFrame(frame);
     frame = null;
     letters.forEach(letter => letter.style.removeProperty('--wave-lift'));
@@ -69,8 +67,14 @@ function enhanceHeadingWave(heading) {
 
   function draw() {
     frame = null;
+    // Glyph centers stay local; the heading's viewport position changes on scroll.
+    const bounds = heading.getBoundingClientRect();
+    if (pointerX < bounds.left || pointerX > bounds.right || pointerY < bounds.top || pointerY > bounds.bottom) {
+      reset();
+      return;
+    }
     letters.forEach((letter, index) => {
-      const proximity = Math.max(0, 1 - Math.hypot(pointerX - centers[index].x, pointerY - centers[index].y) / radius);
+      const proximity = Math.max(0, 1 - Math.hypot(pointerX - bounds.left - centers[index].x, pointerY - bounds.top - centers[index].y) / radius);
       letter.style.setProperty('--wave-lift', `${(-lift * proximity * proximity).toFixed(2)}px`);
     });
   }
@@ -78,13 +82,17 @@ function enhanceHeadingWave(heading) {
   heading.addEventListener('pointerenter', measure);
   heading.addEventListener('pointermove', event => {
     if (event.pointerType !== 'mouse' || event.buttons || reducedMotion.matches || !finePointer.matches) return;
-    pointerX = event.clientX - left;
-    pointerY = event.clientY - top;
+    trackingPointer = true;
+    pointerX = event.clientX;
+    pointerY = event.clientY;
     if (frame === null) frame = requestAnimationFrame(draw);
   });
   for (const event of ['pointerleave', 'pointercancel', 'pointerdown']) heading.addEventListener(event, reset);
   for (const preference of [reducedMotion, finePointer]) preference.addEventListener('change', reset);
   window.addEventListener('blur', reset);
+  window.addEventListener('scroll', () => {
+    if (trackingPointer && frame === null) frame = requestAnimationFrame(draw);
+  }, { passive: true });
   window.addEventListener('resize', () => { reset(); measure(); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) reset(); });
   document.fonts?.ready.then(measure);
