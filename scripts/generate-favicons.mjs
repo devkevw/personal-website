@@ -29,7 +29,7 @@ try {
       const context = canvas.getContext('2d');
       if (size === 180) {
         // iOS supplies its own corner mask; keep the touch icon opaque.
-        context.fillStyle = '#fcfcfc';
+        context.fillStyle = '#52644d';
         context.fillRect(0, 0, size, size);
       }
       context.drawImage(image, 0, 0, size, size);

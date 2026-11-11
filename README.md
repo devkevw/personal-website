@@ -49,7 +49,7 @@ The album, listing, and adjacent-trip links update on build. Captions stay visib
 
 ## Favicon
 
-The favicon uses `images/favicon/mountain.svg` with the site's green (`#52644d`), off-white (`#fcfcfc`), and transparent outer corners. Keep only the SVG, a 32px PNG browser fallback, an opaque 180px PNG Apple touch icon, and an ICO containing 16/32/48px frames. The shared template links all four. One high-resolution copy of the old Everest icon is archived at `docs/design/everest-original-512x512.png`, outside the published assets.
+The favicon uses `images/favicon/mountain.svg` with an off-white (`#fcfcfc`) mountain on a circle in the site's muted green (`#52644d`), and transparency outside the circle. Keep only the SVG, a 32px PNG browser fallback, an opaque 180px PNG Apple touch icon, and an ICO containing 16/32/48px frames. The shared template links all four. One high-resolution copy of the old Everest icon is archived at `docs/design/everest-original-512x512.png`, outside the published assets.
 
 After editing the SVG, run `node scripts/generate-favicons.mjs` with the same browser setup as the browser tests. Open `docs/favicon-preview.html` to compare actual sizes on light and dark tab backgrounds, or add `--preview` to export a temporary screenshot of the comparison. The SVG is the source for all final favicon files; the generator does not save redundant PNG sizes.
 
