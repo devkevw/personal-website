@@ -83,7 +83,9 @@ Set `SITE_URL` to the eventual public site root, including any project path, whe
 SITE_URL=https://devkevw.github.io/personal-website/ npm run build
 ```
 
-This adds canonical URLs and `sitemap.xml`. Local builds omit both rather than advertise an unconfirmed production URL.
+This adds canonical URLs, `sitemap.xml`, and the absolute link-preview image. Local builds omit all three rather than advertise an unconfirmed production URL.
+
+The preview image is `images/share/preview.jpg`, a 1200×630 typographic card: `kevinjwang.xyz` and a short line on the site’s sand, with ink text, a green dot matching the homepage greeting, and Poppins and Inter. Every page keeps its own title and description and shares this one image. After editing `scripts/share-card.html`, regenerate it with `node scripts/generate-share-card.mjs`, using the same browser setup as the favicon.
 
 ## Release workflow
 

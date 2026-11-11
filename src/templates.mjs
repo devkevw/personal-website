@@ -25,7 +25,10 @@ export function context(route, data) {
 export function layout(ctx, { title, description, section, body, wide = false }) {
   const { site, href, route } = ctx;
   const nav = [['', 'Home'], ['about/', 'About'], ['writing/', 'Writing'], ['travel/', 'Travel']];
-  const canonical = ctx.siteUrl ? new URL(route, `${ctx.siteUrl.replace(/\/$/, '')}/`).href : null;
+  const origin = ctx.siteUrl ? `${ctx.siteUrl.replace(/\/$/, '')}/` : null;
+  const canonical = origin ? new URL(route, origin).href : null;
+  const shareImage = origin ? new URL('images/share/preview.jpg', origin).href : null;
+  const shareAlt = site.name;
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -41,6 +44,14 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <meta property="og:description" content="${escape(description)}">
   <meta property="og:type" content="website">
   ${canonical ? `<link rel="canonical" href="${escape(canonical)}"><meta property="og:url" content="${escape(canonical)}">` : ''}
+  ${shareImage ? `<meta property="og:image" content="${escape(shareImage)}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${escape(shareAlt)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${escape(shareImage)}">
+  <meta name="twitter:image:alt" content="${escape(shareAlt)}">` : ''}
   <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="${href('images/favicon/mountain.ico')}">
   <link rel="icon" type="image/png" sizes="32x32" href="${href('images/favicon/mountain-32x32.png')}">
   <link rel="icon" type="image/svg+xml" sizes="any" href="${href('images/favicon/mountain.svg')}">

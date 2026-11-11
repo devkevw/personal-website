@@ -24,6 +24,7 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - Travel is grouped into three albums: China (2024), England & Scotland (2024), and United States (2025–2026). Keep the US visits together for now.
 - Kevin explicitly chose to continue hosting travel photos on Imgur. Keep originals outside the repository unless he requests otherwise. Captions were written from visual review and can be refined with his feedback.
 - Existing image counts: China 91, UK 39, US 71. Kevin removed the lobster dinner (`j0r7XcZ`), Campbell’s Soup Cans (`m9TwaOt`), and Van Gogh self-portrait (`VmN35lc`) photos. The unavailable Imgur image `H4D1YEF` was omitted; `fygUI7Z` is the Bean photo already included, not a replacement.
+- Link previews share one 1200×630 card, `images/share/preview.jpg`, generated from `scripts/share-card.html`: `kevinjwang.xyz` in Poppins with a green dot, “a guy with a website” in Inter, on flat sand (`#e1dcd0`). Kevin rejected photo and gradient versions. Image tags are emitted only when `SITE_URL` is set.
 - Version 2 has a separate Vercel review deployment that updates from pushes to `redesign/v2`. Keep `main` and the original live-site hosting unchanged unless Kevin requests a release.
 
 ## Release workflow and README date
