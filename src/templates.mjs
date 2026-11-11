@@ -147,10 +147,15 @@ export function home(ctx) {
       <div class="hero-copy"><h1 data-wave-title>Hi, I’m Kevin<span class="title-dot">.</span></h1>${typewriter(site)}<p class="hero-note">Originally from Montreal. Now studying at the University of Chicago. This is where I share what I’m up to, what I’m thinking, and where I’ve been.</p><a class="pill-link" href="${href('about/')}">A little more about me ${arrow}</a></div>
       <figure class="hero-photo"><picture><source media="(max-width: 700px)" srcset="${href('images/headshots/square/me_square_med.jpg')}"><img src="${href('images/headshots/3:5/me_3:5_large.jpg')}" width="720" height="1200" alt="Kevin holding two baby goats in Tibet" fetchpriority="high"></picture><figcaption>Yes, those are real baby goats. ${directionArrow('northwest')}</figcaption></figure>
     </section>
-    <section class="home-career section-band"><div class="wrap split-section"><div><h2>A little<br> background.</h2><p class="section-description">Select stops that I’ve made along the way.</p><a class="text-link" href="${href('about/#timeline')}">The full timeline ${arrow}</a></div><ol class="career-preview">${site.timeline.slice(0, 3).map(item => `<li><span class="timeline-marker" aria-hidden="true"></span><p class="eyebrow">${escape(item.homePeriod || item.period)} · ${escape(item.category)}</p><h3>${escape(item.organization)}</h3><p>${escape(item.title)}</p></li>`).join('')}</ol></div></section>
+    <section class="home-career section-band"><div class="wrap split-section"><div><h2>A little<br> background.</h2><p class="section-description">Select stops that I’ve made along the way.</p><a class="text-link" href="${href('about/#timeline')}">The full timeline ${arrow}</a></div><ol class="career-preview">${homeTimeline(site.timeline).map(item => `<li><span class="timeline-marker" aria-hidden="true"></span><p class="eyebrow">${escape(item.homePeriod || item.period)} · ${escape(item.category)}</p><h3>${escape(item.organization)}</h3><p>${escape(item.title)}</p></li>`).join('')}</ol></div></section>
     <section class="home-writing wrap section-space">${sectionHeading('', 'Some words, occasionally.', href('writing/'), 'All writing')}<p class="section-description">Thoughts of mine that made it online.</p>${postRows(ctx, posts.slice(0, 2))}</section>
     <section class="home-travel section-band"><div class="wrap">${sectionHeading('', 'A change of scenery.', href('travel/'), 'All trips')}<p class="section-description">A few places I’ve been lucky enough to visit.</p><div class="travel-showcase">${travelCarousel(ctx, 'landscape')}${travelCarousel(ctx, 'portrait')}</div></div></section>
     <section class="home-signoff wrap"><h2>Thanks for stopping by.</h2><p>Saw something cool? I’d love to connect.</p><a class="pill-link" href="mailto:${escape(site.email)}">Let’s talk ${arrow}</a></section>` });
+}
+
+function homeTimeline(items) {
+  const latestWork = items.find(item => item.category === 'Work');
+  return items.filter(item => item === latestWork || item.category === 'Education');
 }
 
 function timelineRows(items, start = 1) {
