@@ -41,8 +41,10 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <meta property="og:description" content="${escape(description)}">
   <meta property="og:type" content="website">
   ${canonical ? `<link rel="canonical" href="${escape(canonical)}"><meta property="og:url" content="${escape(canonical)}">` : ''}
-  <link rel="icon" type="image/png" sizes="32x32" href="${href('images/favicon/everest-32x32.png')}">
-  <link rel="apple-touch-icon" href="${href('images/favicon/everest-256x256.png')}">
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="${href('images/favicon/mountain.ico')}">
+  <link rel="icon" type="image/png" sizes="32x32" href="${href('images/favicon/mountain-32x32.png')}">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="${href('images/favicon/mountain.svg')}">
+  <link rel="apple-touch-icon" sizes="180x180" href="${href('images/favicon/mountain-180x180.png')}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
