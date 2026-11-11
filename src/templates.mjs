@@ -35,7 +35,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <meta name="theme-color" content="#fcfcfc">
   ${ctx.baseHref ? `<base href="${escape(ctx.baseHref)}">` : ''}
   <script src="${href('assets/theme.js')}"></script>
-  <title>${escape(title ? `${title} · ${site.name}` : `${site.name} · A little bit about me`)}</title>
+  <title>${escape(`${site.name} · ${title || 'Home'}`)}</title>
   <meta name="description" content="${escape(description)}">
   <meta property="og:title" content="${escape(title ? `${title} · ${site.name}` : site.name)}">
   <meta property="og:description" content="${escape(description)}">
