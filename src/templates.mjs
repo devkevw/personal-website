@@ -12,6 +12,10 @@ const directionArrow = direction => {
   return `<svg class="direction-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${paths[direction]}"/></svg>`;
 };
 const external = '<svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+const ralphIds = ['home', 'about', 'writing', 'archive', 'travel', 'china', 'us'];
+function ralphSpot(ctx, id) {
+  return `<span class="ralph-spot ralph-${id}" data-ralph-slot><button class="ralph-button" type="button" data-ralph="${id}" aria-label="Ralph" hidden><span class="ralph-peek"><img src="${ctx.href(`images/ralph/${id}.png`)}" alt="" width="320" height="320" loading="eager" decoding="async"></span></button><span class="ralph-feedback" data-ralph-feedback aria-hidden="true" hidden></span></span>`;
+}
 export const dateLabel = date => new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 const tripYearLabel = trip => trip.year ? `${trip.year}${trip.endYear && trip.endYear !== trip.year ? `–${trip.endYear}` : ''}` : '';
 
@@ -50,6 +54,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${href('assets/styles.css')}">
   <script defer src="${href('assets/script.js')}"></script>
+  <script defer src="${href('assets/ralph.js')}"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -60,12 +65,19 @@ export function layout(ctx, { title, description, section, body, wide = false })
     </button>
     <nav class="navigation" aria-label="Main navigation">${nav.map(([path, label]) => `<a href="${href(path)}"${section === label.toLowerCase() ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav>
     <a class="header-contact" href="mailto:${escape(site.email)}?subject=${escape(encodeURIComponent("Hey Kevin, cool website! Let’s connect."))}">Say hello ${external}</a>
+    ${section === 'home' ? ralphSpot(ctx, 'home') : ''}
   </header>
   <main id="main" tabindex="-1"${wide ? '' : ' class="wrap"'}>${body}</main>
   <footer class="site-footer wrap">
     <div class="footer-top"><div class="footer-intro"><p class="footer-weather">Chicago, IL<span data-weather hidden> · <a href="https://open-meteo.com/"${newTab} data-weather-temperature title="Chicago weather data by Open-Meteo"></a></span></p></div><a class="text-link" href="mailto:${escape(site.email)}?subject=${escape(encodeURIComponent("🎉 Hi Kevin, I'd Like To Hire You!"))}">Hire me ${arrow}</a></div>
     <div class="footer-bottom"><small>© ${new Date().getFullYear()} ${escape(site.name)}</small><ul aria-label="Elsewhere">${site.socials.map(s => `<li><a href="${escape(s.url)}"${externalTarget(s.url)}>${escape(s.label)} ${external}</a></li>`).join('')}</ul><a class="back-to-top" href="#main">Back to top ${directionArrow('up')}</a></div>
   </footer>
+  <p class="sr-only" data-ralph-announcement role="status" aria-atomic="true"></p>
+  <dialog class="ralph-dialog" data-ralph-hunt data-ralph-ids="${escape(JSON.stringify(ralphIds))}" aria-labelledby="ralph-dialog-title" aria-describedby="ralph-dialog-copy">
+    <button class="ralph-close" type="button" data-ralph-close aria-label="Close Ralph’s message">${directionArrow('right')} Close</button>
+    <p class="eyebrow" data-ralph-dialog-progress></p><h2 id="ralph-dialog-title"></h2><p id="ralph-dialog-copy"></p><p class="ralph-storage-note" data-ralph-storage-note hidden></p>
+    <a class="pill-link" data-ralph-prize href="mailto:${escape(site.email)}?subject=${escape(encodeURIComponent('I found all the Ralphs, let’s talk'))}" hidden>Let’s talk ${arrow}</a>
+  </dialog>
 </body>
 </html>\n`;
 }
@@ -98,8 +110,8 @@ function tripArt(trip) {
   return `<div class="trip-art art-${escape(trip.theme || 'mountain')}" aria-hidden="true"><svg viewBox="0 0 260 190" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${drawings[trip.theme] || drawings.mountain}</svg><span>Photos to come</span></div>`;
 }
 
-function tripCard(ctx, trip) {
-  return `<article class="trip-card"><a href="${ctx.href(`travel/${trip.slug}/`)}"><div class="trip-cover">${trip.cover ? `<img src="${escape(imageSource(trip.cover, 'h', ctx.href))}" alt="${escape(trip.coverAlt)}" width="1024" height="768" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : tripArt(trip)}<span class="trip-open" aria-hidden="true">${external}</span></div><div class="trip-card-meta"><span>${escape(trip.region)}</span>${trip.year ? `<span>${tripYearLabel(trip)}</span>` : ''}</div><h${ctx.route ? '2' : '3'}>${escape(trip.title)}</h${ctx.route ? '2' : '3'}>${trip.description ? `<p>${escape(trip.description)}</p>` : ''}</a></article>`;
+function tripCard(ctx, trip, ralphId) {
+  return `<article class="trip-card${ralphId ? ' ralph-anchor' : ''}" data-trip="${escape(trip.slug)}"><a href="${ctx.href(`travel/${trip.slug}/`)}"><div class="trip-cover">${trip.cover ? `<img src="${escape(imageSource(trip.cover, 'h', ctx.href))}" alt="${escape(trip.coverAlt)}" width="1024" height="768" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : tripArt(trip)}<span class="trip-open" aria-hidden="true">${external}</span></div><div class="trip-card-meta"><span>${escape(trip.region)}</span>${trip.year ? `<span>${tripYearLabel(trip)}</span>` : ''}</div><h${ctx.route ? '2' : '3'}>${escape(trip.title)}</h${ctx.route ? '2' : '3'}>${trip.description ? `<p>${escape(trip.description)}</p>` : ''}</a>${ralphId ? ralphSpot(ctx, ralphId) : ''}</article>`;
 }
 
 function typewriter(site) {
@@ -155,7 +167,7 @@ export function about(ctx) {
     ${intro('', 'Hi again.', 'I’m Kevin, originally from Montreal and currently studying statistics at the University of Chicago.')}
     <section class="about-intro"><img src="${href('images/headshots/square/me_square_med.jpg')}" alt="Kevin with baby goats in Tibet" width="600" height="600"><div><h2>Curiosity has taken me a few places.</h2><p>I studied statistics and computer science at McGill, with a minor in management. I’m now working toward my master’s in statistics at the University of Chicago.</p><p>Along the way, I’ve worked in actuarial and data science roles, researched how sports injuries affect performance, and spent a semester on exchange in Beijing.</p><p>Outside of school and work, I enjoy sports, board games, reading, and writing. I’m always up for trying a new food spot. And whenever I get the chance, a trip somewhere new.</p></div></section>
     <section id="timeline" class="timeline-section section-space">${sectionHeading('CAREER & EDUCATION', 'The path so far.')}${timelineRows(site.timeline.slice(0, visibleCount))}${earlierEntries.length ? `<details class="timeline-more"><summary><span class="timeline-more-label">View more</span><span class="timeline-less-label">View less</span><svg class="timeline-toggle-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>${timelineRows(earlierEntries, visibleCount + 1)}</details>` : ''}</section>
-    <section class="interests-section">${sectionHeading('OUTSIDE THE CLASSROOM', 'The other stuff I enjoy.')}<div class="interest-grid">${site.interests.map(item => `<article><img src="${href(`images/hobbies/${item.icon}`)}" alt="" width="64" height="64" loading="lazy"><h3>${escape(item.title)}</h3><p>${escape(item.text)}</p></article>`).join('')}</div></section>
+    <section class="interests-section ralph-anchor">${ralphSpot(ctx, 'about')}${sectionHeading('OUTSIDE THE CLASSROOM', 'The other stuff I enjoy.')}<div class="interest-grid">${site.interests.map(item => `<article><img src="${href(`images/hobbies/${item.icon}`)}" alt="" width="64" height="64" loading="lazy"><h3>${escape(item.title)}</h3><p>${escape(item.text)}</p></article>`).join('')}</div></section>
     <aside class="archive-note"><div><h2>A few early experiments.</h2><p>The little projects I built while learning to code live here. I originally built this site pre-AI to learn web development and display my creativity. It’s since been revamped with a little help from coding agents.</p></div><a class="text-link" href="${href('archive/')}">Project archive ${arrow}</a></aside>` });
 }
 
@@ -163,14 +175,14 @@ export function writing(ctx) {
   return layout(ctx, { title: 'Writing', section: 'writing', description: 'Essays, reflections, and occasional poetry by Kevin Wang. On university, travel, and life along the way.', body: `
     ${intro('', 'On my mind.', 'Sometimes I get the urge to type words at a screen. Some of those words end up here.')}
     <section class="writing-index" aria-label="Published writing">${postRows(ctx, ctx.posts)}</section>
-    <aside class="writing-note"><span class="note-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" focusable="false"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"/></svg></span><p>These pieces live on Medium. New writing will find a home here, too.</p><a class="text-link" href="https://medium.com/@kevw"${newTab}>Find me on Medium ${external}</a></aside>` });
+    <aside class="writing-note ralph-anchor">${ralphSpot(ctx, 'writing')}<span class="note-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" focusable="false"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"/></svg></span><p>These pieces live on Medium. New writing will find a home here, too.</p><a class="text-link" href="https://medium.com/@kevw"${newTab}>Find me on Medium ${external}</a></aside>` });
 }
 
 export function travel(ctx) {
   return layout(ctx, { title: 'Travel', section: 'travel', description: 'Trips, photographs, and a few memories from China, the United Kingdom, and around the United States.', body: `
     ${intro('', 'Out & about.', 'When I have the time and money, I like to venture somewhere new. Here are some places I’ve been in recent years.')}
     <div class="travel-index-heading"><p class="eyebrow">THE ALBUM COLLECTION</p><p>${ctx.trips.length} travel albums</p></div>
-    <section class="trip-grid" aria-label="Trips">${ctx.trips.map(trip => tripCard(ctx, trip)).join('')}</section>` });
+    <section class="trip-grid" aria-label="Trips">${ctx.trips.map(trip => tripCard(ctx, trip, trip.slug === 'united-states' ? 'travel' : undefined)).join('')}</section>` });
 }
 
 function albumPlaces(trip) {
@@ -187,10 +199,10 @@ export function tripPage(ctx, trip) {
   return layout(ctx, { title: trip.title, section: 'travel', description: trip.description || `A trip to ${trip.title}. A photo album by Kevin Wang.`, body: `
     <div class="detail-back"><a class="text-link" href="${ctx.href('travel/')}">${directionArrow('left')} All trips</a></div>
     <header class="trip-intro"><p class="eyebrow">${escape(trip.region)}${trip.year ? ` · ${tripYearLabel(trip)}` : ''}${trip.duration ? ` · ${escape(trip.duration)}` : ''}</p><h1 data-wave-title>${escape(trip.title)}<span class="title-dot">.</span></h1>${trip.note ? `<p class="page-lede">${escape(trip.note)}</p>` : ''}${albumPlaces(trip)}</header>
-    ${related ? `<aside class="related-writing"><div><p class="eyebrow">A STORY FROM THIS TRIP</p><h2>${escape(related.title)}</h2></div><a class="text-link" href="${escape(related.url || ctx.href(`writing/${related.slug}/`))}"${externalTarget(related.url)}>Read the story ${external}</a></aside>` : ''}
+    ${related ? `<aside class="related-writing ralph-anchor">${trip.slug === 'china' ? ralphSpot(ctx, 'china') : ''}<div><p class="eyebrow">A STORY FROM THIS TRIP</p><h2>${escape(related.title)}</h2></div><a class="text-link" href="${escape(related.url || ctx.href(`writing/${related.slug}/`))}"${externalTarget(related.url)}>Read the story ${external}</a></aside>` : ''}
     ${photos.length ? `<section class="album-section" aria-labelledby="album-title"><div class="album-heading"><h2 id="album-title">From the camera roll.</h2><span data-album-count>${photos.length} photographs</span></div><p class="album-hint" data-gallery-hint hidden>Select a photo for a closer look.</p><div class="photo-grid">${photos.map((photo, index) => `<figure class="photo-item ${photo.orientation === 'portrait' ? 'photo-portrait' : ''}" data-photo-group="${escape(photo.group || '')}"><a class="photo-link" href="${escape(imageSource(photo.src, '', ctx.href))}" data-photo${newTab} data-index="${index}" data-caption="${escape(photo.alt)}" data-full="${escape(imageSource(photo.src, 'h', ctx.href))}" aria-label="Enlarge photo: ${escape(photo.alt)}"><img src="${escape(imageSource(photo.src, 'l', ctx.href))}" alt="${escape(photo.alt)}" width="${photo.orientation === 'portrait' ? '600' : '800'}" height="${photo.orientation === 'portrait' ? '800' : '600'}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><figcaption>${escape(photo.alt)}</figcaption></figure>`).join('')}</div></section>
     <dialog class="lightbox" aria-label="Photo viewer"><div class="lightbox-toolbar"><p data-photo-count aria-live="polite"></p><button type="button" data-close aria-label="Close photo viewer">Close <span aria-hidden="true">×</span></button></div><div class="lightbox-stage"><button type="button" data-prev aria-label="Previous photo">${directionArrow('left')}</button><figure><img data-lightbox-image alt="" referrerpolicy="no-referrer"><figcaption data-lightbox-caption aria-live="polite"></figcaption></figure><button type="button" data-next aria-label="Next photo">${directionArrow('right')}</button></div></dialog>` : `<section class="album-pending">${tripArt(trip)}<h2>A place in the album.</h2><p>I’ve been here. Photos and notes from this trip will be added soon.</p><a class="text-link" href="${ctx.href('travel/')}">Explore the other trips ${arrow}</a></section>`}
-    <nav class="trip-pagination" aria-label="More trips">${(() => { const i = ctx.trips.indexOf(trip); return [i > 0 ? `<a href="${ctx.href(`travel/${ctx.trips[i - 1].slug}/`)}"><span>${directionArrow('left')} Previous album</span>${escape(ctx.trips[i - 1].title)}</a>` : '<span></span>', i < ctx.trips.length - 1 ? `<a href="${ctx.href(`travel/${ctx.trips[i + 1].slug}/`)}"><span>Next album ${directionArrow('right')}</span>${escape(ctx.trips[i + 1].title)}</a>` : ''].join(''); })()}</nav>` });
+    <nav class="trip-pagination ralph-anchor" aria-label="More trips">${trip.slug === 'united-states' ? ralphSpot(ctx, 'us') : ''}${(() => { const i = ctx.trips.indexOf(trip); return [i > 0 ? `<a href="${ctx.href(`travel/${ctx.trips[i - 1].slug}/`)}"><span>${directionArrow('left')} Previous album</span>${escape(ctx.trips[i - 1].title)}</a>` : '<span></span>', i < ctx.trips.length - 1 ? `<a href="${ctx.href(`travel/${ctx.trips[i + 1].slug}/`)}"><span>Next album ${directionArrow('right')}</span>${escape(ctx.trips[i + 1].title)}</a>` : ''].join(''); })()}</nav>` });
 }
 
 export function articlePage(ctx, post, body) {
@@ -198,7 +210,7 @@ export function articlePage(ctx, post, body) {
 }
 
 export function archive(ctx) {
-  return layout(ctx, { title: 'Project archive', section: 'about', description: 'Early coding projects, hackathon experiments, and little things Kevin Wang built while learning.', body: `${intro('', 'Little experiments.', 'A few things I built while learning to code pre-AI. Kept here as a reminder of humble beginnings.')}<section class="project-list" aria-label="Archived projects">${ctx.projects.map(project => `<article><img src="${ctx.href(`images/projects/${project.image}`)}" alt="" width="88" height="88" loading="lazy"><div><h2>${escape(project.title)}</h2><p>${escape(project.description)}</p><div class="project-links"><a class="text-link" href="${escape(project.url)}"${externalTarget(project.url)}>Take a look ${external}</a><a class="text-link" href="${escape(project.code)}"${externalTarget(project.code)}>View code ${external}</a></div></div></article>`).join('')}</section><a class="text-link" href="${ctx.href('about/')}">${directionArrow('left')} Back to About</a>` });
+  return layout(ctx, { title: 'Project archive', section: 'about', description: 'Early coding projects, hackathon experiments, and little things Kevin Wang built while learning.', body: `${intro('', 'Little experiments.', 'A few things I built while learning to code pre-AI. Kept here as a reminder of humble beginnings.')}<section class="project-list ralph-anchor" aria-label="Archived projects">${ralphSpot(ctx, 'archive')}${ctx.projects.map(project => `<article><img src="${ctx.href(`images/projects/${project.image}`)}" alt="" width="88" height="88" loading="lazy"><div><h2>${escape(project.title)}</h2><p>${escape(project.description)}</p><div class="project-links"><a class="text-link" href="${escape(project.url)}"${externalTarget(project.url)}>Take a look ${external}</a><a class="text-link" href="${escape(project.code)}"${externalTarget(project.code)}>View code ${external}</a></div></div></article>`).join('')}</section><a class="text-link" href="${ctx.href('about/')}">${directionArrow('left')} Back to About</a>` });
 }
 
 export function notFound(ctx) {

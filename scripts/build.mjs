@@ -73,6 +73,7 @@ export async function build({ outDir = path.join(root, 'dist'), siteUrl = proces
   await cp(path.join(root, 'src/styles.css'), path.join(outDir, 'assets/styles.css'));
   await cp(path.join(root, 'src/script.js'), path.join(outDir, 'assets/script.js'));
   await cp(path.join(root, 'src/theme.js'), path.join(outDir, 'assets/theme.js'));
+  await cp(path.join(root, 'src/ralph.js'), path.join(outDir, 'assets/ralph.js'));
   const routes = new Map([['', home], ['about/', about], ['writing/', writing], ['travel/', travel], ['archive/', archive]]);
   for (const trip of data.trips) routes.set(`travel/${trip.slug}/`, ctx => tripPage(ctx, trip));
   for (const post of data.posts.filter(post => post.bodyFile)) {

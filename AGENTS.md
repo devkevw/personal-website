@@ -25,6 +25,9 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 - Kevin explicitly chose to continue hosting travel photos on Imgur. Keep originals outside the repository unless he requests otherwise. Captions were written from visual review and can be refined with his feedback.
 - Existing image counts: China 91, UK 39, US 71. Kevin removed the lobster dinner (`j0r7XcZ`), Campbell’s Soup Cans (`m9TwaOt`), and Van Gogh self-portrait (`VmN35lc`) photos. The unavailable Imgur image `H4D1YEF` was omitted; `fygUI7Z` is the Bean photo already included, not a replacement.
 - Version 2 has a separate Vercel review deployment that updates from pushes to `redesign/v2`. Keep `main` and the original live-site hosting unchanged unless Kevin requests a release.
+- Ralph’s hidden photo tribute is developed on `v2.1` for a later release. Keep it off `redesign/v2` and `main` unless Kevin explicitly requests its inclusion. Seven stable finds live on Home, About, Writing, Archive, Travel, China, and United States. Found Ralphs disappear with one rolling Y/7 counter that updates in place and fades once and remain hidden through refreshes using browser storage. After completion, the homepage Ralph returns to reopen the prize/email popup. Keep the game unadvertised, preserve the real-photo look in both themes, and retain keyboard/reduced-motion support. Details and the console reset command are in `docs/ralph.md`.
+- The homepage Ralph uses the bone-chewing photo and hangs upside down behind the menu’s lower edge, centered on the page (slightly left of the capsule’s center on mobile). Show only his eyes and ears below the capsule, and place the rolling count fully below the menu. Keep him aligned with the capsule while fading out over the first 360px of scrolling and back in when returning to the top. When fully faded, he must not intercept pointer or keyboard input. All Ralph buttons should signal clickability with 5% growth anchored at the hiding edge on mouse hover or keyboard focus, with no hover glow or added shadow. Retain the pointer cursor and keyboard focus ring; reduced motion disables the growth. Other hiding spots are being reviewed separately; do not reposition them as part of a homepage adjustment.
+- During local Ralph review, refreshing on localhost/loopback temporarily resets the hunt, including its introduction. Ordinary page navigation preserves finds. This is a local-only exception to the intended persistent public hunt; remove it when Kevin finishes reviewing.
 
 ## Release workflow and README date
 
@@ -64,3 +67,12 @@ This is Kevin Wang's personal website. Read README.md for content editing and ru
 ## Cloud workflow
 
 Use the latest `redesign/v2` branch as the starting point, not `main`. Reopen the same cloud task for ongoing edits; save changes back to a branch or pull request when handing work between cloud and local environments. Check the working tree before pulling or switching branches, and preserve any uncommitted work.
+
+## Ralph layout verification
+
+- Do not rely on the original hunt flow tests to judge visual alignment. Run `tests/browser/ralph-layout.spec.mjs`, which measures opaque cutout pixels against their hiding edges, checks control overlap, and taps/clicks the visible dog across both themes and viewport sizes.
+- Keep Ralph buttons explicitly aligned to the start with flex layout; browser default button centering created the original gaps and overhangs. Scale around the hiding edge on hover, without translating away from it. Reserve room above the mobile Writing note so its cutout does not overlap the final article link.
+
+- Writing now uses the sideways lounging Ralph beneath the blue Medium note; keep the hidden part of its button clipped so it cannot intercept the Medium link. Archive uses the larger (76.8px, 20% above the original size) yellow-and-white blanket pose, retaining the whole head and naturally visible parts of both ears. Ralph cutout images load eagerly: lazy loading stalled for the tightly clipped Writing pose.
+
+- The Travel overview Ralph sits above the United States album card (selected by slug, not card position), at 73.6px wide: 15% larger than his original 64px. He is lowered 2px relative to the proportionally scaled placement. Keep a 1px bleed BEHIND the album card at rest and on hover, with the card link painted above the cutout so the bleed is never visible. Do not paint Ralph on top of the photo to hide a seam.

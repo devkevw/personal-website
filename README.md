@@ -19,6 +19,8 @@ Local build commands do not publish or push. A separate Vercel review project au
 
 The header's moon/sun button switches between light and dark themes. Light is the default; a saved choice is applied before rendering and shared across pages. If browser storage is blocked, switching still works for the current page. Without JavaScript, the site keeps its light theme and hides the toggle.
 
+Ralph’s hidden photo tribute is preserved on `v2.1` for a later release; `redesign/v2` excludes it. Behaviour, asset sources, and the browser-console reset command are documented in [docs/ralph.md](docs/ralph.md). Include it in a release only when Kevin asks.
+
 ## Content
 
 - `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
