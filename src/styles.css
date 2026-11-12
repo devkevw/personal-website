@@ -472,6 +472,7 @@ main.wrap { min-height: 65vh; }
 @media (max-width: 360px) {
   .navigation a { padding-inline: 8px; }
   .site-header { gap: 12px; }
+  h1 { font-size: 14.5vw; }
   .home-hero h1 { font-size: 15.5vw; }
 }
 @media (prefers-reduced-motion: reduce) {
