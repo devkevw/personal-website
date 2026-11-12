@@ -269,7 +269,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .interest-grid p { font-size: var(--text-body); line-height: 1.75; margin-top: 14px; }
 .archive-note { display: flex; justify-content: space-between; align-items: center; gap: 100px; margin-block: 65px 85px; padding: 35px 0; border-block: 1px solid var(--line); }
 .archive-note h2 { font-size: var(--title-small); }
-.archive-note p { color: var(--muted); font-size: var(--text-body); line-height: 1.75; margin-top: 10px; }
+.archive-note p { color: var(--muted); font-size: var(--text-small); line-height: 1.75; margin-top: 10px; }
 .archive-note a { flex-shrink: 0; }
 
 .post-list { list-style: none; padding: 0; margin: 0; }
