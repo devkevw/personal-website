@@ -64,6 +64,7 @@ body { margin: 0; color: var(--ink); background: var(--paper); font: 400 1rem/1.
 body:has(dialog[open]) { overflow: hidden; }
 ::selection { background: var(--blue); color: var(--ink); }
 h1, h2, h3, p, figure { margin: 0; }
+p { text-wrap: pretty; }
 h1, h2, h3 { font-family: var(--heading); font-weight: 600; line-height: 1.16; text-wrap: balance; }
 h1 { font-size: clamp(3.4rem, 7.8vw, 7rem); letter-spacing: -.065em; }
 h2 { font-size: clamp(2.1rem, 4.2vw, 3.6rem); letter-spacing: -.045em; }
@@ -251,7 +252,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .interest-grid p { font-size: var(--text-body); line-height: 1.75; margin-top: 14px; }
 .archive-note { display: flex; justify-content: space-between; align-items: center; gap: 100px; margin-block: 65px 85px; padding: 35px 0; border-block: 1px solid var(--line); }
 .archive-note h2 { font-size: 1.25rem; }
-.archive-note p { color: var(--muted); font-size: var(--text-small); margin-top: 10px; }
+.archive-note p { color: var(--muted); font-size: var(--text-small); line-height: 1.75; margin-top: 10px; }
 .archive-note a { flex-shrink: 0; }
 
 .post-list { list-style: none; padding: 0; margin: 0; }
@@ -262,13 +263,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .post-meta > span { font-size: var(--text-label); text-transform: uppercase; letter-spacing: .1em; }
 .post-main h2, .post-main h3 { font-size: 1.4rem; line-height: 1.4; letter-spacing: -.03em; transition: color .2s ease; }
 .post-row:hover h2, .post-row:hover h3 { color: var(--green); }
-.post-main p { font-size: var(--text-small); margin-top: 8px; color: var(--muted); }
+.post-main p { font-size: var(--text-small); line-height: 1.75; margin-top: 8px; color: var(--muted); }
 .post-source { display: inline-block; font-size: var(--text-caption); margin-top: 15px; color: var(--muted); }
 .post-arrow { font-size: 1.5rem; line-height: 1.2; text-align: right; }
 .post-arrow .external-icon { transition: transform .2s ease; }
 .post-row:hover .post-arrow .external-icon, .post-row:focus-visible .post-arrow .external-icon { transform: rotate(45deg); }
 .writing-note { display: flex; align-items: center; gap: 25px; padding: 28px 32px; background: var(--blue); border-radius: 18px; margin-block: 50px 100px; }
-.writing-note p { font-size: var(--text-body); flex: 1; }
+.writing-note p { font-size: var(--text-body); line-height: 1.75; flex: 1; }
 .writing-note .text-link { flex-shrink: 0; }
 .note-symbol { font-size: 2rem; }
 .travel-index-heading { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-block: 22px 30px; }
@@ -342,7 +343,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-list img { width: 68px; height: 68px; border-radius: 16px; background: var(--sand); flex-shrink: 0; object-fit: cover; }
 [data-theme="dark"] .project-list img { background: #e1dcd0; }
 .project-list h2 { font-size: 1.25rem; }
-.project-list p { font-size: var(--text-small); color: var(--muted); margin-top: 12px; }
+.project-list p { font-size: var(--text-small); line-height: 1.75; color: var(--muted); margin-top: 12px; }
 .project-links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 18px; }
 .project-links a { font-size: var(--text-link-small); }
 .project-list + a { margin-bottom: 80px; }
