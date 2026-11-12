@@ -529,10 +529,15 @@ test('primary headings share the wave with readable names and static reduced mot
 test('wrapped heading waves stay local and keep whole words together', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name.includes('mobile'), 'Mouse wave is disabled on touch screens');
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/archive/');
-  const heading = page.getByRole('heading', { level: 1, name: 'Little experiments.' });
+  await page.goto('/travel/united-states/');
+  const heading = page.getByRole('heading', { level: 1, name: 'United States.' });
   const words = heading.locator('.wave-word');
   await expect(words).toHaveCount(2);
+  // Use a wrapping album title; the archive title intentionally stays on one line.
+  await heading.evaluate(el => {
+    const widths = [...el.querySelectorAll('.wave-word')].map(word => word.getBoundingClientRect().width);
+    el.style.maxWidth = `${Math.ceil(Math.max(...widths)) + 2}px`;
+  });
   const upper = words.first().locator('.wave-letter').first();
   const lower = words.last().locator('.wave-letter').first();
   const upperBox = await upper.boundingBox();
