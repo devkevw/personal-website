@@ -104,7 +104,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .home-hero { display: grid; grid-template-columns: 1.45fr 1fr; align-items: center; gap: 90px; padding-block: 85px 130px; }
 .hero-copy > .eyebrow { margin-bottom: 26px; }
-.home-hero h1 { line-height: 1.08; white-space: nowrap; }
+.home-hero h1 { font-size: clamp(3.55rem, 8.2vw, 7.1rem); line-height: 1.08; white-space: nowrap; }
 [data-wave-title] { position: relative; }
 .wave-word { display: inline-block; white-space: nowrap; }
 .wave-letter { display: inline-block; white-space: pre; transform: translateY(var(--wave-lift, 0px)); transition: transform 160ms cubic-bezier(.2, .7, .2, 1); }
@@ -472,9 +472,7 @@ main.wrap { min-height: 65vh; }
 @media (max-width: 360px) {
   .navigation a { padding-inline: 8px; }
   .site-header { gap: 12px; }
-}
-@media (max-width: 340px) {
-  .home-hero h1 { font-size: 3.1rem; }
+  .home-hero h1 { font-size: 15.5vw; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
