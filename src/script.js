@@ -8,66 +8,6 @@ if (header) {
   updateHeader();
 }
 
-function enhanceNavigation() {
-  const nav = document.querySelector('.navigation');
-  const active = nav?.querySelector('a[aria-current]');
-  const highlight = nav?.querySelector('.navigation-highlight');
-  if (!active || !highlight) return;
-  const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const storageKey = 'navigation-slide';
-  let animation;
-  let selected = active;
-  const relativeRect = element => {
-    const box = element.getBoundingClientRect();
-    const parent = nav.getBoundingClientRect();
-    return { x: box.left - parent.left, y: box.top - parent.top, width: box.width, height: box.height };
-  };
-  const frame = box => ({ transform: `translate(${box.x}px, ${box.y}px)`, width: `${box.width}px`, height: `${box.height}px` });
-  function move(link, from = relativeRect(highlight), elapsed = 0) {
-    selected = link;
-    const to = relativeRect(link);
-    animation?.cancel();
-    Object.assign(highlight.style, frame(to));
-    if (!motion.matches && elapsed < 220) {
-      animation = highlight.animate([frame(from), frame(to)], { duration: 220, easing: 'cubic-bezier(.22, 1, .36, 1)' });
-      animation.currentTime = Math.max(0, elapsed);
-    }
-  }
-  let previous;
-  try {
-    previous = JSON.parse(sessionStorage.getItem(storageKey));
-    sessionStorage.removeItem(storageKey);
-  } catch { /* Navigation also works when storage is unavailable. */ }
-  nav.prepend(highlight);
-  nav.classList.add('is-enhanced');
-  const destination = relativeRect(active);
-  const width = nav.getBoundingClientRect().width;
-  const valid = previous?.to === location.href && Date.now() - previous.time < 10000
-    && [previous.x, previous.y, previous.width, previous.height].every(Number.isFinite);
-  move(active, valid ? { x: previous.x * width, y: previous.y, width: previous.width * width, height: previous.height } : destination, valid ? Date.now() - previous.time : 220);
-  nav.addEventListener('click', event => {
-    const link = event.target.closest('a');
-    if (!link || !nav.contains(link) || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute('download')) return;
-    const from = relativeRect(highlight);
-    try {
-      sessionStorage.setItem(storageKey, JSON.stringify({ to: link.href, time: Date.now(), x: from.x / nav.getBoundingClientRect().width, y: from.y, width: from.width / nav.getBoundingClientRect().width, height: from.height }));
-    } catch { /* Do not delay or intercept ordinary links. */ }
-    move(link, from);
-  });
-  const reset = () => {
-    animation?.cancel();
-    Object.assign(highlight.style, frame(relativeRect(selected)));
-  };
-  window.addEventListener('resize', reset);
-  window.addEventListener('pageshow', event => { if (event.persisted) { selected = active; reset(); } });
-  motion.addEventListener('change', reset);
-  document.fonts?.ready.then(() => {
-    const to = frame(relativeRect(selected));
-    if (highlight.style.width !== to.width || highlight.style.transform !== to.transform) move(selected);
-  });
-}
-enhanceNavigation();
-
 function enhanceHeadingWave(heading) {
   const label = heading.textContent;
   const visual = document.createElement('span');
