@@ -17,11 +17,13 @@ Visit **http://127.0.0.1:4173**. Editing `src/` or `images/` rebuilds the site; 
 
 Local build commands do not publish or push. A separate Vercel review project automatically builds changes pushed to `redesign/v2`, using `npm run build` and the `dist/` output directory. The original site on `main` remains unchanged. The output also supports other static hosting, including a GitHub Pages project subpath; those hosts must publish `dist/` rather than the old root files.
 
+Text and card-heading sizes are shared custom properties at the top of `src/styles.css` (`--text-body`, `--text-small`, `--text-link`, `--text-link-small`, `--text-caption`, `--text-label`, and `--title-large`/`-medium`/`-small`), with phone values set in the 700px media query. Use one of these for new text instead of a new size.
+
 The header's moon/sun button switches between light and dark themes. Light is the default; a saved choice is applied before rendering and shared across pages. If browser storage is blocked, switching still works for the current page. Without JavaScript, the site keeps its light theme and hides the toggle.
 
 ## Content
 
-- `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`.
+- `src/content/site.json`: contact links, career and education timeline, interests, and `heroPhrases` for the homepage typing line. The longer introduction is in `src/templates.mjs`. The homepage background section shows the most recent `Work` entry plus every `Education` entry, in timeline order; the About page shows the full timeline.
 - `src/content/writing.json`: article titles, dates, descriptions, and destinations. The build sorts entries newest first. Existing entries link to Medium.
 - `src/content/trips.json`: trip order, notes, places, and optional year, duration, cover, and related article.
 - `src/content/photos.json`: shared source for albums and the shuffled homepage carousels. Photos load as visitors browse. 201 photographs: 91 from China, 39 from England & Scotland, and 71 from the United States. Imgur hosts these photos.
