@@ -293,7 +293,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .photo-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .3s ease; }
 .photo-portrait img { aspect-ratio: 3 / 4; }
 .photo-link:hover img { transform: scale(1.025); }
-.photo-item figcaption { padding: 9px 2px 0; color: var(--muted); font-size: .68rem; line-height: 1.6; }
+.photo-item figcaption { padding: 9px 2px 0; color: var(--muted); font-size: .75rem; line-height: 1.6; }
 .album-pending { text-align: center; padding: 45px 25px 55px; background: var(--pending); border-radius: 26px; }
 .album-pending .trip-art { width: 250px; height: 180px; border-radius: 20px; margin: 0 auto 30px; }
 .album-pending .trip-art > span { display: none; }
@@ -447,7 +447,6 @@ main.wrap { min-height: 65vh; }
   .album-heading h2 { font-size: 1.5rem; }
   .photo-grid { columns: 2; column-gap: 14px; }
   .photo-item { margin-bottom: 20px; }
-  .photo-item figcaption { font-size: .62rem; }
   .photo-link { border-radius: 8px; }
   .album-pending { padding-inline: 20px; }
   .album-pending .trip-art { max-width: 100%; }
