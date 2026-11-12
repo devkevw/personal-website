@@ -69,7 +69,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
       <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 13.2A9 9 0 0 1 10.8 3.2a9 9 0 1 0 10 10Z"/></svg>
       <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <nav class="navigation" aria-label="Main navigation">${nav.map(([path, label]) => `<a href="${href(path)}"${section === label.toLowerCase() ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav>
+    <nav class="navigation" aria-label="Main navigation">${nav.map(([path, label]) => `<a href="${href(path)}"${section === label.toLowerCase() ? ' aria-current="page"' : ''}>${section === label.toLowerCase() ? '<span class="navigation-highlight" aria-hidden="true"></span>' : ''}${label}</a>`).join('')}</nav>
     <a class="header-contact" href="mailto:${escape(site.email)}?subject=${escape(encodeURIComponent("Hey Kevin, cool website! Let’s connect."))}">Say hello ${external}</a>
   </header>
   <main id="main" tabindex="-1"${wide ? '' : ' class="wrap"'}>${body}</main>
