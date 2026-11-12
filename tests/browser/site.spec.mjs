@@ -70,7 +70,7 @@ test('navigation, career anchor, and trip links reach their content', async ({ p
   await expect(page.locator('.trip-intro')).toContainText('2025–2026');
   await expect(page.locator('[data-place-filter]')).toHaveCount(7);
   await expect(page.locator('[data-photo]')).toHaveCount(71);
-  await expect(page.locator('[data-photo]').first()).toHaveAttribute('href', 'https://i.imgur.com/4S53Ssj.jpg');
+  await expect(page.locator('[data-photo][href="https://i.imgur.com/4S53Ssj.jpg"]')).toHaveCount(1);
   await expect(page.getByRole('heading', { name: 'From the camera roll.' })).toBeVisible();
 });
 
@@ -122,9 +122,39 @@ test('About timeline expands and collapses earlier entries with the keyboard', a
   await expect(toggle).toBeFocused();
 });
 
+test('album masonry keeps photos separate and reflows filtered groups', async ({ page }) => {
+  await page.goto('/travel/united-states/');
+  const grid = page.locator('.photo-grid');
+  await expect(grid).toHaveClass(/is-masonry/);
+  async function checkLayout(count) {
+    await expect(page.locator('.photo-item:visible')).toHaveCount(count);
+    const result = await grid.evaluate(grid => {
+      const boxes = [...grid.querySelectorAll('.photo-item:not([hidden])')].map(item => item.getBoundingClientRect());
+      const bounds = grid.getBoundingClientRect();
+      let overlaps = 0;
+      boxes.forEach((a, index) => boxes.slice(index + 1).forEach(b => {
+        if (a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1) overlaps++;
+      }));
+      return { overlaps, columns: new Set(boxes.map(box => Math.round(box.left))).size, expectedColumns: Number(getComputedStyle(grid).getPropertyValue('--photo-columns')), overflow: Math.max(...boxes.map(box => box.bottom)) - bounds.bottom };
+    });
+    expect(result.overlaps).toBe(0);
+    expect(result.columns).toBe(result.expectedColumns);
+    expect(result.overflow).toBeLessThanOrEqual(1);
+  }
+  await checkLayout(71);
+  await page.getByRole('button', { name: 'Midwest', exact: true }).click();
+  await checkLayout(13);
+  await page.getByRole('button', { name: 'All photos', exact: true }).click();
+  await checkLayout(71);
+  const first = await page.locator('[data-photo]').first().getAttribute('data-caption');
+  await page.reload();
+  await expect(page.locator('[data-photo]').first()).toHaveAttribute('data-caption', first);
+});
+
 test('photo viewer supports arrows, wrapping, escape, and focus restoration', async ({ page }) => {
   await page.goto('/travel/england/');
   const first = page.locator('[data-photo]').first();
+  const firstCaption = await first.getAttribute('data-caption');
   await first.click();
   const viewer = page.getByRole('dialog', { name: 'Photo viewer' });
   await expect(viewer).toBeVisible();
@@ -133,7 +163,7 @@ test('photo viewer supports arrows, wrapping, escape, and focus restoration', as
   await expect(page.locator('[data-photo-count]')).toHaveText('39 / 39');
   await page.getByRole('button', { name: 'Next photo' }).click();
   await expect(page.locator('[data-photo-count]')).toHaveText('1 / 39');
-  await expect(page.locator('[data-lightbox-caption]')).toHaveText('London Stadium, London');
+  await expect(page.locator('[data-lightbox-caption]')).toHaveText(firstCaption);
   await page.keyboard.press('Escape');
   await expect(viewer).not.toBeVisible();
   await expect(first).toBeFocused();
@@ -166,7 +196,7 @@ test('content and photo links remain available without JavaScript', async ({ bro
   await page.getByRole('link', { name: /Europe.*England & Scotland/ }).click();
   await expect(page.locator('[data-photo]')).toHaveCount(39);
   await expect(page.locator('[data-place-filter]:visible')).toHaveCount(0);
-  await expect(page.locator('[data-photo]').first()).toHaveAttribute('href', 'https://i.imgur.com/AIe7kty.jpg');
+  await expect(page.locator('[data-photo][href="https://i.imgur.com/AIe7kty.jpg"]')).toHaveCount(1);
   await page.goto(`${baseURL}/about/`);
   const earlier = page.locator('.timeline-more .timeline > li');
   await expect(earlier.first()).toBeHidden();

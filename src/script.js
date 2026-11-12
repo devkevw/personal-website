@@ -255,6 +255,43 @@ document.querySelectorAll('img').forEach(image => {
   if (image.complete && image.currentSrc && image.naturalWidth === 0) handleImageError(image);
 });
 
+function enhanceAlbumLayout() {
+  const grid = document.querySelector('.photo-grid');
+  if (!grid || typeof ResizeObserver === 'undefined') return () => {};
+  const items = [...grid.querySelectorAll('.photo-item')];
+  let pending;
+  function layout() {
+    const style = getComputedStyle(grid);
+    const columns = Number(style.getPropertyValue('--photo-columns'));
+    const gap = parseFloat(style.columnGap);
+    const rowGap = parseFloat(style.getPropertyValue('--photo-row-gap'));
+    const width = (grid.clientWidth - (columns - 1) * gap) / columns;
+    const visible = items.filter(item => !item.hidden);
+    visible.forEach(item => { item.style.width = `${width}px`; });
+    const heights = visible.map(item => item.getBoundingClientRect().height);
+    const bottoms = Array(columns).fill(0);
+    visible.forEach((item, index) => {
+      const column = bottoms.indexOf(Math.min(...bottoms));
+      item.style.left = `${column * (width + gap)}px`;
+      item.style.top = `${bottoms[column]}px`;
+      bottoms[column] += heights[index] + rowGap;
+    });
+    grid.style.height = `${Math.max(0, ...bottoms) - (visible.length ? rowGap : 0)}px`;
+  }
+  function schedule() {
+    cancelAnimationFrame(pending);
+    pending = requestAnimationFrame(layout);
+  }
+  grid.classList.add('is-masonry');
+  layout();
+  const observer = new ResizeObserver(schedule);
+  observer.observe(grid);
+  items.forEach(item => observer.observe(item));
+  document.fonts?.ready.then(schedule);
+  return layout;
+}
+const layoutAlbum = enhanceAlbumLayout();
+
 const dialog = document.querySelector('.lightbox');
 const photoLinks = [...document.querySelectorAll('[data-photo]')];
 let visiblePhotoLinks = [...photoLinks];
@@ -276,6 +313,7 @@ if (placeFilters && photoLinks.length) {
         figure.hidden = !included;
         return included;
       });
+      layoutAlbum();
       buttons.forEach(control => control.setAttribute('aria-pressed', String(control === button)));
       albumCount.textContent = group === 'all' ? `${photoLinks.length} photographs` : `${visiblePhotoLinks.length} of ${photoLinks.length} photographs`;
       status.textContent = group === 'all'

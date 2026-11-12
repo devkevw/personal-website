@@ -197,8 +197,22 @@ function albumPlaces(trip) {
   }).join('')}</ul><p class="sr-only" data-place-status aria-live="polite" aria-atomic="true" hidden></p>`;
 }
 
+function shuffledAlbum(photos, slug) {
+  // A repeatable shuffle makes the local layout comparison stable on refresh.
+  const shuffled = [...photos];
+  let seed = [...slug].reduce((value, letter) => Math.imul(value, 31) + letter.charCodeAt(0) | 0, 1);
+  for (let index = shuffled.length - 1; index > 0; index--) {
+    seed ^= seed << 13;
+    seed ^= seed >>> 17;
+    seed ^= seed << 5;
+    const other = (seed >>> 0) % (index + 1);
+    [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+  }
+  return shuffled;
+}
+
 export function tripPage(ctx, trip) {
-  const photos = ctx.photos[trip.slug] || [];
+  const photos = shuffledAlbum(ctx.photos[trip.slug] || [], trip.slug);
   const related = ctx.posts.find(post => post.slug === trip.relatedWriting);
   return layout(ctx, { title: trip.title, section: 'travel', description: trip.description || `A trip to ${trip.title}. A photo album by Kevin Wang.`, body: `
     <div class="detail-back"><a class="text-link" href="${ctx.href('travel/')}">${directionArrow('left')} All trips</a></div>
