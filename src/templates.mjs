@@ -110,7 +110,7 @@ function tripArt(trip) {
 }
 
 function tripCard(ctx, trip) {
-  return `<article class="trip-card"><a href="${ctx.href(`travel/${trip.slug}/`)}"><div class="trip-cover">${trip.cover ? `<img src="${escape(imageSource(trip.cover, 'h', ctx.href))}" alt="${escape(trip.coverAlt)}" width="1024" height="768" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : tripArt(trip)}<span class="trip-open" aria-hidden="true">${external}</span></div><div class="trip-card-meta"><span>${escape(trip.region)}</span>${trip.year ? `<span>${tripYearLabel(trip)}</span>` : ''}</div><h${ctx.route ? '2' : '3'}>${escape(trip.title)}</h${ctx.route ? '2' : '3'}>${trip.description ? `<p>${escape(trip.description)}</p>` : ''}</a></article>`;
+  return `<article class="trip-card"><a href="${ctx.href(`travel/${trip.slug}/`)}"><div class="trip-cover">${trip.cover ? `<img src="${escape(imageSource(trip.cover, 'h', ctx.href))}" alt="${escape(trip.coverAlt)}" width="1024" height="768" loading="eager" decoding="async" referrerpolicy="no-referrer">` : tripArt(trip)}<span class="trip-open" aria-hidden="true">${external}</span></div><div class="trip-card-meta"><span>${escape(trip.region)}</span>${trip.year ? `<span>${tripYearLabel(trip)}</span>` : ''}</div><h${ctx.route ? '2' : '3'}>${escape(trip.title)}</h${ctx.route ? '2' : '3'}>${trip.description ? `<p>${escape(trip.description)}</p>` : ''}</a></article>`;
 }
 
 function typewriter(site) {

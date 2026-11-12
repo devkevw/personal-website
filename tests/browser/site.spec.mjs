@@ -55,6 +55,49 @@ test('floating navigation stays usable over page colors in both themes', async (
   await expect(header).not.toHaveClass(/is-scrolled/);
 });
 
+test('menu highlight responds while navigation is slow and can change direction', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Main navigation' });
+  const highlight = nav.locator('.navigation-highlight');
+  const travel = nav.getByRole('link', { name: 'Travel', exact: true });
+  let release;
+  const held = new Promise(resolve => { release = resolve; });
+  let requested;
+  const requestStarted = new Promise(resolve => { requested = resolve; });
+  await page.route('**/travel/', async route => {
+    requested();
+    await held;
+    await route.continue().catch(() => {});
+  });
+  // Schedule the second click in the still-visible document: Playwright
+  // waits for pending navigation before querying that document again.
+  await page.evaluate(() => {
+    const nav = document.querySelector('.navigation');
+    nav.addEventListener('click', event => {
+      if (event.target.textContent !== 'Travel') return;
+      setTimeout(() => {
+        const highlight = nav.querySelector('.navigation-highlight');
+        const links = nav.querySelectorAll('a');
+        sessionStorage.setItem('test-menu-gap', Math.abs(highlight.getBoundingClientRect().x - links[3].getBoundingClientRect().x));
+        links[1].click();
+      }, 300);
+    });
+  });
+  try {
+    await travel.click({ noWaitAfter: true });
+    await requestStarted;
+    await expect(page).toHaveURL(/\/about\/$/);
+    expect(await page.evaluate(() => Number(sessionStorage.getItem('test-menu-gap')))).toBeLessThan(1);
+    await expect.poll(async () => Math.abs((await highlight.boundingBox()).x - (await nav.locator('[aria-current]').boundingBox()).x)).toBeLessThan(1);
+  } finally {
+    release();
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await nav.getByRole('link', { name: 'Writing', exact: true }).click();
+  await expect(page).toHaveURL(/\/writing\/$/);
+  expect(await highlight.evaluate(el => el.getAnimations().length)).toBe(0);
+});
+
 test('navigation, career anchor, and trip links reach their content', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: 'The full timeline' }).click();
