@@ -378,8 +378,8 @@ main.wrap { min-height: 65vh; }
   .navigation { top: 22px; right: 20px; left: auto; transform: none; padding: 4px; gap: 0; }
   .navigation a { padding: 9px 14px; font-size: .74rem; }
   .home-hero { grid-template-columns: 1fr; gap: 40px; padding-block: 55px 65px; }
-  .hero-description { font-size: 1.65rem; margin-top: 24px; }
-  .hero-typewriter { font-size: clamp(1rem, 4.8vw, 1.65rem); }
+  .hero-description { margin-top: 24px; }
+  .hero-typewriter { font-size: clamp(1rem, 4.8vw, 1.45rem); }
   .hero-note { max-width: 100%; font-size: .9rem; }
   .hero-photo { width: min(100%, 460px); justify-self: center; padding-top: 0; }
   .hero-photo picture { aspect-ratio: 1.15; border-radius: 150px 150px 16px 16px; }
