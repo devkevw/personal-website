@@ -81,8 +81,8 @@ export function layout(ctx, { title, description, section, body, wide = false })
 </html>\n`;
 }
 
-function intro(eyebrow, title, text, extra = '') {
-  return `<div class="page-intro">${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h1 data-wave-title>${title}</h1><p class="page-lede">${text}</p>${extra}</div>`;
+function intro(eyebrow, title, text, extra = '', className = '') {
+  return `<div class="page-intro${className ? ` ${className}` : ''}">${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h1 data-wave-title>${title}</h1><p class="page-lede">${text}</p>${extra}</div>`;
 }
 
 function sectionHeading(number, title, url, label) {
@@ -214,7 +214,7 @@ export function articlePage(ctx, post, body) {
 }
 
 export function archive(ctx) {
-  return layout(ctx, { title: 'Archive', section: 'about', description: 'Early coding projects, hackathon experiments, and little things Kevin Wang built while learning.', body: `${intro('', 'Little experiments.', 'A few things I built while learning to code pre-AI. Kept here as a reminder of humble beginnings.')}<section class="project-list" aria-label="Archived projects">${ctx.projects.map(project => `<article><img src="${ctx.href(`images/projects/${project.image}`)}" alt="" width="88" height="88" loading="lazy"><div><h2>${escape(project.title)}</h2><p>${escape(project.description)}</p><div class="project-links"><a class="text-link" href="${escape(project.url)}"${externalTarget(project.url)}>Take a look ${external}</a><a class="text-link" href="${escape(project.code)}"${externalTarget(project.code)}>View code ${external}</a></div></div></article>`).join('')}</section><a class="text-link" href="${ctx.href('about/')}">${directionArrow('left')} Back to About</a>` });
+  return layout(ctx, { title: 'Archive', section: 'about', description: 'Early coding projects, hackathon experiments, and little things Kevin Wang built while learning.', body: `${intro('', 'Little experiments.', 'A few things I built while learning to code pre-AI. Kept here as a reminder of humble beginnings.', '', 'archive-intro')}<section class="project-list" aria-label="Archived projects">${ctx.projects.map(project => `<article><img src="${ctx.href(`images/projects/${project.image}`)}" alt="" width="88" height="88" loading="lazy"><div><h2>${escape(project.title)}</h2><p>${escape(project.description)}</p><div class="project-links"><a class="text-link" href="${escape(project.url)}"${externalTarget(project.url)}>Take a look ${external}</a><a class="text-link" href="${escape(project.code)}"${externalTarget(project.code)}>View code ${external}</a></div></div></article>`).join('')}</section><a class="text-link" href="${ctx.href('about/')}">${directionArrow('left')} Back to About</a>` });
 }
 
 export function notFound(ctx) {
