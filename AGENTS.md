@@ -1,6 +1,6 @@
 # Project handoff
 
-This is Kevin Wang's personal website. Read README.md for content editing and run commands.
+This is Kevin Wang's personal website. Read README.md for the public introduction and docs/DEVELOPMENT.md for content editing and run commands.
 
 ## Current direction
 
