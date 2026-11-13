@@ -2,7 +2,7 @@ Page last updated November 2026
 
 # My Personal Website
 
-Welcome to my [website](https://kevinjwang.xyz/)! This repository contains the code for my site, which showcases some of the things I've been up to over the years: my career, writing, travels, and a few early coding projects. Built from scratch using HTML, CSS, and JavaScript. I hope you enjoy exploring it!
+Welcome to my [website](https://kevinjwang.xyz/)! This repository contains the code for my site, which showcases some of the things I've been up to over the years: my career, writing, travels, and a few early coding projects. It’s a static site in HTML, CSS, and JavaScript. I originally built it by hand before the AI revolution, but it’s since been fully revamped. I hope you enjoy exploring it!
 
 ## Features
 
