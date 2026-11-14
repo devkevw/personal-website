@@ -13,7 +13,9 @@ npm run dev
 
 Visit **http://127.0.0.1:4173**. Editing `src/` or `images/` rebuilds the site; refresh the browser to see changes. `npm run build` generates the site in `dist/`. `npm run preview` serves the existing build.
 
-Local build commands do not publish or push. A separate Vercel review project automatically builds changes pushed to `redesign/v2`, using `npm run build` and the `dist/` output directory. The original site on `main` remains unchanged. The output also supports other static hosting, including a GitHub Pages project subpath; those hosts must publish `dist/` rather than the old root files.
+Local build commands do not publish or push. Vercel uses `npm run build` and the `dist/` output directory. The output also supports other static hosting, including a GitHub Pages project subpath; hosts serving the full website must publish `dist/` rather than the root redirect page.
+
+The live Vercel site now deploys from `main`. GitHub Pages continues publishing from `main` at the repository root, where `index.html` redirects the original `https://devkevw.github.io/personal-website/` address to `https://kevinjwang.xyz/`. This redirect works without JavaScript and includes a fallback link. Keep it separate from the generated `dist/index.html`, which is the actual Vercel homepage. Do not set a custom domain in GitHub Pages; the custom domain is hosted by Vercel.
 
 Text and card-heading sizes are shared custom properties at the top of `src/styles.css` (`--text-body`, `--text-small`, `--text-link`, `--text-link-small`, `--text-caption`, `--text-label`, and `--title-large`/`-medium`/`-small`), with phone values set in the 700px media query. Use one of these for new text instead of a new size.
 
