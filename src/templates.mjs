@@ -61,6 +61,7 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${href('assets/styles.css')}">
   <script defer src="${href('assets/script.js')}"></script>
+  ${ctx.analyticsEnabled ? '<script defer src="/_vercel/insights/script.js"></script>' : ''}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
