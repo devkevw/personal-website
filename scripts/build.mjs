@@ -63,7 +63,12 @@ export async function loadContent() {
   return data;
 }
 
-export async function build({ outDir = path.join(root, 'dist'), siteUrl = process.env.SITE_URL, analyticsEnabled = process.env.VERCEL_ENV === 'production' } = {}) {
+export async function build({
+  outDir = path.join(root, 'dist'),
+  siteUrl = process.env.SITE_URL,
+  analyticsEnabled = process.env.VERCEL_ENV === 'production',
+  speedInsightsEnabled = process.env.VERCEL_ENV === 'production'
+} = {}) {
   const data = await loadContent();
   if (siteUrl) requireValue(['http:', 'https:'].includes(new URL(siteUrl).protocol), 'SITE_URL must be an HTTP(S) URL');
   // Only remove the known generated folder, never an arbitrary caller-supplied directory.
@@ -82,10 +87,10 @@ export async function build({ outDir = path.join(root, 'dist'), siteUrl = proces
   for (const [route, render] of routes) {
     const target = path.join(outDir, route, 'index.html');
     await mkdir(path.dirname(target), { recursive: true });
-    await writeFile(target, render(context(route, { ...data, siteUrl, analyticsEnabled })));
+    await writeFile(target, render(context(route, { ...data, siteUrl, analyticsEnabled, speedInsightsEnabled })));
   }
   const baseHref = siteUrl ? `${new URL(siteUrl).pathname.replace(/\/$/, '')}/` : '/';
-  await writeFile(path.join(outDir, '404.html'), notFound(context('', { ...data, baseHref, siteUrl: undefined, analyticsEnabled })));
+  await writeFile(path.join(outDir, '404.html'), notFound(context('', { ...data, baseHref, siteUrl: undefined, analyticsEnabled, speedInsightsEnabled })));
   await writeFile(path.join(outDir, '.nojekyll'), '');
   if (siteUrl) {
     const urls = [...routes.keys()].map(route => new URL(route, `${siteUrl.replace(/\/$/, '')}/`).href);

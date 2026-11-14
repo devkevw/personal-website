@@ -19,6 +19,8 @@ The live Vercel site now deploys from `main`. GitHub Pages continues publishing 
 
 Vercel Web Analytics must be enabled in the project's Analytics dashboard. Production builds (`VERCEL_ENV=production`, set by Vercel) include Vercel's deferred HTML tracking script on generated pages, including the custom 404 page. Local and preview builds omit it. No npm package or React component is needed. Tracking begins after deployment; ad blockers may prevent visits from being counted. The root GitHub Pages redirect is not tracked.
 
+Speed Insights uses the same production-only rule, with Vercel's HTML queue initializer followed by its deferred `/_vercel/speed-insights/script.js` script. Enable the free Speed Insights tier in the project's dashboard. It collects real visitor performance measurements after deployment; local builds, previews, and the GitHub Pages redirect omit it. No package is required, and Speed Insights Plus is not needed for this integration.
+
 Text and card-heading sizes are shared custom properties at the top of `src/styles.css` (`--text-body`, `--text-small`, `--text-link`, `--text-link-small`, `--text-caption`, `--text-label`, and `--title-large`/`-medium`/`-small`), with phone values set in the 700px media query. Use one of these for new text instead of a new size.
 
 The header's moon/sun button switches between light and dark themes. Light is the default; a saved choice is applied before rendering and shared across pages. If browser storage is blocked, switching still works for the current page. Without JavaScript, the site keeps its light theme and hides the toggle.

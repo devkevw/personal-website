@@ -62,6 +62,8 @@ export function layout(ctx, { title, description, section, body, wide = false })
   <link rel="stylesheet" href="${href('assets/styles.css')}">
   <script defer src="${href('assets/script.js')}"></script>
   ${ctx.analyticsEnabled ? '<script defer src="/_vercel/insights/script.js"></script>' : ''}
+  ${ctx.speedInsightsEnabled ? `<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>` : ''}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

@@ -9,7 +9,7 @@ import { articlePage, home, tripPage, context, escape } from '../src/templates.m
 test('static output works at a project subpath, with complete local links and assets', async () => {
   const outDir = await mkdtemp(path.join(os.tmpdir(), 'kevin-website-test-'));
   try {
-    const { routes } = await build({ outDir, siteUrl: 'https://example.com/personal-website/', analyticsEnabled: false });
+    const { routes } = await build({ outDir, siteUrl: 'https://example.com/personal-website/', analyticsEnabled: false, speedInsightsEnabled: false });
     assert.equal(routes.length, 8);
     const pages = new Map();
     for (const route of routes) {
@@ -54,17 +54,19 @@ test('static output works at a project subpath, with complete local links and as
   } finally { await rm(outDir, { recursive: true, force: true }); }
 });
 
-test('analytics is included across production pages and omitted from local builds', async () => {
+test('analytics and speed insights are included across production pages and omitted from local builds', async () => {
   const outDir = await mkdtemp(path.join(os.tmpdir(), 'kevin-analytics-test-'));
   try {
-    const { routes } = await build({ outDir, siteUrl: 'https://kevinjwang.xyz/', analyticsEnabled: true });
+    const { routes } = await build({ outDir, siteUrl: 'https://kevinjwang.xyz/', analyticsEnabled: true, speedInsightsEnabled: true });
     for (const page of [...routes.map(route => `${route}index.html`), '404.html']) {
       const html = await readFile(path.join(outDir, page), 'utf8');
       assert.equal((html.match(/<script defer src="\/_vercel\/insights\/script\.js"><\/script>/g) || []).length, 1, page);
+      assert.equal((html.match(/<script defer src="\/_vercel\/speed-insights\/script\.js"><\/script>/g) || []).length, 1, page);
+      assert.ok(html.indexOf('window.si =') < html.indexOf('src="/_vercel/speed-insights/script.js"'), page);
     }
-    await build({ outDir, analyticsEnabled: false });
+    await build({ outDir, analyticsEnabled: false, speedInsightsEnabled: false });
     for (const page of [...routes.map(route => `${route}index.html`), '404.html']) {
-      assert.doesNotMatch(await readFile(path.join(outDir, page), 'utf8'), /\/_vercel\/insights\//);
+      assert.doesNotMatch(await readFile(path.join(outDir, page), 'utf8'), /\/_vercel\/(?:insights|speed-insights)\/|window\.si\s*=/);
     }
   } finally { await rm(outDir, { recursive: true, force: true }); }
 });
