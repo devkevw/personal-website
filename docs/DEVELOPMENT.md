@@ -85,7 +85,9 @@ SITE_URL=https://devkevw.github.io/personal-website/ npm run build
 
 This adds canonical URLs, `sitemap.xml`, and the absolute link-preview image. Local builds omit all three rather than advertise an unconfirmed production URL.
 
-The preview image is `images/share/preview.jpg`, a 1200×630 typographic card: `kevinjwang.xyz` and a short line on the site’s sand, with ink text, a green dot matching the homepage greeting, and Poppins and Inter. Every page keeps its own title and description and shares this one image. After editing `scripts/share-card.html`, regenerate it with `node scripts/generate-share-card.mjs`, using the same browser setup as the favicon.
+The preview image is `images/share/preview.jpg`. Every page keeps its own title and description and shares this one 1200×630 image. The design in `scripts/share-card.html` uses warm off-white (`#f5f3ed`), the domain in Poppins with a green dot, and a small clip-art goat peeking over the “g” in “wang”, with no subtitle.
+
+Run `node scripts/generate-share-card.mjs` to regenerate the active preview, using the same browser setup as the favicon generator. The card renderer uses bundled Poppins and blocks external requests; its illustration, font license, provenance, and generation prompt live in `scripts/share-card-assets/`.
 
 ## Release workflow
 

@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@600&display=block" rel="stylesheet">
   <style>
+    @font-face { font-family: Poppins; font-style: normal; font-weight: 600; font-display: swap; src: url(share-card-assets/fonts/poppins-600.ttf) format('truetype'); }
     * { box-sizing: border-box; }
     html, body { margin: 0; width: 1200px; height: 630px; }
     .card {
@@ -16,9 +14,13 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: #e1dcd0;
+      background: #f5f3ed;
       color: #32302f;
     }
+    .composition { padding-top: 75px; }
+    .domain { position: relative; }
+    .goat-perch { position: relative; display: inline-block; }
+    .goat { position: absolute; width: 160px; height: auto; max-width: none; left: 50%; transform: translateX(-50%); bottom: calc(100% - 40px); }
     h1 {
       margin: 0;
       font-family: Poppins, sans-serif;
@@ -27,21 +29,16 @@
       line-height: 1;
       letter-spacing: -0.06em;
     }
-    h1 span { color: #52644d; }
-    p {
-      margin: 34px 0 0;
-      font-family: Inter, sans-serif;
-      font-weight: 500;
-      font-size: 38px;
-      letter-spacing: -0.03em;
-      color: #68635e;
-    }
+    .domain-dot { color: #52644d; }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>kevinjwang<span>.</span>xyz</h1>
-    <p>a guy with a website</p>
+    <div class="composition">
+      <div class="domain">
+        <h1>kevinjwan<span class="goat-perch">g<img class="goat" src="share-card-assets/goat-peeking.png" alt="" aria-hidden="true"></span><span class="domain-dot">.</span>xyz</h1>
+      </div>
+    </div>
   </div>
 </body>
 </html>

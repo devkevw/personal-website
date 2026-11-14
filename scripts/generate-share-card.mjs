@@ -15,12 +15,13 @@ const browser = await chromium.launch(executablePath ? { executablePath } : {
 });
 try {
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
+  // Exports must work entirely from checked-in assets, even without a network.
+  await page.route(/^https?:/, route => route.abort());
   await page.goto(cardUrl.href);
   await page.evaluate(async () => {
+    await document.fonts.load('600 128px Poppins');
     await document.fonts.ready;
-    const poppins = document.fonts.check('600 76px Poppins');
-    const inter = document.fonts.check('500 38px Inter');
-    if (!poppins || !inter) throw new Error('Share card fonts did not load');
+    if (!document.fonts.check('600 128px Poppins')) throw new Error('Share card font did not load');
     await Promise.all([...document.images].map(image => image.decode()));
   });
   await mkdir(new URL('./', outFile), { recursive: true });
