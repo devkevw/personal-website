@@ -122,10 +122,9 @@ test('About timeline expands and collapses earlier entries with the keyboard', a
   await expect(toggle).toBeFocused();
 });
 
-test('album masonry keeps photos separate and reflows filtered groups', async ({ page }) => {
+test('album columns keep photos separate and reflow filtered groups', async ({ page }) => {
   await page.goto('/travel/united-states/');
   const grid = page.locator('.photo-grid');
-  await expect(grid).toHaveClass(/is-masonry/);
   async function checkLayout(count) {
     await expect(page.locator('.photo-item:visible')).toHaveCount(count);
     const result = await grid.evaluate(grid => {
@@ -135,7 +134,7 @@ test('album masonry keeps photos separate and reflows filtered groups', async ({
       boxes.forEach((a, index) => boxes.slice(index + 1).forEach(b => {
         if (a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1) overlaps++;
       }));
-      return { overlaps, columns: new Set(boxes.map(box => Math.round(box.left))).size, expectedColumns: Number(getComputedStyle(grid).getPropertyValue('--photo-columns')), overflow: Math.max(...boxes.map(box => box.bottom)) - bounds.bottom };
+      return { overlaps, columns: new Set(boxes.map(box => Math.round(box.left))).size, expectedColumns: Number(getComputedStyle(grid).columnCount), overflow: Math.max(...boxes.map(box => box.bottom)) - bounds.bottom };
     });
     expect(result.overlaps).toBe(0);
     expect(result.columns).toBe(result.expectedColumns);
