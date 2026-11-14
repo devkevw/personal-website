@@ -17,6 +17,8 @@ Local build commands do not publish or push. Vercel uses `npm run build` and the
 
 The live Vercel site now deploys from `main`. GitHub Pages continues publishing from `main` at the repository root, where `index.html` redirects the original `https://devkevw.github.io/personal-website/` address to `https://kevinjwang.xyz/`. This redirect works without JavaScript and includes a fallback link. Keep it separate from the generated `dist/index.html`, which is the actual Vercel homepage. Do not set a custom domain in GitHub Pages; the custom domain is hosted by Vercel.
 
+Vercel Web Analytics must be enabled in the project's Analytics dashboard. Production builds (`VERCEL_ENV=production`, set by Vercel) include Vercel's deferred HTML tracking script on generated pages, including the custom 404 page. Local and preview builds omit it. No npm package or React component is needed. Tracking begins after deployment; ad blockers may prevent visits from being counted. The root GitHub Pages redirect is not tracked.
+
 Text and card-heading sizes are shared custom properties at the top of `src/styles.css` (`--text-body`, `--text-small`, `--text-link`, `--text-link-small`, `--text-caption`, `--text-label`, and `--title-large`/`-medium`/`-small`), with phone values set in the 700px media query. Use one of these for new text instead of a new size.
 
 The header's moon/sun button switches between light and dark themes. Light is the default; a saved choice is applied before rendering and shared across pages. If browser storage is blocked, switching still works for the current page. Without JavaScript, the site keeps its light theme and hides the toggle.

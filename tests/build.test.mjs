@@ -9,7 +9,7 @@ import { articlePage, home, tripPage, context, escape } from '../src/templates.m
 test('static output works at a project subpath, with complete local links and assets', async () => {
   const outDir = await mkdtemp(path.join(os.tmpdir(), 'kevin-website-test-'));
   try {
-    const { routes } = await build({ outDir, siteUrl: 'https://example.com/personal-website/' });
+    const { routes } = await build({ outDir, siteUrl: 'https://example.com/personal-website/', analyticsEnabled: false });
     assert.equal(routes.length, 8);
     const pages = new Map();
     for (const route of routes) {
@@ -51,6 +51,21 @@ test('static output works at a project subpath, with complete local links and as
     assert.match(missing, /<base href="\/personal-website\/">/);
     assert.doesNotMatch(missing, /og:image|twitter:card/);
     assert.ok((await stat(path.join(outDir, 'images/share/preview.jpg'))).isFile());
+  } finally { await rm(outDir, { recursive: true, force: true }); }
+});
+
+test('analytics is included across production pages and omitted from local builds', async () => {
+  const outDir = await mkdtemp(path.join(os.tmpdir(), 'kevin-analytics-test-'));
+  try {
+    const { routes } = await build({ outDir, siteUrl: 'https://kevinjwang.xyz/', analyticsEnabled: true });
+    for (const page of [...routes.map(route => `${route}index.html`), '404.html']) {
+      const html = await readFile(path.join(outDir, page), 'utf8');
+      assert.equal((html.match(/<script defer src="\/_vercel\/insights\/script\.js"><\/script>/g) || []).length, 1, page);
+    }
+    await build({ outDir, analyticsEnabled: false });
+    for (const page of [...routes.map(route => `${route}index.html`), '404.html']) {
+      assert.doesNotMatch(await readFile(path.join(outDir, page), 'utf8'), /\/_vercel\/insights\//);
+    }
   } finally { await rm(outDir, { recursive: true, force: true }); }
 });
 
