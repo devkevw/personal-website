@@ -82,10 +82,12 @@ PLAYWRIGHT_CHANNEL=chromium npm run test:browser
 Set `SITE_URL` to the eventual public site root, including any project path, when building for publication:
 
 ```sh
-SITE_URL=https://devkevw.github.io/personal-website/ npm run build
+SITE_URL=https://kevinjwang.xyz/ npm run build
 ```
 
-This adds canonical URLs, `sitemap.xml`, and the absolute link-preview image. Local builds omit all three rather than advertise an unconfirmed production URL.
+This adds canonical URLs, `sitemap.xml`, `robots.txt`, and the absolute link-preview image. The robots file allows crawling and points to the sitemap. Local builds without `SITE_URL` omit these rather than advertise an unconfirmed production URL. Deployments under a project subpath still resolve the sitemap URL relative to that subpath; crawlers look for `robots.txt` at the host root.
+
+For Google Search Console, add the Domain property `kevinjwang.xyz`, verify it with Google's TXT record at the authoritative DNS provider, then submit `https://kevinjwang.xyz/sitemap.xml` in the Sitemaps report. Keep the verification record after verification. Search Console submission and ownership verification happen in Google's dashboard, separately from deployment.
 
 The preview image is `images/share/preview.jpg`. Every page keeps its own title and description and shares this one 1200×630 image. The design in `scripts/share-card.html` uses warm off-white (`#f5f3ed`), the domain in Poppins with a green dot, and a small clip-art goat peeking over the “g” in “wang”, with no subtitle.
 

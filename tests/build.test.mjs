@@ -45,6 +45,8 @@ test('static output works at a project subpath, with complete local links and as
     assert.ok(!sitemap.includes('/404'));
     assert.ok(!sitemap.includes('/v1'));
     assert.ok(!sitemap.includes('medium.com'));
+    const robots = await readFile(path.join(outDir, 'robots.txt'), 'utf8');
+    assert.equal(robots, 'User-agent: *\nAllow: /\n\nSitemap: https://example.com/personal-website/sitemap.xml\n');
     const missing = await readFile(path.join(outDir, '404.html'), 'utf8');
     assert.match(missing, /<base href="\/personal-website\/">/);
     assert.doesNotMatch(missing, /og:image|twitter:card/);
