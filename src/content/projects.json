@@ -1,0 +1,7 @@
+[
+  { "title": "Etch-a-Sketch", "image": "pencil-icon.png", "description": "A digital drawing toy built for ConUHacks 2024. Move your cursor to draw without lifting your pen.", "url": "https://devkevw.github.io/conuhacks2024/", "code": "https://github.com/devkevw/conuhacks2024" },
+  { "title": "Rock Paper Scissors", "image": "rps-icon.png", "description": "A browser game against the computer. First to five wins.", "url": "https://devkevw.github.io/odin-rock-paper-scissors/", "code": "https://github.com/devkevw/odin-rock-paper-scissors" },
+  { "title": "TipMate", "image": "tipmate-icon.jpg", "description": "A hackathon tipping calculator for people traveling abroad. The app is no longer available for download.", "url": "https://devpost.com/software/tipmate-app", "code": "https://github.com/devkevw/codejam2023" },
+  { "title": "Ralph’s Website", "image": "ralph-icon.jpg", "description": "One of the first sites I built, dedicated to my late dog Ralph.", "url": "https://devkevw.github.io/odin-landing-page/", "code": "https://github.com/devkevw/odin-landing-page" },
+  { "title": "365 Days", "image": "365days-icon.png", "description": "A digital wellness journal, built as a Chrome extension and webpage for CodeJam 2024.", "url": "https://devpost.com/software/365-days", "code": "https://github.com/devkevw/codejam2024" }
+]

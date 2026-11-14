@@ -1,0 +1,276 @@
+[
+  {
+    "slug": "china",
+    "title": "China",
+    "region": "Asia",
+    "year": 2024,
+    "duration": "Five months",
+    "cover": "https://i.imgur.com/4Cltokn.jpg",
+    "coverAlt": "Xianggong Mountain, Yangshuo",
+    "description": "A semester on exchange in Beijing, and a little more time to explore.",
+    "note": "In 2024, I spent five months in China, including a semester on exchange at Tsinghua University in Beijing. Here are some of the places and moments I brought back with me.",
+    "places": [
+      "Beijing",
+      "Shijiazhuang",
+      "Zhangjiakou",
+      "Lhasa",
+      "Shigatse",
+      "Guilin",
+      "Yangshuo",
+      "Longsheng",
+      "Lijiang",
+      "Kunming",
+      "Shangri-La",
+      "Zhangjiajie",
+      "Inner Mongolia",
+      "Chengdu",
+      "Leshan",
+      "Chongqing",
+      "Shanghai",
+      "Hangzhou",
+      "Suzhou",
+      "Xi'an",
+      "Qingdao"
+    ],
+    "relatedWriting": "my-time-at-tsinghua-university",
+    "photoGroups": [
+      {
+        "id": "beijing-hebei",
+        "label": "Beijing & Hebei",
+        "places": [
+          "Beijing",
+          "Shijiazhuang",
+          "Zhangjiakou"
+        ]
+      },
+      {
+        "id": "tibet",
+        "label": "Tibet",
+        "places": [
+          "Lhasa",
+          "Shigatse",
+          "Yamdrok Lake",
+          "Everest Base Camp"
+        ]
+      },
+      {
+        "id": "guangxi",
+        "label": "Guangxi",
+        "places": [
+          "Guilin",
+          "Yangshuo",
+          "Longsheng"
+        ]
+      },
+      {
+        "id": "yunnan",
+        "label": "Yunnan",
+        "places": [
+          "Lijiang",
+          "Kunming",
+          "Shangri-La"
+        ]
+      },
+      {
+        "id": "zhangjiajie",
+        "label": "Zhangjiajie",
+        "places": [
+          "Zhangjiajie"
+        ]
+      },
+      {
+        "id": "inner-mongolia",
+        "label": "Inner Mongolia",
+        "places": [
+          "Inner Mongolia"
+        ]
+      },
+      {
+        "id": "sichuan-chongqing",
+        "label": "Sichuan & Chongqing",
+        "places": [
+          "Chengdu",
+          "Leshan",
+          "Chongqing"
+        ]
+      },
+      {
+        "id": "shanghai-nearby",
+        "label": "Shanghai & nearby",
+        "places": [
+          "Shanghai",
+          "Hangzhou",
+          "Suzhou"
+        ]
+      },
+      {
+        "id": "xian",
+        "label": "Xi’an",
+        "places": [
+          "Xi'an"
+        ]
+      },
+      {
+        "id": "qingdao",
+        "label": "Qingdao",
+        "places": [
+          "Qingdao"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "england",
+    "title": "England & Scotland",
+    "region": "Europe",
+    "year": 2024,
+    "duration": "One month",
+    "cover": "https://i.imgur.com/oWnINZt.jpg",
+    "coverAlt": "Palace of Westminster, London",
+    "description": "A month in the United Kingdom, from London to the Scottish Highlands.",
+    "note": "I spent a month in the United Kingdom in 2024. These photos take in London, university towns, the coast, and a visit to Scotland.",
+    "places": [
+      "London",
+      "Oxford",
+      "Cambridge",
+      "Bath",
+      "Stonehenge",
+      "Brighton",
+      "York",
+      "Edinburgh",
+      "Glasgow",
+      "Scottish Highlands"
+    ],
+    "photoGroups": [
+      {
+        "id": "london",
+        "label": "London",
+        "places": [
+          "London"
+        ]
+      },
+      {
+        "id": "oxford-cambridge",
+        "label": "Oxford & Cambridge",
+        "places": [
+          "Oxford",
+          "Cambridge"
+        ]
+      },
+      {
+        "id": "bath-stonehenge",
+        "label": "Bath & Stonehenge",
+        "places": [
+          "Bath",
+          "Stonehenge"
+        ]
+      },
+      {
+        "id": "brighton",
+        "label": "Brighton",
+        "places": [
+          "Brighton"
+        ]
+      },
+      {
+        "id": "york",
+        "label": "York",
+        "places": [
+          "York"
+        ]
+      },
+      {
+        "id": "edinburgh-glasgow",
+        "label": "Edinburgh & Glasgow",
+        "places": [
+          "Edinburgh",
+          "Glasgow"
+        ]
+      },
+      {
+        "id": "highlands",
+        "label": "Scottish Highlands",
+        "places": [
+          "Scottish Highlands"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "united-states",
+    "title": "United States",
+    "region": "North America",
+    "year": 2025,
+    "endYear": 2026,
+    "description": "A collection of trips around America, starting the summer before grad school.",
+    "note": "Before and after moving to the US, I found some time to explore. These trips span coast to coast, with a few national parks along the way.",
+    "places": [
+      "New York",
+      "New Haven",
+      "Chicago",
+      "Milwaukee",
+      "Indiana",
+      "Las Vegas",
+      "Grand Canyon",
+      "Seattle",
+      "Mount Rainier",
+      "San Francisco",
+      "Acadia National Park, Maine"
+    ],
+    "theme": "mountain",
+    "cover": "https://i.imgur.com/qrwJRwt.jpg",
+    "coverAlt": "Walking across the Brooklyn Bridge, New York",
+    "photoGroups": [
+      {
+        "id": "new-york-new-haven",
+        "label": "New York & New Haven",
+        "places": [
+          "New York",
+          "New Haven"
+        ]
+      },
+      {
+        "id": "great-lakes",
+        "label": "Midwest",
+        "places": [
+          "Chicago",
+          "Milwaukee",
+          "Indiana"
+        ]
+      },
+      {
+        "id": "vegas-grand-canyon",
+        "label": "Las Vegas & Grand Canyon",
+        "places": [
+          "Las Vegas",
+          "Grand Canyon",
+          "Route 66",
+          "Hoover Dam"
+        ]
+      },
+      {
+        "id": "seattle-rainier",
+        "label": "Seattle & Mount Rainier",
+        "places": [
+          "Seattle",
+          "Mount Rainier"
+        ]
+      },
+      {
+        "id": "san-francisco",
+        "label": "San Francisco",
+        "places": [
+          "San Francisco"
+        ]
+      },
+      {
+        "id": "acadia-maine",
+        "label": "Acadia",
+        "places": [
+          "Acadia National Park",
+          "Maine coast"
+        ]
+      }
+    ]
+  }
+]

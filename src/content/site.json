@@ -1,0 +1,113 @@
+{
+  "name": "Kevin Wang",
+  "description": "A little about Kevin Wang: journey, writing, and travel.",
+  "email": "kevinjrwang502@gmail.com",
+  "heroPhrases": [
+    "a statistics student",
+    "a retired hooper",
+    "an occasional writer",
+    "an adventurer",
+    "a curious individual"
+  ],
+  "socials": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/kevinjwang/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/devkevw"
+    },
+    {
+      "label": "Medium",
+      "url": "https://medium.com/@kevw"
+    }
+  ],
+  "timeline": [
+    {
+      "period": "September — December 2026",
+      "homePeriod": "Fall 2026",
+      "category": "Work",
+      "title": "Data Science Intern",
+      "organization": "Intact Financial Corporation",
+      "location": "Montreal, QC",
+      "description": "Working on usage-based insurance and telematics, looking at how people drive. Most people with our app drive like my mom: very cautious."
+    },
+    {
+      "period": "2025 — 2027",
+      "category": "Education",
+      "title": "MS in Statistics",
+      "organization": "University of Chicago",
+      "location": "Chicago, IL",
+      "description": "Continuing my studies in statistics, with coursework in statistical theory, time series, and machine learning. So far, ate a lot of free food."
+    },
+    {
+      "period": "May — August 2025",
+      "homePeriod": "Summer 2025",
+      "category": "Research",
+      "title": "Undergraduate Student Researcher",
+      "organization": "McGill University",
+      "location": "Montreal, QC",
+      "description": "Studied how sports injuries affect performance using Bayesian models in R and Stan. Still couldn't tell me when I could play basketball again after my back injury."
+    },
+    {
+      "period": "February — July 2024",
+      "category": "Exchange",
+      "title": "A semester in Beijing",
+      "organization": "Tsinghua University",
+      "location": "Beijing, China",
+      "description": "Spent a semester on exchange at Tsinghua, where I reconnected with culture. Made new friends, played some sports, ripped Mahjong, explored lots, and occasionally studied.",
+      "link": "https://medium.com/@kevw/my-time-at-tsinghua-university-ddd3b6347646",
+      "linkLabel": "Read about my exchange"
+    },
+    {
+      "period": "May — August 2023",
+      "category": "Work",
+      "title": "Actuarial Automation Intern",
+      "organization": "Sun Life Financial",
+      "location": "Toronto, ON",
+      "description": "Built VBA tools to automate insurance policy illustrations and data entry. Made my actuarial teammates happy."
+    },
+    {
+      "period": "May — August 2022",
+      "category": "Work",
+      "title": "Actuarial Data Analytics Intern",
+      "organization": "Intact Financial Corporation",
+      "location": "Montreal, QC",
+      "description": "Worked on claims forecasting and reporting using regression, SQL, and Power BI. Drank Bubly constantly."
+    },
+    {
+      "period": "2021 — 2025",
+      "category": "Education",
+      "title": "BS in Statistics & Computer Science",
+      "organization": "McGill University",
+      "location": "Montreal, QC",
+      "description": "Studied statistics and computer science, with a minor in management. Along the way: hackathons, course grading, a touch of research, and consistently losing in the playoffs in intramural basketball."
+    },
+    {
+      "period": "September 2020 — May 2021",
+      "category": "Research",
+      "title": "Artificial Intelligence Research Intern",
+      "organization": "JACOBB",
+      "location": "Montreal, QC",
+      "description": "Worked on educational AI and predictive analytics with two profs. Helped them gather some data; they seemed pleased."
+    }
+  ],
+  "interests": [
+    {
+      "title": "Sports",
+      "icon": "sport.png",
+      "text": "Basketball, hockey, football, and swimming. I used to play more, but these days I mostly watch from the couch."
+    },
+    {
+      "title": "Around a table",
+      "icon": "board-game.png",
+      "text": "Catan, chess, poker, and mahjong. Some friends think they’re better than me at Catan; they’re delusional."
+    },
+    {
+      "title": "Books & words",
+      "icon": "book.png",
+      "text": "I like to read before bed and write occasionally. Some thoughts make it online; the rest stay in my head."
+    }
+  ]
+}
