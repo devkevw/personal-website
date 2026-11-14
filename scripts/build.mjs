@@ -91,6 +91,8 @@ export async function build({ outDir = path.join(root, 'dist'), siteUrl = proces
     const urls = [...routes.keys()].map(route => new URL(route, `${siteUrl.replace(/\/$/, '')}/`).href);
     const xmlEscape = value => value.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]);
     await writeFile(path.join(outDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(url => `<url><loc>${xmlEscape(url)}</loc></url>`).join('')}</urlset>\n`);
+    const sitemapUrl = new URL('sitemap.xml', `${siteUrl.replace(/\/$/, '')}/`).href;
+    await writeFile(path.join(outDir, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${sitemapUrl}\n`);
   }
   console.log(`Built ${routes.size + 1} pages → ${path.relative(root, outDir) || outDir}`);
   return { routes: [...routes.keys()], outDir };
